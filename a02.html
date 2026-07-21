@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 2: Concept Statement &amp; Mood Environments &middot; CTD 325</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --crimson:      #9E1B32;
+      --crimson-dark: #7A1424;
+      --crimson-mid:  #B8273E;
+      --crimson-pale: #F7EAED;
+      --white:        #FFFFFF;
+      --off-white:    #FAFAF8;
+      --warm-gray:    #F0ECE8;
+      --rule:         #DDD8D2;
+      --mid-gray:     #9A9189;
+      --dark-gray:    #3A3530;
+      --charcoal:     #1A1714;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--charcoal);
+      background: var(--off-white);
+      line-height: 1.65;
+    }
+    a { color: var(--crimson); }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--charcoal);
+      border-bottom: 2px solid var(--crimson);
+      height: 52px;
+      padding: 0 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .nav-brand em { color: var(--crimson-mid); font-style: normal; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+    nav ul a {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    /* HERO */
+    .hero {
+      background: var(--crimson);
+      padding: 96px 56px 84px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: 'C';
+      position: absolute;
+      right: -60px;
+      top: -100px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 680px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--crimson-dark);
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--white);
+      max-width: 680px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,.8); }
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.65);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 8px 16px;
+    }
+    .hero-meta-k {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+    }
+    .hero-meta-v {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 0;
+      width: fit-content;
+      position: relative;
+      z-index: 1;
+    }
+    .stat {
+      padding: 0 40px 0 20px;
+      border-left: 2px solid rgba(255,255,255,.2);
+    }
+    .stat:first-child { padding-left: 0; border-left: none; }
+    .stat-num {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* SHARED SECTION CHROME */
+    .section { padding: 88px 56px; }
+    .section.alt  { background: var(--white); }
+    .section.warm { background: var(--warm-gray); }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
+    }
+
+    .sec-title {
+      font-size: clamp(28px, 3.8vw, 46px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+    }
+
+    .sec-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-bottom: 48px;
+    }
+
+    /* TWO-COL */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .desc-body p {
+      font-size: 16px;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .desc-body p:last-child { margin-bottom: 0; }
+
+    /* PRINCIPLE CALLOUT */
+    .principle-callout {
+      background: var(--charcoal);
+      padding: 32px 36px;
+      margin-bottom: 56px;
+      border-left: 4px solid var(--crimson);
+    }
+    .principle-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson-mid);
+      margin-bottom: 10px;
+    }
+    .principle-callout p {
+      font-size: 19px;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+      max-width: 760px;
+    }
+    .principle-callout p strong { font-style: normal; color: var(--crimson-mid); }
+
+    /* INSTRUCTIONS */
+    .instructions-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .instruction-list {
+      list-style: none;
+      counter-reset: inst;
+      display: flex;
+      flex-direction: column;
+    }
+    .instruction-list > li {
+      counter-increment: inst;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--dark-gray);
+      line-height: 1.7;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .instruction-list > li:last-child { border-bottom: none; }
+    .instruction-list > li::before {
+      content: counter(inst, decimal-leading-zero);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      padding-top: 3px;
+    }
+    .instruction-list > li strong { color: var(--charcoal); }
+
+    .sub-list { list-style: none; margin-top: 8px; margin-bottom: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .sub-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+    .sub-list li::before {
+      content: '\2014';
+      color: var(--crimson);
+      font-size: 11px;
+      flex-shrink: 0;
+      opacity: .6;
+    }
+
+    /* PART SECTIONS */
+    .part-sec {
+      padding: 88px 56px;
+      position: relative;
+    }
+    .part-sec.warm { background: var(--warm-gray); }
+    .part-sec.alt  { background: var(--white); }
+
+    .ghost-label {
+      position: absolute;
+      top: 32px;
+      right: 48px;
+      font-size: 220px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--crimson-pale);
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .part-sec.alt .ghost-label { color: var(--warm-gray); }
+
+    .part-inner { position: relative; z-index: 1; }
+
+    .part-head {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+    .part-pill {
+      background: var(--crimson);
+      color: var(--white);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+    }
+    .part-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    .part-app-link {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--crimson);
+      text-decoration: underline;
+    }
+
+    .part-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .part-desc p {
+      font-size: 16px;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .part-desc p:last-child { margin-bottom: 0; }
+
+    /* SPECS PANEL */
+    .specs-panel { background: var(--charcoal); padding: 36px; }
+    .specs-group-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson-mid);
+      margin: 28px 0 14px;
+    }
+    .specs-group-label:first-child { margin-top: 0; }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-k { font-size: 12px; color: rgba(255,255,255,.45); }
+    .spec-v {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--white);
+      text-align: right;
+    }
+    .produce-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .produce-list li {
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      line-height: 1.6;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .produce-list li:last-child { border-bottom: none; }
+    .produce-list li strong { color: var(--white); }
+
+    .produce-highlight {
+      margin-top: 16px;
+      padding: 18px 20px;
+      background: var(--crimson);
+    }
+    .produce-highlight-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 8px;
+    }
+    .produce-highlight-eq {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    /* RANGE BADGES */
+    .range-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+    .range-excellent  { background: #d4edda; color: #2d6a3f; border: 1px solid #a8d8a0; }
+    .range-proficient { background: #fef3cd; color: #856404; border: 1px solid #f5c97a; }
+    .range-developing { background: #f8d7da; color: #842029; border: 1px solid #e08080; }
+
+    /* DELIVERABLES */
+    .deliverables-stack { display: flex; flex-direction: column; gap: 32px; margin-bottom: 32px; }
+    .deliverable-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--crimson);
+      padding: 32px 36px;
+    }
+    .deliverable-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 10px;
+    }
+    .deliverable-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .deliverable-body p {
+      font-size: 15px;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .deliverable-body p:last-child { margin-bottom: 0; }
+    .deliverable-body p strong { color: var(--charcoal); }
+
+    /* PRIVACY NOTE */
+    .privacy-note {
+      background: var(--crimson-pale);
+      border-left: 4px solid var(--crimson);
+      padding: 18px 24px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: var(--crimson-dark);
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    /* COLLECTIVE CALLOUT */
+    .collective-callout {
+      background: var(--warm-gray);
+      border-left: 4px solid var(--crimson);
+      padding: 24px 28px;
+      font-size: 14.5px;
+      color: var(--dark-gray);
+      line-height: 1.8;
+    }
+    .collective-callout strong { color: var(--charcoal); }
+
+    /* RUBRIC */
+    .rubric-intro {
+      max-width: 640px;
+      font-size: 16px;
+      color: var(--dark-gray);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    table.rubric {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    table.rubric thead tr { background: var(--crimson); }
+    table.rubric thead th {
+      padding: 14px 18px;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.9);
+      text-align: left;
+    }
+    table.rubric thead th.col-excellent  { color: #a8d8a0; }
+    table.rubric thead th.col-proficient { color: #f5c97a; }
+    table.rubric thead th.col-developing { color: #e08080; }
+
+    table.rubric tbody tr { border-bottom: 1px solid var(--rule); transition: background .15s; }
+    table.rubric tbody tr:hover { background: var(--crimson-pale); }
+
+    table.rubric td {
+      padding: 16px 18px;
+      vertical-align: top;
+      color: var(--dark-gray);
+      line-height: 1.7;
+      border-right: 1px solid var(--rule);
+    }
+    table.rubric td:last-child { border-right: none; }
+    table.rubric td.item-col {
+      background: var(--warm-gray);
+      min-width: 190px;
+    }
+
+    .item-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .item-pts {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      display: block;
+    }
+
+    table.rubric tbody tr.total-row { background: var(--charcoal); border-bottom: none; }
+    table.rubric tbody tr.total-row td {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      border-right-color: rgba(255,255,255,.08);
+    }
+    table.rubric tbody tr.total-row td.item-col {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* SLO GROUPS */
+    .slo-group { margin-bottom: 48px; }
+    .slo-group:last-child { margin-bottom: 0; }
+
+    .slo-group-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .slo-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .slo-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 14px 16px;
+      background: var(--warm-gray);
+      border-left: 3px solid var(--crimson);
+      transition: background .15s;
+    }
+    .slo-item:hover { background: var(--crimson-pale); }
+
+    .slo-verb {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--crimson);
+      padding: 4px 10px;
+      white-space: nowrap;
+      margin-top: 1px;
+    }
+    .slo-verb.cida { background: var(--charcoal); }
+
+    .slo-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--dark-gray);
+    }
+    .slo-text strong { color: var(--charcoal); font-weight: 700; }
+
+    @media (max-width: 960px) {
+      .deliverables-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      border-top: 2px solid var(--crimson);
+      padding: 28px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-school {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.45);
+    }
+    footer p { font-size: 11.5px; color: rgba(255,255,255,.25); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      nav ul { display: none; }
+      .hero, .section, .part-sec { padding: 64px 24px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .hero::after { font-size: 320px; right: -30px; }
+      .two-col { grid-template-columns: 1fr; gap: 32px; }
+      .part-layout { grid-template-columns: 1fr; gap: 40px; }
+      .ghost-label { font-size: 140px; right: 16px; top: 20px; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+      table.rubric { font-size: 12px; }
+      table.rubric td { padding: 12px 12px; }
+      .deliverable-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><em>UA</em> &middot; CTD 325 &middot; Design for Special Populations</div>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#foundation">Foundation</a></li>
+    <li><a href="#part1">Part 1</a></li>
+    <li><a href="#part2">Part 2</a></li>
+    <li><a href="#deliverables">Deliverables</a></li>
+    <li><a href="#rubric">Rubric</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="overview">
+  <p class="hero-eyebrow">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Assignment 02 &middot; Fall 2026</p>
+  <h1>Concept Statement &amp; <em>Mood Environments</em></h1>
+  <p class="hero-sub">Research does not turn into design on its own &mdash; someone has to translate it. This assignment turns your Assignment 01 fieldwork into the brief you will design from: a Concept Statement and a set of Mood Environments. Every later decision, from a wall to a light fixture, will be judged against them.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-k">Project</span>
+      <span class="hero-meta-v">The Lifelong School</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-k">Client</span>
+      <span class="hero-meta-v">NEXA Consulting and Development</span>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-lbl">Assignment Parts</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-lbl">User Profiles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-lbl">Mood Environments</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200</div>
+      <div class="stat-lbl">Points Total</div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION 01: CONTEXT & FOUNDATION -->
+<section class="section alt" id="foundation">
+  <p class="eyebrow">Section 01</p>
+  <h2 class="sec-title">Context, What You Bring Forward &amp; Objectives</h2>
+  <hr class="sec-rule">
+
+  <div class="two-col reveal" style="margin-bottom: 40px;">
+    <div class="desc-body">
+      <p>In Assignment 01, you learned about a population from the population itself. You have interviews, secondary research, an assigned topic, and a Grounded Design Insight &mdash; something you could only know from doing the fieldwork.</p>
+      <p>Research does not turn into design on its own. Someone has to translate it. That is this assignment.</p>
+    </div>
+    <div class="desc-body">
+      <p><strong>Part 1</strong> turns your research into a Concept Statement &mdash; the argument your interior design will make. <strong>Part 2</strong> turns that statement into Mood Environments &mdash; images that show what the concept looks and feels like in terms of material, space, and light. Together, they become the brief you design from.</p>
+    </div>
+  </div>
+
+  <div class="principle-callout reveal">
+    <p class="principle-label">One Rule Governs Everything</p>
+    <p><strong>Every claim you enter must come from a person you actually spoke with.</strong></p>
+  </div>
+
+  <div class="two-col reveal d1">
+    <div>
+      <p class="instructions-label">What You Bring From Assignment 01</p>
+      <ol class="instruction-list">
+        <li><span>Your four interviews.</span></li>
+        <li><span>Your assigned topic and its secondary research.</span></li>
+        <li><span>Your Grounded Design Insight.</span></li>
+        <li><span>The collective library &mdash; your classmates&rsquo; twenty-four other topics.</span></li>
+      </ol>
+    </div>
+    <div>
+      <p class="instructions-label">Objectives</p>
+      <ol class="instruction-list">
+        <li><span>Translate interview evidence into a structured understanding of your users.</span></li>
+        <li><span>Reframe user challenges as design opportunities.</span></li>
+        <li><span>Write a Concept Statement that can direct real design decisions.</span></li>
+        <li><span>Produce Mood Environments that give the project material, spatial, and aesthetic direction.</span></li>
+        <li><span>Present the concept in a professional environment.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- SLOs -->
+<section class="section warm">
+  <p class="eyebrow">Section 02</p>
+  <h2 class="sec-title">Student Learning Outcomes</h2>
+  <hr class="sec-rule">
+
+  <!-- Bloom's Taxonomy -->
+  <div class="slo-group reveal">
+    <p class="slo-group-label">Bloom&rsquo;s Taxonomy (2001)</p>
+    <ul class="slo-list">
+      <li class="slo-item">
+        <span class="slo-verb">Remember</span>
+        <span class="slo-text">Recall the interview evidence and secondary research gathered in Assignment 01.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb">Understand</span>
+        <span class="slo-text">Explain user needs and desires, as well as technical requirements, to impact design decisions.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb">Apply</span>
+        <span class="slo-text">Use the primary and secondary sources to transfer research into a design concept.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb">Analyze</span>
+        <span class="slo-text">Compare user accounts and theoretical information to identify what they share and where they conflict.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb">Evaluate</span>
+        <span class="slo-text">Judge which design ideas work best and which conceptual images serve the concept.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb">Create</span>
+        <span class="slo-text">Produce a Concept Statement and a set of Mood Environments that give the project a coherent direction and present them to a client.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CIDA / NASAD -->
+  <div class="slo-group reveal d1">
+    <p class="slo-group-label">CIDA / NASAD Framework</p>
+    <ul class="slo-list">
+      <li class="slo-item">
+        <span class="slo-verb cida">Apply</span>
+        <span class="slo-text"><strong>Human-centered evidence</strong> to define the users of a space and what they need from it.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb cida">Synthesize</span>
+        <span class="slo-text"><strong>User research into design intent</strong>, identifying shared needs, conflicts, and what the design must do.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb cida">Work</span>
+        <span class="slo-text"><strong>Through a design process</strong>, framing problems as opportunities, generating ideas, and selecting the strongest.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb cida">Give</span>
+        <span class="slo-text"><strong>A concept, material, spatial, and aesthetic direction</strong> through conceptual imagery that applies light, color, texture, and material as design elements.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb cida">Present</span>
+        <span class="slo-text"><strong>And defend a design concept</strong> to a client through professional visual and oral communication.</span>
+      </li>
+      <li class="slo-item">
+        <span class="slo-verb cida">Collaborate</span>
+        <span class="slo-text"><strong>As a professional team</strong> and document the design process ethically, protecting participant privacy.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PART 1: CONCEPT STATEMENT -->
+<section class="part-sec warm" id="part1">
+  <div class="ghost-label">01</div>
+  <div class="part-inner">
+    <div class="part-head reveal">
+      <span class="part-pill">Part 1</span>
+      <span class="part-title">The Concept Statement</span>
+    </div>
+    <div class="part-layout">
+
+      <div class="reveal">
+        <div class="part-desc">
+          <p>Working from your Assignment 01 interviews, you will build a profile on user preferences for each of your four participants, your Design Insights, and synthesize the DOs and DON&rsquo;Ts of your final users into a single composite understanding of who you are designing for, generate and select design ideas, and arrive at a Concept Statement that describes the project&rsquo;s Value Proposition and Core Design Solution.</p>
+          <ul class="sub-list">
+            <li>Watch the instructor&rsquo;s video tutorial before you begin; it is the authoritative source for how the app works.</li>
+            <li>Use the <strong>Concept Statement Generator</strong> web app <a class="part-app-link" href="https://sites.ua.edu/dronderos/concept-statement-generator/" target="_blank" rel="noopener">sites.ua.edu/dronderos/concept-statement-generator</a> as a guide that tells you what to put into it and why.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal d1">
+        <div class="specs-panel">
+          <p class="specs-group-label">You Must Produce</p>
+          <ul class="produce-list">
+            <li><strong>One</strong> DOs &amp; DON&rsquo;Ts synthesis</li>
+            <li>Design ideas generated &amp; selected, <strong>selections marked</strong></li>
+          </ul>
+          <div class="produce-highlight">
+            <span class="produce-highlight-label">One Concept Statement</span>
+            <span class="produce-highlight-eq">Value Proposition + Core Design Solution</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PART 2: MOOD ENVIRONMENTS -->
+<section class="part-sec alt" id="part2">
+  <div class="ghost-label">02</div>
+  <div class="part-inner">
+    <div class="part-head reveal">
+      <span class="part-pill">Part 2</span>
+      <span class="part-title">Mood Environments</span>
+    </div>
+    <div class="part-layout">
+
+      <div class="reveal">
+        <div class="part-desc">
+          <p>Completed using the <strong>DREAMS + EP</strong> web app &mdash; <a class="part-app-link" href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">sites.ua.edu/dronderos/d-r-e-a-m-s</a>. As in Part 1, watch the instructor&rsquo;s video tutorial before you begin.</p>
+          <p>Working from the Concept Statement, use the Value Proposition and Core Design Solution to identify different feelings, perceptions, or experiences that the project must create for your users. Afterward, translate at least three into spatial diagrams of place, sensation, material, objects, surroundings, and light, and convert each diagram into an AI image-generation prompt. You will then generate, edit, and curate the results according to the instructor&rsquo;s video tutorials.</p>
+        </div>
+      </div>
+
+      <div class="reveal d1">
+        <div class="specs-panel">
+          <p class="specs-group-label">You Must Produce</p>
+          <ul class="produce-list">
+            <li><strong>3</strong> feeling sets</li>
+            <li><strong>3</strong> DREAMS canvases</li>
+            <li><strong>3</strong> edited image prompts</li>
+            <li><strong>3</strong> Mood Environments</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="section warm" id="deliverables">
+  <p class="eyebrow">Section 04</p>
+  <h2 class="sec-title">Deliverables</h2>
+  <hr class="sec-rule">
+
+  <div class="deliverables-stack">
+
+    <div class="deliverable-card reveal">
+      <div class="deliverable-num">Deliverable 01 &middot; 5&ndash;10 Minutes &middot; Live &middot; Delivered as a Design Firm</div>
+      <div class="deliverable-title">Concept Presentation</div>
+      <div class="deliverable-body">
+        <p><strong>Your firm.</strong> Choose a name, design a logo, write a slogan.</p>
+        <p><strong>What you present.</strong> Take the client from your research to your concept, then show the concept as images:</p>
+        <ul class="sub-list">
+          <li><strong>Who your users are</strong> &mdash; the four people you interviewed, characterized as you did when using the Concept Statement Generator App.</li>
+          <li><strong>How you built the concept</strong> &mdash; the user preference profiles, your Design Insights, the DOs and DON&rsquo;Ts synthesis, the ideas you generated and the ones you kept.</li>
+          <li><strong>The Concept Statement</strong> &mdash; your Value Proposition and Core Design Solution.</li>
+        </ul>
+        <p><strong>The visual argument.</strong> Present several conceptual renderings from your Mood Environments. Do not narrate them one at a time &mdash; explain why they belong together. Your images must establish one spatial, material, and aesthetic universe.</p>
+        <p><strong>How you present.</strong> Choose a maximum of two speakers. It does not matter whether everyone talks; it matters that the speech is coherent, well delivered, and carries the project&rsquo;s conceptual core. Two voices with one argument beat four voices with four.</p>
+        <p>This is a client presentation to NEXA Consulting and Development. Speak to the client. Do not read from slides. Do not exceed ten minutes. Be professional.</p>
+      </div>
+    </div>
+
+    <div class="deliverable-card reveal d1">
+      <div class="deliverable-num">Deliverable 02 &middot; Cumulative &middot; On the Collaborative Board</div>
+      <div class="deliverable-title">Project Memory Log</div>
+      <div class="deliverable-body">
+        <p>Each group has a space on a shared collaborative board provided by the instructor. Build a chronological record of how the concept came to exist &mdash; screenshots from every stage of both parts, in order, from your first user profile through your last curated image. Include the ideas you set aside, the prompts you rewrote, and the images you rejected.</p>
+        <p><strong>Why is the board shared?</strong> Your log sits alongside every other group&rsquo;s. Learn from other groups. Read your classmates&rsquo; boards.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="privacy-note reveal d2">Never post a participant&rsquo;s real name, photograph, or voice recording. The board is shared with the class. Your consent agreement is not.</p>
+
+  <div class="reveal d3">
+    <p class="instructions-label">Submission</p>
+    <ol class="instruction-list" style="margin-bottom: 24px;">
+      <li><span><strong>In-person presentation.</strong> All group members must be in the classroom, including those who do not speak.</span></li>
+      <li><span><strong>Corporate Presentation file</strong>, including the firm&rsquo;s name, logo, and slogan.</span></li>
+      <li><span><strong>PDF of the Concept Statement</strong> &mdash; Value Proposition + Core Design Solution, as the app produced it. Do not rewrite it.</span></li>
+      <li><span><strong>Project Memory entry</strong> on the collaborative board, at the access link provided by the instructor.</span></li>
+    </ol>
+    <div class="collective-callout">
+      Items 2, 3, and 4 are submitted through <strong>Blackboard</strong>. Presentation dates and deadlines are on the <strong>course syllabus</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- RUBRIC -->
+<section class="section alt" id="rubric">
+  <p class="eyebrow">Section 05</p>
+  <h2 class="sec-title">Evaluation Rubric</h2>
+  <hr class="sec-rule">
+  <p class="rubric-intro reveal">The assignment is evaluated across four criteria totaling <strong>200 points</strong>. Concept Development &amp; the Concept Statement carries the greatest weight, as it is where research becomes an actionable design argument.</p>
+
+  <div style="overflow-x: auto;" class="reveal d1">
+    <table class="rubric">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Criterion</th>
+          <th class="col-excellent"  style="width: 26.7%;">Excellent</th>
+          <th class="col-proficient" style="width: 26.7%;">Proficient</th>
+          <th class="col-developing" style="width: 26.6%;">Developing</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="item-col">
+            <span class="item-name">1. Research Translation &amp; User Synthesis</span>
+            <span class="item-pts">60 pts total</span>
+          </td>
+          <td>
+            <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
+            Applies human-centered evidence with rigor: defines specific users and their needs by comprehensively synthesizing shared needs and conflicts into design intent.
+          </td>
+          <td>
+            <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
+            Applies human-centered evidence effectively: defines plausible users and their needs by synthesizing shared needs into design intent while resolving conflicts.
+          </td>
+          <td>
+            <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
+            Applies human-centered evidence loosely: defines assumed users by superficially averaging separate accounts into a single undifferentiated intent.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="item-col">
+            <span class="item-name">2. Concept Development &amp; the Concept Statement</span>
+            <span class="item-pts">70 pts total</span>
+          </td>
+          <td>
+            <div><span class="range-badge range-excellent">63 &ndash; 70 pts</span></div>
+            Commands the design process: frames problems as genuinely open opportunities by generating ideas freely and selecting the strongest into an interdependent, verifiable concept.
+          </td>
+          <td>
+            <div><span class="range-badge range-proficient">49 &ndash; 62 pts</span></div>
+            Works through the design process competently: frames problems as opportunities by generating ideas and selecting soundly into a coherent but loosely bound concept.
+          </td>
+          <td>
+            <div><span class="range-badge range-developing">0 &ndash; 48 pts</span></div>
+            Bypasses the design process: frames problems that contain their own answers by generating few ideas and selecting by appeal into an unsupported concept.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="item-col">
+            <span class="item-name">3. Mood Environments &amp; Visual Direction</span>
+            <span class="item-pts">40 pts total</span>
+          </td>
+          <td>
+            <div><span class="range-badge range-excellent">36 &ndash; 40 pts</span></div>
+            Gives the concept direction with precision: commands light, color, texture, and material by curating conceptual imagery into one cohesive spatial universe answerable to its users.
+          </td>
+          <td>
+            <div><span class="range-badge range-proficient">28 &ndash; 35 pts</span></div>
+            Adequately gives the concept direction: applies light, color, texture, and material by curating conceptual imagery whose language shifts between sets.
+          </td>
+          <td>
+            <div><span class="range-badge range-developing">0 &ndash; 27 pts</span></div>
+            Gives the concept no discernible direction: disregards light, color, texture, and material by assembling imagery that neither coheres nor serves the concept.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="item-col">
+            <span class="item-name">4. Professional Presentation &amp; Project Memory</span>
+            <span class="item-pts">30 pts total</span>
+          </td>
+          <td>
+            <div><span class="range-badge range-excellent">27 &ndash; 30 pts</span></div>
+            Presents and defends the concept with authority: collaborates as a unified firm by documenting the process transparently and protecting participant privacy throughout.
+          </td>
+          <td>
+            <div><span class="range-badge range-proficient">21 &ndash; 26 pts</span></div>
+            Presents and defends the concept clearly: collaborates effectively by documenting the process completely and protecting participant privacy.
+          </td>
+          <td>
+            <div><span class="range-badge range-developing">0 &ndash; 20 pts</span></div>
+            Presents the concept without authority: collaborates unevenly by documenting the process incompletely and exposing participant identity.
+          </td>
+        </tr>
+
+        <tr class="total-row">
+          <td class="item-col">Total</td>
+          <td><span class="range-badge range-excellent">180 &ndash; 200 pts</span></td>
+          <td><span class="range-badge range-proficient">140 &ndash; 176 pts</span></td>
+          <td><span class="range-badge range-developing">0 &ndash; 136 pts</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-school">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Daniel Ronderos M.Arch.</div>
+  <p>CTD 325 &middot; Design for Special Populations &middot; Assignment 02 &middot; The Lifelong School</p>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

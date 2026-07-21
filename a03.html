@@ -1,0 +1,1131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 3: The Block Plan &middot; CTD 325</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --crimson:#9E1B32; --crimson-dark:#7A1424; --crimson-mid:#B8273E; --crimson-pale:#F7EAED;
+ --white:#FFFFFF; --off-white:#FAFAF8; --warm-gray:#F0ECE8; --rule:#DDD8D2;
+ --mid-gray:#9A9189; --dark-gray:#3A3530; --charcoal:#1A1714;
+ --zone-resident:#9E1B32; --zone-public:#3E6C93; --zone-service:#A8763E; --zone-circ:#9A9189;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;color:var(--charcoal);background:var(--off-white);line-height:1.65}
+a{color:var(--crimson)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--charcoal);border-bottom:2px solid var(--crimson);height:52px;padding:0 56px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--white);white-space:nowrap}
+.nav-brand em{color:var(--crimson-mid);font-style:normal}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul a{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid-gray);text-decoration:none;white-space:nowrap;transition:color .2s}
+nav ul a:hover{color:#fff}
+
+/* HERO */
+.hero{background:var(--crimson);padding:96px 56px 84px;position:relative;overflow:hidden}
+.hero::after{content:'B';position:absolute;right:-60px;top:-100px;font-size:680px;font-weight:900;line-height:1;color:var(--crimson-dark);pointer-events:none;user-select:none}
+.hero-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px;position:relative;z-index:1}
+.hero h1{font-size:clamp(40px,5.5vw,68px);font-weight:700;line-height:1.08;color:var(--white);max-width:680px;margin-bottom:24px;position:relative;z-index:1}
+.hero h1 em{font-style:italic;color:rgba(255,255,255,.8)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.65);max-width:600px;line-height:1.7;margin-bottom:36px;position:relative;z-index:1}
+.hero-sub strong{color:#fff;font-weight:700}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;position:relative;z-index:1}
+.hero-meta-item{display:flex;align-items:baseline;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:8px 16px}
+.hero-meta-k{font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hero-meta-v{font-size:13px;font-weight:600;color:var(--white)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,auto);gap:0;width:fit-content;position:relative;z-index:1}
+.stat{padding:0 40px 0 20px;border-left:2px solid rgba(255,255,255,.2)}
+.stat:first-child{padding-left:0;border-left:none}
+.stat-num{font-size:34px;font-weight:700;color:var(--white);line-height:1;margin-bottom:5px}
+.stat-lbl{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* SECTION CHROME */
+.section{padding:88px 56px}
+.section.alt{background:var(--white)}
+.section.warm{background:var(--warm-gray)}
+.section.dark{background:var(--charcoal)}
+.section.dark .eyebrow{color:var(--crimson-mid)}
+.section.dark .sec-title{color:var(--white)}
+.section.dark .lead{color:rgba(255,255,255,.7)}
+.section.dark .sec-rule{border-color:rgba(255,255,255,.12)}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--crimson);margin-bottom:12px}
+.sec-title{font-size:clamp(28px,3.8vw,46px);font-weight:700;line-height:1.12;color:var(--charcoal);margin-bottom:32px}
+.sec-rule{border:none;border-top:1px solid var(--rule);margin-bottom:48px}
+.lead{font-size:17px;max-width:760px;color:var(--dark-gray);line-height:1.8}
+.lead strong{color:var(--charcoal)}
+
+/* REQ CARDS */
+.reqs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule);margin-top:34px}
+.req{background:var(--white);padding:26px 24px}
+.req-num{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--crimson);text-transform:uppercase}
+.req h3{font-size:18px;font-weight:700;color:var(--charcoal);margin:12px 0 8px}
+.req p{margin:0;font-size:14.5px;color:var(--dark-gray);line-height:1.65}
+.req b{color:var(--charcoal)}
+
+/* DARK ACTIONS */
+.actions-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+@media(max-width:760px){.actions-grid{grid-template-columns:1fr}}
+.act-card{background:#241F1B;border:1px solid rgba(255,255,255,.08);padding:28px 26px;display:flex;flex-direction:column;gap:12px}
+.act-card h3{font-size:19px;font-weight:700;color:var(--white);margin:0}
+.act-card p{margin:0;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.7;flex:1}
+.btn{display:inline-block;cursor:pointer;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:13px 22px;background:var(--crimson);color:var(--white);text-align:center;transition:background .15s}
+.btn:hover{background:var(--crimson-dark)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--white)}
+.btn.ghost:hover{background:rgba(255,255,255,.08)}
+
+/* INSTRUCTIONS LABEL */
+.instructions-label{font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.instruction-list{list-style:none;counter-reset:inst;display:flex;flex-direction:column}
+.instruction-list>li{counter-increment:inst;display:grid;grid-template-columns:36px 1fr;gap:12px;font-size:15px;color:var(--dark-gray);line-height:1.8;padding:0 0 12px}
+.instruction-list>li:last-child{padding-bottom:0}
+.instruction-list>li::before{content:counter(inst,decimal-leading-zero);font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--crimson);padding-top:3px}
+.instruction-list>li strong{color:var(--charcoal)}
+
+/* SLO GROUPS */
+.slo-group{margin-bottom:48px}
+.slo-group:last-child{margin-bottom:0}
+.slo-group-label{font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--crimson);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
+.slo-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.slo-item{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--white);border-left:3px solid var(--crimson)}
+.slo-verb{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);background:var(--crimson);padding:4px 10px;white-space:nowrap;margin-top:1px}
+.slo-verb.cida{background:var(--charcoal)}
+.slo-text{font-size:14px;line-height:1.7;color:var(--dark-gray)}
+.slo-text strong{color:var(--charcoal);font-weight:700}
+
+/* DELIVERABLE CARDS */
+.deliverables-stack{display:flex;flex-direction:column;gap:32px}
+.deliverable-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--crimson);padding:32px 36px}
+.deliverable-num{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:10px}
+.deliverable-title{font-size:20px;font-weight:700;color:var(--charcoal);line-height:1.25;margin-bottom:18px}
+.deliverable-body p{font-size:15px;color:var(--dark-gray);line-height:1.8;margin-bottom:12px}
+.deliverable-body p:last-child{margin-bottom:0}
+.deliverable-body p strong{color:var(--charcoal)}
+.sub-list{list-style:none;margin:10px 0 18px;display:flex;flex-direction:column;gap:9px}
+.sub-list li{display:flex;align-items:baseline;gap:10px;font-size:14.5px;color:var(--dark-gray);line-height:1.6}
+.sub-list li::before{content:'\2014';color:var(--crimson);font-size:11px;flex-shrink:0;opacity:.6}
+.sub-list li strong{color:var(--charcoal)}
+.deliverable-figure{background:var(--warm-gray);border:1px solid var(--rule);padding:24px;margin:24px 0 8px}
+.deliverable-figure svg{width:100%;height:auto;display:block}
+.deliverable-figure-caption{margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--mid-gray);text-align:center;line-height:1.6}
+
+/* CALLOUT */
+.callout{background:var(--white);border-left:4px solid var(--crimson);padding:20px 24px;font-size:14.5px;color:var(--dark-gray);line-height:1.8}
+.callout strong{color:var(--charcoal)}
+
+/* LEGEND */
+.legend{display:flex;flex-wrap:wrap;gap:22px;margin-bottom:40px}
+.legend span{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dark-gray)}
+.legend i{width:12px;height:12px;display:inline-block}
+
+/* ACCORDION */
+.acc{background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--zone-circ);margin-bottom:10px}
+.acc.z-resident{border-left-color:var(--zone-resident)}
+.acc.z-public{border-left-color:var(--zone-public)}
+.acc.z-service{border-left-color:var(--zone-service)}
+.acc.z-circ{border-left-color:var(--zone-circ)}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 22px;user-select:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc-letter{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex-shrink:0;background:var(--zone-resident);color:var(--white);font-size:13px;font-weight:700}
+.acc.z-public .acc-letter{background:var(--zone-public)}
+.acc.z-service .acc-letter{background:var(--zone-service)}
+.acc.z-circ .acc-letter{background:var(--zone-circ)}
+.acc-title{font-size:18px;font-weight:700;color:var(--charcoal)}
+.acc-sub{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid-gray)}
+.acc-chev{margin-left:auto;font-size:22px;font-weight:300;color:var(--mid-gray);transition:transform .2s}
+.acc[open] .acc-chev{transform:rotate(45deg)}
+.acc-body{padding:4px 22px 24px;border-top:1px solid var(--rule)}
+.acc-body b{color:var(--charcoal)}
+.checkitems{list-style:none;margin-top:14px}
+.checkitems>li{position:relative;padding:8px 0 8px 30px;font-size:14.5px;color:var(--dark-gray);line-height:1.6;border-bottom:1px dashed var(--rule)}
+.checkitems>li:last-child{border-bottom:none}
+.checkitems>li::before{content:"\2610";position:absolute;left:0;top:7px;color:var(--zone-resident);font-size:16px}
+.acc.z-public .checkitems>li::before{color:var(--zone-public)}
+.acc.z-service .checkitems>li::before{color:var(--zone-service)}
+.acc.z-circ .checkitems>li::before{color:var(--zone-circ)}
+.def{font-size:14.5px;color:var(--dark-gray);margin:14px 0 6px;line-height:1.7}
+.def-list{margin:6px 0 6px;padding-left:20px;font-size:14.5px;color:var(--dark-gray)}
+.def-list li{margin:4px 0}
+.sub-grp{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--crimson);margin:18px 0 4px}
+.acc-body hr{border:none;border-top:1px solid var(--rule);margin:16px 0 0}
+
+/* FAILS (dark) */
+.hl{color:var(--white);font-weight:700}
+.fails-note{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--charcoal);border-top:2px solid var(--crimson);padding:28px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-school{font-size:13px;font-weight:700;color:rgba(255,255,255,.45)}
+footer p{font-size:11.5px;color:rgba(255,255,255,.25)}
+
+/* MODALS */
+.modal{position:fixed;inset:0;z-index:300;display:none}
+.modal.open{display:block}
+.modal .backdrop{position:absolute;inset:0;background:rgba(26,23,20,.6)}
+.modal .panel{position:absolute;top:4%;left:50%;transform:translateX(-50%);width:min(920px,94vw);max-height:92vh;overflow:auto;background:var(--off-white);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.modal .phead{position:sticky;top:0;background:var(--crimson);color:var(--white);padding:20px 28px;display:flex;align-items:center;gap:14px;z-index:2}
+.modal .phead h3{color:var(--white);font-size:19px;font-weight:700;margin:0}
+.modal .phead .close{margin-left:auto;background:rgba(0,0,0,.2);border:none;color:var(--white);font-size:18px;width:36px;height:36px;cursor:pointer}
+.modal .phead .close:hover{background:rgba(0,0,0,.4)}
+.modal .pbody{padding:28px}
+
+/* AREA PROGRAM TABLE */
+.ptable{width:100%;border-collapse:collapse;font-size:14px}
+.ptable thead tr{background:var(--crimson)}
+.ptable th{padding:12px 16px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);text-align:left}
+.ptable td{padding:14px 16px;border-bottom:1px solid var(--rule);color:var(--dark-gray)}
+.ptable td.num{font-weight:600;text-align:right;color:var(--charcoal)}
+.ptable tr.z-resident td:first-child{box-shadow:inset 4px 0 0 var(--zone-resident)}
+.ptable tr.z-public td:first-child{box-shadow:inset 4px 0 0 var(--zone-public)}
+.ptable tr.z-service td:first-child{box-shadow:inset 4px 0 0 var(--zone-service)}
+.ptable tr.z-circ td:first-child{box-shadow:inset 4px 0 0 var(--zone-circ)}
+.ptable tr.total td{background:var(--charcoal);color:var(--white);font-weight:700;border-bottom:none}
+.ext-link{margin-top:20px;padding:18px 20px;background:var(--warm-gray);border-left:4px solid var(--crimson);font-size:14px;color:var(--dark-gray);line-height:1.7}
+.ext-link a{color:var(--crimson);font-weight:600;text-decoration:underline;margin-left:6px}
+
+/* SPACE REQUIREMENTS */
+.search{width:100%;padding:12px 14px;font-family:'Source Sans 3',sans-serif;font-size:14.5px;border:1px solid var(--rule);margin-bottom:20px;background:var(--white);color:var(--charcoal)}
+.cl-head{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--crimson);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.cl-head:first-child{margin-top:0}
+.sp{border:1px solid var(--rule);border-left:4px solid var(--zone-circ);margin-bottom:8px;background:var(--white)}
+.sp.z-resident{border-left-color:var(--zone-resident)}
+.sp.z-public{border-left-color:var(--zone-public)}
+.sp.z-service{border-left-color:var(--zone-service)}
+.sp.z-circ{border-left-color:var(--zone-circ)}
+.sp summary{cursor:pointer;list-style:none;padding:13px 18px;display:flex;align-items:baseline;gap:12px}
+.sp summary::-webkit-details-marker{display:none}
+.sp .nm{font-size:15.5px;font-weight:700;color:var(--charcoal)}
+.sp .ty{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--mid-gray);margin-left:auto}
+.sp .body{padding:2px 18px 18px}
+.rq{margin:14px 0}
+.rq h5{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.rq.code h5{color:var(--crimson)}
+.rq.tech h5{color:var(--dark-gray)}
+.rq ul{padding-left:18px}
+.rq li{font-size:14px;margin:4px 0;color:var(--dark-gray);line-height:1.6}
+.rq .none{font-size:13.5px;color:var(--mid-gray);font-style:italic}
+
+/* RUBRIC */
+.rubric-intro{max-width:760px;font-size:16px;color:var(--dark-gray);line-height:1.8;margin-bottom:40px}
+.rubric-intro strong{color:var(--charcoal)}
+table.rubric{width:100%;border-collapse:collapse;font-size:14px}
+table.rubric thead tr{background:var(--crimson)}
+table.rubric thead th{padding:14px 18px;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.9);text-align:left}
+table.rubric thead th.col-excellent{color:#a8d8a0}
+table.rubric thead th.col-proficient{color:#f5c97a}
+table.rubric thead th.col-developing{color:#e08080}
+table.rubric tbody tr{border-bottom:1px solid var(--rule)}
+table.rubric tbody tr:hover{background:var(--warm-gray)}
+table.rubric td{padding:16px 18px;vertical-align:top;color:var(--dark-gray);line-height:1.7;border-right:1px solid var(--rule)}
+table.rubric td:last-child{border-right:none}
+table.rubric td.item-col{background:var(--warm-gray);min-width:190px}
+.item-name{font-size:14px;font-weight:700;color:var(--charcoal);display:block;margin-bottom:4px}
+.item-pts{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crimson);display:block}
+table.rubric tbody tr.total-row{background:var(--charcoal);border-bottom:none}
+table.rubric tbody tr.total-row td{font-size:13px;font-weight:700;color:var(--white);border-right-color:rgba(255,255,255,.08)}
+table.rubric tbody tr.total-row td.item-col{background:var(--charcoal);color:var(--white)}
+.range-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 8px;white-space:nowrap;margin-bottom:6px}
+.range-excellent{background:#d4edda;color:#2d6a3f;border:1px solid #a8d8a0}
+.range-proficient{background:#fef3cd;color:#856404;border:1px solid #f5c97a}
+.range-developing{background:#f8d7da;color:#842029;border:1px solid #e08080}
+@media(max-width:960px){table.rubric{font-size:12px}table.rubric td{padding:12px 12px}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--crimson-mid);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+ nav{padding:0 24px}
+ nav ul{display:none}
+ .hero,.section{padding:64px 24px}
+ .hero-stats{grid-template-columns:1fr 1fr;gap:24px}
+ .hero::after{font-size:320px;right:-30px}
+ footer{padding:24px;justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+ <div class="nav-brand"><em>UA</em> &middot; CTD 325 &middot; Design for Special Populations</div>
+ <ul>
+  <li><a href="#intro">Overview</a></li>
+  <li><a href="#show">Requirements</a></li>
+  <li><a href="#tools">References</a></li>
+  <li><a href="#checklist">Checklist</a></li>
+  <li><a href="#deliverables">Deliverables</a></li>
+  <li><a href="#rubric">Rubric</a></li>
+ </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+ <p class="hero-eyebrow">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Assignment 03 &middot; Fall 2026</p>
+ <h1>The <em>Block Plan</em></h1>
+ <p class="hero-sub">The technical document that carries the project&rsquo;s functional DNA &mdash; drawn at <strong>1/8&Prime; = 1&prime;-0&Prime;</strong>, block scale, not detail.</p>
+ <div class="hero-meta">
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Project</span>
+   <span class="hero-meta-v">The Lifelong School</span>
+  </div>
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Client</span>
+   <span class="hero-meta-v">NEXA Consulting and Development</span>
+  </div>
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Work</span>
+   <span class="hero-meta-v">Individual</span>
+  </div>
+ </div>
+ <div class="hero-stats">
+  <div class="stat">
+   <div class="stat-num">5</div>
+   <div class="stat-lbl">Required Elements</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">11</div>
+   <div class="stat-lbl">Checklist Sections</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">1/8&Prime;</div>
+   <div class="stat-lbl">Drawing Scale</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">32,000</div>
+   <div class="stat-lbl">SF Program</div>
+  </div>
+ </div>
+</header>
+
+<!-- SECTION 01: INTRODUCTION -->
+<section class="section alt" id="intro">
+ <div class="reveal">
+  <p class="eyebrow">Section 01</p>
+  <h2 class="sec-title">Introduction</h2>
+  <hr class="sec-rule">
+  <p class="lead">Until now, you have worked as a firm, as a team. From this point forward, the project becomes an individual endeavor. Assignment 03 is the first document produced individually, and it is where the project stops being an argument and becomes a building: a block plan carries the project&rsquo;s functional DNA, where every function lives, how people move, how they get out, and how the public and resident worlds stay separate. Every student from the same firm (team) works from the same concept, the same program, and the same code, and every one of you will produce a different plan.</p>
+  <p class="lead" style="margin-top:24px; margin-bottom:14px"><strong>You do not arrive empty-handed. Bring:</strong></p>
+  <ul class="checkitems" style="max-width:760px">
+   <li>The users you interviewed in Assignment 01. Seek that design decisions in your plan relate to your primary source research material.</li>
+   <li>Use the collective library your class built across twenty-five topics to navigate different programming challenges.</li>
+   <li>The Concept Statement your firm (team) produced in Assignment 02 should be legible in the way you arrange the plan.</li>
+   <li>The Mood Environments provide spatial characterization for programming in terms of scale, proportion, and dimension.</li>
+  </ul>
+ </div>
+</section>
+
+<!-- SECTION 02: STUDENT LEARNING OUTCOMES -->
+<section class="section warm">
+ <div class="reveal">
+  <p class="eyebrow">Section 02</p>
+  <h2 class="sec-title">Student Learning Outcomes</h2>
+  <hr class="sec-rule">
+
+  <div class="slo-group">
+   <p class="slo-group-label">Bloom&rsquo;s Taxonomy (2001)</p>
+   <ul class="slo-list">
+    <li class="slo-item">
+     <span class="slo-verb">Remember</span>
+     <span class="slo-text">The purpose and scope of programming and block planning within the design process.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb">Understand</span>
+     <span class="slo-text">How ADA compliance, occupancy classification, occupant load, and egress requirements determine the project&rsquo;s functionality.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb">Apply</span>
+     <span class="slo-text">And place partitions, doors, circulation, and life-safety elements to assess the scheme&rsquo;s functionality and spatial coherence against both the program and the code requirements.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb">Analyze</span>
+     <span class="slo-text">The conflicts a shared building creates to determine the variables for possible design solutions.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb">Evaluate</span>
+     <span class="slo-text">The plan&rsquo;s compliance by testing key project and code requirements.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb">Create</span>
+     <span class="slo-text">A coherent, code-compliant two-floor block plan that carries the concept into a multi-documented functional scheme.</span>
+    </li>
+   </ul>
+  </div>
+
+  <div class="slo-group" style="margin-bottom:0">
+   <p class="slo-group-label">CIDA / NASAD</p>
+   <ul class="slo-list">
+    <li class="slo-item">
+     <span class="slo-verb cida">Translate</span>
+     <span class="slo-text">A program into a spatial scheme, allocating areas, zones, and adjacencies that serve the users and the concept.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb cida">Apply</span>
+     <span class="slo-text">Building codes and life-safety regulations such as occupancy classification, occupant load, egress, fire separation, and compartmentation as design determinants.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb cida">Apply</span>
+     <span class="slo-text">Universal design and ADA standards to produce barrier-free circulation, clearances, and accessible routes throughout.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb cida">Plan</span>
+     <span class="slo-text">Space for human factors and behavior, testing proportion and function through schematic furniture fits.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb cida">Communicate</span>
+     <span class="slo-text">A technical design through drawing conventions such as scaled drawings, symbols, dimensions, and notes.</span>
+    </li>
+    <li class="slo-item">
+     <span class="slo-verb cida">Exercise</span>
+     <span class="slo-text">Individual professional judgment by taking sole responsibility for a technical document and defending design decisions against code and project requirements.</span>
+    </li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 03: WHY IT MATTERS -->
+<section class="section alt" id="dna">
+ <div class="reveal">
+  <p class="eyebrow">Section 03</p>
+  <h2 class="sec-title">The Block Plan is the Functional DNA of the Project</h2>
+  <hr class="sec-rule">
+  <p class="lead">Before a single finish is chosen, the block plan decides how the building actually works &mdash; where each function lives, how people move, and how they get out. This is where a concept becomes a building you can occupy, and where code compliance shapes your design. It is better to address code compliance at an early stage of the project rather than try to fix it in place once it has taken on a more definitive shape. You are working at <strong>1/8&Prime; = 1&prime;-0&Prime;</strong> on purpose: the scale keeps you drawing zones and relationships and schematic fixture placement, not fixtures, detailed wood or millwork.</p>
+ </div>
+</section>
+
+<!-- SECTION 04: WHAT TO DRAW -->
+<section class="section warm" id="show">
+ <div class="reveal">
+  <p class="eyebrow">Section 04</p>
+  <h2 class="sec-title">What the Block Plan Must Show</h2>
+  <hr class="sec-rule">
+  <p class="lead">Five things, each drawn well enough to be measured and checked.</p>
+  <div class="reqs"><div class="req"><span class="req-num">01</span><h3>Partitions</h3><p>Coherent, functional, code-compliant <b>wall placement</b> that defines rooms and circulations &mdash; with their correct <b>dimensions and areas</b>.</p></div><div class="req"><span class="req-num">02</span><h3>Doors &amp; Egress</h3><p>Coherent, functional, code-compliant <b>door placement</b> that defines <b>egress routes</b> and lets <b>travel distances</b> be measured.</p></div><div class="req"><span class="req-num">03</span><h3>Life-Safety Symbols</h3><p><b>Symbols and conventions</b> locating the fire &amp; life-safety elements, per the compliance checklist.</p></div><div class="req"><span class="req-num">04</span><h3>Code Notes</h3><p><b>Texts and notes</b> that explain how the design complies with fire and building-code standards.</p></div><div class="req"><span class="req-num">05</span><h3>Furniture Test-Fits</h3><p><b>Schematic, diagrammatic furniture test-fits</b> that prove the proposed proportions are functional.</p></div></div>
+ </div>
+</section>
+
+<!-- SECTION 05: REFERENCES -->
+<section class="section dark" id="tools">
+ <div class="reveal">
+  <p class="eyebrow">Section 05</p>
+  <h2 class="sec-title">Design to the Program and the Code</h2>
+  <hr class="sec-rule">
+  <div class="actions-grid">
+   <div class="act-card">
+    <h3>The Area Program</h3>
+    <p>The 32,000 SF program your plan must satisfy &mdash; every cluster, its area, floor, and access zone.</p>
+    <button class="btn" onclick="openModal('m-prog')">Open the Area Program</button>
+   </div>
+   <div class="act-card">
+    <h3>Space Requirements</h3>
+    <p>The Code &amp; Regulatory and Technical &amp; Design requirements for each space &mdash; searchable, room by room.</p>
+    <button class="btn ghost" onclick="openModal('m-space')">Open Space Requirements</button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 06: CHECKLIST -->
+<section class="section alt" id="checklist">
+ <div class="reveal">
+  <p class="eyebrow">Section 06</p>
+  <h2 class="sec-title">The Block-Plan Checklist</h2>
+  <hr class="sec-rule">
+  <p class="lead" style="margin-bottom:8px">What to draw and <em>where to place it</em>, so the plan is both code- and program-compliant. Open each section.</p>
+  <div class="legend">
+   <span><i style="background:var(--zone-resident)"></i>Resident</span>
+   <span><i style="background:var(--zone-public)"></i>Public / School</span>
+   <span><i style="background:var(--zone-service)"></i>Service</span>
+   <span><i style="background:var(--zone-circ)"></i>Circulation / General</span>
+  </div>
+  <details class="acc z-circ">
+<summary><span class="acc-letter">A</span><span class="acc-title">Sheet Setup</span><span class="acc-sub">what every block plan must show</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li><b>Two floor plans</b>, First and Second, at the same scale and orientation, with a <b>north arrow</b> and <b>graphic scale</b>.</li><li>A <b>zone legend</b>: Resident, Public/External (School), Staff, Service, Circulation.</li><li>A <b>life-safety symbol legend</b>: exits, pull stations, extinguishers, exit signs, smoke detection, strobes, barrier doors.</li><li><b>Occupancy classification labeled per zone</b> &mdash; I-1 Condition 2 (residential), Group B (school/admin), Group A-3 (assembly rooms &ge;50).</li><li><b>Block area (SF) and preliminary occupant load</b> noted in each block.</li></ul></div></details>
+<details class="acc z-resident">
+<summary><span class="acc-letter">B</span><span class="acc-title">Floor Assignment</span><span class="acc-sub">where each cluster goes</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Place the <b>School</b> and the <b>Administrative, Public &amp; Service</b> clusters entirely on the <b>First Floor</b>.</li><li>Place a <b>self-sufficient residential cluster on each floor</b> &mdash; each with its own sitting, dining, country kitchen, spa/bathing, laundry, and sunroom.</li><li>Distribute <b>Central Activity &amp; Program</b> spaces across <b>either floor</b>, resident-side only.</li><li>Keep <b>all resident zones out of the public school circulation</b> on both floors.</li></ul></div></details>
+<details class="acc z-public">
+<summary><span class="acc-letter">C</span><span class="acc-title">Entrances</span><span class="acc-sub">where people come in</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Place the <b>main public entry</b> on Floor 1, opening into the <b>Lobby / Reception</b>, so external students reach the School <b>without crossing any resident zone</b>.</li><li>Place a <b>service / loading entry</b> at back-of-house, adjacent to the kitchen and laundry/mechanical block.</li><li>Show at least one <b>accessible entrance</b> connected to accessible parking, with a <b>vestibule</b> air-lock.</li></ul></div></details>
+<details class="acc z-circ">
+<summary><span class="acc-letter">D</span><span class="acc-title">Vertical Circulation</span><span class="acc-sub">where the cores land</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Draw the <b>elevator + waiting area</b> and <b>two egress stairs</b>, and <b>align them vertically</b> on both floors.</li><li>Place the <b>two stairs toward opposite ends</b>, separated by at least <b>one-third of the floor&rsquo;s diagonal</b>.</li><li>Serve <b>both the resident wing and the public wing</b> without forcing cross-traffic.</li></ul></div></details>
+<details class="acc z-public">
+<summary><span class="acc-letter">E</span><span class="acc-title">Egress</span><span class="acc-sub">where the exits and corridors run</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><p class="def"><b>What counts as an exit.</b> Not every door is an exit. On a block plan an <b>exit</b> is a door that leads to safety &mdash; one of three kinds:</p><ul class="def-list"><li>an <b>exterior exit door</b> to grade or the public way;</li><li>a <b>door into an enclosed exit stair</b>; or</li><li>a <b>horizontal-exit door</b> through a 1-hour barrier into an <b>adjacent compartment that has its own exits</b> &mdash; the &ldquo;safe area.&rdquo;</li></ul><p class="def">A door between two rooms, a corridor door, or a door into a single-exit room is <b>not</b> an exit.</p><ul class="checkitems"><li>Provide <b>at least two exits from every story</b>, and two from any space over <b>49 occupants</b> (three above 500, four above 1,000).</li><li>Separate the two required exits by <b>at least one-third of the served diagonal</b> (sprinklered).</li><li>Position exits so <b>exit-access travel from the most remote point is &le; 75&prime;</b> &mdash; show it dashed and dimensioned.</li><li>Let occupants move in <b>two different directions</b> from any point.</li><li>Give every <b>assembly room (&ge;50) two exit doors</b>, swinging <b>out</b>, clear of the corridor.</li><li>Confirm <b>each smoke compartment reaches two exits</b>, one of which may be a horizontal exit.</li><li>Draw the <b>primary egress corridor (8&prime;-0&Prime; clear)</b> as a spine; <b>secondary corridors 44&Prime; min</b> (60&Prime; to a 42&Prime; door).</li><li>No <b>dead-end over 20&prime;-0&Prime;</b>; <b>no egress through a secondary space</b> (except reception/waiting or kitchen-through-dining).</li></ul></div></details>
+<details class="acc z-resident">
+<summary><span class="acc-letter">F</span><span class="acc-title">Compartmentalization</span><span class="acc-sub">where the defend-in-place line goes</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><p class="def">Group I-1 moves residents <em>horizontally</em> to a protected adjacent compartment rather than evacuating them at once. The barrier doors make that possible &mdash; their placement is graded.</p><ul class="checkitems"><li>Draw a <b>smoke/fire-barrier line dividing each residential floor into at least two compartments</b>, running <b>exterior wall to exterior wall (1-hour)</b>.</li><li>Size compartments so <b>neither exceeds 22,500 SF</b> and <b>each can shelter both</b> &mdash; allow ~<b>15 SF per resident</b> using a wheelchair/walker, 6 SF ambulatory.</li><li>Place barrier doors so <b>travel to a barrier door &le; 200&prime;-0&Prime;</b>, while still meeting the <b>75&prime;</b> exit-access limit.</li><li>At the barrier, draw a <b>pair of 42&Prime; doors, each swinging opposite directions</b> (the horizontal exit), central enough that both compartments stay viable refuges.</li><li>Draw the <b>occupancy-separation line between the I-1 residential wing and the Group B school/admin areas as 1-hour rated</b>.</li></ul></div></details>
+<details class="acc z-public">
+<summary><span class="acc-letter">G</span><span class="acc-title">Accessible Route</span><span class="acc-sub">where barrier-free movement is guaranteed</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Draw a <b>continuous barrier-free route</b> from the accessible entry through every public space and to every resident room.</li><li>Place a <b>5&prime;-0&Prime; turning circle (dotted)</b> at each change of direction and in each major public block.</li><li>Keep the accessible route clear of the service/loading path.</li></ul></div></details>
+<details class="acc z-service">
+<summary><span class="acc-letter">H</span><span class="acc-title">Service &amp; Incidental-Use Rooms</span><span class="acc-sub">where back-of-house sits</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>The <b>commercial kitchen is already located</b> on the plans provided. <b>Do not move it.</b> Locate, relative to it, the <b>service / loading entrance</b> and the <b>means of egress</b>.</li><li>Place the <b>service / loading entrance</b> so deliveries reach the kitchen <b>without passing through public or resident space</b>.</li><li>Give the kitchen and service block <b>egress discharging toward a back-of-house exit</b>, each room a <b>1-hour enclosure</b>.</li><li>Confirm the kitchen&rsquo;s egress and service path <b>do not cross the public school entrance sequence</b>.</li><li><b>Group</b> remaining back-of-house rooms into one service block on Floor 1, each a <b>1-hour enclosure</b>.</li><li>Place the <b>medication / staff workroom</b> in the resident wing, a 1-hour room.</li><li>Locate <b>mechanical/electrical</b> off a service corridor, not through occupied space.</li></ul></div></details>
+<details class="acc z-public">
+<summary><span class="acc-letter">I</span><span class="acc-title">Program Adjacencies</span><span class="acc-sub">where clusters meet</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Cluster <b>School spaces around the academic entry</b>: reception, commons/caf&eacute;, wardrobe/locker, public restrooms near the door; classrooms, labs, studios, and the learning resource center deeper in.</li><li>Place the <b>Lecture/Multipurpose Hall</b> so its load exits toward a public exit, not through classrooms.</li><li>Place <b>administrative offices adjacent to the lobby</b>; place the <b>conference room</b> for staff and public reach.</li><li>Place the <b>Wellness/Movement Studio</b> on the resident&ndash;school boundary if shared; label which zone controls access.</li><li>Position the <b>Administrative/Public/Service cluster to serve both</b> the residences and the school &mdash; central, not buried in one wing.</li></ul></div></details>
+<details class="acc z-resident">
+<summary><span class="acc-letter">J</span><span class="acc-title">Public&ndash;Resident Separation</span><span class="acc-sub">the core design test</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><ul class="checkitems"><li>Demonstrate <b>two independent egress systems</b>: school/public and resident loads reach exits <b>without crossing</b>.</li><li>Mark the <b>controlled threshold</b> where public and resident circulation meet.</li><li>Confirm <b>external students never pass through a resident cluster</b> to reach a classroom, restroom, or the commons.</li></ul></div></details>
+<details class="acc z-service">
+<summary><span class="acc-letter">K</span><span class="acc-title">Fire &amp; Life-Safety Devices</span><span class="acc-sub">where the NFPA elements go</span><span class="acc-chev" aria-hidden="true">+</span></summary>
+<div class="acc-body"><p class="sub-grp">Manual fire alarm pull stations</p><ul class="checkitems"><li>Place a <b>pull station within 5&prime;-0&Prime; of every exit door</b> &mdash; each exterior exit, stair door, and horizontal-exit door.</li><li>Space pulls so <b>travel to the nearest never exceeds 200&prime;-0&Prime;</b>.</li><li>Mount at <b>accessible height (42&Prime;&ndash;48&Prime; AFF)</b>.</li><hr><p class="sub-grp">Fire extinguishers</p><li><b>Max travel to one &le; 75&prime;-0&Prime;</b> (NFPA 10), and <b>at least one per smoke compartment / egress zone</b>.</li><li>One at each <b>exit and stair</b>, and at each <b>hazard area</b> &mdash; commercial kitchen (<b>Class K</b>), laundry, mechanical/electrical, and each resident-cluster kitchen.</li><li>On the <b>accessible route</b>, top &le; <b>48&Prime; AFF</b>, never blocked.</li><hr><p class="sub-grp">Exit signs</p><li>An <b>illuminated exit sign at every exit door</b>.</li><li><b>Directional signs at every intersection and change of direction</b> so <b>no corridor point is &gt; 100&prime;-0&Prime; from a visible sign</b>.</li><li>Visible from <b>any direction of egress travel</b>.</li><hr><p class="sub-grp">Smoke &amp; fire detection</p><li><b>Smoke detection at each barrier / horizontal-exit opening</b> (releases hold-open doors).</li><li><b>Detection in corridors, resident sleeping areas, and assembly spaces</b>; duct/area detection at mechanical rooms.</li><li><b>Align detection/alarm zones with your smoke compartments</b>.</li><hr><p class="sub-grp">Notification (audible + visible)</p><li><b>Strobe coverage</b> in all common/public spaces and <b>within each resident room</b> &mdash; age-related hearing loss makes audible-only alarms unreliable here.</li><li>Notification reaches <b>every occupiable space</b>, including toilet and spa/bathing rooms.</li><hr><p class="sub-grp">Areas of refuge</p><li>Fully sprinklered &mdash; a separate area of refuge is generally <b>not required</b>; the <b>smoke compartment is the refuge</b>. <b>Note this</b> rather than drawing redundant refuge areas.</li></ul></div></details>
+ </div>
+</section>
+
+<!-- SECTION 07: DELIVERABLES -->
+<section class="section warm" id="deliverables">
+ <div class="reveal">
+  <p class="eyebrow">Section 07</p>
+  <h2 class="sec-title">Deliverables</h2>
+  <hr class="sec-rule">
+  <p class="lead"><strong>The Block Plan &middot; Individual Work</strong></p>
+  <p class="lead" style="margin-top:10px; margin-bottom:8px">Before you start, your instructor will tell your section whether the block plan is hand-drawn or drafted in AutoCAD or Revit, and whether the set is submitted digitally or physically. Confirm both before you begin.</p>
+
+  <div class="deliverables-stack" style="margin-top:34px">
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Deliverable 01 &middot; Two Floor Plans &middot; 1/8&Prime; = 1&prime;-0&Prime; &middot; Individual</div>
+    <div class="deliverable-title">The Block Plan</div>
+    <div class="deliverable-body">
+      <p>First and Second Floors at the same scale and orientation. Draw the five elements:</p>
+      <ul class="sub-list">
+       <li><strong>Partitions.</strong> Wall placement that defines every room and corridor in the area program, dimensioned, with each block&rsquo;s area (SF) and preliminary occupant load noted.</li>
+       <li><strong>Doors and egress.</strong> Door placement that establishes the egress routes, with exits marked as exits, the 8&prime;-0&Prime; primary spine and secondary corridors drawn, and the longest travel path shown dashed and dimensioned.</li>
+       <li><strong>Life-safety symbols.</strong> Pull stations, extinguishers, exit signs, smoke detection, strobes, and the barrier doors, placed per the checklist and keyed to a legend.</li>
+       <li><strong>Code notes.</strong> Text on the sheet explaining how the plan complies &mdash; occupancy classification per zone, travel distances, compartment sizes, separations, and any assumption you&rsquo;re making.</li>
+       <li><strong>Furniture test-fits.</strong> Schematic and diagrammatic &mdash; enough to prove the proportions work. Not a furniture plan.</li>
+      </ul>
+      <p><strong>Also required on the sheet:</strong> north arrow, graphic scale, a zone legend (Resident / Public-External / Staff / Service / Circulation), a life-safety symbol legend, and 5&prime;-0&Prime; turning circles shown dotted or dashed at changes of direction.</p>
+      <p><strong>Medium.</strong> Hand-drawn or drafted in AutoCAD or Revit, as your instructor directs for your section. Either way the scale is true &mdash; a printed sheet must measure correctly at 1/8&Prime; &mdash; and the conventions are the same: consistent line weights, a legible legend, and notes another professional could check.</p>
+    </div>
+    <div class="deliverable-figure">
+     <svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1922 715.73">
+      <defs>
+       <style>
+        .bp2-cls-1 { fill: #06c; }
+        .bp2-cls-1, .bp2-cls-2, .bp2-cls-3, .bp2-cls-4, .bp2-cls-5, .bp2-cls-6, .bp2-cls-7 { stroke: #521014; }
+        .bp2-cls-1, .bp2-cls-4, .bp2-cls-5 { font-family: Txt, Txt; font-size: 6.85px; }
+        .bp2-cls-1, .bp2-cls-7 { stroke-miterlimit: 10; }
+        .bp2-cls-8 { stroke-width: 2px; }
+        .bp2-cls-8, .bp2-cls-2, .bp2-cls-3, .bp2-cls-9, .bp2-cls-6, .bp2-cls-10 { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .bp2-cls-8, .bp2-cls-9, .bp2-cls-10 { stroke: #9E1B32; }
+        .bp2-cls-2 { stroke-dasharray: 9.09 4.55; }
+        .bp2-cls-4, .bp2-cls-6, .bp2-cls-7 { stroke-width: .5px; }
+        .bp2-cls-4, .bp2-cls-7 { fill: #ff3f00; }
+        .bp2-cls-5 { fill: #ff7f00; }
+        .bp2-cls-9 { stroke-width: .71px; }
+        .bp2-cls-10 { stroke-width: 3px; }
+       </style>
+      </defs>
+      <g id="_0" data-name="0">
+       <g id="LWPOLYLINE"><rect class="bp2-cls-9" x="1" y="1.5" width="1920" height="712.73"/></g>
+       <g id="LWPOLYLINE-2" data-name="LWPOLYLINE"><rect class="bp2-cls-10" x="1353.73" y="508.17" width="100.61" height="130.91"/></g>
+       <g id="LWPOLYLINE-3" data-name="LWPOLYLINE"><rect class="bp2-cls-10" x="1353.73" y="639.08" width="100.61" height="75.15"/></g>
+       <g id="LWPOLYLINE-4" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="625.74" x2="1531.91" y2="625.74"/></g>
+       <g id="LWPOLYLINE-5" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="612.41" x2="1531.91" y2="612.41"/></g>
+       <g id="LWPOLYLINE-6" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="599.08" x2="1531.91" y2="599.08"/></g>
+       <g id="LWPOLYLINE-7" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="585.74" x2="1531.91" y2="585.74"/></g>
+       <g id="LWPOLYLINE-8" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="572.41" x2="1531.91" y2="572.41"/></g>
+       <g id="LWPOLYLINE-9" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="559.08" x2="1531.91" y2="559.08"/></g>
+       <g id="LWPOLYLINE-10" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="545.74" x2="1531.91" y2="545.74"/></g>
+       <g id="LWPOLYLINE-11" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="532.41" x2="1531.91" y2="532.41"/></g>
+       <g id="LWPOLYLINE-12" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="519.08" x2="1531.91" y2="519.08"/></g>
+       <g id="LWPOLYLINE-13" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1594.94" y1="639.08" x2="1531.91" y2="639.08"/></g>
+       <g id="LWPOLYLINE-14" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="625.74" x2="1466.45" y2="625.74"/></g>
+       <g id="LWPOLYLINE-15" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="612.41" x2="1466.45" y2="612.41"/></g>
+       <g id="LWPOLYLINE-16" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="599.08" x2="1466.45" y2="599.08"/></g>
+       <g id="LWPOLYLINE-17" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="585.74" x2="1466.45" y2="585.74"/></g>
+       <g id="LWPOLYLINE-18" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="572.41" x2="1466.45" y2="572.41"/></g>
+       <g id="LWPOLYLINE-19" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="559.08" x2="1466.45" y2="559.08"/></g>
+       <g id="LWPOLYLINE-20" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="545.74" x2="1466.45" y2="545.74"/></g>
+       <g id="LWPOLYLINE-21" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="532.41" x2="1466.45" y2="532.41"/></g>
+       <g id="LWPOLYLINE-22" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="519.08" x2="1466.45" y2="519.08"/></g>
+       <g id="LWPOLYLINE-23" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1529.48" y1="639.08" x2="1466.45" y2="639.08"/></g>
+       <g id="LWPOLYLINE-24" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1594.94 639.08 1594.94 702.11 1466.45 702.11 1466.45 639.08"/></g>
+       <g id="LWPOLYLINE-25" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1594.94 639.08 1594.94 456.05 1594.94 406.35 1531.59 406.35"/></g>
+       <g id="LWPOLYLINE-26" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1531.59 406.35 1594.94 406.35 1594.94 702.11 1466.45 702.11 1466.45 406.35 1473.73 406.35"/></g>
+       <g id="LWPOLYLINE-27" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1454.33" y1="394.23" x2="1473.73" y2="394.23"/></g>
+       <g id="LWPOLYLINE-28" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="89.98" x2="392.52" y2="89.98"/></g>
+       <g id="LWPOLYLINE-29" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="103.32" x2="392.52" y2="103.32"/></g>
+       <g id="LWPOLYLINE-30" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="116.65" x2="392.52" y2="116.65"/></g>
+       <g id="LWPOLYLINE-31" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="129.98" x2="392.52" y2="129.98"/></g>
+       <g id="LWPOLYLINE-32" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="143.32" x2="392.52" y2="143.32"/></g>
+       <g id="LWPOLYLINE-33" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="156.65" x2="392.52" y2="156.65"/></g>
+       <g id="LWPOLYLINE-34" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="169.98" x2="392.52" y2="169.98"/></g>
+       <g id="LWPOLYLINE-35" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="183.32" x2="392.52" y2="183.32"/></g>
+       <g id="LWPOLYLINE-36" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="196.65" x2="392.52" y2="196.65"/></g>
+       <g id="LWPOLYLINE-37" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="455.55" y1="76.65" x2="392.52" y2="76.65"/></g>
+       <g id="LWPOLYLINE-38" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="89.98" x2="327.06" y2="89.98"/></g>
+       <g id="LWPOLYLINE-39" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="103.32" x2="327.06" y2="103.32"/></g>
+       <g id="LWPOLYLINE-40" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="116.65" x2="327.06" y2="116.65"/></g>
+       <g id="LWPOLYLINE-41" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="129.98" x2="327.06" y2="129.98"/></g>
+       <g id="LWPOLYLINE-42" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="143.32" x2="327.06" y2="143.32"/></g>
+       <g id="LWPOLYLINE-43" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="156.65" x2="327.06" y2="156.65"/></g>
+       <g id="LWPOLYLINE-44" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="169.98" x2="327.06" y2="169.98"/></g>
+       <g id="LWPOLYLINE-45" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="183.32" x2="327.06" y2="183.32"/></g>
+       <g id="LWPOLYLINE-46" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="196.65" x2="327.06" y2="196.65"/></g>
+       <g id="LWPOLYLINE-47" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.09" y1="76.65" x2="327.06" y2="76.65"/></g>
+       <g id="LWPOLYLINE-48" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="455.55 76.65 455.55 13.62 327.06 13.62 327.06 76.65"/></g>
+       <g id="LWPOLYLINE-49" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="455.55 76.65 455.55 259.68 455.55 309.38 448.27 309.38"/></g>
+       <g id="LWPOLYLINE-50" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="448.27 309.38 455.55 309.38 455.55 13.62 327.06 13.62 327.06 309.38 390.41 309.38"/></g>
+       <g id="LWPOLYLINE-51" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="448.27 321.5 467.67 321.5 467.67 1.5 314.94 1.5 314.94 321.5 390.41 321.5"/></g>
+       <g id="LWPOLYLINE-52" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="394.23" x2="1601" y2="390.59"/></g>
+       <g id="LWPOLYLINE-53" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1761" y1="539.68" x2="1607.06" y2="539.68"/></g>
+       <g id="LWPOLYLINE-54" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1781.61 219.68 1921 219.68 1921 539.68 1811.91 539.68"/></g>
+       <g id="LWPOLYLINE-55" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="394.23" x2="1761" y2="394.23"/></g>
+       <g id="LWPOLYLINE-56" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1761" y1="539.68" x2="1761" y2="394.23"/></g>
+       <g id="LWPOLYLINE-57" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1676.15" y1="539.68" x2="1676.15" y2="394.23"/></g>
+       <g id="LWPOLYLINE-58" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1691.91" y1="343.32" x2="1730.7" y2="343.32"/></g>
+       <g id="LWPOLYLINE-59" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1676.15" y1="442.71" x2="1607.06" y2="442.71"/></g>
+       <g id="LWPOLYLINE-60" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1604.64" y="299.68" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-61" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1604.64" y1="299.68" x2="1601" y2="299.68"/></g>
+       <g id="LWPOLYLINE-62" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1601 297.86 1630.09 297.86 1630.09 219.68"/></g>
+       <g id="LWPOLYLINE-63" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1691.91" y="219.68" width="38.79" height="123.64"/></g>
+       <g id="LWPOLYLINE-64" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1721" y1="219.68" x2="1721" y2="343.32"/></g>
+       <g id="LWPOLYLINE-65" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1630.09" y1="248.77" x2="1691.91" y2="248.77"/></g>
+       <g id="LWPOLYLINE-66" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1761 539.68 1761 590.59 1811.91 590.59 1811.91 539.68"/></g>
+       <g id="LWPOLYLINE-67" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1761" y1="590.59" x2="1761" y2="714.23"/></g>
+       <g id="LWPOLYLINE-68" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1730.7 219.68 1730.7 168.77 1781.61 168.77 1781.61 219.68"/></g>
+       <g id="LWPOLYLINE-69" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1730.7" y1="219.68" x2="1730.7" y2="1.5"/></g>
+       <g id="LWPOLYLINE-70" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1730.7" y1="110.59" x2="1601" y2="110.59"/></g>
+       <g id="LWPOLYLINE-71" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="394.23" x2="1601" y2="390.59"/></g>
+       <g id="LWPOLYLINE-72" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1362.21" y="407.56" width="72.73" height="72.73"/></g>
+       <g id="LWPOLYLINE-73" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1359.79 422.11 1359.79 400.29 1454.33 400.29 1454.33 502.11 1359.79 502.11 1359.79 465.74"/></g>
+       <g id="LWPOLYLINE-74" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1353.73 422.11 1353.73 394.23 1460.39 394.23"/></g>
+       <g id="LWPOLYLINE-75" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1359.79" y1="465.74" x2="1353.73" y2="465.74"/></g>
+       <g id="LWPOLYLINE-76" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1359.79" y1="422.11" x2="1353.73" y2="422.11"/></g>
+       <g id="LWPOLYLINE-77" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1454.33 508.17 1353.73 508.17 1353.73 465.74"/></g>
+       <g id="LWPOLYLINE-78" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1454.33" y1="502.11" x2="1454.33" y2="400.29"/></g>
+       <g id="LWPOLYLINE-79" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="214.33" y="288.77" width="48.48" height="69.09"/></g>
+       <g id="LWPOLYLINE-80" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="146.45" y1="1.5" x2="146.45" y2="226.95"/></g>
+       <g id="LWPOLYLINE-81" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="146.45" y1="270.59" x2="146.45" y2="357.86"/></g>
+       <g id="LWPOLYLINE-82" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1" y1="270.59" x2="146.45" y2="270.59"/></g>
+       <g id="LWPOLYLINE-83" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="146.45 226.95 95.55 226.95 95.55 270.59"/></g>
+       <g id="LWPOLYLINE-84" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="146.45 180.89 175.55 180.89 175.55 1.5"/></g>
+       <g id="LWPOLYLINE-85" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="150.09" y="183.32" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-86" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="95.55 270.59 95.55 174.59 1 174.59"/></g>
+       <g id="LWPOLYLINE-87" data-name="LWPOLYLINE"><line class="bp2-cls-8" x1="467.67" y1="321.5" x2="768.27" y2="321.5"/></g>
+       <g id="LWPOLYLINE-88" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="815.55" y1="321.5" x2="815.55" y2="1.5"/></g>
+       <g id="LWPOLYLINE-89" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="161.5" x2="815.55" y2="161.5"/></g>
+       <g id="LWPOLYLINE-90" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="230.59" x2="815.55" y2="230.59"/></g>
+       <g id="LWPOLYLINE-91" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="764.64" y1="230.59" x2="764.64" y2="191.8"/></g>
+       <g id="LWPOLYLINE-92" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="864.03" y1="230.59" x2="864.03" y2="161.5"/></g>
+       <g id="LWPOLYLINE-93" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="721" y="274.23" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-94" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="721" y1="317.86" x2="721" y2="321.5"/></g>
+       <g id="LWPOLYLINE-95" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="719.18 321.5 719.18 292.41 641 292.41"/></g>
+       <g id="LWPOLYLINE-96" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="641" y="191.8" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-97" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="201.5" x2="764.64" y2="201.5"/></g>
+       <g id="LWPOLYLINE-98" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="670.09" y1="292.41" x2="670.09" y2="230.59"/></g>
+       <g id="LWPOLYLINE-99" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="1.5" x2="641" y2="140.89"/></g>
+       <g id="LWPOLYLINE-100" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="191.8" x2="641" y2="321.5"/></g>
+       <g id="LWPOLYLINE-101" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="641 191.8 590.09 191.8 590.09 140.89 641 140.89"/></g>
+       <g id="LWPOLYLINE-102" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="590.09" y1="140.89" x2="467.67" y2="140.89"/></g>
+       <g id="LWPOLYLINE-103" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="590.09" y1="209.98" x2="467.67" y2="209.98"/></g>
+       <g id="LWPOLYLINE-104" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="590.09" y1="191.8" x2="590.09" y2="209.98"/></g>
+       <g id="LWPOLYLINE-105" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="553.73" y1="209.98" x2="553.73" y2="321.5"/></g>
+       <g id="LWPOLYLINE-106" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="314.94" y1="321.5" x2="311.3" y2="321.5"/></g>
+       <g id="LWPOLYLINE-107" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1473.73" y1="406.35" x2="1473.73" y2="394.23"/></g>
+       <g id="LWPOLYLINE-108" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1473.73" y1="400.29" x2="1473.73" y2="458.47"/></g>
+       <g id="ARC"><path class="bp2-cls-10" d="M1473.73,458.47c29.79,0,54.76-22.5,57.87-52.12"/></g>
+       <g id="LWPOLYLINE-109" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="1531.59" y1="406.35" x2="1531.59" y2="394.23"/></g>
+       <g id="LWPOLYLINE-110" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1531.59 394.23 1607.06 394.23 1607.06 714.23 1454.33 714.23 1454.33 508.17"/></g>
+       <g id="LWPOLYLINE-111" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="1473.73 406.35 1466.45 406.35 1466.45 639.08"/></g>
+       <g id="LWPOLYLINE-112" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="448.27" y1="309.38" x2="448.27" y2="321.5"/></g>
+       <g id="LWPOLYLINE-113" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="448.27" y1="315.44" x2="448.27" y2="257.26"/></g>
+       <g id="ARC-2" data-name="ARC"><path class="bp2-cls-10" d="M448.27,257.26c-29.79,0-54.76,22.5-57.87,52.12"/></g>
+       <g id="LWPOLYLINE-114" data-name="LWPOLYLINE"><line class="bp2-cls-10" x1="390.41" y1="309.38" x2="390.41" y2="321.5"/></g>
+       <g id="LWPOLYLINE-115" data-name="LWPOLYLINE"><polyline class="bp2-cls-10" points="390.41 309.38 327.06 309.38 327.06 76.65"/></g>
+       <g id="LWPOLYLINE-116" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="811.91" y1="321.5" x2="811.91" y2="277.86"/></g>
+       <g id="ARC-3" data-name="ARC"><path class="bp2-cls-9" d="M811.91,277.86c-24.1,0-43.64,19.54-43.64,43.64"/></g>
+       <g id="LWPOLYLINE-117" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="811.91 321.5 961 321.5 961 1.5 461.61 1.5"/></g>
+       <g id="LWPOLYLINE-118" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="311.3" y1="321.5" x2="311.3" y2="277.86"/></g>
+       <g id="ARC-4" data-name="ARC"><path class="bp2-cls-9" d="M311.3,277.86c-24.1,0-43.64,19.54-43.64,43.64"/></g>
+       <g id="LWPOLYLINE-119" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="267.67 321.5 262.82 321.5 262.82 357.86 1 357.86 1 1.5 321 1.5"/></g>
+       <g id="LWPOLYLINE-120" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="314.94" y1="394.23" x2="311.3" y2="394.23"/></g>
+       <g id="LWPOLYLINE-121" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="311.3" y1="394.23" x2="311.3" y2="437.86"/></g>
+       <g id="ARC-5" data-name="ARC"><path class="bp2-cls-9" d="M267.67,394.23c0,24.1,19.54,43.64,43.64,43.64"/></g>
+       <g id="LWPOLYLINE-122" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="267.67 394.23 262.82 394.23 262.82 357.86 1 357.86 1 714.23 321 714.23 321 394.23 311.3 394.23"/></g>
+       <g id="LWPOLYLINE-123" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="214.33" y="357.86" width="48.48" height="69.09"/></g>
+       <g id="LWPOLYLINE-124" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="146.45" y1="714.23" x2="146.45" y2="488.77"/></g>
+       <g id="LWPOLYLINE-125" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="146.45" y1="445.14" x2="146.45" y2="357.86"/></g>
+       <g id="LWPOLYLINE-126" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1" y1="445.14" x2="146.45" y2="445.14"/></g>
+       <g id="LWPOLYLINE-127" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="146.45 488.77 95.55 488.77 95.55 445.14"/></g>
+       <g id="LWPOLYLINE-128" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="146.45 534.83 175.55 534.83 175.55 714.23"/></g>
+       <g id="LWPOLYLINE-129" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="150.09" y="488.77" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-130" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="95.55 445.14 95.55 541.14 1 541.14"/></g>
+       <g id="LWPOLYLINE-131" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="495.55" y1="394.23" x2="491.91" y2="394.23"/></g>
+       <g id="LWPOLYLINE-132" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="491.91" y1="394.23" x2="491.91" y2="437.86"/></g>
+       <g id="ARC-6" data-name="ARC"><path class="bp2-cls-9" d="M448.27,394.23c0,24.1,19.54,43.64,43.64,43.64"/></g>
+       <g id="LWPOLYLINE-133" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="833.73 394.23 961 394.23 961 714.23 641 714.23 641 394.23 790.09 394.23"/></g>
+       <g id="LWPOLYLINE-134" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="786.45" y1="394.23" x2="786.45" y2="714.23"/></g>
+       <g id="LWPOLYLINE-135" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="554.23" x2="786.45" y2="554.23"/></g>
+       <g id="LWPOLYLINE-136" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="485.14" x2="786.45" y2="485.14"/></g>
+       <g id="LWPOLYLINE-137" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="837.36" y1="485.14" x2="837.36" y2="523.92"/></g>
+       <g id="LWPOLYLINE-138" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="737.97" y1="485.14" x2="737.97" y2="554.23"/></g>
+       <g id="LWPOLYLINE-139" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="837.36" y="397.86" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-140" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="881" y1="397.86" x2="881" y2="394.23"/></g>
+       <g id="LWPOLYLINE-141" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="882.82 394.23 882.82 423.32 961 423.32"/></g>
+       <g id="LWPOLYLINE-142" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="837.36" y="485.14" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-143" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="514.23" x2="837.36" y2="514.23"/></g>
+       <g id="LWPOLYLINE-144" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="931.91" y1="423.32" x2="931.91" y2="485.14"/></g>
+       <g id="LWPOLYLINE-145" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="448.27 394.23 321 394.23 321 714.23 641 714.23 641 394.23 491.91 394.23"/></g>
+       <g id="LWPOLYLINE-146" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="495.55" y1="394.23" x2="495.55" y2="714.23"/></g>
+       <g id="LWPOLYLINE-147" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="554.23" x2="495.55" y2="554.23"/></g>
+       <g id="LWPOLYLINE-148" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="641" y1="485.14" x2="495.55" y2="485.14"/></g>
+       <g id="LWPOLYLINE-149" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="444.64" y1="485.14" x2="444.64" y2="523.92"/></g>
+       <g id="LWPOLYLINE-150" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="544.03" y1="485.14" x2="544.03" y2="554.23"/></g>
+       <g id="LWPOLYLINE-151" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="401" y="397.86" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-152" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="401" y1="397.86" x2="401" y2="394.23"/></g>
+       <g id="LWPOLYLINE-153" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="399.18 394.23 399.18 423.32 321 423.32"/></g>
+       <g id="LWPOLYLINE-154" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="321" y="485.14" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-155" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="321" y1="514.23" x2="444.64" y2="514.23"/></g>
+       <g id="LWPOLYLINE-156" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="350.09" y1="423.32" x2="350.09" y2="485.14"/></g>
+       <g id="LWPOLYLINE-157" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="786.45" y1="394.23" x2="790.09" y2="394.23"/></g>
+       <g id="LWPOLYLINE-158" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="790.09" y1="394.23" x2="790.09" y2="437.86"/></g>
+       <g id="ARC-7" data-name="ARC"><path class="bp2-cls-9" d="M790.09,437.86c24.1,0,43.64-19.54,43.64-43.64"/></g>
+       <g id="LWPOLYLINE-159" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="1088.27 394.23 961 394.23 961 714.23 1281 714.23 1281 394.23 1131.91 394.23"/></g>
+       <g id="LWPOLYLINE-160" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1135.55" y1="394.23" x2="1135.55" y2="714.23"/></g>
+       <g id="LWPOLYLINE-161" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1281" y1="554.23" x2="1135.55" y2="554.23"/></g>
+       <g id="LWPOLYLINE-162" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1281" y1="485.14" x2="1135.55" y2="485.14"/></g>
+       <g id="LWPOLYLINE-163" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1084.64" y1="485.14" x2="1084.64" y2="523.92"/></g>
+       <g id="LWPOLYLINE-164" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1184.03" y1="485.14" x2="1184.03" y2="554.23"/></g>
+       <g id="LWPOLYLINE-165" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1041" y="397.86" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-166" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1041" y1="397.86" x2="1041" y2="394.23"/></g>
+       <g id="LWPOLYLINE-167" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1039.18 394.23 1039.18 423.32 961 423.32"/></g>
+       <g id="LWPOLYLINE-168" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="961" y="485.14" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-169" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="514.23" x2="1084.64" y2="514.23"/></g>
+       <g id="LWPOLYLINE-170" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="990.09" y1="423.32" x2="990.09" y2="485.14"/></g>
+       <g id="LWPOLYLINE-171" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1135.55" y1="394.23" x2="1131.91" y2="394.23"/></g>
+       <g id="LWPOLYLINE-172" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1131.91" y1="394.23" x2="1131.91" y2="437.86"/></g>
+       <g id="ARC-8" data-name="ARC"><path class="bp2-cls-9" d="M1088.27,394.23c0,24.1,19.54,43.64,43.64,43.64"/></g>
+       <g id="LWPOLYLINE-173" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1110.09" y1="321.5" x2="1110.09" y2="277.86"/></g>
+       <g id="ARC-9" data-name="ARC"><path class="bp2-cls-9" d="M1153.73,321.5c0-24.1-19.54-43.64-43.64-43.64"/></g>
+       <g id="LWPOLYLINE-174" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="1408.27 321.5 1281 321.5 1281 1.5 1601 1.5 1601 321.5 1451.91 321.5"/></g>
+       <g id="LWPOLYLINE-175" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1455.55" y1="321.5" x2="1455.55" y2="1.5"/></g>
+       <g id="LWPOLYLINE-176" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="161.5" x2="1455.55" y2="161.5"/></g>
+       <g id="LWPOLYLINE-177" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="230.59" x2="1455.55" y2="230.59"/></g>
+       <g id="LWPOLYLINE-178" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1404.64" y1="230.59" x2="1404.64" y2="191.8"/></g>
+       <g id="LWPOLYLINE-179" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1504.03" y1="230.59" x2="1504.03" y2="161.5"/></g>
+       <g id="LWPOLYLINE-180" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1361" y="274.23" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-181" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1361" y1="317.86" x2="1361" y2="321.5"/></g>
+       <g id="LWPOLYLINE-182" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1359.18 321.5 1359.18 292.41 1281 292.41"/></g>
+       <g id="LWPOLYLINE-183" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1281" y="191.8" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-184" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1281" y1="201.5" x2="1404.64" y2="201.5"/></g>
+       <g id="LWPOLYLINE-185" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1310.09" y1="292.41" x2="1310.09" y2="230.59"/></g>
+       <g id="LWPOLYLINE-186" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="1153.73 321.5 1281 321.5 1281 1.5 961 1.5 961 321.5 1110.09 321.5"/></g>
+       <g id="LWPOLYLINE-187" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1106.45" y1="321.5" x2="1106.45" y2="1.5"/></g>
+       <g id="LWPOLYLINE-188" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="161.5" x2="1106.45" y2="161.5"/></g>
+       <g id="LWPOLYLINE-189" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="961" y1="230.59" x2="1106.45" y2="230.59"/></g>
+       <g id="LWPOLYLINE-190" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1157.36" y1="230.59" x2="1157.36" y2="191.8"/></g>
+       <g id="LWPOLYLINE-191" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1057.97" y1="230.59" x2="1057.97" y2="161.5"/></g>
+       <g id="LWPOLYLINE-192" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1157.36" y="274.23" width="43.64" height="43.64"/></g>
+       <g id="LWPOLYLINE-193" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1201" y1="317.86" x2="1201" y2="321.5"/></g>
+       <g id="LWPOLYLINE-194" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1202.82 321.5 1202.82 292.41 1281 292.41"/></g>
+       <g id="LWPOLYLINE-195" data-name="LWPOLYLINE"><rect class="bp2-cls-9" x="1157.36" y="191.8" width="123.64" height="38.79"/></g>
+       <g id="LWPOLYLINE-196" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1281" y1="201.5" x2="1157.36" y2="201.5"/></g>
+       <g id="LWPOLYLINE-197" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1251.91" y1="292.41" x2="1251.91" y2="230.59"/></g>
+       <g id="LWPOLYLINE-198" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1451.91" y1="321.5" x2="1451.91" y2="277.86"/></g>
+       <g id="ARC-10" data-name="ARC"><path class="bp2-cls-9" d="M1451.91,277.86c-24.1,0-43.64,19.54-43.64,43.64"/></g>
+       <g id="LWPOLYLINE-199" data-name="LWPOLYLINE"><line class="bp2-cls-9" x1="1601" y1="390.59" x2="1644.64" y2="390.59"/></g>
+       <g id="ARC-11" data-name="ARC"><path class="bp2-cls-9" d="M1644.64,390.59c0-24.1-19.54-43.64-43.64-43.64"/></g>
+       <g id="LWPOLYLINE-200" data-name="LWPOLYLINE"><polyline class="bp2-cls-9" points="1601 346.95 1601 219.68 1730.7 219.68"/></g>
+       <g id="LWPOLYLINE-201" data-name="LWPOLYLINE"><polyline class="bp2-cls-8" points="1601 346.95 1601 1.5 1921 1.5 1921 714.23 1601 714.23"/></g>
+      </g>
+      <g id="GL_03-Annotations">
+       <g id="ATTRIB"><text class="bp2-cls-4" transform="translate(349.39 336.65)"><tspan x="0" y="0">FA</tspan></text></g>
+       <g id="LWPOLYLINE-202" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="344.18" y="330.05" width="17" height="8.55"/></g>
+       <g id="ATTRIB-2" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(349.39 328.1)"><tspan x="0" y="0">SD</tspan></text></g>
+       <g id="LWPOLYLINE-203" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="344.18" y="321.5" width="17" height="8.55"/></g>
+       <g id="ATTRIB-3" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1337.31 584.98) rotate(-90)"><tspan x="0" y="0">1-HOUR</tspan></text></g>
+       <g id="ATTRIB-4" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1330.04 584.98) rotate(-90)"><tspan x="0" y="0">UL V465</tspan></text></g>
+       <g id="LWPOLYLINE-204" data-name="LWPOLYLINE"><line class="bp2-cls-6" x1="1339.7" y1="573.62" x2="1353.73" y2="573.62"/></g>
+       <g id="HATCH"><circle class="bp2-cls-7" cx="1353.73" cy="573.62" r=".82"/></g>
+       <g id="CIRCLE"><circle class="bp2-cls-6" cx="1353.73" cy="573.62" r=".82"/></g>
+       <g id="ATTRIB-5" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1337.31 688.01) rotate(-90)"><tspan x="0" y="0">1-HOUR</tspan></text></g>
+       <g id="ATTRIB-6" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1330.04 688.01) rotate(-90)"><tspan x="0" y="0">UL V465</tspan></text></g>
+       <g id="LWPOLYLINE-205" data-name="LWPOLYLINE"><line class="bp2-cls-6" x1="1339.7" y1="676.65" x2="1353.73" y2="676.65"/></g>
+       <g id="HATCH-2" data-name="HATCH"><circle class="bp2-cls-7" cx="1353.73" cy="676.65" r=".82"/></g>
+       <g id="CIRCLE-2" data-name="CIRCLE"><circle class="bp2-cls-6" cx="1353.73" cy="676.65" r=".82"/></g>
+       <g id="ATTRIB-7" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1392.67 622.66)"><tspan x="0" y="0">1-HOUR</tspan></text></g>
+       <g id="ATTRIB-8" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1392.67 615.39)"><tspan x="0" y="0">UL V465</tspan></text></g>
+       <g id="LWPOLYLINE-206" data-name="LWPOLYLINE"><line class="bp2-cls-6" x1="1404.03" y1="625.04" x2="1404.03" y2="639.08"/></g>
+       <g id="HATCH-3" data-name="HATCH"><circle class="bp2-cls-7" cx="1404.03" cy="639.08" r=".82"/></g>
+       <g id="CIRCLE-3" data-name="CIRCLE"><circle class="bp2-cls-6" cx="1404.03" cy="639.08" r=".82"/></g>
+       <g id="ATTRIB-9" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1557.97 377.81)"><tspan x="0" y="0">1-HOUR</tspan></text></g>
+       <g id="ATTRIB-10" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1557.97 370.54)"><tspan x="0" y="0">UL V465</tspan></text></g>
+       <g id="LWPOLYLINE-207" data-name="LWPOLYLINE"><line class="bp2-cls-6" x1="1569.33" y1="380.2" x2="1569.33" y2="394.23"/></g>
+       <g id="HATCH-4" data-name="HATCH"><circle class="bp2-cls-7" cx="1569.33" cy="394.23" r=".82"/></g>
+       <g id="CIRCLE-4" data-name="CIRCLE"><circle class="bp2-cls-6" cx="1569.33" cy="394.23" r=".82"/></g>
+       <g id="ATTRIB-11" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(347.38 292.97)"><tspan x="0" y="0">1-HOUR</tspan></text></g>
+       <g id="ATTRIB-12" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(347.38 285.69)"><tspan x="0" y="0">UL V465</tspan></text></g>
+       <g id="LWPOLYLINE-208" data-name="LWPOLYLINE"><line class="bp2-cls-6" x1="358.73" y1="295.35" x2="358.73" y2="309.38"/></g>
+       <g id="HATCH-5" data-name="HATCH"><circle class="bp2-cls-7" cx="358.73" cy="309.38" r=".82"/></g>
+       <g id="CIRCLE-5" data-name="CIRCLE"><circle class="bp2-cls-6" cx="358.73" cy="309.38" r=".82"/></g>
+       <g id="ATTRIB-13" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1451.05 392.27)"><tspan x="0" y="0">FA</tspan></text></g>
+       <g id="LWPOLYLINE-209" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="1445.84" y="385.67" width="17" height="8.55"/></g>
+       <g id="ATTRIB-14" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1451.05 383.72)"><tspan x="0" y="0">SD</tspan></text></g>
+       <g id="LWPOLYLINE-210" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="1445.84" y="377.12" width="17" height="8.55"/></g>
+       <g id="ATTRIB-15" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(1528.04 366.81) rotate(-90)"><tspan x="0" y="0">&lt;EXIT</tspan></text></g>
+       <g id="LWPOLYLINE-211" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="1519.44" y="339.49" width="12.15" height="30.71"/></g>
+       <g id="ATTRIB-16" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(410.05 369.83) rotate(-90)"><tspan x="0" y="0">EXIT&gt;</tspan></text></g>
+       <g id="LWPOLYLINE-212" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="401.45" y="342.51" width="12.15" height="30.71"/></g>
+       <g id="ATTRIB-17" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(957.72 392.27)"><tspan x="0" y="0">FA</tspan></text></g>
+       <g id="LWPOLYLINE-213" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="952.5" y="385.67" width="17" height="8.55"/></g>
+       <g id="ATTRIB-18" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(957.72 383.72)"><tspan x="0" y="0">SD</tspan></text></g>
+       <g id="LWPOLYLINE-214" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="952.5" y="377.12" width="17" height="8.55"/></g>
+       <g id="ATTRIB-19" data-name="ATTRIB"><text class="bp2-cls-4" transform="translate(957.72 328.1)"><tspan x="0" y="0">FE</tspan></text></g>
+       <g id="LWPOLYLINE-215" data-name="LWPOLYLINE"><rect class="bp2-cls-6" x="952.5" y="321.5" width="17" height="8.55"/></g>
+      </g>
+      <g id="GL_04-Egress">
+       <g id="LWPOLYLINE-216" data-name="LWPOLYLINE"><polyline class="bp2-cls-2" points="972.43 702.27 1107.14 531.69 1111.57 352.53 1499.87 352.53 1499.87 394.23"/></g>
+       <g id="LWPOLYLINE-217" data-name="LWPOLYLINE"><polyline class="bp2-cls-3" points="1487.72 383.8 1499.87 394.23 1509.94 382.5"/></g>
+       <g id="ATTRIB-20" data-name="ATTRIB"><text class="bp2-cls-5" transform="translate(1283.02 359.76)"><tspan x="0" y="0">Max Egress Path</tspan></text></g>
+       <g id="ATTRIB-21" data-name="ATTRIB"><text class="bp2-cls-5" transform="translate(1283.02 350.06)"><tspan x="0" y="0">56&apos;-10&quot;</tspan></text></g>
+       <g id="CIRCLE-6" data-name="CIRCLE"><circle class="bp2-cls-3" cx="972.43" cy="702.27" r="5.43"/></g>
+      </g>
+      <g id="GL_04-Areas">
+       <g id="ATTRIB-22" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 628.05)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-23" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 620.77)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-24" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 613.5)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-25" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 606.23)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-26" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 598.95)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-27" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 591.68)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-28" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(810.1 584.41)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-29" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 259.39)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-30" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 252.12)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-31" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 244.84)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-32" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 237.57)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-33" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 230.3)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-34" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 223.03)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-35" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(365.11 215.75)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-36" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 495.46)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-37" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 488.19)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-38" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 480.92)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-39" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 473.64)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-40" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 466.37)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-41" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 459.1)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-42" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1511.29 451.83)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-43" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 580.21)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-44" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 572.93)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-45" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 565.66)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-46" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 558.39)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-47" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 551.12)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-48" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 543.84)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-49" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1369.2 536.57)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-50" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 699.31)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-51" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 692.04)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-52" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 684.76)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-53" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 677.49)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-54" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 670.22)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-55" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 662.94)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-56" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1373.78 655.67)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-57" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 628.05)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-58" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 620.77)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-59" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 613.5)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-60" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 606.23)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-61" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 598.95)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-62" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 591.68)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-63" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1017.78 584.41)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-64" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 628.05)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-65" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 620.77)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-66" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 613.5)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-67" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 606.23)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-68" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 598.95)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-69" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 591.68)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-70" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(392.29 584.41)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-71" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 628.05)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-72" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 620.77)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-73" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 613.5)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-74" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 606.23)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-75" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 598.95)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-76" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 591.68)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-77" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(211.07 584.41)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-78" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 145.98)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-79" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 138.7)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-80" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 131.43)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-81" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 124.16)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-82" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 116.89)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-83" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 109.61)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-84" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(214.77 102.34)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-85" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 131.19)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-86" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 123.92)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-87" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 116.65)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-88" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 109.37)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-89" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 102.1)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-90" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 94.83)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-91" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(697.41 87.56)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-92" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 106.88)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-93" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 99.61)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-94" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 92.34)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-95" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 85.07)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-96" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 77.79)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-97" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 70.52)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-98" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1165.04 63.25)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-99" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 107.06)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-100" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 99.79)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-101" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 92.52)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-102" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 85.24)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-103" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 77.97)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-104" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 70.7)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-105" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1343.04 63.42)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+       <g id="ATTRIB-106" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 385.05)"><tspan x="0" y="0">X Exit</tspan></text></g>
+       <g id="ATTRIB-107" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 377.77)"><tspan x="0" y="0">XX persons</tspan></text></g>
+       <g id="ATTRIB-108" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 370.5)"><tspan x="0" y="0">XX sq. ft/person</tspan></text></g>
+       <g id="ATTRIB-109" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 363.23)"><tspan x="0" y="0">XXXX XXXX</tspan></text></g>
+       <g id="ATTRIB-110" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 355.95)"><tspan x="0" y="0">XXXX sq. ft.</tspan></text></g>
+       <g id="ATTRIB-111" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 348.68)"><tspan x="0" y="0">###</tspan></text></g>
+       <g id="ATTRIB-112" data-name="ATTRIB"><text class="bp2-cls-1" transform="translate(1809.12 341.41)"><tspan x="0" y="0">SPACE NAME</tspan></text></g>
+      </g>
+     </svg>
+     <p class="deliverable-figure-caption">Schematic example: illustrates the drawing conventions only, not a design solution for the actual project.</p>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Deliverable 02 &middot; Annotated &middot; Submitted with the Plan</div>
+    <div class="deliverable-title">The Compliance Check</div>
+    <div class="deliverable-body">
+     <ol class="instruction-list">
+      <li><span><strong>Download the Compliance Checklist</strong> &mdash; <a href="https://alabama.box.com/s/v1iegi14mi8j46oriaa8zrhckmh3img6" target="_blank" rel="noopener">alabama.box.com/s/v1iegi14mi8j46oriaa8zrhckmh3img6</a>. The checklist may be printed, completed, and submitted physically, or completed as an Excel file and submitted digitally &mdash; this is instructor-dependent per section.</span></li>
+      <li><span>Work through Sections A&ndash;K of the block-plan checklist and submit it with every box ticked, or with a note where an item doesn&rsquo;t apply and why.</span></li>
+      <li><span>This is not a formality. A ticked box you can&rsquo;t defend at the wall is worse than an honest note. Where the plan required a judgment call &mdash; a compartment line placed here rather than there, a shared studio assigned to one zone &mdash; say so in a sentence.</span></li>
+     </ol>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Deliverable 03 &middot; One Page &middot; With the Plan</div>
+    <div class="deliverable-title">The Design Statement</div>
+    <div class="deliverable-body">
+     <p>One page connecting the scheme to everything behind it:</p>
+     <ul class="sub-list">
+      <li>How the plan serves the <strong>Concept Statement</strong> your firm produced in Assignment 02 &mdash; the Value Proposition should be legible in the arrangement, not just quoted at the top.</li>
+      <li>How the plan serves the <strong>users you interviewed</strong> in Assignment 01. At least one decision should be traceable to something a participant actually said.</li>
+      <li>The <strong>hardest conflict</strong> you resolved, and how &mdash; most likely the public-resident separation, the service path, or an egress route that fought the program.</li>
+     </ul>
+     <p>Three short paragraphs are enough.</p>
+     <p><strong>Format follows the plan.</strong> If your block plan is drafted in AutoCAD or Revit, the Design Statement must be produced in the same format &mdash; laid out on the sheet or as a matching sheet in the same file and set, not a separate document. If the plan is hand-drawn, the statement may be hand-lettered or typed, as your instructor directs.</p>
+    </div>
+   </div>
+
+  </div>
+
+  <p class="instructions-label" style="margin-top:40px">Submission</p>
+  <p class="lead" style="margin-bottom:16px">Three items: the Block Plan, the Compliance Check, and the Design Statement.</p>
+  <div class="callout">Your instructor determines whether the set is submitted digitally or physically, and will confirm the method for your section. If digital, submit through Blackboard as a PDF at true scale, and the original DWG or RVT file. If physical, bring the printed or drawn set to the studio.</div>
+  <p class="callout" style="margin-top:16px"><strong>This is individual work.</strong> You share a concept with your team; you do not share a plan. Deadlines and any pin-up or review dates are on the <strong>course syllabus</strong>.</p>
+ </div>
+</section>
+
+<!-- SECTION 08: RUBRIC -->
+<section class="section alt" id="rubric">
+ <div class="reveal">
+  <p class="eyebrow">Section 08</p>
+  <h2 class="sec-title">Evaluation Rubric</h2>
+  <hr class="sec-rule">
+  <p class="rubric-intro">The assignment is evaluated across five criteria totaling <strong>500 points</strong>. Spatial Definition &amp; Space Planning and Life-Safety &amp; Code Compliance carry the greatest weight, as they are the core technical work of the block plan.</p>
+
+  <div style="overflow-x:auto">
+   <table class="rubric">
+    <thead>
+     <tr>
+      <th style="width:20%">Criterion</th>
+      <th class="col-excellent" style="width:26.7%">Excellent</th>
+      <th class="col-proficient" style="width:26.7%">Proficient</th>
+      <th class="col-developing" style="width:26.6%">Developing</th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">1. Spatial Definition &amp; Space Planning</span>
+       <span class="item-pts">150 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">135 &ndash; 150 pts</span></div>
+       Translates the program with rigor: defines every space and circulation by resolving zones, areas, and adjacencies into a coherent scheme, conceptually and technically aligned.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">105 &ndash; 134 pts</span></div>
+       Translates the program competently: defines the required spaces by accommodating zones and areas in a workable scheme whose adjacencies function adequately.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 104 pts</span></div>
+       Translates the program loosely: defines spaces by disregarding areas, zones, or adjacencies, producing a scheme that places rooms next to each other without coherent functional considerations.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">2. Life-Safety &amp; Code Compliance</span>
+       <span class="item-pts">150 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">135 &ndash; 150 pts</span></div>
+       Applies the building code, determines occupancy classification and load, and egress by governing the plan through compliant exits, travel distances, compartmentation, separations, and placement of life-safety devices.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">105 &ndash; 134 pts</span></div>
+       Applies the building code correctly, determines occupancy classification and load, and egress by satisfying the essential requirements while leaving isolated conflicts in travel distance, compartmentation, or device placement.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 104 pts</span></div>
+       Applies the building code superficially, determines classification and egress by misreading or omitting requirements, producing a plan with unresolved exits, travel distances, separations, or compartment lines.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">3. Accessibility &amp; Universal Design</span>
+       <span class="item-pts">80 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">72 &ndash; 80 pts</span></div>
+       Applies universal design with precision: defines a continuous barrier-free route by demonstrating compliant clearances, turning circles, and door dimensions that serve this population throughout.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">56 &ndash; 71 pts</span></div>
+       Applies universal design adequately: defines an accessible route by meeting the required clearances and turning circles with isolated lapses.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 55 pts</span></div>
+       Applies universal design inconsistently: defines circulation by breaking the accessible route or by neglecting clearances, turning circles, and door dimensions.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">4. Human Factors &amp; Functional Test-Fit</span>
+       <span class="item-pts">60 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
+       Plans for human factors convincingly: demonstrates spatial coherence by test-fitting furniture schematically to show that every proportion serves its users.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
+       Plans for human factors adequately: proves basic functionality by test-fitting furniture in the principal spaces, leaving some proportions untested.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
+       Plans for human factors superficially: asserts functionality by omitting test fits, thereby producing proportions that cannot accommodate their intended use.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">5. Technical Communication &amp; Professional Judgment</span>
+       <span class="item-pts">60 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
+       Communicates the design professionally: documents code compliance by drawing at an accurate scale, using disciplined conventions, legends, and notes.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
+       Communicates the design clearly: documents code compliance by drawing to scale with adequate conventions and notes.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
+       Communicates the design poorly: documents code compliance by drawing off-scale or without legible conventions, legends, or notes.
+      </td>
+     </tr>
+
+     <tr class="total-row">
+      <td class="item-col">Total</td>
+      <td><span class="range-badge range-excellent">450 &ndash; 500 pts</span></td>
+      <td><span class="range-badge range-proficient">350 &ndash; 445 pts</span></td>
+      <td><span class="range-badge range-developing">0 &ndash; 345 pts</span></td>
+     </tr>
+
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <div class="footer-school">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Daniel Ronderos M.Arch.</div>
+ <p>CTD 325 &middot; Design for Special Populations &middot; Assignment 03 &middot; The Block Plan</p>
+</footer>
+
+<!-- ===== MODAL: AREA PROGRAM ===== -->
+<div class="modal" id="m-prog" role="dialog" aria-modal="true" aria-label="Area Program">
+ <div class="backdrop" onclick="closeModal('m-prog')"></div>
+ <div class="panel">
+  <div class="phead"><h3>Area Program &mdash; 32,000 SF</h3><button class="close" onclick="closeModal('m-prog')" aria-label="Close">&times;</button></div>
+  <div class="pbody">
+   <table class="ptable">
+    <thead><tr><th>Cluster</th><th style="text-align:right">Net SF</th><th>Floor</th><th>Access</th></tr></thead>
+    <tbody><tr class="z-resident"><td>Residential &amp; Shared Living</td><td class="num">13,344</td><td>1 &amp; 2</td><td>Resident</td></tr><tr class="z-resident"><td>Central Activity &amp; Program</td><td class="num">2,075</td><td>1 &amp; 2 (either)</td><td>Resident</td></tr><tr class="z-public"><td>Academic &amp; Learning (The School)</td><td class="num">6,486</td><td>1</td><td>Public / External</td></tr><tr class="z-service"><td>Administrative, Public &amp; Service</td><td class="num">5,295</td><td>1</td><td>Public / Staff / Service</td></tr><tr class="z-circ"><td>Circulation, Walls &amp; Gross-up (15%)</td><td class="num">4,800</td><td>&mdash;</td><td>&mdash;</td></tr>
+     <tr class="total"><td>Grand Total (GSF)</td><td class="num">32,000</td><td>&mdash;</td><td>&mdash;</td></tr>
+    </tbody>
+   </table>
+   <div class="ext-link">
+    <b>Full workbook:</b> the complete area program (every space, quantity, and unit area) lives in the course spreadsheet.
+    <a href="https://alabama.box.com/s/bdz0x1gdlq5hcrjkrc8hoysk1k77gtf2" id="program-link" target="_blank" rel="noopener">Open the program workbook &rarr;</a>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- ===== MODAL: SPACE REQUIREMENTS ===== -->
+<div class="modal" id="m-space" role="dialog" aria-modal="true" aria-label="Space Requirements">
+ <div class="backdrop" onclick="closeModal('m-space')"></div>
+ <div class="panel">
+  <div class="phead"><h3>Space Requirements</h3><button class="close" onclick="closeModal('m-space')" aria-label="Close">&times;</button></div>
+  <div class="pbody">
+   <input class="search" id="space-search" type="search" placeholder="Search spaces &mdash; e.g. bathroom, kitchen, classroom, corridor&hellip;" oninput="filterSpaces(this.value)">
+   <div id="space-list"></div>
+  </div>
+ </div>
+</div>
+
+<script>
+const SPACES=[{"cluster": "Residential & Shared Living", "name": "Single Rooms with Bathroom", "type": "Private", "code": ["Door width 42” min. to accommodate gurney.", "Bathroom door width 36” min.", "ADA requires 18” toilet clearance from wall, but 36” is preferred.", "Follow all local residential healthcare and accessibility codes."], "tech": ["Bedroom: Sized for single/hospital or double bed, Dresser, Nightstand, Seating (e.g., window seat with lockable storage), two-door closet (one side lockable, consider open wire drawers).", "Personalization: Plate shelf with pegs mounted 5-6 ft. high, visible from hallway.", "Door: Optional Dutch door for visual connection while maintaining privacy.", "Bathroom: 3-fixture bath with shower. Vanity countertop, contrasting toilet seat color, residential-style toilet, grab bars, low/no threshold shower (min. 36”x42”) with separate staff shutoff valve, supplemental heat source, storage cabinet."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Shared Rooms with Bathroom", "type": "Private", "code": ["Door width 42” min. to accommodate gurney.", "Bathroom door width 36” min.", "ADA compliant bathroom.", "Follow all local residential healthcare and accessibility codes."], "tech": ["Designed for two residents (e.g., a couple).", "All features of the single room, but furnished for two people (2 single beds or 1 double bed)."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Linen Closet", "type": "Support", "code": [], "tech": ["Located within the residential cluster for easy access."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Cluster Sitting Area", "type": "Common", "code": ["Clear paths of travel per ADA."], "tech": ["Designed for small group seating and interaction."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Dining Area for 10 people", "type": "Common", "code": ["Chairs must have arms for resident support.", "ADA compliant circulation paths."], "tech": ["Can be a single table for 10 or two smaller tables.", "Could be open to the kitchen area or semi enclosed."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Country Kitchen / Staff Work Area", "type": "Common / Support", "code": ["Separate hand wash sink for staff/food service personnel required by health codes."], "tech": ["Kitchen: Residential appliances (double sink, refrigerator, oven/range, microwave, dishwasher). Large table or island for cooking programs and informal activities.", "Staff Area: Integrated desk/workspace and storage for staff."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "TV / Den", "type": "Common", "code": [], "tech": ["Residential style seating arranged in 2 or more groups.", "Integrated storage/support for television."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Spa/Bathing Room", "type": "Common", "code": ["ADA compliant."], "tech": ["Staff assisted bathtub, sink with counter, toilet."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Laundry Room", "type": "Support", "code": [], "tech": ["1 residential washer and 1 dryer."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Soiled Holding, Janitor’s Closet & Housekeeping", "type": "Support", "code": ["Adhere to OSHA standards for storage."], "tech": ["Centralized area for cleaning supplies and holding of soiled items."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Storage Room", "type": "Support", "code": [], "tech": ["General storage for the house."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Single Public Bathroom", "type": "Common", "code": ["ADA compliant."], "tech": ["Publicly accessible toilet for the cluster."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Sunroom or Screened Porch", "type": "Common", "code": ["Must have access to a secure outdoor area."], "tech": ["Adjacent to kitchen or TV/den.", "Furnished with table and chairs or rocking chairs."], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Elevator + Waiting Area", "type": "Common", "code": ["Elevator: 80\" x 54\", with a minimum 42-inch center-opening or side-slide door.", "Elevator Shaft: 84\" × 90\""], "tech": [], "zone": "resident"}, {"cluster": "Residential & Shared Living", "name": "Egress Stairs", "type": "Common", "code": ["Must be IBC and NFPA Compliant"], "tech": ["48\" free circulation width, not including side railings.", "Must include railings."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Great Room", "type": "Common", "code": ["Occupancy load calculations required.", "Clear egress paths."], "tech": ["Assembly space for large groups (music, family dinners, exercise).", "Can be used for staff training/support groups.", "Must include dedicated storage for folding tables and chairs."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Fireplace Room / Library", "type": "Common", "code": ["Fireplace must meet all local fire and building codes."], "tech": ["Gas fireplace with built-in bookshelves on either side.", "Multiple conversation areas designed to seat 6 to 8 people."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Arts and Crafts Room", "type": "Common", "code": [], "tech": ["Room for messy projects that can be left out.", "Tables and chairs with arms.", "Ample storage for supplies.", "Counter with a sink."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Private Dining / Activity", "type": "Common", "code": [], "tech": ["Dining table and chairs to seat 12-15.", "Used for family meals, family meetings, or staff meetings."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Toilets (2 total)", "type": "Common", "code": ["ADA compliant."], "tech": ["Centrally located for activity areas."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Staff Workroom / Medication", "type": "Support", "code": ["HIPAA compliance for record privacy. Secure storage for medications."], "tech": ["Space for record keeping, medical supplies, locked medication cart, and private phone calls."], "zone": "resident"}, {"cluster": "Central Activity & Program", "name": "Beauty / Barber Shop", "type": "Common", "code": ["Meet all state cosmetology board regulations."], "tech": ["Shampoo sink and chair, styling chair, dryer chair, 4 linear feet of counter space."], "zone": "resident"}, {"cluster": "Academic & Learning (The School)", "name": "Flexible Classroom / Seminar Room", "type": "Instructional", "code": ["Group B; classroom occupant load 20 SF/person (net).", "Two exits from any room over 49 occupants.", "Accessible clear floor space at seating and instructor zone."], "tech": ["Movable tables and chairs for 20–25 adult learners.", "Writable wall surface and AV display.", "Daylight with glare and acoustic control."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Lecture / Multipurpose Hall", "type": "Assembly", "code": ["Group A-3 when 50+ occupants; occupant load 15 net (tables) or 7 net (chairs only).", "Two exit doors swinging out, not intruding into the corridor; panic hardware."], "tech": ["Flat-floor, reconfigurable; stackable seating with dedicated storage.", "Projection/AV and assistive-listening system.", "Direct path to a public exit."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Art / Maker Studio", "type": "Instructional", "code": ["Vocational occupant load 50 SF/person (net).", "Slip-resistant floor; ventilation appropriate to materials."], "tech": ["Durable, washable surfaces; counter with sink.", "Generous supply storage; tables with arms for messy work."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Computer / Digital Learning Lab", "type": "Instructional", "code": ["Group B; accessible workstations with knee clearance and reachable controls."], "tech": ["Power/data at every station; adjustable-height positions; screen-glare control."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Learning Resource Center / Reading Room", "type": "Common", "code": ["Library reading-room occupant load 50 SF/person (net).", "36″ minimum accessible aisles between shelving."], "tech": ["Quiet reading zones; adjustable task lighting.", "Comfortable seating with arms; low, reachable shelving."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Group Study / Tutorial Rooms", "type": "Instructional", "code": ["Group B; door vision panel for visibility."], "tech": ["Small-group table for 4–6; writable surface; acoustic separation."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Faculty / Instructor Shared Office", "type": "Support", "code": ["Group B; business occupant load 150 SF/person (gross)."], "tech": ["Shared desks and storage; space for a private call."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Faculty Workroom / Prep", "type": "Support", "code": ["Group B."], "tech": ["Work counter, copier, supply storage, lesson-prep space."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Student Commons / Café", "type": "Common", "code": ["Assembly when 50+ occupants; accessible seating dispersed through the space."], "tech": ["Casual seating mix; servery or vending.", "Sociopetal layout that invites resident–external interaction."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Academic Reception / Info Desk", "type": "Common", "code": ["ADA reception counter: a 36″ section no higher than 34″ AFF."], "tech": ["Greeting and wayfinding point at the academic entry; short-wait seating."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Student Wardrobe / Locker Room", "type": "Support", "code": ["Accessible lockers within ADA reach ranges; slip-resistant floor."], "tech": ["Coat and bag storage for all students; benches; a share of lockers at accessible height."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Public Restrooms — Academic Wing", "type": "Public", "code": ["ADA barrier-free; fixture counts per occupancy; family/assisted option."], "tech": ["Barrier-free stalls, grab bars, knee-clear lavatories with wrapped pipes."], "zone": "public"}, {"cluster": "Academic & Learning (The School)", "name": "Wellness / Movement Studio", "type": "Instructional", "code": ["Exercise occupant load 50 SF/person (gross); slip-resistant, cushioned floor; ventilation."], "tech": ["Open clear floor; storage for mats and props; accessible clear space."], "zone": "public"}, {"cluster": "Administrative, Public & Service", "name": "Vestibule", "type": "Common", "code": [], "tech": ["Provides an air lock for energy efficiency and a transition space."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Lobby / Reception / Waiting", "type": "Common", "code": ["ADA compliant reception desk and paths of travel."], "tech": ["Reception desk with chair, seating for a minimum of six visitors, coat closet (6-7 linear ft.)."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Director’s Office", "type": "Support", "code": [], "tech": ["Desk with return and credenza, desk chair, 2 guest chairs, lateral file."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Admission’s Office", "type": "Support", "code": [], "tech": ["Desk with return and credenza, desk chair, 2 guest chairs, lateral file."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Recreation / Activity Director’s Office", "type": "Support", "code": [], "tech": ["Desk with return and credenza, desk chair, 2 guest chairs, lateral file."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Conference Room", "type": "Support", "code": [], "tech": ["Conference table with 6-8 chairs, visual marker board/pin-up space, counter with overhead cabinets, storage for AV equipment."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Workroom/Copy/Supply", "type": "Support", "code": [], "tech": ["36” high work counter, space for large copy machine, lockable supply cabinets, lateral files."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Women’s Restroom", "type": "Public", "code": ["ADA compliant. 1 dedicated ADA stall with lavatory."], "tech": ["3 standard stalls, 3 total lavatories (1 ADA)."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Men’s Restroom", "type": "Public", "code": ["ADA compliant. 1 dedicated ADA stall with lavatory.", "1 urinal must be ADA height."], "tech": ["1 standard stall, 2 urinals, 3 total lavatories (1 ADA)."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Staff Toilet (Unisex)", "type": "Support", "code": ["ADA compliant."], "tech": ["Toilet with grab bars, lavatory."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Kitchen", "type": "Support", "code": ["Must meet all commercial health and safety codes.", "Proper ventilation and fire suppression systems."], "tech": ["Commercial range, refrigerators, sinks, freezer.", "Includes 100 sq. ft. pantry with 24”x30” wire shelving.", "Includes 150-200 sq. ft. open dishwashing area."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Storage/Service Area", "type": "Support", "code": ["Direct access to public corridor, soiled/clean linens, and kitchen required."], "tech": ["Provide four 36”W x 54”H and two 18”W x 48”H shelving units."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Soiled Linens Holding", "type": "Support", "code": ["Direct access to laundry room."], "tech": ["Space for 4 large, soiled laundry hampers."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Clean Linens Holding", "type": "Support", "code": ["Direct access to laundry room."], "tech": ["Include three 36”x54” storage cabinets."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Housekeeping Storage", "type": "Support", "code": ["OSHA requirements for chemical storage."], "tech": ["Provide shelving for supplies."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Mechanical / Electrical", "type": "Support", "code": ["All systems must be to code and accessible only to authorized personnel."], "tech": [], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Staff Lounge / Retreat", "type": "Support", "code": [], "tech": ["Lounge seating group, table and chairs, desk with phone, counter with sink, DW, microwave, refrigerator, and upper cabinets."], "zone": "service"}, {"cluster": "Administrative, Public & Service", "name": "Staff Lockers", "type": "Support", "code": [], "tech": ["Secure storage for staff personal belongings."], "zone": "service"}, {"cluster": "Facility-Wide", "name": "Public Corridors & Egress", "type": "Circulation", "code": ["Width: 8’-0” min. width for all paths of travel between exits.", "Doors: Egress doors must open in the direction of travel and have crash bar hardware. Interior passage doors 36\" min., resident room doors 42\" min.", "Travel Distance: Not to exceed 75’ in total travel distance. No dead-end corridors.", "Exits: Minimum of 2 exits, located at least 1/2 the diagonal distance of the space apart.", "Paths: Egress paths cannot pass through secondary spaces subject to closure or storage.", "Safety: Compartmentalization required between occupancy classes. Fire extinguisher per 2,500 sq. ft., fire alarm pulls/alarms per code, sprinklers, exit signage, and security lighting."], "tech": ["Handrails should be provided on both sides of corridors.", "Consider design elements like varied lighting and visual cues to aid in wayfinding."], "zone": "circ"}];
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function reqBlock(cls,label,arr){
+ if(!arr||!arr.length) return '<div class="rq '+cls+'"><h5>'+label+'</h5><span class="none">N/A</span></div>';
+ return '<div class="rq '+cls+'"><h5>'+label+'</h5><ul>'+arr.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>';
+}
+function renderSpaces(list){
+ const el=document.getElementById('space-list'); el.innerHTML='';
+ if(!list.length){el.innerHTML='<p class="rq"><span class="none">No spaces match that search.</span></p>';return;}
+ let cur=null;
+ list.forEach(s=>{
+  if(s.cluster!==cur){cur=s.cluster;const h=document.createElement('div');h.className='cl-head';h.textContent=cur;el.appendChild(h);}
+  const d=document.createElement('details');d.className='sp z-'+s.zone;
+  d.innerHTML='<summary><span class="nm">'+esc(s.name)+'</span><span class="ty">'+esc(s.type||'')+'</span></summary>'
+   +'<div class="body">'+reqBlock('code','Code &amp; Regulatory',s.code)+reqBlock('tech','Technical &amp; Design',s.tech)+'</div>';
+  el.appendChild(d);
+ });
+}
+function filterSpaces(q){
+ q=(q||'').toLowerCase().trim();
+ if(!q){renderSpaces(SPACES);return;}
+ renderSpaces(SPACES.filter(s=>(s.name+' '+s.cluster+' '+s.type+' '+s.code.join(' ')+' '+s.tech.join(' ')).toLowerCase().includes(q)));
+}
+renderSpaces(SPACES);
+
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.open').forEach(m=>closeModal(m.id));});
+
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
