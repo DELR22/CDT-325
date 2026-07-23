@@ -47,6 +47,21 @@
     }
     nav ul a:hover { color: #fff; }
 
+    /* PAGE LINKS (sticky buttons to standalone HTMLs) */
+    .page-links {
+      position: sticky; top: 52px; z-index: 190; background: var(--warm-gray);
+      border-bottom: 1px solid var(--rule); padding: 12px 56px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .page-links a {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--crimson); text-decoration: none; padding: 7px 14px;
+      border: 1px solid var(--crimson); white-space: nowrap; transition: background .15s, color .15s;
+    }
+    .page-links a:hover { background: var(--crimson); color: #fff; }
+    .page-links a.fieldwork { border-color: var(--charcoal); color: var(--charcoal); }
+    .page-links a.fieldwork:hover { background: var(--charcoal); color: #fff; }
+
     /* HERO */
     .hero { background: var(--crimson); padding: 104px 56px 88px; position: relative; overflow: hidden; }
     .hero::after {
@@ -154,6 +169,7 @@
     @media (max-width: 960px) {
       nav { padding: 0 24px; }
       nav ul { display: none; }
+      .page-links { padding: 10px 24px; top: 52px; }
       .hero, .section { padding: 64px 24px; }
       .hero-stats { grid-template-columns: 1fr 1fr; gap: 24px; }
       .hero::after { font-size: 240px; right: -20px; }
@@ -175,6 +191,17 @@
     <li><a href="#map">Course Map</a></li>
   </ul>
 </nav>
+
+<!-- PAGE LINKS -->
+<div class="page-links">
+  <a class="fieldwork" href="field-research.html" target="_blank" rel="noopener">Field Research</a>
+  <a href="a00.html" target="_blank" rel="noopener">A00</a>
+  <a href="a01.html" target="_blank" rel="noopener">A01</a>
+  <a href="a02.html" target="_blank" rel="noopener">A02</a>
+  <a href="a03.html" target="_blank" rel="noopener">A03</a>
+  <a href="a04.html" target="_blank" rel="noopener">A04</a>
+  <a href="a05.html" target="_blank" rel="noopener">A05</a>
+</div>
 
 <!-- HERO -->
 <header class="hero" id="overview">
@@ -306,9 +333,18 @@
   <p class="eyebrow">Section 04</p>
   <h2 class="sec-title">Course Map &mdash; Assignments in Sequence</h2>
   <hr class="sec-rule">
-  <p style="font-size:16px;color:var(--dark-gray);line-height:1.8;max-width:780px;margin-bottom:40px;" class="reveal">One project, six assignments, advancing from fieldwork to fully specified documentation. Click any card to open the full assignment guide, including instructions, tools, and rubric.</p>
+  <p style="font-size:16px;color:var(--dark-gray);line-height:1.8;max-width:780px;margin-bottom:40px;" class="reveal">One project, six assignments, and a set of in-class Field &amp; Research Challenges, advancing from fieldwork to fully specified documentation. Click any card to open the full guide, including instructions, tools, and rubric.</p>
 
   <div class="map-grid reveal d1">
+
+    <a class="map-card" href="field-research.html" target="_blank" rel="noopener">
+      <div class="map-card-head"><span class="map-card-id">Fieldwork</span><span class="map-card-pts">300 pts</span></div>
+      <div class="map-card-body">
+        <p class="map-card-title">Field &amp; Research Challenges</p>
+        <p class="map-card-desc">Six in-class challenges, in groups of four &mdash; anthropometrics, accessibility, restrooms, egress, and furniture &mdash; synthesized into a live argument.</p>
+        <p class="map-card-cta">View Challenges &rarr;</p>
+      </div>
+    </a>
 
     <a class="map-card" href="a00.html" target="_blank" rel="noopener">
       <div class="map-card-head"><span class="map-card-id">A00</span><span class="map-card-pts">200 pts</span></div>
