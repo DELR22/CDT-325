@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 6: Project Presentation &middot; CTD 325</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --crimson:#9E1B32; --crimson-dark:#7A1424; --crimson-mid:#B8273E; --crimson-pale:#F7EAED;
+ --graphite:#3C4757; --graphite-lt:#AEB9C4; --black:#111111; --grey:#8A8A8A; --grey-on-dark:#9AA3AD;
+ --white:#FFFFFF; --paper:#FAFAFA; --rule-strong:#1A1A1A; --rule-soft:#E3E3E3;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;font-size:17px;color:var(--black);background:var(--white);line-height:1.7}
+em{font-style:italic}
+a{color:var(--crimson)}
+
+/* ===== TYPE SYSTEM =====
+   Body Text        16-18px  Black
+   Titles in Bold    28-36px  Crimson
+   H1                28-36px  Crimson
+   H2 / H3           20-24px  Graphite
+   Captions/Footers  12-14px  Grey
+*/
+h1,.h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(28px,4vw,36px);line-height:1.22;color:var(--crimson)}
+.title-bold{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(28px,3.2vw,36px);line-height:1.28;color:var(--crimson)}
+h2,h3,.h2,.h3{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(20px,2vw,24px);line-height:1.35;color:var(--graphite)}
+.caption,.cap{font-size:13px;color:var(--grey);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+p,li,td{font-size:17px;color:var(--black)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--rule-strong);min-height:56px;padding:14px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.nav-brand{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);white-space:nowrap}
+.nav-brand em{color:var(--crimson);font-style:normal}
+nav ul{list-style:none;display:flex;gap:20px;flex-wrap:wrap}
+nav ul a{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);text-decoration:none;white-space:nowrap;transition:color .2s}
+nav ul a:hover{color:var(--crimson)}
+
+/* HERO */
+.hero{padding:64px 56px 72px;border-bottom:1px solid var(--rule-strong)}
+.hero-eyebrow{text-align:right;font-family:'Source Serif 4',serif;font-style:italic;font-size:14px;color:var(--grey);letter-spacing:.02em;margin-bottom:28px}
+.hero-rule{border:none;border-top:1px solid var(--rule-strong);margin-bottom:28px}
+.hero h1{max-width:900px;margin-bottom:28px}
+.hero-sub{font-size:18px;color:var(--black);max-width:680px;line-height:1.75;margin-bottom:36px}
+.hero-sub strong{color:var(--crimson);font-weight:700}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.hero-meta-item{display:flex;align-items:baseline;gap:8px;background:var(--paper);border:1px solid var(--rule-soft);padding:8px 16px}
+.hero-meta-k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.hero-meta-v{font-size:14px;font-weight:600;color:var(--black)}
+.hero-stats{display:flex;gap:0;flex-wrap:wrap;width:fit-content}
+.stat{padding:0 40px 0 20px;border-left:1px solid var(--rule-soft)}
+.stat:first-child{padding-left:0;border-left:none}
+.stat-num{font-family:'Source Serif 4',serif;font-weight:700;font-size:32px;color:var(--crimson);line-height:1;margin-bottom:5px}
+.stat-lbl{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+
+/* SECTION CHROME */
+.section{padding:72px 56px}
+.section.alt{background:var(--white)}
+.section.warm{background:var(--paper)}
+.section.dark{background:var(--rule-strong)}
+.section.dark .eyebrow{color:var(--grey-on-dark)}
+.section.dark .sec-title{color:#fff}
+.section.dark .lead{color:rgba(255,255,255,.75)}
+.section.dark .lead strong{color:#fff}
+.section.dark .sec-rule{border-color:rgba(255,255,255,.14)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:10px}
+.sec-title{text-transform:uppercase;letter-spacing:.04em;margin-bottom:28px}
+.sec-rule{border:none;border-top:1px solid var(--rule-strong);margin-bottom:44px}
+.lead{font-size:17px;max-width:780px;color:var(--black);line-height:1.8}
+.lead strong{color:var(--black)}
+.lead+.lead{margin-top:18px}
+h3.sub-head{margin:36px 0 14px}
+
+/* INSTRUCTIONS / OBJECTIVES */
+.instructions-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule-soft)}
+.instruction-list{list-style:none;counter-reset:inst;display:flex;flex-direction:column}
+.instruction-list>li{counter-increment:inst;display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:16px;color:var(--black);line-height:1.8;padding:0 0 14px}
+.instruction-list>li:last-child{padding-bottom:0}
+.instruction-list>li::before{content:counter(inst,decimal-leading-zero);font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--crimson);padding-top:3px}
+.instruction-list>li strong{color:var(--black)}
+
+/* PART SECTION (Executive Pitch spotlight) */
+.part-sec{padding:72px 56px;position:relative;border-bottom:1px solid var(--rule-soft)}
+.part-sec.warm{background:var(--paper)}
+.ghost-label{position:absolute;top:32px;right:48px;font-family:'Source Serif 4',serif;font-size:200px;font-weight:700;line-height:1;color:var(--rule-soft);pointer-events:none;user-select:none;z-index:0}
+.part-inner{position:relative;z-index:1}
+.part-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.part-pill{background:var(--crimson);color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px}
+.part-title{font-family:'Source Serif 4',serif;font-weight:700;font-size:clamp(24px,2.6vw,30px);color:var(--crimson)}
+.part-layout{display:flex;flex-direction:column;gap:32px}
+.part-desc p{font-size:17px;color:var(--black);line-height:1.8;margin-bottom:18px}
+.part-desc p:last-child{margin-bottom:0}
+.part-desc p.note{font-size:16px;font-style:italic;color:var(--crimson);border-left:3px solid var(--crimson);padding-left:14px}
+
+/* SPECS PANEL (light, bordered) */
+.specs-panel{background:var(--white);border:1px solid var(--rule-soft);padding:32px;max-width:480px}
+.specs-group-label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin:24px 0 14px}
+.specs-group-label:first-child{margin-top:0}
+.spec-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule-soft)}
+.spec-row:last-child{border-bottom:none}
+.spec-k{font-size:13px;color:var(--grey)}
+.spec-v{font-size:15px;font-weight:600;color:var(--black);text-align:right}
+
+/* CALLOUT */
+.callout{background:var(--paper);border-left:4px solid var(--crimson);padding:22px 26px;font-size:16px;color:var(--black);line-height:1.8}
+.callout strong{color:var(--crimson)}
+
+/* DELIVERABLE CARDS */
+.deliverables-stack{display:flex;flex-direction:column;gap:32px}
+.deliverable-card{background:var(--white);border:1px solid var(--rule-soft);border-top:3px solid var(--crimson);padding:32px 36px}
+.deliverable-num{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:10px}
+.deliverable-title{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;color:var(--graphite);line-height:1.25;margin-bottom:18px}
+.deliverable-body p{font-size:16px;color:var(--black);line-height:1.8;margin-bottom:12px}
+.deliverable-body p:last-child{margin-bottom:0}
+
+/* RUBRIC */
+.rubric-intro{max-width:780px;font-size:17px;color:var(--black);line-height:1.8;margin-bottom:40px}
+.rubric-intro strong{color:var(--crimson)}
+table.rubric{width:100%;border-collapse:collapse}
+table.rubric thead tr{border-bottom:1px solid var(--rule-strong)}
+table.rubric thead th{padding:14px 18px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);text-align:left}
+table.rubric thead th.col-excellent{color:#2d6a3f}
+table.rubric thead th.col-proficient{color:#856404}
+table.rubric thead th.col-developing{color:#842029}
+table.rubric tbody tr{border-bottom:1px solid var(--rule-soft)}
+table.rubric td{padding:16px 18px;vertical-align:top;color:var(--black);font-size:16px;line-height:1.7;border-right:1px solid var(--rule-soft)}
+table.rubric td:last-child{border-right:none}
+table.rubric td.item-col{background:var(--paper);min-width:190px}
+.item-name{font-family:'Source Serif 4',serif;font-weight:600;font-size:19px;color:var(--graphite);display:block;margin-bottom:4px}
+.item-pts{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--crimson);display:block}
+table.rubric tbody tr.total-row{background:var(--rule-strong);border-bottom:none}
+table.rubric tbody tr.total-row td{font-size:14px;font-weight:700;color:#fff;border-right-color:rgba(255,255,255,.1)}
+table.rubric tbody tr.total-row td.item-col{background:var(--rule-strong);color:#fff}
+.range-badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 9px;white-space:nowrap;margin-bottom:6px}
+.range-excellent{background:#d4edda;color:#2d6a3f;border:1px solid #a8d8a0}
+.range-proficient{background:#fef3cd;color:#856404;border:1px solid #f5c97a}
+.range-developing{background:#f8d7da;color:#842029;border:1px solid #e08080}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1px solid var(--rule-strong);padding:24px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-school{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--grey);text-transform:uppercase}
+footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:uppercase}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--crimson-mid);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+ nav{padding:12px 24px}
+ nav ul{display:none}
+ .hero,.section,.part-sec{padding:48px 24px}
+ .ghost-label{font-size:120px;right:16px;top:20px}
+ footer{padding:20px;justify-content:center;text-align:center}
+ table.rubric{font-size:12px}
+ table.rubric td{padding:12px 12px}
+ .deliverable-card{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+ <div class="nav-brand"><em>UA</em> &middot; CTD 325 &middot; Design for Special Populations</div>
+ <ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#posters">Posters</a></li>
+  <li><a href="#pitch">Pitch</a></li>
+  <li><a href="#submission">Submission</a></li>
+  <li><a href="#rubric">Rubric</a></li>
+ </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+ <p class="hero-eyebrow">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Assignment 06 &middot; Fall 2026 &middot; Presented as Your Firm</p>
+ <hr class="hero-rule">
+ <h1>Project <em>Presentation</em></h1>
+ <hr class="hero-rule">
+ <p class="hero-sub">Assignment 06 produces no new design. It packages the work you have already done into a form a client can act on. <strong>Two posters and a recorded pitch</strong>, asking NEXA&rsquo;s board to build it.</p>
+ <div class="hero-meta">
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Project</span>
+   <span class="hero-meta-v">The Lifelong School</span>
+  </div>
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Client</span>
+   <span class="hero-meta-v">NEXA Consulting and Development</span>
+  </div>
+  <div class="hero-meta-item">
+   <span class="hero-meta-k">Work</span>
+   <span class="hero-meta-v">Individual</span>
+  </div>
+ </div>
+ <div class="hero-stats">
+  <div class="stat">
+   <div class="stat-num">2</div>
+   <div class="stat-lbl">Project Posters</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">24&Prime;&times;36&Prime;</div>
+   <div class="stat-lbl">Board Size</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">5&ndash;7</div>
+   <div class="stat-lbl">Minute Pitch</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">200</div>
+   <div class="stat-lbl">Points Total</div>
+  </div>
+ </div>
+</header>
+
+<!-- SECTION 01: INTRODUCTION -->
+<section class="section alt" id="overview">
+ <div class="reveal">
+  <p class="eyebrow">Section 01</p>
+  <h2 class="sec-title">Introduction</h2>
+  <hr class="sec-rule">
+  <p class="lead">Assignment 06 produces no new design. It packages the work you have already done into a form a client can act on.</p>
+  <p class="lead">Everything from Assignments 01 through 05 is currently coursework. This assignment consists of three deliverables: <strong>two 24&Prime; &times; 36&Prime; posters</strong>, and a <strong>recorded 5- to 7-minute pitch</strong> asking NEXA&rsquo;s board to build it.</p>
+  <p class="lead">Both are proposals, not summaries. A poster is not a portfolio page and a pitch is not a narration of your process. Each makes the same case in a different medium.</p>
+
+  <h3 class="sub-head">What Is Yours, and What Is Your Design Team&rsquo;s</h3>
+  <p class="lead">You worked as part of a design team through Assignment 02 and alone from Assignment 03 forward. The deliverables carry your design team&rsquo;s identity (name, logo, and slogan) and both present your individual design.</p>
+  <p class="lead" style="margin-top:14px">The research, the Concept Statement, and the brand are your team&rsquo;s. Every design decision from the block plan forward is yours. You may use the group&rsquo;s work, but you may not present a classmate&rsquo;s interior design proposal.</p>
+
+  <div class="reveal" style="margin-top:40px">
+   <p class="instructions-label">Objectives</p>
+   <ol class="instruction-list">
+    <li><span>Synthesize an entire design process into audiovisual and graphic elements.</span></li>
+    <li><span>Argue for a design proposal to a client audience, concisely and convincingly.</span></li>
+    <li><span>Present professionally under a corporate identity.</span></li>
+    <li><span>Communicate research, concept, and design resolution to non-designers.</span></li>
+   </ol>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 02: THE PROJECT POSTERS -->
+<section class="section warm" id="posters">
+ <div class="reveal">
+  <p class="eyebrow">Section 02</p>
+  <h2 class="sec-title">Deliverables 1 &amp; 2 &middot; The Project Posters</h2>
+  <hr class="sec-rule">
+  <p class="lead" style="margin-bottom:24px">Two boards &middot; 24&Prime; &times; 36&Prime; each &middot; Built in Adobe Photoshop</p>
+
+  <div class="callout" style="margin-bottom:40px">To build these posters, follow the video tutorials available on Panopto for instructions on using Photoshop to create posters. <strong>Requirement:</strong> download Photoshop on your computer.</div>
+
+  <div class="deliverables-stack">
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Board 1 &middot; The Argument for the Design</div>
+    <div class="deliverable-title">Research &amp; Concept</div>
+    <div class="deliverable-body">
+     <p>Open with your <strong>primary source research</strong> &mdash; what the people you interviewed told you about the spaces in their lives &mdash; told through the quotes and discoveries that actually drove your concept, the sentence someone said that changed how you saw the problem, rather than as a methodology summary; explain the findings, conclusions, and insights that worked, and anchor the project to the final users.</p>
+     <p>Carry that into your <strong>secondary source research</strong>, the theories, standards, and precedents you drew from the collective knowledge video library, and then into your <strong>Concept Development</strong>, showing how that research became a concept and presenting the concept itself: your Value Proposition and Core Design Solution.</p>
+     <p>Close the board with your <strong>Mood Environments</strong>, the three conceptual image sets that ground the concept visually.</p>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Board 2 &middot; The Design Itself</div>
+    <div class="deliverable-title">The Proposal</div>
+    <div class="deliverable-body">
+     <p>Present the design itself, beginning with <strong>rendered floor plans</strong>, reduced in size but legible and carrying a graphic scale, including textured representations of floor finishes and furniture, followed by <strong>material mood boards</strong> for your ceiling and flooring selections and your FF&amp;E.</p>
+     <p>Close with as many <strong>renderings of the proposed spaces</strong> as you can produce, since this is where the building becomes real to someone who does not read plans.</p>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 03: THE EXECUTIVE PITCH -->
+<section class="part-sec warm" id="pitch">
+ <div class="ghost-label">3</div>
+ <div class="part-inner">
+  <div class="part-head reveal">
+   <span class="part-pill">Deliverable 3</span>
+   <span class="part-title">The Executive Pitch</span>
+  </div>
+  <div class="part-layout">
+
+   <div class="reveal">
+    <div class="part-desc">
+     <p>You are presenting to the <strong>NEXA Consulting and Development board.</strong> They are not designers, they have not read your assignments, and they are deciding whether to build your project &mdash; so use the research as <em>evidence for</em> your design, show the building, and tell them what it does for the people who will live and learn in it.</p>
+     <p class="note"><strong>This is not a recount of your design process.</strong> It is a proposal. Be professional, direct, concise, and convincing.</p>
+    </div>
+   </div>
+
+   <div class="reveal">
+    <div class="specs-panel">
+     <p class="specs-group-label">Requirements</p>
+     <div class="spec-row"><span class="spec-k">Length</span><span class="spec-v">5&ndash;7 minutes</span></div>
+     <div class="spec-row"><span class="spec-k">Identity</span><span class="spec-v">Firm name, logo, slogan</span></div>
+     <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Recorded, hosted on Panopto</span></div>
+     <div class="spec-row"><span class="spec-k">Submission</span><span class="spec-v">Share link via Blackboard</span></div>
+     <div class="spec-row"><span class="spec-k">On-Screen Support</span><span class="spec-v">Legible at viewing distance</span></div>
+    </div>
+   </div>
+
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 04: SUBMISSION -->
+<section class="section alt" id="submission">
+ <div class="reveal">
+  <p class="eyebrow">Section 04</p>
+  <h2 class="sec-title">Submission</h2>
+  <hr class="sec-rule">
+  <p class="lead">Submit three items through two channels: <strong>PDFs</strong> of both boards to Blackboard, <strong>PSDs</strong> of both working files to the shared BOX folder, and your recorded <strong>Executive Pitch</strong> to Blackboard as a Panopto share link.</p>
+ </div>
+</section>
+
+<!-- SECTION 05: RUBRIC -->
+<section class="section warm" id="rubric">
+ <div class="reveal">
+  <p class="eyebrow">Section 05</p>
+  <h2 class="sec-title">Evaluation Rubric</h2>
+  <hr class="sec-rule">
+  <p class="rubric-intro">The assignment is evaluated across four criteria totaling <strong>200 points</strong>. Board 1 and Board 2 carry the greatest combined weight, as the posters are the core of the proposal.</p>
+
+  <div style="overflow-x:auto">
+   <table class="rubric">
+    <thead>
+     <tr>
+      <th style="width:20%">Criterion</th>
+      <th class="col-excellent" style="width:26.7%">Excellent</th>
+      <th class="col-proficient" style="width:26.7%">Proficient</th>
+      <th class="col-developing" style="width:26.6%">Developing</th>
+     </tr>
+    </thead>
+    <tbody>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">1. Board 1 &mdash; Research &amp; Concept</span>
+       <span class="item-pts">60 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
+       Presents primary findings and user quotes, secondary sources from the collective library, and a concept that follows from both. The connection to the users is clear throughout.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
+       Presents the research and the concept, but states the link between them rather than showing it, or ties the design loosely to the users.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
+       Summarizes the process, or presents findings that are disconnected from the concept and not tied to any user.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">2. Board 2 &mdash; The Proposal</span>
+       <span class="item-pts">60 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
+       Presents rendered floor plans that remain legible at reduced size with a graphic scale, textured finishes and furniture, material mood boards for ceiling, floor, and FF&amp;E, and enough renderings to convey the spaces to a non-designer.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
+       Presents legible plans, the material selections, and renderings that convey the design, with occasional lapses in legibility, scale, or completeness.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
+       Presents plans that lose legibility or omit the scale, limited material information, or too few renderings to convey the design.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">3. Graphic System &amp; Firm Identity</span>
+       <span class="item-pts">30 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">27 &ndash; 30 pts</span></div>
+       Composes both boards as one consistent style and graphic system with a clear reading order, and legible.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">21 &ndash; 26 pts</span></div>
+       Composes two coordinated boards with the firm identity, but with an uneven reading order or occasional legibility lapses.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 20 pts</span></div>
+       Composes boards that read as two separate projects, lack a clear reading order, or fall below legibility standards.
+      </td>
+     </tr>
+
+     <tr>
+      <td class="item-col">
+       <span class="item-name">4. The Executive Pitch</span>
+       <span class="item-pts">50 pts total</span>
+      </td>
+      <td>
+       <div><span class="range-badge range-excellent">45 &ndash; 50 pts</span></div>
+       Pitches the design in the required time. Leads with the proposal, uses research as evidence, explains what the design does for its users, and presents professionally under the firm&rsquo;s identity with legible on-screen support.
+      </td>
+      <td>
+       <div><span class="range-badge range-proficient">35 &ndash; 44 pts</span></div>
+       Pitches the project within time under the firm&rsquo;s identity and conveys the design clearly, but narrates process at points or argues less than convincingly.
+      </td>
+      <td>
+       <div><span class="range-badge range-developing">0 &ndash; 34 pts</span></div>
+       Recounts the process instead of pitching, misses the time limit, or presents without firm identity or legible support.
+      </td>
+     </tr>
+
+     <tr class="total-row">
+      <td class="item-col">Total</td>
+      <td><span class="range-badge range-excellent">180 &ndash; 200 pts</span></td>
+      <td><span class="range-badge range-proficient">140 &ndash; 176 pts</span></td>
+      <td><span class="range-badge range-developing">0 &ndash; 136 pts</span></td>
+     </tr>
+
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <div class="footer-school">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Daniel Ronderos M.Arch.</div>
+ <p>CTD 325 &middot; Design for Special Populations &middot; Assignment 06 &middot; Project Presentation</p>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
