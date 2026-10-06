@@ -187,6 +187,103 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  .deliverable-card{padding:24px}
  .pull-quote{font-size:18px}
 }
+
+/* base button + token the shared trivia styles rely on */
+:root{--zone-circ:#9A9189}
+.btn{display:inline-block;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:13px 22px;background:var(--crimson);color:#fff;text-align:center;transition:background .15s}
+.btn:hover{background:var(--crimson-dark)}
+
+/* ===== TRIVIA GAME ===== */
+#game{scroll-margin-top:72px}
+.btn{font-family:inherit}
+.btn:disabled{background:var(--grey);cursor:not-allowed}
+.btn.line{background:transparent;border:1px solid var(--crimson);color:var(--crimson)}
+.btn.line:hover{background:var(--crimson-pale)}
+.link-btn{font-family:inherit;background:none;border:none;color:var(--grey);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;cursor:pointer}
+.link-btn:hover{color:var(--crimson)}
+
+/* stepper (nav) */
+.stepper{list-style:none;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.step-btn{font-family:inherit;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule-soft);background:var(--white);color:var(--grey);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.step-btn .step-n{font-variant-numeric:tabular-nums}
+.step-btn:disabled{cursor:not-allowed;background:var(--paper);color:var(--graphite-lt)}
+.step-btn.done{border-color:var(--graphite);color:var(--graphite)}
+.step-btn.done .step-n::after{content:" \2713"}
+.step-btn.current{background:var(--crimson);border-color:var(--crimson);color:#fff}
+@media(max-width:1280px){.step-name{display:none}}
+
+/* hero rules */
+.hero-rules{list-style:none;max-width:680px;margin-bottom:36px}
+.hero-rules li{position:relative;padding:4px 0 4px 20px;font-size:18px;line-height:1.6}
+.hero-rules li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:7px;background:var(--crimson)}
+.hero-rules strong{color:var(--crimson);font-weight:700}
+.hero-cta{margin-bottom:44px}
+
+/* returning-student password gate */
+.gate{max-width:680px;margin-bottom:44px;padding:24px 26px;background:var(--paper);border:1px solid var(--rule-soft);border-left:4px solid var(--graphite)}
+.gate-title{margin-bottom:10px}
+.gate-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.gate-row[hidden]{display:none}
+.gate-lbl{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.gate-input{flex:1;min-width:180px;padding:11px 14px;font-family:inherit;font-size:16px;border:1px solid var(--rule-soft);background:var(--white);color:var(--black)}
+.gate .quiz-msg{margin-top:12px}
+.gate .quiz-msg:empty{display:none}
+
+/* progress strip */
+.game-bar{padding:16px 56px;background:var(--paper);border-bottom:1px solid var(--rule-soft);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.game-bar-txt{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite)}
+.game-track{flex:1;min-width:140px;height:6px;background:var(--rule-soft)}
+.game-fill{height:100%;width:0;background:var(--crimson);transition:width .4s ease}
+
+/* briefs */
+.level .sec-title:focus{outline:none}
+.level-goal{font-size:17px;max-width:780px;line-height:1.7;margin-bottom:28px}
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+.brief-card{background:var(--white);padding:26px 24px}
+.brief-card h3{margin-bottom:12px}
+.brief-card .btn{margin-top:16px}
+.pts{list-style:none}
+.pts>li{position:relative;padding:5px 0 5px 20px;font-size:16px;line-height:1.6}
+.pts>li::before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;background:var(--crimson)}
+.pts strong{font-weight:700}
+.pts a{font-weight:600;word-break:break-word}
+.level .slo-item{background:var(--paper)}
+.level .slo-group{margin-bottom:32px}
+.level .deliverable-figure{margin-top:32px}
+.level .deliverables-stack{gap:20px}
+.fold{margin-top:28px;border:1px solid var(--rule-soft)}
+.fold>summary{cursor:pointer;padding:16px 20px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson)}
+.fold-body{padding:0 20px 20px;overflow-x:auto}
+
+/* checkpoint quiz */
+.quiz{margin-top:48px;background:var(--paper);border:1px solid var(--rule-soft);border-top:3px solid var(--crimson);padding:32px 36px}
+.quiz-title{font-family:'Source Serif 4',serif;font-weight:600;font-size:22px;color:var(--graphite);line-height:1.25;margin-bottom:6px}
+.quiz-rule{font-size:14px;color:var(--grey);font-weight:600;margin-bottom:24px}
+.q{border:1px solid var(--rule-soft);border-left:4px solid var(--zone-circ);background:var(--white);padding:18px 20px;margin-bottom:12px}
+.q.ok{border-left-color:#2d6a3f}
+.q.bad{border-left-color:#842029}
+.q-num{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);margin-bottom:4px}
+.q-text{font-weight:600;font-size:17px;line-height:1.5;margin-bottom:10px}
+.q-hint{font-size:13px;font-weight:600;color:var(--grey);margin:-4px 0 10px}
+.q-flag{display:none;float:right;margin-left:12px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px}
+.q.ok .q-flag{display:inline-block;background:#d4edda;color:#2d6a3f;border:1px solid #a8d8a0}
+.q.bad .q-flag{display:inline-block;background:#f8d7da;color:#842029;border:1px solid #e08080}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:9px 12px;border:1px solid transparent;cursor:pointer;font-size:16px;line-height:1.5}
+.opt:hover{background:var(--paper)}
+.opt input{margin-top:4px;width:16px;height:16px;flex-shrink:0;accent-color:var(--crimson)}
+.opt:has(input:checked){background:var(--crimson-pale);border-color:var(--crimson)}
+.opt:has(input:disabled){cursor:default}
+.quiz-foot{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.quiz-msg{flex:1;min-width:220px;font-size:16px;font-weight:600;line-height:1.5}
+.quiz-msg.pass{color:#2d6a3f}
+.quiz-msg.fail{color:#842029}
+
+@media(max-width:960px){
+ .game-bar{padding:14px 24px}
+ .quiz{padding:24px 18px}
+ .deliverable-card{padding:24px 20px}
+}
+@media(prefers-reduced-motion:reduce){.game-fill{transition:none}}
 </style>
 </head>
 <body>
@@ -194,23 +291,35 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 <!-- NAV -->
 <nav>
  <div class="nav-brand"><em>UA</em> &middot; CTD 325 &middot; Design for Special Populations</div>
- <ul>
-  <li><a href="#intro">Overview</a></li>
-  <li><a href="#warning">Warning</a></li>
-  <li><a href="#stage1">Stage 1</a></li>
-  <li><a href="#stage2">Stage 2</a></li>
-  <li><a href="#deliverables">Deliverables</a></li>
-  <li><a href="#rubric">Rubric</a></li>
- </ul>
+ <ol class="stepper" id="stepper" aria-label="Levels"></ol>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
  <p class="hero-eyebrow">The University of Alabama &middot; Clothing, Textile &amp; Interior Design &middot; Assignment 04 &middot; Fall 2026</p>
  <hr class="hero-rule">
- <h1>Design <em>Documents</em></h1>
+ <h1>Design <em>Documents</em> &middot; Assignment Trivia</h1>
  <hr class="hero-rule">
- <p class="hero-sub">In Assignment 03, you decided how the building works. Now you draw it, increasing the <strong>Level of Detail (LOD)</strong> &mdash; where a zone becomes a room with a name, a number, and an area, and a corridor becomes two walls with a rating.</p>
+ <ul class="hero-rules">
+  <li><strong>Read the brief.</strong> Each level explains one part of the assignment in short bullets.</li>
+  <li><strong>Pass the checkpoint.</strong> Answer every question about that brief and submit.</li>
+  <li><strong>100% unlocks the next level.</strong> Anything less, and you review the brief and try again &mdash; unlimited attempts.</li>
+ </ul>
+ <div class="hero-cta"><button class="btn" id="start-btn" type="button">Start Level 01</button></div>
+ <form class="gate" id="gate" autocomplete="off">
+  <h2 class="gate-title">Already passed the trivia?</h2>
+  <ul class="pts">
+   <li>Submit a screenshot of your <strong>Results</strong> section to your teacher.</li>
+   <li>Your teacher gives you a password.</li>
+   <li>Enter it here to review all the instructions without retaking the trivia.</li>
+  </ul>
+  <div class="gate-row" id="gate-row">
+   <label class="gate-lbl" for="gate-pw">Password</label>
+   <input class="gate-input" id="gate-pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+   <button class="btn" type="submit">Unlock review</button>
+  </div>
+  <p class="quiz-msg" id="gate-msg" role="status" aria-live="polite"></p>
+ </form>
  <div class="hero-meta">
   <div class="hero-meta-item">
    <span class="hero-meta-k">Project</span>
@@ -227,40 +336,95 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  </div>
  <div class="hero-stats">
   <div class="stat">
-   <div class="stat-num">2</div>
-   <div class="stat-lbl">Stages</div>
+   <div class="stat-num">8</div>
+   <div class="stat-lbl">Levels</div>
   </div>
   <div class="stat">
-   <div class="stat-num">3</div>
-   <div class="stat-lbl">Deliverables</div>
+   <div class="stat-num" id="stat-q">40</div>
+   <div class="stat-lbl">Questions</div>
+  </div>
+  <div class="stat">
+   <div class="stat-num">100%</div>
+   <div class="stat-lbl">To Advance</div>
   </div>
   <div class="stat">
    <div class="stat-num">1/8&Prime;</div>
    <div class="stat-lbl">Drawing Scale</div>
   </div>
-  <div class="stat">
-   <div class="stat-num">500</div>
-   <div class="stat-lbl">Points Total</div>
-  </div>
  </div>
 </header>
 
-<!-- SECTION 01: INTRODUCTION -->
-<section class="section alt" id="intro">
- <div class="reveal">
-  <p class="eyebrow">Section 01</p>
-  <h2 class="sec-title">Introduction</h2>
-  <hr class="sec-rule">
-  <p class="lead">In Assignment 03, you decided how the building works. Now you draw it, increasing the Level of Detail (LOD). Design Documents are where a scheme becomes an instrument other people can read and act on, where a zone becomes a room with a name, a number, and an area; where a corridor becomes two walls with a rating; where a block that held a bed becomes a bed someone can get in and out of. This is also where the semester&rsquo;s research either shows up or disappears. Everything before this argued about <em>what</em> the interior space should do. This assignment takes concepts and brings them closer to reality.</p>
- </div>
-</section>
+<noscript><p class="callout" style="margin:24px 56px">This page is an interactive trivia game and needs JavaScript enabled to run.</p></noscript>
 
-<!-- SECTION 02: STUDENT LEARNING OUTCOMES -->
-<section class="section warm">
- <div class="reveal">
-  <p class="eyebrow">Section 02</p>
+<main id="game">
+
+ <!-- PROGRESS STRIP -->
+ <div class="game-bar">
+  <span class="game-bar-txt" id="bar-level"></span>
+  <div class="game-track" aria-hidden="true"><div class="game-fill" id="bar-fill"></div></div>
+  <span class="game-bar-txt" id="bar-count"></span>
+  <button class="link-btn" id="reset-btn" type="button">Reset progress</button>
+ </div>
+
+ <!-- LEVEL 01: OVERVIEW -->
+ <section class="section level" data-level="1" hidden>
+  <p class="eyebrow">Level 01 of 08</p>
+  <h2 class="sec-title">Overview &amp; Warning</h2>
+  <hr class="sec-rule">
+  <p class="level-goal">What Assignment 04 is, what you must do before starting, and what you produce.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>What It Is</h3>
+    <ul class="pts">
+     <li>Assignment 04 turns your Assignment 03 Block Plan into <strong>Design Documents</strong>.</li>
+     <li>You draw the same plan at a higher <strong>Level of Detail (LOD)</strong>.</li>
+     <li>Every space gets a name, a number, and an area.</li>
+     <li>Every wall gets a thickness and a fire rating.</li>
+     <li>Every room gets furniture and fixtures drawn at true size.</li>
+     <li>Design Documents are the set <strong>a client approves and a consultant coordinates against</strong>.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Before You Start</h3>
+    <ul class="pts">
+     <li>Assignment 04 is built <strong>directly on your Assignment 03 Block Plan</strong>.</li>
+     <li><strong>Stage 1</strong> uses your block plan&rsquo;s geometry. Only non-substantial edits and adjustments are allowed.</li>
+     <li><strong>Stage 2</strong> documents the fire and life safety of that same plan.</li>
+     <li>Check your Block Plan for unresolved egress paths, missing compartment lines, and mixed public&ndash;resident circulation.</li>
+     <li><strong>Fix every deficiency first</strong>, before you start Assignment 04.</li>
+     <li>If you do not, the problems carry into both stages and you will have to redo the work.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>What You Produce</h3>
+    <ul class="pts">
+     <li>Floor plans that show the design is <strong>fully resolved</strong>.</li>
+     <li>Show walls with ratings, doors with correct swings, furniture, and fixtures with clearances.</li>
+     <li><strong>Use notes and dashed clearances. Do not use dimensions.</strong></li>
+     <li>The FF&amp;E is a <strong>reference for scale, proportion, and functionality</strong>. It is not for a contractor to build from.</li>
+     <li>Use basic blocks or families. Do not spend time looking for detailed ones.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>At a Glance</h3>
+    <ul class="pts">
+     <li><strong>Work:</strong> individual.</li>
+     <li><strong>Stages:</strong> two.</li>
+     <li><strong>Deliverables:</strong> three.</li>
+     <li><strong>Scale:</strong> 1/8&Prime; = 1&prime;-0&Prime;.</li>
+     <li><strong>Points:</strong> 500.</li>
+    </ul>
+   </div>
+  </div>
+  <div class="quiz" data-quiz="1"></div>
+ </section>
+
+ <!-- LEVEL 02: STUDENT LEARNING OUTCOMES -->
+ <section class="section level" data-level="2" hidden>
+  <p class="eyebrow">Level 02 of 08</p>
   <h2 class="sec-title">Student Learning Outcomes</h2>
   <hr class="sec-rule">
+  <p class="level-goal">Twelve outcomes in two frameworks. Each begins with the verb you will be assessed on.</p>
 
   <div class="slo-group">
    <p class="slo-group-label">Bloom&rsquo;s Taxonomy (2001)</p>
@@ -321,288 +485,323 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     </li>
    </ul>
   </div>
- </div>
-</section>
+  <div class="quiz" data-quiz="2"></div>
+ </section>
 
-<!-- SECTION 03: A WARNING BEFORE YOU BEGIN -->
-<section class="section dark" id="warning">
- <div class="reveal">
-  <p class="eyebrow">Section 03</p>
-  <h2 class="sec-title">A Warning Before You Begin</h2>
-  <hr class="sec-rule">
-  <p class="lead"><strong>Assignment 04 is built directly on the results of Assignment 03.</strong> Stage 1 inherits your block plan&rsquo;s geometry and allows for non-substantial edits and adjustments; Stage 2 exposes the logic by which the project becomes life- and fire-safe. A Block Plan with an unresolved egress path, a missing compartment line, or a mixed public&ndash;resident circulation will carry those problems into both stages.</p>
-  <div class="callout on-dark" style="margin-top:24px">If your Block Plan comes with deficiencies, <strong>fix them first.</strong> Students who begin A04 on a sub-optimal A03 Block Plan will, inevitably, do the work twice: once to draw a flawed document, and again to correct it. That is not a penalty; it is how the design process works.</div>
-
-  <h3 class="sub-head">The Main Objective Is to Produce Design Documents</h3>
-  <p class="lead">What must be produced in this assignment shows that the design is fully resolved. Walls with ratings, doors that swing correctly, furniture that proves the room works, fixtures with clearances. <strong>The documents must include notes and dashed clearances rather than dimensions.</strong> The basic FF&amp;E included is not for a contractor to build from, but as a reference for scale, proportion, and functionality, so don&rsquo;t waste time finding excessively detailed blocks or families to develop Floor Plans.</p>
-
-  <p class="pull-quote on-dark">Design Documents are a set that a client approves and a consultant coordinates against. Your job as an interior designer is to include all pertinent information so the project can proceed to a more definitive stage.</p>
- </div>
-</section>
-
-<!-- SECTION 04: OBJECTIVES & THE TOOLS -->
-<section class="section alt" id="objectives">
- <div class="reveal">
-  <p class="eyebrow">Section 04</p>
+ <!-- LEVEL 03: OBJECTIVES & TOOLS -->
+ <section class="section level" data-level="3" hidden>
+  <p class="eyebrow">Level 03 of 08</p>
   <h2 class="sec-title">Objectives &amp; The Tools</h2>
   <hr class="sec-rule">
-
-  <p class="instructions-label">Objectives</p>
-  <ol class="instruction-list" style="margin-bottom:44px">
-   <li><span>Translate a block plan into accurate, code-compliant interior design floor plans.</span></li>
-   <li><span>Draw partitions, openings, and doors that carry their code performance as drawn information.</span></li>
-   <li><span>Demonstrate spatial functionality through FF&amp;E, casework, and plumbing fixtures with real clearances.</span></li>
-   <li><span>Communicate compliance through room tags, clearances, and annotations rather than dimensions.</span></li>
-   <li><span>Translate the life-safety logic of the plan into a color-coded overlay that a reviewer could check.</span></li>
-   <li><span>Sustain the design concept and the user research from schematic zoning into a resolved design.</span></li>
-  </ol>
-
-  <p class="instructions-label">The Tools</p>
-  <ol class="instruction-list">
-   <li><span><strong>Your Block Plan</strong> from Assignment 03: corrected and every functional issue resolved.</span></li>
-   <li><span><strong>The Concept Statement</strong> your firm (team) produced in Assignment 02.</span></li>
-   <li><span><strong>The Primary and Secondary Source Research</strong> from Assignment 01, with the design insights and collective knowledge from the course&rsquo;s video repository.</span></li>
-   <li><span><strong>The Area Program and the code requirements</strong> from Assignment 03 remain unchanged and are now drawn and specified rather than diagrammed.</span></li>
-   <li><span>The project will be drawn using <strong>AutoCAD</strong> or modeled in <strong>Revit</strong>, as your instructor directs for your section.</span></li>
-   <li><div><strong>When using AutoCAD:</strong>
-    <ul class="sub-list">
-     <li>An AutoCAD base drawing will be provided with all the layers needed to develop the Design Documents, basic furniture blocks, dimensions, hatches, lettering, and 48&Prime;x36&Prime; layouts with title blocks. You must adhere to the content of this file, as it must be used as a template. No additional layers will be allowed to enter the file, so be sure to use the PURGE command to clear unwanted layers.</li>
-     <li>CTB files, one per Stage, will be provided to ensure accurate line widths and general graphic standards. Using layers not native to the provided template will cause issues when plotting.</li>
-     <li>The CTB files must be uploaded into the Plot Styles folder by using the PLOTTERMANAGER command and selecting the PLOT STYLES folder.</li>
+  <p class="level-goal">What the assignment asks you to do, what you bring to it, and the files you must work in.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>Objectives</h3>
+    <ul class="pts">
+     <li><strong>Translate</strong> a block plan into accurate, code-compliant interior design floor plans.</li>
+     <li><strong>Draw</strong> partitions, openings, and doors that carry their code performance as drawn information.</li>
+     <li><strong>Demonstrate</strong> spatial functionality through FF&amp;E, casework, and plumbing fixtures with real clearances.</li>
+     <li><strong>Communicate</strong> compliance through room tags, clearances, and annotations rather than dimensions.</li>
+     <li><strong>Translate</strong> the life-safety logic into a color-coded overlay a reviewer could check.</li>
+     <li><strong>Sustain</strong> the design concept and the user research from schematic zoning into a resolved design.</li>
     </ul>
-   </div></li>
-   <li><div><strong>When using Revit:</strong>
-    <ul class="sub-list">
-     <li>A Revit Project Template will be provided. It will include the corresponding View templates for both stages, all required Revit Families, and 48&Prime; x 36&Prime; Sheets with title blocks.</li>
+   </div>
+   <div class="brief-card">
+    <h3>What You Bring</h3>
+    <ul class="pts">
+     <li><strong>Your Block Plan</strong> from Assignment 03 &mdash; corrected, with every functional issue resolved.</li>
+     <li><strong>The Concept Statement</strong> your firm (team) produced in Assignment 02.</li>
+     <li><strong>The primary and secondary source research</strong> from Assignment 01, plus the course&rsquo;s video repository.</li>
+     <li><strong>The Area Program and the code requirements</strong> from Assignment 03. They remain unchanged; now they are drawn and specified, not diagrammed.</li>
+     <li><strong>Software:</strong> AutoCAD or Revit, as your instructor directs for your section.</li>
     </ul>
-   </div></li>
-  </ol>
- </div>
-</section>
-
-<!-- SECTION 05: STAGE 1 -->
-<section class="section warm" id="stage1">
- <div class="reveal">
-  <p class="eyebrow">Section 05</p>
-  <h2 class="sec-title">Stage 1 &middot; Interior Design Floor Plans</h2>
-  <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:40px">Sheet 1 &middot; First and Second Floors &middot; Scale <strong>1/8&Prime; = 1&prime;-0&Prime;</strong></p>
-
-  <details class="acc" open>
-<summary><span class="acc-letter">A</span><span class="acc-title">Walls &amp; Partitions</span><span class="acc-sub">thickness and rating</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li>Every wall in the project must be between <b>4&Prime; and 6&Prime; thick</b>. Walls &lt; 4&Prime; are not allowed.</li>
-<li><b>Fire-rated partitions must be at least 5&Prime;</b>. A 4&Prime; wall, for this project, cannot be rated.</li>
-<li>Per the project&rsquo;s fire-rating standard inherited from the Block Plan, <b>2-hour</b> fire-rated walls are required at <b>main hallways, assembly areas, egress stairs, janitor&rsquo;s closets, technical/mechanical rooms, and storage rooms</b>; <b>1-hour</b> fire-rated walls are required at <b>shared partitions and walls</b> elsewhere.</li>
-<li>A 5&Prime; or 6&Prime; wall <b>may or may not</b> be rated. You cannot read a wall&rsquo;s rating from its thickness, and neither can anyone else. It is why the rating has to be carried by <b>notes on this sheet and by color on Sheet 2</b>, not by the drawing of the wall itself.</li>
-<li>To add notes and specify wall assemblies that are fire-rated, refer to <b>USG Wall Assembly types</b>.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">B</span><span class="acc-title">Windows &amp; Glass Partitions</span><span class="acc-sub">glazing and fire rating</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li>Draw all exterior windows and interior glass partitions based on the activities occurring in the interior space.</li>
-<li>Interior glazing in a rated assembly must not be free of notes. If glass partitions are placed, they must include a fire rating if required (assembly spaces).</li>
-<li>To add notes and specify glass partitions that are fire-rated, refer to <b>Fireglass fire-rated products</b>.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">C</span><span class="acc-title">Doors</span><span class="acc-sub">swing, width, and clearance</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<p class="def">Draw every door with its swing, at the correct doorway-equivalent width, complying with the project and code requirements:</p>
-<ul class="checkitems">
-<li><b>42&Prime; minimum</b> at resident bedrooms (gurney access).</li>
-<li><b>36&Prime; minimum</b> elsewhere, with the leaf drawn at true width.</li>
-<li><b>Exit doors swing in the direction of egress.</b> Assembly doors swing out without intruding into the corridor.</li>
-<li>Interior doors project <b>no more than 7&Prime;</b> into a corridor.</li>
-<li><b>Barrier doors</b> at each compartment line: a pair at 42&Prime;, each swinging in the opposite direction from the other.</li>
-</ul>
-<p class="def">A door swing is not a graphic convention here. It is the drawing telling you whether the plan works.</p>
-<ul class="sub-list">
-<li>Inward-swinging doors always swing against a wall or a back surface, never into the space.</li>
-<li>Outward-swinging doors may not swing more than 7&Prime; into corridors, as they must not block egress paths.</li>
-<li>Make sure doors are placed at least 4&Prime; from a back wall.</li>
-<li>Doors must allow for a space of 12&Prime; from the push side and 18&Prime; from the pull side.</li>
-</ul>
-<ul class="sub-list nested">
-<li>Door pockets must be wider than the door opening to allow for these accommodations.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">D</span><span class="acc-title">FF&amp;E, Casework &amp; Fixed Systems</span><span class="acc-sub">at true size, no exceptions</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li><b>Fully furnished floor plans.</b> Use loose furniture, cabinetry, and fixed furniture systems (templates, blocks, or families) that establish location and prove the space functions.</li>
-<li>Every space in the program gets furnished, including the ones that are easy to skip: the country kitchens, the spa/bathing rooms, the classrooms, the student commons.</li>
-<li>Draw furniture at true size to the required 1/8&Prime; scale. Do not &ldquo;cheat&rdquo; and scale furniture to make the space &ldquo;work.&rdquo; Doing this constitutes lying to the client and final users: just because smaller furniture is drawn does not mean that real furniture will fit or that the space will function.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">E</span><span class="acc-title">Plumbing Fixtures</span><span class="acc-sub">true size, ADA clearances</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li>Draw all toilets, sinks, vanities, and showers <b>at true size with ADA-compliant clearances, drawn with dashed lines</b>. For reference, visit the <a href="https://www.access-board.gov/ada/guides/chapter-6-toilet-rooms/" target="_blank" rel="noopener">ADA Guide, Chapter 6: Toilet Rooms</a>.</li>
-<li><b>5&prime;-0&Prime; turning circle</b> in each accessible toilet room.</li>
-<li><b>Toilet centerline 18&Prime;</b> from the wall &mdash; 36&Prime; and 42&Prime; perpendicular grab bars attached to the wall, 56&Prime; x 60&Prime; clearance.</li>
-<li><b>Roll-in shower</b> with 30&Prime; &times; 60&Prime; clear space.</li>
-<li><b>Sinks</b> with 30&Prime; &times; 48&Prime; clear floor space in front.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">F</span><span class="acc-title">Clearances</span><span class="acc-sub">drawn general, noted specific</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li><b>Draw the general clearances.</b> Turning circles, clear floor spaces, maneuvering clearances at doors, and corridor widths.</li>
-<li><b>Note the details.</b> Grab bar heights, knee and toe clearances, mounting heights, and reach ranges cannot be drawn at an 1/8&Prime; scale.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">G</span><span class="acc-title">Room Tags</span><span class="acc-sub">name, number, area</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<ul class="checkitems">
-<li>Every space carries a tag with: <b>Space Name</b>, <b>Space Number</b>, <b>Area in SF</b>.</li>
-<li>Use a <b>floor-prefixed numbering convention</b>: 101, 102, 103 on the First Floor; 201, 202 on the Second.</li>
-</ul>
-</div>
-  </details>
-
-  <details class="acc">
-<summary><span class="acc-letter">H</span><span class="acc-title">Annotations &amp; Notes</span><span class="acc-sub">everything the drawing cannot show</span><span class="acc-chev" aria-hidden="true">+</span></summary>
-<div class="acc-body">
-<p class="def">Notes carry everything the drawing cannot. At minimum:</p>
-<ul class="checkitems">
-<li><b>Code compliance notes</b>: under-counter and knee clearances, mounting heights.</li>
-<li><b>Partition notes</b>: which walls are fire-rated and their rating.</li>
-<li><b>General notes</b>: occupancy classification key.</li>
-</ul>
-<ul class="sub-list nested">
-<li>Anything a reviewer would otherwise have to guess.</li>
-</ul>
-</div>
-  </details>
-
- </div>
-</section>
-
-<!-- SECTION 06: STAGE 2 -->
-<section class="section alt" id="stage2">
- <div class="reveal">
-  <p class="eyebrow">Section 06</p>
-  <h2 class="sec-title">Stage 2 &middot; Fire &amp; Life-Safety Overlay Plans</h2>
-  <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:24px">Sheet 2 &middot; First and Second Floors &middot; <strong>1/8&Prime; = 1&prime;-0&Prime;</strong></p>
-  <p class="lead">Same plans, different job. Stage 1 says what the building <em>is</em>. Stage 2 says what happens when something goes wrong, and people need to evacuate.</p>
-
-  <div class="callout" style="margin-top:28px">
-   <strong>The underlay.</strong> Your Stage 1 floor plans, screened to halftone (grey scale) to present, legible, and clearly background. Everything you add sits on top in full weight and color. This is a drawing-hierarchy exercise as much as a code exercise. The reviewer needs the building as context and the life-safety information as content. If your underlay competes with your overlay, the sheet has failed regardless of its contents.
+   </div>
+   <div class="brief-card">
+    <h3>When Using AutoCAD</h3>
+    <ul class="pts">
+     <li>A <strong>base drawing</strong> is provided: all layers, basic furniture blocks, dimensions, hatches, lettering, and 48&Prime; &times; 36&Prime; layouts with title blocks.</li>
+     <li>Use it <strong>as a template</strong> and adhere to its content.</li>
+     <li><strong>No additional layers</strong> are allowed. Use the <strong>PURGE</strong> command to clear unwanted layers.</li>
+     <li><strong>CTB files, one per Stage,</strong> are provided for accurate line widths and graphic standards.</li>
+     <li>Layers that are not native to the template cause plotting issues.</li>
+     <li>Load the CTB files with the <strong>PLOTTERMANAGER</strong> command, into the <strong>Plot Styles</strong> folder.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>When Using Revit</h3>
+    <ul class="pts">
+     <li>A <strong>Revit Project Template</strong> is provided.</li>
+     <li>It includes the <strong>View Templates for both stages</strong>.</li>
+     <li>It includes all required Revit Families.</li>
+     <li>It includes 48&Prime; &times; 36&Prime; Sheets with title blocks.</li>
+    </ul>
+   </div>
   </div>
+  <div class="quiz" data-quiz="3"></div>
+ </section>
 
-  <h3 class="sub-head">What Must Appear</h3>
-  <ul class="checkitems">
-   <li><b>Occupancy data</b> &mdash; in a color-coded legend on the sheet. Occupancy classification per zone. A reduced-scale diagram in the same sheet that uses color conventions to specify occupancy classification for specific and general areas of the building.</li>
-   <li><b>Rated construction</b> &mdash; color-coded by rating. <b>1-hour and 2-hour</b> fire barriers and wall types are differentiated by rating, matching the standard established on Sheet 1 (2-hour at main hallways, assembly areas, egress stairs, janitor&rsquo;s closets, technical/mechanical rooms, and storage rooms; 1-hour at shared partitions and walls elsewhere). This is where the rated/non-rated distinction becomes visible.</li>
-   <li><b>Egress and Exit-access travel path</b> to the most remote point, dimensioned.
-    <ul class="sub-list">
-     <li>Direction-of-travel arrows</li>
-     <li>Dead-end corridors with lengths</li>
-     <li>Egress corridor widths</li>
-     <li>Compartment doors</li>
+ <!-- LEVEL 04: STAGE 1 - CONSTRUCTION -->
+ <section class="section level" data-level="4" hidden>
+  <p class="eyebrow">Level 04 of 08</p>
+  <h2 class="sec-title">Stage 1 &middot; Walls, Windows &amp; Doors</h2>
+  <hr class="sec-rule">
+  <p class="level-goal">Sheet 1 &middot; Interior Design Floor Plans &middot; First, Second, and Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;. Requirements for walls, windows, and doors.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>A &middot; Walls &amp; Partitions</h3>
+    <ul class="pts">
+     <li>Draw every wall between <strong>4&Prime; and 6&Prime; thick</strong>. Walls under 4&Prime; are not allowed.</li>
+     <li>Draw fire-rated partitions <strong>at least 5&Prime; thick</strong>. A 4&Prime; wall cannot be rated.</li>
+     <li>Use <strong>2-hour walls</strong> at main hallways, assembly areas, egress stairs, janitor&rsquo;s closets, technical / mechanical rooms, and storage rooms.</li>
+     <li>Use <strong>1-hour walls</strong> at shared partitions and walls elsewhere.</li>
+     <li>Thickness does not show the rating. A 5&Prime; or 6&Prime; wall may or may not be rated.</li>
+     <li>Show the rating with <strong>notes on Sheet 1</strong> and with <strong>color on Sheet 2</strong>.</li>
+     <li>Specify fire-rated wall assemblies using <strong>USG Wall Assembly types</strong>.</li>
     </ul>
-   </li>
-   <li><b>Detection &amp; alarm.</b>
-    <ul class="sub-list">
-     <li>Smoke detectors</li>
-     <li>Manual pull stations</li>
+   </div>
+   <div class="brief-card">
+    <h3>B &middot; Windows &amp; Glass Partitions</h3>
+    <ul class="pts">
+     <li>Draw all exterior windows and interior glass partitions. <strong>Base them on the activities</strong> in each space.</li>
+     <li><strong>Add notes</strong> to all interior glazing in a rated assembly.</li>
+     <li>Give glass partitions a <strong>fire rating where required</strong> (assembly spaces).</li>
+     <li>Specify fire-rated glass using <strong>Fireglass fire-rated products</strong>.</li>
     </ul>
-   </li>
-   <li><b>Notification</b> &mdash; fire alarms.</li>
-   <li><b>Suppression &amp; response.</b>
-    <ul class="sub-list">
-     <li>Fire extinguishers</li>
-     <li>Fire department connection</li>
+   </div>
+   <div class="brief-card">
+    <h3>C &middot; Doors: Width &amp; Swing</h3>
+    <ul class="pts">
+     <li>Draw every door with its swing, at its true width.</li>
+     <li>Resident bedrooms: <strong>42&Prime; minimum</strong> (gurney access).</li>
+     <li>All other doors: <strong>36&Prime; minimum</strong>.</li>
+     <li>Swing exit doors <strong>in the direction of egress</strong>.</li>
+     <li>Swing assembly doors out, without intruding into the corridor.</li>
+     <li>At each compartment line, draw <strong>barrier doors</strong>: a pair at 42&Prime;, each swinging in the opposite direction from the other.</li>
     </ul>
-   </li>
-   <li><b>Signage &amp; lighting.</b>
-    <ul class="sub-list">
-     <li>Exit signs and directional exit signs</li>
-     <li>Emergency egress lighting</li>
+   </div>
+   <div class="brief-card">
+    <h3>C &middot; Doors: Clearance</h3>
+    <ul class="pts">
+     <li>Swing inward-opening doors <strong>against a wall or back surface</strong>, not into the space.</li>
+     <li>Outward-swinging doors may project <strong>no more than 7&Prime;</strong> into a corridor.</li>
+     <li>Place doors <strong>at least 4&Prime;</strong> from a back wall.</li>
+     <li>Leave <strong>12&Prime; on the push side</strong> and <strong>18&Prime; on the pull side</strong>.</li>
+     <li>Make door pockets wider than the door opening to fit these clearances.</li>
     </ul>
-   </li>
-  </ul>
+   </div>
+  </div>
+  <div class="quiz" data-quiz="4"></div>
+ </section>
 
-  <h3 class="sub-head">Legends &amp; Symbology</h3>
-  <p class="lead">The color code scheme will result from applying the corresponding CTB (in AutoCAD) or the correct View Template (in Revit). This will guarantee a <strong>consistent color system across both floors</strong>.</p>
-  <p class="lead" style="margin-top:14px">Use the conventional symbology provided in the AutoCAD and Revit template files. <strong>Do not invent symbols.</strong></p>
+ <!-- LEVEL 05: STAGE 1 - FUNCTION -->
+ <section class="section level" data-level="5" hidden>
+  <p class="eyebrow">Level 05 of 08</p>
+  <h2 class="sec-title">Stage 1 &middot; Furnishing, Fixtures &amp; Tags</h2>
+  <hr class="sec-rule">
+  <p class="level-goal">Sheet 1, continued. Requirements for furniture, fixtures, clearances, room tags, and notes.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>D &middot; FF&amp;E, Casework &amp; Fixed Systems</h3>
+    <ul class="pts">
+     <li><strong>Furnish every floor plan fully.</strong></li>
+     <li>Use loose furniture, cabinetry, and fixed furniture systems (templates, blocks, or families).</li>
+     <li>Furnish <strong>every space</strong> in the program. Do not skip any.</li>
+     <li>Draw all furniture at <strong>true size</strong>, at 1/8&Prime; scale.</li>
+     <li><strong>Do not reduce the size of furniture</strong> to make a space work.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>E &middot; Plumbing Fixtures</h3>
+    <ul class="pts">
+     <li>Draw all toilets, sinks, vanities, and showers at true size.</li>
+     <li>Draw their <strong>ADA clearances with dashed lines</strong>.</li>
+     <li>Draw a <strong>5&prime;-0&Prime; turning circle</strong> in each accessible toilet room.</li>
+     <li><strong>Toilets:</strong> centerline 18&Prime; from the wall; 36&Prime; and 42&Prime; perpendicular grab bars; 56&Prime; &times; 60&Prime; clearance.</li>
+     <li><strong>Roll-in showers:</strong> 30&Prime; &times; 60&Prime; clear space.</li>
+     <li><strong>Sinks:</strong> 30&Prime; &times; 48&Prime; clear floor space in front.</li>
+     <li>Reference: <a href="https://www.access-board.gov/ada/guides/chapter-6-toilet-rooms/" target="_blank" rel="noopener">ADA Guide, Chapter 6: Toilet Rooms</a>.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>F &middot; Clearances</h3>
+    <ul class="pts">
+     <li><strong>Draw these:</strong> turning circles, clear floor spaces, maneuvering clearances at doors, and corridor widths.</li>
+     <li><strong>Write these as notes:</strong> grab bar heights, knee and toe clearances, mounting heights, and reach ranges.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>G &middot; Room Tags</h3>
+    <ul class="pts">
+     <li>Tag every space with <strong>Space Name, Space Number, and Area in SF</strong>.</li>
+     <li>Start each room number with the <strong>floor number</strong>.</li>
+     <li>First Floor: 101, 102, 103.</li>
+     <li>Second Floor: 201, 202, 203.</li>
+     <li>Third Floor: 301, 302, 303.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>H &middot; Annotations &amp; Notes</h3>
+    <ul class="pts">
+     <li>Add <strong>code compliance notes</strong>: under-counter and knee clearances, mounting heights.</li>
+     <li>Add <strong>partition notes</strong>: which walls are fire-rated, and their rating.</li>
+     <li>Add <strong>general notes</strong>: the occupancy classification key.</li>
+     <li>Add a note for any information the drawing does not show.</li>
+    </ul>
+   </div>
+  </div>
+  <div class="quiz" data-quiz="5"></div>
+ </section>
 
-  <p class="pull-quote">A life-safety plan is read by someone who did not design the building and has no interest in your intentions. Draw for that person.</p>
- </div>
-</section>
+ <!-- LEVEL 06: STAGE 2 -->
+ <section class="section level" data-level="6" hidden>
+  <p class="eyebrow">Level 06 of 08</p>
+  <h2 class="sec-title">Stage 2 &middot; Fire &amp; Life-Safety Overlay</h2>
+  <hr class="sec-rule">
+  <p class="level-goal">Sheet 2 &middot; Fire &amp; Life-Safety Overlay Plans &middot; First, Second, and Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;. You draw the fire and life-safety information over your Stage 1 plans.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>The Underlay</h3>
+    <ul class="pts">
+     <li>Use your <strong>Stage 1 floor plans</strong> as the underlay.</li>
+     <li>Screen them to <strong>halftone</strong> (grey scale).</li>
+     <li>Draw all life-safety information on top, in <strong>full line weight and color</strong>.</li>
+     <li>The underlay must stay legible and must be lighter than the overlay.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Occupancy &amp; Rated Construction</h3>
+    <ul class="pts">
+     <li>Add a <strong>color-coded legend</strong> with the occupancy classification of each zone.</li>
+     <li>Add a <strong>reduced-scale diagram</strong> on the same sheet that color-codes occupancy by area.</li>
+     <li><strong>Color-code rated walls by rating:</strong> 1-hour and 2-hour.</li>
+     <li>Match the ratings set on Sheet 1.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Egress</h3>
+    <ul class="pts">
+     <li>Draw the <strong>egress and exit-access travel path to the most remote point</strong>. Dimension it.</li>
+     <li>Add direction-of-travel arrows.</li>
+     <li>Mark dead-end corridors and their lengths.</li>
+     <li>Mark egress corridor widths.</li>
+     <li>Mark compartment doors.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Devices</h3>
+    <ul class="pts">
+     <li>Locate all of these on the plans.</li>
+     <li><strong>Detection &amp; alarm:</strong> smoke detectors and manual pull stations.</li>
+     <li><strong>Notification:</strong> fire alarms.</li>
+     <li><strong>Suppression &amp; response:</strong> fire extinguishers and the fire department connection.</li>
+     <li><strong>Signage &amp; lighting:</strong> exit signs, directional exit signs, and emergency egress lighting.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Legends &amp; Symbology</h3>
+    <ul class="pts">
+     <li>Apply the provided <strong>CTB</strong> (AutoCAD) or <strong>View Template</strong> (Revit). It sets the color code.</li>
+     <li>Use the same color system on all floors.</li>
+     <li>Use only the symbols provided in the template files. <strong>Do not create your own symbols.</strong></li>
+    </ul>
+   </div>
+  </div>
+  <div class="quiz" data-quiz="6"></div>
+ </section>
 
-<!-- SECTION 07: DELIVERABLES -->
-<section class="section warm" id="deliverables">
- <div class="reveal">
-  <p class="eyebrow">Section 07</p>
+ <!-- LEVEL 07: DELIVERABLES -->
+ <section class="section level" data-level="7" hidden>
+  <p class="eyebrow">Level 07 of 08</p>
   <h2 class="sec-title">Deliverables</h2>
   <hr class="sec-rule">
-
+  <p class="level-goal">Submit two sheets and one statement. All work is individual.</p>
   <div class="deliverables-stack">
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 01 &middot; First &amp; Second Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-num">Deliverable 01 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
     <div class="deliverable-title">Sheet 1 &mdash; Interior Design Floor Plans</div>
-    <div class="deliverable-body">
-     <p>First and Second Floors at 1/8&Prime; = 1&prime;-0&Prime;, on the course 48&Prime; &times; 36&Prime; template. Walls, windows, and glass partitions, doors with swings, FF&amp;E and casework, plumbing fixtures with clearances, room tags, and annotations.</p>
-    </div>
+    <ul class="pts">
+     <li>Draw the First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;.</li>
+     <li>Use the course <strong>48&Prime; &times; 36&Prime; template</strong>.</li>
+     <li>Include walls, windows and glass partitions, doors with swings, FF&amp;E and casework, plumbing fixtures with clearances, room tags, and annotations.</li>
+    </ul>
    </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 02 &middot; First &amp; Second Floors &middot; Same Template</div>
+    <div class="deliverable-num">Deliverable 02 &middot; First, Second &amp; Third Floors &middot; Same Template</div>
     <div class="deliverable-title">Sheet 2 &mdash; Fire &amp; Life-Safety Overlay Plans</div>
-    <div class="deliverable-body">
-     <p>First and Second Floors at 1/8&Prime; = 1&prime;-0&Prime;, same template. Halftone Stage 1 underlay with color-coded life-safety overlay, legends, and notes.</p>
-    </div>
+    <ul class="pts">
+     <li>Draw the First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;, on the same template.</li>
+     <li>Use the Stage 1 plans as a <strong>halftone underlay</strong>.</li>
+     <li>Add the <strong>color-coded life-safety overlay</strong>, the legends, and the notes.</li>
+    </ul>
    </div>
 
    <div class="deliverable-card">
     <div class="deliverable-num">Deliverable 03 &middot; With the Plans</div>
     <div class="deliverable-title">Design Statement</div>
-    <div class="deliverable-body">
-     <p>A comprehensive text explaining <strong>how the design concept remains evident</strong> at this level of resolution, and <strong>how your interior design decisions are reflected</strong> in the detailed plan.</p>
-     <p>This is <strong>not</strong> a summary of what you drew; it is an account of <em>why</em> the interior design is what it is, connecting the drawing back to the Concept Statement and the collective research of First and Second Sources from Assignments 01 and 02.</p>
-    </div>
+    <ul class="pts">
+     <li>Write a text that explains <strong>how the design concept remains evident</strong> in the detailed plans.</li>
+     <li>Explain <strong>how your interior design decisions appear</strong> in the plans.</li>
+     <li>Explain <strong>why</strong> you made each decision. <strong>Do not summarize what you drew.</strong></li>
+     <li>Connect the plans to the Concept Statement and to the research from Assignments 01 and 02.</li>
+    </ul>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Submission</div>
+    <div class="deliverable-title">How to Hand It In</div>
+    <ul class="pts">
+     <li>Work <strong>individually</strong>.</li>
+     <li>Submit both sheets and the Design Statement.</li>
+     <li>Submit <strong>physically or digitally</strong>, as your instructor directs for your section.</li>
+     <li>Find deadlines and review dates on the <strong>course syllabus</strong>.</li>
+    </ul>
    </div>
 
   </div>
+  <div class="quiz" data-quiz="7"></div>
+ </section>
 
-  <p class="instructions-label" style="margin-top:40px">Submission</p>
-  <div class="callout">Individual work. Both sheets and the Design Statement, per your instructor&rsquo;s direction for your section, may be submitted physically or digitally. Deadlines and any review dates are on the <strong>course syllabus</strong>.</div>
- </div>
-</section>
-
-<!-- SECTION 08: RUBRIC -->
-<section class="section alt" id="rubric">
- <div class="reveal">
-  <p class="eyebrow">Section 08</p>
+ <!-- LEVEL 08: RUBRIC -->
+ <section class="section level" data-level="8" hidden>
+  <p class="eyebrow">Level 08 of 08</p>
   <h2 class="sec-title">Evaluation Rubric</h2>
   <hr class="sec-rule">
-  <p class="rubric-intro">The assignment is evaluated across five criteria totaling <strong>500 points</strong>. Spatial Translation, Functional Resolution, and the Fire &amp; Life-Safety Overlay each carry the greatest weight, as they are the core technical work of the Design Documents.</p>
-
-  <div style="overflow-x:auto">
-   <table class="rubric">
+  <p class="level-goal">How the 500 points are distributed across five criteria and three bands.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>Five Criteria &middot; 500 Points</h3>
+    <ul class="pts">
+     <li>Spatial Translation &amp; Code-Compliant Construction: <strong>125 pts</strong></li>
+     <li>Functional Resolution &amp; Accessibility: <strong>125 pts</strong></li>
+     <li>Fire &amp; Life-Safety Overlay Documentation: <strong>125 pts</strong></li>
+     <li>Technical Standards &amp; Drawing Discipline: <strong>75 pts</strong></li>
+     <li>Concept Continuity &amp; Design Statement: <strong>50 pts</strong></li>
+     <li>The three 125-point criteria carry the greatest weight.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Three Bands</h3>
+    <ul class="pts">
+     <li><strong>Excellent:</strong> 452&ndash;500 pts overall.</li>
+     <li><strong>Proficient:</strong> 352&ndash;447 pts overall.</li>
+     <li><strong>Developing:</strong> 0&ndash;347 pts overall.</li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>Graded as Developing</h3>
+    <ul class="pts">
+     <li><strong>Functional Resolution:</strong> furniture is omitted or reduced in size to fit.</li>
+     <li><strong>Technical Standards:</strong> foreign layers are added or the plot styles are ignored.</li>
+     <li><strong>Concept Continuity:</strong> the statement summarizes what was drawn instead of why.</li>
+    </ul>
+   </div>
+  </div>
+  <details class="fold">
+   <summary>Open the full rubric</summary>
+   <div class="fold-body">
+    <table class="rubric">
     <thead>
      <tr>
       <th style="width:20%">Criterion</th>
@@ -717,9 +916,35 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 
     </tbody>
    </table>
+   </div>
+  </details>
+  <div class="quiz" data-quiz="8"></div>
+ </section>
+
+ <!-- RESULTS -->
+ <section class="section level" data-level="9" hidden>
+  <p class="eyebrow">Results</p>
+  <h2 class="sec-title">All Eight Levels Cleared</h2>
+  <hr class="sec-rule">
+  <p class="level-goal"><strong>Take a screenshot of this Results section and submit it to your teacher.</strong> Your teacher will then give you a password. Enter it at the top of this page to review every level later without retaking the trivia.</p>
+  <div class="brief">
+   <div class="brief-card">
+    <h3>Your Run &middot; Assignment 04</h3>
+    <ul class="pts" id="done-summary"></ul>
+   </div>
+   <div class="brief-card">
+    <h3>Next Moves</h3>
+    <ul class="pts">
+     <li>Fix any deficiency in your Assignment 03 Block Plan before you start.</li>
+     <li>Confirm with your instructor whether your section works in AutoCAD or Revit.</li>
+     <li>Get the provided template, and the CTB files if you are in AutoCAD.</li>
+     <li>Check the course syllabus for deadlines and review dates.</li>
+    </ul>
+   </div>
   </div>
- </div>
-</section>
+ </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -728,8 +953,251 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 </footer>
 
 <script>
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ===== TRIVIA GAME =====
+   a: index of the correct option (an array of indexes when multi:true).
+   Options are shuffled each time a checkpoint is drawn. */
+const LEVELS=[
+ {n:1,name:"Overview"},
+ {n:2,name:"Learning Outcomes"},
+ {n:3,name:"Objectives & Tools"},
+ {n:4,name:"Walls & Doors"},
+ {n:5,name:"Furnishing & Tags"},
+ {n:6,name:"Life-Safety Overlay"},
+ {n:7,name:"Deliverables"},
+ {n:8,name:"Rubric"}
+];
+const QUIZ={
+ 1:[
+  {q:"What changes between Assignment 03 and Assignment 04?",opts:["The Level of Detail (LOD) increases: the scheme is now drawn as resolved rooms, walls, and furniture","The area program is replaced with a new one","The drawing scale changes from 1/8″ to 1/4″","The work moves from individual back to the firm (team)"],a:0},
+  {q:"Your Assignment 03 Block Plan has an unresolved egress path. What do you do?",opts:["Fix it first, before starting Assignment 04","Start Assignment 04 and correct it during Stage 2","Leave it; Assignment 04 is graded separately","Hide it under the halftone underlay"],a:0},
+  {q:"What does Stage 1 inherit from the Block Plan, and how much can it change?",opts:["Its geometry, with non-substantial edits and adjustments","Nothing; Stage 1 starts from a blank sheet","Only its room names; the layout is redesigned","Its geometry, which cannot be touched at all"],a:0},
+  {q:"How do the Design Documents communicate compliance?",opts:["With notes and dashed clearances rather than dimensions","With a fully dimensioned construction set","With a written report instead of drawings","With rendered perspectives of each room"],a:0},
+  {q:"What is the FF&E on these plans for?",opts:["A reference for scale, proportion, and functionality","A set a contractor builds and purchases from","Decoration that makes the sheet look complete","A final furniture specification with manufacturers"],a:0}
+ ],
+ 2:[
+  {q:"“A coordinated set of floor plans that sustain the concept and the research behind it” belongs to which Bloom level?",opts:["Create","Remember","Apply","Evaluate"],a:0},
+  {q:"Under “Understand”, what carries the drawn information that defines functionality and code compliance?",opts:["Partitions, openings, and doors","Finishes, colors, and lighting","Title blocks, sheet numbers, and borders","Renderings, mood boards, and diagrams"],a:0},
+  {q:"Under “Analyze”, when do the conflicts in the block plan’s inherited logic appear?",opts:["Once walls, doors, and furniture are drawn at true size","Once the sheet is printed in color","Once the Design Statement is written","Once the rubric is applied"],a:0},
+  {q:"Under the CIDA / NASAD outcome “Demonstrate”, how is spatial functionality shown?",opts:["Through FF&E, casework, and plumbing fixtures drawn at true size","Through a written description of each room","Through the color-coded occupancy legend","Through the wall thickness alone"],a:0},
+  {q:"The outcome “Communicate” relies on which set of conventions?",opts:["Templates, layers, plot styles, tags, legends, notes, and graphic hierarchy","Freehand sketches, collages, and mood boards","Budgets, schedules, and contracts","Photographs, videos, and interviews"],a:0}
+ ],
+ 3:[
+  {q:"Which software do you use?",opts:["AutoCAD or Revit, as your instructor directs for your section","Any software you prefer","Hand drafting only","SketchUp for Stage 1 and AutoCAD for Stage 2"],a:0},
+  {q:"In AutoCAD, what is the rule about layers?",opts:["No additional layers are allowed; use PURGE to clear unwanted ones","Add as many layers as you need, with clear names","Put everything on layer 0","Create one new layer per room"],a:0},
+  {q:"How many CTB files are provided, and what are they for?",opts:["One per Stage, to ensure accurate line widths and graphic standards","One for the whole assignment, to set the sheet size","One per floor, to number the rooms","None; you create your own plot style"],a:0},
+  {q:"How do you load the CTB files in AutoCAD?",opts:["Use the PLOTTERMANAGER command and place them in the Plot Styles folder","Use the PURGE command and place them in the template folder","Drag them onto the drawing as blocks","Attach them as external references (XREF)"],a:0},
+  {q:"What sheet size do the provided layouts and sheets use?",opts:["48″ × 36″, with title blocks","24″ × 36″, with title blocks","11″ × 17″, without title blocks","36″ × 24″, without title blocks"],a:0}
+ ],
+ 4:[
+  {q:"How thick must every wall in the project be?",opts:["Between 4″ and 6″","Between 2″ and 4″","Exactly 5″","Between 6″ and 8″"],a:0},
+  {q:"What is the minimum thickness of a fire-rated partition?",opts:["5″","4″","6″","8″"],a:0},
+  {q:"How is a wall’s fire rating communicated?",opts:["By notes on Sheet 1 and by color on Sheet 2","By the thickness of the wall as drawn","By a hatch pattern inside every wall","It is not communicated on the drawings"],a:0},
+  {q:"How are barrier doors drawn at each compartment line?",opts:["A pair at 42″, each swinging in the opposite direction from the other","A single 36″ door swinging into the corridor","A pair at 36″, both swinging the same way","A sliding door with no swing"],a:0},
+  {q:"How much space must a door allow on each side?",opts:["12″ on the push side and 18″ on the pull side","18″ on the push side and 12″ on the pull side","7″ on both sides","4″ on the push side and 36″ on the pull side"],a:0}
+ ],
+ 5:[
+  {q:"A room only “works” if you draw the furniture smaller than it really is. What do you do?",opts:["Keep the furniture at true size; reducing its size is not allowed","Scale the furniture down so the plan reads clearly","Leave that room unfurnished","Remove the furniture and add a note saying it fits"],a:0},
+  {q:"How are ADA clearances at plumbing fixtures drawn?",opts:["With dashed lines, around fixtures at true size","With solid heavy lines, like walls","They are written in notes only, never drawn","With a color fill from the Stage 2 CTB"],a:0},
+  {q:"What clear floor space is required in front of a sink?",opts:["30″ × 48″","30″ × 60″","56″ × 60″","18″ × 36″"],a:0},
+  {q:"Which of these is noted rather than drawn at 1/8″ scale?",opts:["Grab bar and mounting heights","Turning circles","Corridor widths","Clear floor spaces"],a:0},
+  {q:"What does a room tag carry, and how is a Third Floor room numbered?",opts:["Space Name, Space Number, and Area in SF; numbered 301, 302…","Space Name only; numbered 1, 2, 3…","Space Name and occupant load; numbered 103, 203, 303…","Space Number and fire rating; numbered A, B, C…"],a:0}
+ ],
+ 6:[
+  {q:"What does Stage 2 add to the Stage 1 plans?",opts:["Fire and life-safety information, drawn in color over the Stage 1 plans","Construction dimensions for every wall","Furniture, casework, and plumbing fixtures","A second design option for each floor"],a:0},
+  {q:"What is the underlay on Sheet 2?",opts:["Your Stage 1 floor plans, screened to halftone (grey scale)","A blank sheet with only the building outline","The Assignment 03 Block Plan in full color","The Stage 1 plans at full weight and color"],a:0},
+  {q:"How is the egress and exit-access travel path shown?",opts:["To the most remote point, dimensioned","From the main entrance to the lobby only","As a note in the Design Statement","To the nearest room door, without dimensions"],a:0},
+  {q:"Where does the color code on Sheet 2 come from?",opts:["The provided CTB (AutoCAD) or View Template (Revit)","Colors you choose to match your concept","The colors of the Mood Environments","A different palette for each floor"],a:0},
+  {q:"Which symbols do you use for life-safety devices?",opts:["The conventional symbology provided in the template files","Symbols you design for this project","Any symbols found online","Text labels only, with no symbols"],a:0}
+ ],
+ 7:[
+  {q:"What are the three deliverables?",opts:["Sheet 1 (Interior Design Floor Plans), Sheet 2 (Fire & Life-Safety Overlay Plans), and the Design Statement","Sheet 1, a furniture schedule, and a material board","The Block Plan, the Compliance Check, and the Design Statement","Sheet 1, Sheet 2, and a rendered perspective"],a:0},
+  {q:"Which floors appear on each sheet, and at what scale?",opts:["First, Second, and Third Floors at 1/8″ = 1′-0″","First Floor only at 1/4″ = 1′-0″","First and Second Floors at 1/16″ = 1′-0″","Each floor at a different scale"],a:0},
+  {q:"What does Sheet 2 consist of?",opts:["A halftone Stage 1 underlay with a color-coded life-safety overlay, legends, and notes","A full-color copy of Sheet 1 with dimensions added","A written code report with no drawings","Enlarged plans of the toilet rooms"],a:0},
+  {q:"What is the Design Statement?",opts:["An explanation of why you made your design decisions, connected to the Concept Statement and the research","A summary of everything you drew","A list of the layers and plot styles you used","A schedule of rooms with their areas"],a:0},
+  {q:"Where are the deadlines and review dates?",opts:["On the course syllabus","On the title block of the template","In the CTB files","On Sheet 2’s legend"],a:0}
+ ],
+ 8:[
+  {q:"Which three criteria carry the greatest weight?",multi:true,opts:["Spatial Translation & Code-Compliant Construction","Functional Resolution & Accessibility","Fire & Life-Safety Overlay Documentation","Technical Standards & Drawing Discipline","Concept Continuity & Design Statement"],a:[0,1,2]},
+  {q:"How many points is Technical Standards & Drawing Discipline worth?",opts:["75","125","50","100"],a:0},
+  {q:"How many points is Concept Continuity & Design Statement worth?",opts:["50","75","125","25"],a:0},
+  {q:"What overall score falls in the Excellent band?",opts:["452–500 pts","352–447 pts","400–500 pts","475–500 pts"],a:0},
+  {q:"A file with foreign layers that ignores the plot styles falls into which band for Technical Standards & Drawing Discipline?",opts:["Developing","Proficient","Excellent","It is not graded"],a:0}
+ ]
+};
+
+const TOTAL=LEVELS.length, DONE=TOTAL+1, KEY="ctd325-a04-trivia-v1";
+let state={passed:[],attempts:{},current:1,review:false,doneAt:null};
+function loadState(){
+ try{
+  const s=JSON.parse(localStorage.getItem(KEY)||"null");
+  if(s&&Array.isArray(s.passed)){state.passed=s.passed.filter(n=>QUIZ[n]);state.attempts=s.attempts||{};state.current=Number(s.current)||1;state.review=!!s.review;state.doneAt=s.doneAt||null;}
+ }catch(e){}
+}
+function saveState(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+function cleared(){let c=0;while(state.passed.includes(c+1))c++;return c;}
+function unlocked(n){return n>=1&&(n<=cleared()+1||(state.review&&n<=TOTAL));}
+function pad(n){return String(n).padStart(2,"0");}
+function levelName(n){return n===DONE?"your results":"Level "+pad(n)+": "+LEVELS[n-1].name;}
+function mk(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+function shuffled(len){const a=[...Array(len).keys()];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function renderStepper(){
+ const ol=document.getElementById("stepper");ol.innerHTML="";
+ LEVELS.concat([{n:DONE,name:"Results"}]).forEach(l=>{
+  const li=mk("li"),b=mk("button","step-btn");b.type="button";
+  const open=unlocked(l.n),done=state.passed.includes(l.n);
+  if(done)b.classList.add("done");
+  if(l.n===state.current){b.classList.add("current");b.setAttribute("aria-current","step");}
+  b.disabled=!open;
+  b.title=(l.n===DONE?"Results":"Level "+pad(l.n)+": "+l.name)+(open?(done?" (cleared)":""):" (locked)");
+  b.appendChild(mk("span","step-n",l.n===DONE?"★":pad(l.n)));
+  b.appendChild(mk("span","step-name",l.name));
+  b.addEventListener("click",()=>show(l.n,true));
+  li.appendChild(b);ol.appendChild(li);
+ });
+}
+function renderBar(){
+ const c=cleared();
+ document.getElementById("bar-level").textContent=state.current===DONE?"Results":"Level "+pad(state.current)+" of "+pad(TOTAL)+" · "+LEVELS[state.current-1].name;
+ document.getElementById("bar-count").textContent=state.review&&c<TOTAL?"Review mode · all levels open":c+" of "+TOTAL+" cleared";
+ document.getElementById("bar-fill").style.width=(c/TOTAL*100)+"%";
+ const sb=document.getElementById("start-btn"),next=Math.min(c+1,DONE);
+ sb.textContent=c===0?"Start Level 01":(next===DONE?"See your results":"Resume Level "+pad(next));
+ renderGate();
+}
+function show(n,scroll){
+ if(!unlocked(n))n=Math.min(cleared()+1,DONE);
+ state.current=n;saveState();
+ document.querySelectorAll(".level").forEach(s=>{s.hidden=Number(s.dataset.level)!==n;});
+ renderStepper();renderBar();
+ if(n===DONE)renderDone();else renderQuiz(n);
+ if(scroll){
+  document.getElementById("game").scrollIntoView();
+  const h=document.querySelector(".level:not([hidden]) .sec-title");
+  if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}
+ }
+}
+function renderQuiz(n){
+ const box=document.querySelector('.quiz[data-quiz="'+n+'"]'),qs=QUIZ[n],done=state.passed.includes(n);
+ box.innerHTML="";
+ if(state.review&&!done){reviewNote(n,box);return;}
+ box.appendChild(mk("h3","quiz-title","Checkpoint "+pad(n)));
+ box.appendChild(mk("p","quiz-rule",qs.length+" questions · "+qs.length+" of "+qs.length+" correct unlocks "+levelName(n+1)));
+ qs.forEach((q,qi)=>{
+  const g=mk("div","q"),tid="l"+n+"q"+qi+"t";
+  g.setAttribute("role","group");g.setAttribute("aria-labelledby",tid);
+  g.appendChild(mk("span","q-flag",done?"Correct":""));
+  g.appendChild(mk("span","q-num","Question "+(qi+1)+" of "+qs.length));
+  const t=mk("p","q-text",q.q);t.id=tid;g.appendChild(t);
+  if(q.multi)g.appendChild(mk("p","q-hint","Select all that apply."));
+  const want=[].concat(q.a);
+  shuffled(q.opts.length).forEach(oi=>{
+   const lab=mk("label","opt"),inp=mk("input");
+   inp.type=q.multi?"checkbox":"radio";inp.name="l"+n+"q"+qi;inp.value=oi;
+   if(done){inp.checked=want.includes(oi);inp.disabled=true;}
+   inp.addEventListener("change",()=>g.classList.remove("ok","bad"));
+   lab.appendChild(inp);lab.appendChild(mk("span",null,q.opts[oi]));g.appendChild(lab);
+  });
+  if(done)g.classList.add("ok");
+  box.appendChild(g);
+ });
+ const foot=mk("div","quiz-foot"),msg=mk("div","quiz-msg");
+ msg.setAttribute("role","status");msg.setAttribute("aria-live","polite");
+ if(done){
+  const tries=state.attempts[n]||1;
+  msg.classList.add("pass");
+  msg.textContent="Level cleared — "+qs.length+" of "+qs.length+" correct in "+tries+(tries===1?" attempt.":" attempts.");
+  const nb=mk("button","btn",n===TOTAL?"See your results →":"Continue to "+levelName(n+1)+" →");
+  nb.type="button";nb.dataset.next="1";nb.addEventListener("click",()=>show(n+1,true));
+  foot.appendChild(msg);foot.appendChild(nb);
+ }else{
+  const sb=mk("button","btn","Submit answers");sb.type="button";
+  sb.addEventListener("click",()=>grade(n,box,msg));
+  foot.appendChild(msg);foot.appendChild(sb);
+ }
+ box.appendChild(foot);
+}
+function reviewNote(n,box){
+ box.appendChild(mk("h3","quiz-title","Review mode"));
+ box.appendChild(mk("p","quiz-rule","Password accepted. No checkpoint needed on this level."));
+ if(n<TOTAL){
+  const foot=mk("div","quiz-foot"),nb=mk("button","btn","Continue to "+levelName(n+1)+" →");
+  nb.type="button";nb.addEventListener("click",()=>show(n+1,true));
+  foot.appendChild(nb);box.appendChild(foot);
+ }
+}
+function renderGate(){
+ const on=state.review||cleared()===TOTAL,msg=document.getElementById("gate-msg");
+ document.getElementById("gate-row").hidden=on;
+ if(on){msg.className="quiz-msg pass";msg.textContent=state.review?"Review mode is on. Every level is open.":"You cleared every level on this device. Every level is open.";}
+ else if(msg.classList.contains("pass")){msg.className="quiz-msg";msg.textContent="";}
+}
+function tryPassword(v){
+ let k="";
+ try{k=btoa(String(v).trim().toLowerCase().replace(/\s+/g," "));}catch(e){}
+ if(k!=="bWllcyB2YW4gZGVyIHJvaGU="){
+  const msg=document.getElementById("gate-msg");
+  msg.className="quiz-msg fail";msg.textContent="Incorrect password. Check it with your teacher.";
+  return;
+ }
+ state.review=true;saveState();
+ document.getElementById("gate-pw").value="";
+ renderGate();show(1,true);
+}
+function grade(n,box,msg){
+ const qs=QUIZ[n],groups=[...box.querySelectorAll(".q")],res=[];let blank=0;
+ groups.forEach((g,qi)=>{
+  const picked=[...g.querySelectorAll("input:checked")].map(i=>Number(i.value)).sort((a,b)=>a-b);
+  if(!picked.length){blank++;res.push(null);return;}
+  const want=[].concat(qs[qi].a).sort((a,b)=>a-b);
+  res.push(picked.length===want.length&&picked.every((v,i)=>v===want[i]));
+ });
+ if(blank){
+  msg.className="quiz-msg fail";
+  msg.textContent="Answer every question before submitting — "+blank+(blank===1?" is":" are")+" still blank.";
+  return;
+ }
+ state.attempts[n]=(state.attempts[n]||0)+1;
+ const right=res.filter(Boolean).length;
+ if(right===qs.length){
+  if(!state.passed.includes(n))state.passed.push(n);
+  if(cleared()===TOTAL&&!state.doneAt)state.doneAt=new Date().toISOString();
+  saveState();renderStepper();renderBar();renderQuiz(n);
+  const nb=box.querySelector("[data-next]");if(nb)nb.focus();
+  return;
+ }
+ saveState();
+ groups.forEach((g,qi)=>{
+  g.classList.toggle("ok",res[qi]);g.classList.toggle("bad",!res[qi]);
+  g.querySelector(".q-flag").textContent=res[qi]?"Correct":"Review";
+ });
+ msg.className="quiz-msg fail";
+ msg.textContent=right+" of "+qs.length+" correct. Re-read the brief, fix the questions marked “Review”, and submit again — you need "+qs.length+" of "+qs.length+" to unlock "+levelName(n+1)+".";
+}
+function renderDone(){
+ const ul=document.getElementById("done-summary");ul.innerHTML="";
+ let qTotal=0,tries=0;
+ LEVELS.forEach(l=>{
+  const t=state.attempts[l.n]||1;qTotal+=QUIZ[l.n].length;tries+=t;
+  ul.appendChild(mk("li",null,"Level "+pad(l.n)+" · "+l.name+": cleared in "+t+(t===1?" attempt":" attempts")));
+ });
+ const li=mk("li");li.appendChild(mk("strong",null,qTotal+" of "+qTotal+" questions correct · "+tries+" submissions in total"));
+ ul.appendChild(li);
+ if(state.doneAt)ul.appendChild(mk("li",null,"Completed: "+new Date(state.doneAt).toLocaleString()));
+}
+
+document.getElementById("stat-q").textContent=Object.values(QUIZ).reduce((s,q)=>s+q.length,0);
+document.getElementById("start-btn").addEventListener("click",()=>show(Math.min(cleared()+1,DONE),true));
+document.getElementById("reset-btn").addEventListener("click",()=>{
+ if(!confirm("Reset your progress and start again from Level 01?"))return;
+ state={passed:[],attempts:{},current:1,review:false,doneAt:null};
+ try{localStorage.removeItem(KEY);}catch(e){}
+ renderGate();show(1,true);
+});
+document.getElementById("gate").addEventListener("submit",e=>{e.preventDefault();tryPassword(document.getElementById("gate-pw").value);});
+loadState();
+show(state.current,false);
+renderGate();
 </script>
 </body>
 </html>
