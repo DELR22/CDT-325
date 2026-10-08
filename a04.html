@@ -247,6 +247,9 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 .pts>li::before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;background:var(--crimson)}
 .pts strong{font-weight:700}
 .pts a{font-weight:600;word-break:break-word}
+.pts .pts{margin-top:4px}
+.pts .pts>li::before{background:var(--graphite)}
+.pts .pts .pts>li::before{background:var(--graphite-lt)}
 .level .slo-item{background:var(--paper)}
 .level .slo-group{margin-bottom:32px}
 .level .deliverable-figure{margin-top:32px}
@@ -369,19 +372,28 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <!-- LEVEL 01: OVERVIEW -->
  <section class="section level" data-level="1" hidden>
   <p class="eyebrow">Level 01 of 08</p>
-  <h2 class="sec-title">Overview &amp; Warning</h2>
+  <h2 class="sec-title">Overview</h2>
   <hr class="sec-rule">
   <p class="level-goal">What Assignment 04 is, what you must do before starting, and what you produce.</p>
   <div class="brief">
    <div class="brief-card">
     <h3>What It Is</h3>
     <ul class="pts">
-     <li>Assignment 04 turns your Assignment 03 Block Plan into <strong>Design Documents</strong>.</li>
-     <li>You draw the same plan at a higher <strong>Level of Detail (LOD)</strong>.</li>
-     <li>Every space gets a name, a number, and an area.</li>
-     <li>Every wall gets a thickness and a fire rating.</li>
-     <li>Every room gets furniture and fixtures drawn at true size.</li>
-     <li>Design Documents are the set <strong>a client approves and a consultant coordinates against</strong>.</li>
+     <li><strong>Individual assignment.</strong></li>
+     <li>Assignment 04 is the first of two stages to develop the project&rsquo;s design documentation, based on your Assignment 03 Block Plan.
+      <ul class="pts">
+       <li><strong>Do NOT create a new file</strong> for this stage. The project is a continuum that matures through iteration. The modifications done in this assignment update your Block Plan to maintain coherency.</li>
+       <li><strong>Duplicate</strong> the First, Second, and Third Block Plans at the Floor Finish (FF) levels.
+        <ul class="pts">
+         <li>Name the duplicated views <strong>FF Level 1 DD</strong>, <strong>FF Level 2 DD</strong>, and <strong>FF Level 3 DD</strong>.</li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li>You include more elements in the project to obtain a higher <strong>Level of Detail (LOD)</strong>.</li>
+     <li>Every space continues to be labeled with a name, a number, and square footage.</li>
+     <li>Every wall must be defined by its thickness and a fire rating.</li>
+     <li>Every room must have furniture and fixtures drawn at <strong>true size</strong>, in the same scale as the floor plan. <strong>Scaling furniture and fixtures is strictly prohibited.</strong></li>
     </ul>
    </div>
    <div class="brief-card">
@@ -402,17 +414,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
      <li>Show walls with ratings, doors with correct swings, furniture, and fixtures with clearances.</li>
      <li><strong>Use notes and dashed clearances. Do not use dimensions.</strong></li>
      <li>The FF&amp;E is a <strong>reference for scale, proportion, and functionality</strong>. It is not for a contractor to build from.</li>
-     <li>Use basic blocks or families. Do not spend time looking for detailed ones.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>At a Glance</h3>
-    <ul class="pts">
-     <li><strong>Work:</strong> individual.</li>
-     <li><strong>Stages:</strong> two.</li>
-     <li><strong>Deliverables:</strong> three.</li>
-     <li><strong>Scale:</strong> 1/8&Prime; = 1&prime;-0&Prime;.</li>
-     <li><strong>Points:</strong> 500.</li>
+     <li>Use basic Revit families. Do not spend time looking for detailed ones.</li>
     </ul>
    </div>
   </div>
@@ -477,7 +479,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     </li>
     <li class="slo-item">
      <span class="slo-verb cida">Communicate</span>
-     <span class="slo-text">Through professional drawing conventions and technical standards using templates, layers, plot styles, tags, legends, notes, and graphic hierarchy.</span>
+     <span class="slo-text">Through professional drawing conventions and technical standards using the project template, view templates, tags, legends, notes, and graphic hierarchy.</span>
     </li>
     <li class="slo-item">
      <span class="slo-verb cida">Sustain</span>
@@ -493,47 +495,27 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   <p class="eyebrow">Level 03 of 08</p>
   <h2 class="sec-title">Objectives &amp; The Tools</h2>
   <hr class="sec-rule">
-  <p class="level-goal">What the assignment asks you to do, what you bring to it, and the files you must work in.</p>
+  <p class="level-goal">What the assignment asks you to do and what you bring to it.</p>
   <div class="brief">
    <div class="brief-card">
     <h3>Objectives</h3>
     <ul class="pts">
-     <li><strong>Translate</strong> a block plan into accurate, code-compliant interior design floor plans.</li>
-     <li><strong>Draw</strong> partitions, openings, and doors that carry their code performance as drawn information.</li>
-     <li><strong>Demonstrate</strong> spatial functionality through FF&amp;E, casework, and plumbing fixtures with real clearances.</li>
-     <li><strong>Communicate</strong> compliance through room tags, clearances, and annotations rather than dimensions.</li>
-     <li><strong>Translate</strong> the life-safety logic into a color-coded overlay a reviewer could check.</li>
-     <li><strong>Sustain</strong> the design concept and the user research from schematic zoning into a resolved design.</li>
+     <li><strong>Translate</strong> a block plan into accurate, code-compliant, and fully furnished interior design floor plans.</li>
+     <li><strong>Draw</strong> code-compliant rooms and spaces composed of partitions, doors, and furniture.</li>
+     <li><strong>Demonstrate</strong> spatial functionality through FF&amp;E, casework, and plumbing fixtures with real code-compliant clearances.</li>
+     <li><strong>Communicate</strong> code compliance and design criteria through tags, clearances, and annotations as an integral part of the floor plans.</li>
+     <li><strong>Translate</strong> the fire / life-safety logic into a color-coded layer that serves as supporting technical information a reviewer could check.</li>
+     <li><strong>Sustain and complement</strong> the design concept and the user research, using it as the principal resource for design decision-making.</li>
     </ul>
    </div>
    <div class="brief-card">
     <h3>What You Bring</h3>
     <ul class="pts">
-     <li><strong>Your Block Plan</strong> from Assignment 03 &mdash; corrected, with every functional issue resolved.</li>
-     <li><strong>The Concept Statement</strong> your firm (team) produced in Assignment 02.</li>
+     <li><strong>Your Block Plan</strong> from Assignment 03.</li>
+     <li><strong>The Concept Statement</strong> your firm (team) produced in Assignment 02, and its evolution from Assignment 03.</li>
      <li><strong>The primary and secondary source research</strong> from Assignment 01, plus the course&rsquo;s video repository.</li>
-     <li><strong>The Area Program and the code requirements</strong> from Assignment 03. They remain unchanged; now they are drawn and specified, not diagrammed.</li>
-     <li><strong>Software:</strong> AutoCAD or Revit, as your instructor directs for your section.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>When Using AutoCAD</h3>
-    <ul class="pts">
-     <li>A <strong>base drawing</strong> is provided: all layers, basic furniture blocks, dimensions, hatches, lettering, and 48&Prime; &times; 36&Prime; layouts with title blocks.</li>
-     <li>Use it <strong>as a template</strong> and adhere to its content.</li>
-     <li><strong>No additional layers</strong> are allowed. Use the <strong>PURGE</strong> command to clear unwanted layers.</li>
-     <li><strong>CTB files, one per Stage,</strong> are provided for accurate line widths and graphic standards.</li>
-     <li>Layers that are not native to the template cause plotting issues.</li>
-     <li>Load the CTB files with the <strong>PLOTTERMANAGER</strong> command, into the <strong>Plot Styles</strong> folder.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>When Using Revit</h3>
-    <ul class="pts">
-     <li>A <strong>Revit Project Template</strong> is provided.</li>
-     <li>It includes the <strong>View Templates for both stages</strong>.</li>
-     <li>It includes all required Revit Families.</li>
-     <li>It includes 48&Prime; &times; 36&Prime; Sheets with title blocks.</li>
+     <li><strong>The Area Program and the code requirements</strong> from Assignment 03, your interpretation, and the supported changes you propose.</li>
+     <li><strong>Software:</strong> Revit.</li>
     </ul>
    </div>
   </div>
@@ -543,50 +525,66 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <!-- LEVEL 04: STAGE 1 - CONSTRUCTION -->
  <section class="section level" data-level="4" hidden>
   <p class="eyebrow">Level 04 of 08</p>
-  <h2 class="sec-title">Stage 1 &middot; Walls, Windows &amp; Doors</h2>
+  <h2 class="sec-title">Walls, Windows &amp; Doors</h2>
   <hr class="sec-rule">
-  <p class="level-goal">Sheet 1 &middot; Interior Design Floor Plans &middot; First, Second, and Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;. Requirements for walls, windows, and doors.</p>
+  <p class="level-goal">Requirements for walls, windows, doors, and hallway elements.</p>
   <div class="brief">
    <div class="brief-card">
     <h3>A &middot; Walls &amp; Partitions</h3>
     <ul class="pts">
-     <li>Draw every wall between <strong>4&Prime; and 6&Prime; thick</strong>. Walls under 4&Prime; are not allowed.</li>
-     <li>Draw fire-rated partitions <strong>at least 5&Prime; thick</strong>. A 4&Prime; wall cannot be rated.</li>
-     <li>Use <strong>2-hour walls</strong> at main hallways, assembly areas, egress stairs, janitor&rsquo;s closets, technical / mechanical rooms, and storage rooms.</li>
-     <li>Use <strong>1-hour walls</strong> at shared partitions and walls elsewhere.</li>
-     <li>Thickness does not show the rating. A 5&Prime; or 6&Prime; wall may or may not be rated.</li>
-     <li>Show the rating with <strong>notes on Sheet 1</strong> and with <strong>color on Sheet 2</strong>.</li>
-     <li>Specify fire-rated wall assemblies using <strong>USG Wall Assembly types</strong>.</li>
+     <li>Wall and vertical partition placement must continue to follow the same criteria inherited from the Block Plan.</li>
+     <li>If you create new walls, select materials based on the required fire rating.
+      <ul class="pts">
+       <li>Use <strong>2-hour walls</strong> at main hallways, assembly areas, egress stairs, janitor&rsquo;s closets, technical / mechanical rooms, and storage rooms.</li>
+       <li>Use <strong>1-hour walls</strong> at shared or room-dividing partitions.</li>
+       <li>Use <strong>0-hour walls</strong> at internal room partitions.</li>
+      </ul>
+     </li>
+     <li>Add to the wall classification keys the type of wall assembly you choose for each fire rating. Use the <strong>USG Wall Assembly types</strong> and <strong>Fireglass</strong> catalogs.</li>
     </ul>
    </div>
    <div class="brief-card">
     <h3>B &middot; Windows &amp; Glass Partitions</h3>
     <ul class="pts">
-     <li>Draw all exterior windows and interior glass partitions. <strong>Base them on the activities</strong> in each space.</li>
-     <li><strong>Add notes</strong> to all interior glazing in a rated assembly.</li>
-     <li>Give glass partitions a <strong>fire rating where required</strong> (assembly spaces).</li>
-     <li>Specify fire-rated glass using <strong>Fireglass fire-rated products</strong>.</li>
+     <li>Draw all exterior windows and interior glass partitions (use the Fireglass catalog as a reference). <strong>Base them on the activities</strong> that take place inside each space.
+      <ul class="pts">
+       <li>Give glass partitions a <strong>fire rating where required</strong> (assembly spaces).</li>
+       <li>Specify fire-rated glass using <strong>Fireglass fire-rated products</strong>.</li>
+      </ul>
+     </li>
     </ul>
    </div>
    <div class="brief-card">
-    <h3>C &middot; Doors: Width &amp; Swing</h3>
+    <h3>C &middot; Doors: Width, Swing, and Clearance</h3>
     <ul class="pts">
-     <li>Draw every door with its swing, at its true width.</li>
+     <li>Draw every door with its swing, at its true width (use standardized Revit families).</li>
      <li>Resident bedrooms: <strong>42&Prime; minimum</strong> (gurney access).</li>
-     <li>All other doors: <strong>36&Prime; minimum</strong>.</li>
+     <li>All other doors: <strong>36&Prime; minimum</strong>, with the exception of closets, which can be <strong>28&Prime; to 32&Prime;</strong>.</li>
      <li>Swing exit doors <strong>in the direction of egress</strong>.</li>
-     <li>Swing assembly doors out, without intruding into the corridor.</li>
-     <li>At each compartment line, draw <strong>barrier doors</strong>: a pair at 42&Prime;, each swinging in the opposite direction from the other.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>C &middot; Doors: Clearance</h3>
-    <ul class="pts">
+     <li>Swing assembly doors out, in the direction of egress, without intruding into the corridor. They must be <strong>recessed</strong>.</li>
+     <li><strong>Compartment doors:</strong> a pair, where each individual door must be 42&Prime; wide, each swinging in the opposite direction from the other.</li>
      <li>Swing inward-opening doors <strong>against a wall or back surface</strong>, not into the space.</li>
      <li>Outward-swinging doors may project <strong>no more than 7&Prime;</strong> into a corridor.</li>
      <li>Place doors <strong>at least 4&Prime;</strong> from a back wall.</li>
-     <li>Leave <strong>12&Prime; on the push side</strong> and <strong>18&Prime; on the pull side</strong>.</li>
-     <li>Make door pockets wider than the door opening to fit these clearances.</li>
+     <li>Leave <strong>12&Prime; on the push side</strong> and <strong>18&Prime; on the pull side</strong>.
+      <ul class="pts">
+       <li>Make door pockets wider than the door opening to fit these clearances.</li>
+      </ul>
+     </li>
+    </ul>
+   </div>
+   <div class="brief-card">
+    <h3>D &middot; Hallway Elements</h3>
+    <ul class="pts">
+     <li><strong>Assisted living:</strong> corridors must have handrails on <strong>both sides</strong>.</li>
+     <li><strong>Independent living:</strong> corridors must have handrails on <strong>at least one side</strong>.</li>
+     <li>Handrail placement in other project areas is completely discretionary to individual design proposals.</li>
+     <li><strong>Drinking fountains</strong> must be placed in the hallways following ADA standards.
+      <ul class="pts">
+       <li>Residential component: one drinking fountain for every <strong>5 to 20 residents</strong>.</li>
+       <li>Educational administrative component: one drinking fountain for every <strong>3,000 sq. ft.</strong></li>
+      </ul>
+     </li>
     </ul>
    </div>
   </div>
@@ -596,41 +594,37 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <!-- LEVEL 05: STAGE 1 - FUNCTION -->
  <section class="section level" data-level="5" hidden>
   <p class="eyebrow">Level 05 of 08</p>
-  <h2 class="sec-title">Stage 1 &middot; Furnishing, Fixtures &amp; Tags</h2>
+  <h2 class="sec-title">Furnishing, Fixtures &amp; Tags</h2>
   <hr class="sec-rule">
-  <p class="level-goal">Sheet 1, continued. Requirements for furniture, fixtures, clearances, room tags, and notes.</p>
+  <p class="level-goal">Requirements for furniture, plumbing fixtures, room tags, and notes.</p>
   <div class="brief">
    <div class="brief-card">
-    <h3>D &middot; FF&amp;E, Casework &amp; Fixed Systems</h3>
+    <h3>A &middot; FF&amp;E, Casework &amp; Fixed Systems</h3>
     <ul class="pts">
-     <li><strong>Furnish every floor plan fully.</strong></li>
-     <li>Use loose furniture, cabinetry, and fixed furniture systems (templates, blocks, or families).</li>
-     <li>Furnish <strong>every space</strong> in the program. Do not skip any.</li>
-     <li>Draw all furniture at <strong>true size</strong>, at 1/8&Prime; scale.</li>
-     <li><strong>Do not reduce the size of furniture</strong> to make a space work.</li>
+     <li><strong>All three floors must be fully furnished.</strong>
+      <ul class="pts">
+       <li>Use loose furniture, cabinetry, and fixed furniture systems included in the Revit template where the Block Plans were developed. <strong>Do NOT create a separate Revit file.</strong></li>
+       <li>If you cannot find the furniture, fixtures, or equipment you want in the template, download them from the <strong>Autodesk Cloud Library</strong> or <strong>bimobject.com</strong>.</li>
+      </ul>
+     </li>
+     <li>Draw all furniture at <strong>true size</strong>, at 1/8&Prime; scale.
+      <ul class="pts">
+       <li>Do not reduce the size of furniture to make a space work.</li>
+      </ul>
+     </li>
     </ul>
    </div>
    <div class="brief-card">
-    <h3>E &middot; Plumbing Fixtures</h3>
+    <h3>B &middot; Plumbing Fixtures</h3>
     <ul class="pts">
      <li>Draw all toilets, sinks, vanities, and showers at true size.</li>
      <li>Draw their <strong>ADA clearances with dashed lines</strong>.</li>
      <li>Draw a <strong>5&prime;-0&Prime; turning circle</strong> in each accessible toilet room.</li>
-     <li><strong>Toilets:</strong> centerline 18&Prime; from the wall; 36&Prime; and 42&Prime; perpendicular grab bars; 56&Prime; &times; 60&Prime; clearance.</li>
-     <li><strong>Roll-in showers:</strong> 30&Prime; &times; 60&Prime; clear space.</li>
-     <li><strong>Sinks:</strong> 30&Prime; &times; 48&Prime; clear floor space in front.</li>
-     <li>Reference: <a href="https://www.access-board.gov/ada/guides/chapter-6-toilet-rooms/" target="_blank" rel="noopener">ADA Guide, Chapter 6: Toilet Rooms</a>.</li>
+     <li>Follow the <a href="https://www.access-board.gov/ada/guides/chapter-6-toilet-rooms/" target="_blank" rel="noopener">ADA Guide, Chapter 6: Toilet Rooms</a>, and apply it in your project to comply with ADA standards.</li>
     </ul>
    </div>
    <div class="brief-card">
-    <h3>F &middot; Clearances</h3>
-    <ul class="pts">
-     <li><strong>Draw these:</strong> turning circles, clear floor spaces, maneuvering clearances at doors, and corridor widths.</li>
-     <li><strong>Write these as notes:</strong> grab bar heights, knee and toe clearances, mounting heights, and reach ranges.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>G &middot; Room Tags</h3>
+    <h3>C &middot; Room Tags</h3>
     <ul class="pts">
      <li>Tag every space with <strong>Space Name, Space Number, and Area in SF</strong>.</li>
      <li>Start each room number with the <strong>floor number</strong>.</li>
@@ -640,11 +634,10 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     </ul>
    </div>
    <div class="brief-card">
-    <h3>H &middot; Annotations &amp; Notes</h3>
+    <h3>D &middot; Annotations &amp; Notes</h3>
     <ul class="pts">
-     <li>Add <strong>code compliance notes</strong>: under-counter and knee clearances, mounting heights.</li>
+     <li>Conserve and add <strong>code compliance notes</strong> for ADA, Building Code (IBC), and Fire / Life Safety compliance, including egress parameters.</li>
      <li>Add <strong>partition notes</strong>: which walls are fire-rated, and their rating.</li>
-     <li>Add <strong>general notes</strong>: the occupancy classification key.</li>
      <li>Add a note for any information the drawing does not show.</li>
     </ul>
    </div>
@@ -655,36 +648,24 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <!-- LEVEL 06: STAGE 2 -->
  <section class="section level" data-level="6" hidden>
   <p class="eyebrow">Level 06 of 08</p>
-  <h2 class="sec-title">Stage 2 &middot; Fire &amp; Life-Safety Overlay</h2>
+  <h2 class="sec-title">Fire &amp; Life-Safety Plans</h2>
   <hr class="sec-rule">
-  <p class="level-goal">Sheet 2 &middot; Fire &amp; Life-Safety Overlay Plans &middot; First, Second, and Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;. You draw the fire and life-safety information over your Stage 1 plans.</p>
+  <p class="level-goal">What the Fire &amp; Life-Safety plans must show.</p>
   <div class="brief">
-   <div class="brief-card">
-    <h3>The Underlay</h3>
-    <ul class="pts">
-     <li>Use your <strong>Stage 1 floor plans</strong> as the underlay.</li>
-     <li>Screen them to <strong>halftone</strong> (grey scale).</li>
-     <li>Draw all life-safety information on top, in <strong>full line weight and color</strong>.</li>
-     <li>The underlay must stay legible and must be lighter than the overlay.</li>
-    </ul>
-   </div>
    <div class="brief-card">
     <h3>Occupancy &amp; Rated Construction</h3>
     <ul class="pts">
-     <li>Add a <strong>color-coded legend</strong> with the occupancy classification of each zone.</li>
      <li>Add a <strong>reduced-scale diagram</strong> on the same sheet that color-codes occupancy by area.</li>
      <li><strong>Color-code rated walls by rating:</strong> 1-hour and 2-hour.</li>
-     <li>Match the ratings set on Sheet 1.</li>
     </ul>
    </div>
    <div class="brief-card">
     <h3>Egress</h3>
     <ul class="pts">
-     <li>Draw the <strong>egress and exit-access travel path to the most remote point</strong>. Dimension it.</li>
-     <li>Add direction-of-travel arrows.</li>
+     <li>Draw the <strong>egress and exit-access travel path to the most remote point</strong> and dimension it.</li>
      <li>Mark dead-end corridors and their lengths.</li>
      <li>Mark egress corridor widths.</li>
-     <li>Mark compartment doors.</li>
+     <li>Place compartment doors.</li>
     </ul>
    </div>
    <div class="brief-card">
@@ -693,16 +674,8 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
      <li>Locate all of these on the plans.</li>
      <li><strong>Detection &amp; alarm:</strong> smoke detectors and manual pull stations.</li>
      <li><strong>Notification:</strong> fire alarms.</li>
-     <li><strong>Suppression &amp; response:</strong> fire extinguishers and the fire department connection.</li>
-     <li><strong>Signage &amp; lighting:</strong> exit signs, directional exit signs, and emergency egress lighting.</li>
-    </ul>
-   </div>
-   <div class="brief-card">
-    <h3>Legends &amp; Symbology</h3>
-    <ul class="pts">
-     <li>Apply the provided <strong>CTB</strong> (AutoCAD) or <strong>View Template</strong> (Revit). It sets the color code.</li>
-     <li>Use the same color system on all floors.</li>
-     <li>Use only the symbols provided in the template files. <strong>Do not create your own symbols.</strong></li>
+     <li><strong>Suppression &amp; response:</strong> fire extinguishers.</li>
+     <li><strong>Signage &amp; lighting:</strong> exit signs and directional exit signs.</li>
     </ul>
    </div>
   </div>
@@ -714,47 +687,62 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   <p class="eyebrow">Level 07 of 08</p>
   <h2 class="sec-title">Deliverables</h2>
   <hr class="sec-rule">
-  <p class="level-goal">Submit two sheets and one statement. All work is individual.</p>
+  <p class="level-goal">Four sheets, submitted individually.</p>
   <div class="deliverables-stack">
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 01 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
-    <div class="deliverable-title">Sheet 1 &mdash; Interior Design Floor Plans</div>
+    <div class="deliverable-num">Sheets 1 and 2 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Interior Design Floor Plans</div>
     <ul class="pts">
-     <li>Draw the First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;.</li>
-     <li>Use the course <strong>48&Prime; &times; 36&Prime; template</strong>.</li>
-     <li>Include walls, windows and glass partitions, doors with swings, FF&amp;E and casework, plumbing fixtures with clearances, room tags, and annotations.</li>
+     <li>Draw the First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;.
+      <ul class="pts">
+       <li>The floor plans must include:
+        <ul class="pts">
+         <li><strong>Accurate wall and partition types</strong> (fire-rated and non-fire-rated). These walls must be anchored (base level) to the corresponding structural level and reach up to the inferior face of the structural slab or roof above. Do this either by applying a negative offset equal to the structural slab or roof thickness, or by connecting the wall to the slab or roof above.</li>
+         <li><strong>Windows</strong> (attached to the corresponding Floor Finish level) on the fa&ccedil;ade that support natural light and ventilation of interior spaces, considering the activities that take place in these spaces.</li>
+         <li><strong>FF&amp;E</strong> attached to the corresponding Floor Finish level.</li>
+         <li><strong>Doors with swings</strong> attached to the corresponding Floor Finish level.</li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li>Use the same sheet size (<strong>36&Prime; &times; 48&Prime;</strong>) as Assignment 3.</li>
+     <li>Include the <strong>Zoning Legend</strong> on Sheet 1 (First Floor).</li>
+     <li>Include the <strong>Design Statement</strong> on Sheet 1 (First Floor).
+      <ul class="pts">
+       <li>Value Proposition and Core Design Solution (modified if necessary) from Assignment 02.</li>
+       <li>Write a text that explains how the design concept remains evident in the detailed plans.</li>
+       <li>Explain how your interior design decisions appear in the plans.</li>
+       <li>Connect the Design Documents plans to the Concept Statement and to the research from Assignments 01 and 02.</li>
+      </ul>
+     </li>
     </ul>
    </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 02 &middot; First, Second &amp; Third Floors &middot; Same Template</div>
-    <div class="deliverable-title">Sheet 2 &mdash; Fire &amp; Life-Safety Overlay Plans</div>
+    <div class="deliverable-num">Sheets 3 and 4 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Fire &amp; Life-Safety Block Plans</div>
     <ul class="pts">
-     <li>Draw the First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;, on the same template.</li>
-     <li>Use the Stage 1 plans as a <strong>halftone underlay</strong>.</li>
-     <li>Add the <strong>color-coded life-safety overlay</strong>, the legends, and the notes.</li>
-    </ul>
-   </div>
-
-   <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 03 &middot; With the Plans</div>
-    <div class="deliverable-title">Design Statement</div>
-    <ul class="pts">
-     <li>Write a text that explains <strong>how the design concept remains evident</strong> in the detailed plans.</li>
-     <li>Explain <strong>how your interior design decisions appear</strong> in the plans.</li>
-     <li>Explain <strong>why</strong> you made each decision. <strong>Do not summarize what you drew.</strong></li>
-     <li>Connect the plans to the Concept Statement and to the research from Assignments 01 and 02.</li>
+     <li>First, Second, and Third Floors at 1/8&Prime; = 1&prime;-0&Prime;, using the <strong>Fire / Life Safety view template</strong> with the furniture, casework, and specialty equipment <strong>turned off</strong>.
+      <ul class="pts">
+       <li>These are an evolution of the Block Plans created for Assignment 03. They must maintain coherency with the updated project and include the same information as the Block Plans submitted in Assignment 03.</li>
+      </ul>
+     </li>
     </ul>
    </div>
 
    <div class="deliverable-card">
     <div class="deliverable-num">Submission</div>
-    <div class="deliverable-title">How to Hand It In</div>
+    <div class="deliverable-title">How to Submit?</div>
     <ul class="pts">
-     <li>Work <strong>individually</strong>.</li>
-     <li>Submit both sheets and the Design Statement.</li>
-     <li>Submit <strong>physically or digitally</strong>, as your instructor directs for your section.</li>
+     <li>The project must be submitted <strong>individually</strong>.</li>
+     <li>Export the sheets from the Revit model to PDF.</li>
+     <li>Submit digitally on <strong>Blackboard</strong>:
+      <ul class="pts">
+       <li>All 4 sheets in PDF.</li>
+       <li>Revit model (.rvt).</li>
+      </ul>
+     </li>
      <li>Find deadlines and review dates on the <strong>course syllabus</strong>.</li>
     </ul>
    </div>
@@ -793,7 +781,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     <h3>Graded as Developing</h3>
     <ul class="pts">
      <li><strong>Functional Resolution:</strong> furniture is omitted or reduced in size to fit.</li>
-     <li><strong>Technical Standards:</strong> foreign layers are added or the plot styles are ignored.</li>
+     <li><strong>Technical Standards:</strong> the project template or the view templates are ignored.</li>
      <li><strong>Concept Continuity:</strong> the statement summarizes what was drawn instead of why.</li>
     </ul>
    </div>
@@ -876,15 +864,15 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
       </td>
       <td>
        <div><span class="range-badge range-excellent">68 &ndash; 75 pts</span></div>
-       Works to graphic standards and produces consistent design documents by holding to the provided templates, layers, and plot styles.
+       Works to graphic standards and produces consistent design documents by holding to the provided project template, view templates, and families.
       </td>
       <td>
        <div><span class="range-badge range-proficient">53 &ndash; 67 pts</span></div>
-       Works to graphic standards and produces reliable design documents by holding to the template, though with stray layers, uneven line weights, or misuse of plot styles.
+       Works to graphic standards and produces reliable design documents by holding to the project template, though with stray view overrides, uneven line weights, or misuse of view templates.
       </td>
       <td>
        <div><span class="range-badge range-developing">0 &ndash; 52 pts</span></div>
-       Disregards graphic standards and produces unreliable design documents by introducing foreign layers or ignoring the plot styles.
+       Disregards graphic standards and produces unreliable design documents by ignoring the project template or the view templates.
       </td>
      </tr>
 
@@ -936,8 +924,8 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     <h3>Next Moves</h3>
     <ul class="pts">
      <li>Fix any deficiency in your Assignment 03 Block Plan before you start.</li>
-     <li>Confirm with your instructor whether your section works in AutoCAD or Revit.</li>
-     <li>Get the provided template, and the CTB files if you are in AutoCAD.</li>
+     <li>Continue in your Assignment 03 file. Do not create a new file.</li>
+     <li>Duplicate the three Block Plans and name the views FF Level 1 DD, FF Level 2 DD, and FF Level 3 DD.</li>
      <li>Check the course syllabus for deadlines and review dates.</li>
     </ul>
    </div>
@@ -962,66 +950,66 @@ const LEVELS=[
  {n:3,name:"Objectives & Tools"},
  {n:4,name:"Walls & Doors"},
  {n:5,name:"Furnishing & Tags"},
- {n:6,name:"Life-Safety Overlay"},
+ {n:6,name:"Life-Safety Plans"},
  {n:7,name:"Deliverables"},
  {n:8,name:"Rubric"}
 ];
 const QUIZ={
  1:[
-  {q:"What changes between Assignment 03 and Assignment 04?",opts:["The Level of Detail (LOD) increases: the scheme is now drawn as resolved rooms, walls, and furniture","The area program is replaced with a new one","The drawing scale changes from 1/8″ to 1/4″","The work moves from individual back to the firm (team)"],a:0},
-  {q:"Your Assignment 03 Block Plan has an unresolved egress path. What do you do?",opts:["Fix it first, before starting Assignment 04","Start Assignment 04 and correct it during Stage 2","Leave it; Assignment 04 is graded separately","Hide it under the halftone underlay"],a:0},
-  {q:"What does Stage 1 inherit from the Block Plan, and how much can it change?",opts:["Its geometry, with non-substantial edits and adjustments","Nothing; Stage 1 starts from a blank sheet","Only its room names; the layout is redesigned","Its geometry, which cannot be touched at all"],a:0},
-  {q:"How do the Design Documents communicate compliance?",opts:["With notes and dashed clearances rather than dimensions","With a fully dimensioned construction set","With a written report instead of drawings","With rendered perspectives of each room"],a:0},
-  {q:"What is the FF&E on these plans for?",opts:["A reference for scale, proportion, and functionality","A set a contractor builds and purchases from","Decoration that makes the sheet look complete","A final furniture specification with manufacturers"],a:0}
+  {q:"Do you create a new file for Assignment 04?",opts:["No. You continue in the same project file, and the changes update your Block Plan","Yes. You start a new file from the template","Yes. You create one new file per floor","No. You draw over a PDF of the Block Plan"],a:0},
+  {q:"Which views do you duplicate, and how do you name them?",opts:["The First, Second, and Third Block Plans at the Floor Finish (FF) levels, named FF Level 1 DD, FF Level 2 DD, and FF Level 3 DD","The First Floor Block Plan only, named Design Documents","The three Block Plans at the structural levels, named DD-1, DD-2, and DD-3","No views are duplicated; you rename the Block Plans"],a:0},
+  {q:"How must furniture and fixtures be drawn?",opts:["At true size, in the same scale as the floor plan; scaling them is strictly prohibited","At any size that makes the room work","At half size, so the plan stays legible","As outlines only, with no real dimensions"],a:0},
+  {q:"Your Assignment 03 Block Plan has an unresolved egress path. What do you do?",opts:["Fix it first, before starting Assignment 04","Start Assignment 04 and correct it during Stage 2","Leave it; Assignment 04 is graded separately","Remove the egress path from the plan"],a:0},
+  {q:"How do the floor plans communicate clearances and compliance?",opts:["With notes and dashed clearances, not dimensions","With a fully dimensioned construction set","With a written report instead of drawings","With rendered perspectives of each room"],a:0}
  ],
  2:[
   {q:"“A coordinated set of floor plans that sustain the concept and the research behind it” belongs to which Bloom level?",opts:["Create","Remember","Apply","Evaluate"],a:0},
   {q:"Under “Understand”, what carries the drawn information that defines functionality and code compliance?",opts:["Partitions, openings, and doors","Finishes, colors, and lighting","Title blocks, sheet numbers, and borders","Renderings, mood boards, and diagrams"],a:0},
   {q:"Under “Analyze”, when do the conflicts in the block plan’s inherited logic appear?",opts:["Once walls, doors, and furniture are drawn at true size","Once the sheet is printed in color","Once the Design Statement is written","Once the rubric is applied"],a:0},
   {q:"Under the CIDA / NASAD outcome “Demonstrate”, how is spatial functionality shown?",opts:["Through FF&E, casework, and plumbing fixtures drawn at true size","Through a written description of each room","Through the color-coded occupancy legend","Through the wall thickness alone"],a:0},
-  {q:"The outcome “Communicate” relies on which set of conventions?",opts:["Templates, layers, plot styles, tags, legends, notes, and graphic hierarchy","Freehand sketches, collages, and mood boards","Budgets, schedules, and contracts","Photographs, videos, and interviews"],a:0}
+  {q:"The outcome “Communicate” relies on which set of conventions?",opts:["The project template, view templates, tags, legends, notes, and graphic hierarchy","Freehand sketches, collages, and mood boards","Budgets, schedules, and contracts","Photographs, videos, and interviews"],a:0}
  ],
  3:[
-  {q:"Which software do you use?",opts:["AutoCAD or Revit, as your instructor directs for your section","Any software you prefer","Hand drafting only","SketchUp for Stage 1 and AutoCAD for Stage 2"],a:0},
-  {q:"In AutoCAD, what is the rule about layers?",opts:["No additional layers are allowed; use PURGE to clear unwanted ones","Add as many layers as you need, with clear names","Put everything on layer 0","Create one new layer per room"],a:0},
-  {q:"How many CTB files are provided, and what are they for?",opts:["One per Stage, to ensure accurate line widths and graphic standards","One for the whole assignment, to set the sheet size","One per floor, to number the rooms","None; you create your own plot style"],a:0},
-  {q:"How do you load the CTB files in AutoCAD?",opts:["Use the PLOTTERMANAGER command and place them in the Plot Styles folder","Use the PURGE command and place them in the template folder","Drag them onto the drawing as blocks","Attach them as external references (XREF)"],a:0},
-  {q:"What sheet size do the provided layouts and sheets use?",opts:["48″ × 36″, with title blocks","24″ × 36″, with title blocks","11″ × 17″, without title blocks","36″ × 24″, without title blocks"],a:0}
+  {q:"The first objective asks you to translate the block plan into what?",opts:["Accurate, code-compliant, and fully furnished interior design floor plans","A set of rendered perspectives","A construction budget and schedule","A new block plan with a different layout"],a:0},
+  {q:"How do you communicate code compliance and design criteria?",opts:["Through tags, clearances, and annotations, as an integral part of the floor plans","Through a separate written report","Through dimensions on every wall","Through a verbal presentation only"],a:0},
+  {q:"What does the fire / life-safety logic become?",opts:["A color-coded layer that serves as supporting technical information a reviewer could check","A paragraph in the Design Statement","A list of devices with no drawing","An optional diagram for extra credit"],a:0},
+  {q:"How do you use the design concept and the user research?",opts:["As the principal resource for design decision-making","As background reading that does not affect the plans","As content for the title block","Only to write the Design Statement"],a:0},
+  {q:"What do you bring regarding the Area Program and the code requirements?",opts:["Those from Assignment 03, your interpretation, and the supported changes you propose","A new Area Program written for Assignment 04","Only the code requirements; the Area Program no longer applies","Nothing; they are provided again in this assignment"],a:0}
  ],
  4:[
-  {q:"How thick must every wall in the project be?",opts:["Between 4″ and 6″","Between 2″ and 4″","Exactly 5″","Between 6″ and 8″"],a:0},
-  {q:"What is the minimum thickness of a fire-rated partition?",opts:["5″","4″","6″","8″"],a:0},
-  {q:"How is a wall’s fire rating communicated?",opts:["By notes on Sheet 1 and by color on Sheet 2","By the thickness of the wall as drawn","By a hatch pattern inside every wall","It is not communicated on the drawings"],a:0},
-  {q:"How are barrier doors drawn at each compartment line?",opts:["A pair at 42″, each swinging in the opposite direction from the other","A single 36″ door swinging into the corridor","A pair at 36″, both swinging the same way","A sliding door with no swing"],a:0},
-  {q:"How much space must a door allow on each side?",opts:["12″ on the push side and 18″ on the pull side","18″ on the push side and 12″ on the pull side","7″ on both sides","4″ on the push side and 36″ on the pull side"],a:0}
+  {q:"Which fire rating goes where?",opts:["2-hour at main hallways and egress stairs; 1-hour at shared or room-dividing partitions; 0-hour at internal room partitions","2-hour at internal room partitions; 1-hour at main hallways; 0-hour at egress stairs","1-hour at main hallways and egress stairs; 2-hour at shared partitions; 0-hour at storage rooms","2-hour at every wall in the project"],a:0},
+  {q:"What is the minimum width for doors other than resident bedroom doors, and what is the exception?",opts:["36″ minimum; closets can be 28″ to 32″","42″ minimum; closets can be 36″","32″ minimum; there are no exceptions","36″ minimum; bathrooms can be 28″ to 32″"],a:0},
+  {q:"How are compartment doors drawn?",opts:["A pair, each door 42″ wide, each swinging in the opposite direction from the other","A single 36″ door swinging into the corridor","A pair, each door 36″ wide, both swinging the same way","A single 42″ sliding door"],a:0},
+  {q:"Where are corridor handrails required?",opts:["Both sides in assisted living; at least one side in independent living","Both sides in every corridor of the project","One side in assisted living; none in independent living","Only at the egress stairs"],a:0},
+  {q:"How many drinking fountains are required?",opts:["Residential: one for every 5 to 20 residents. Educational administrative: one for every 3,000 sq. ft.","Residential: one per floor. Educational administrative: one per classroom","Residential: one for every 3,000 sq. ft. Educational administrative: one for every 5 to 20 people","One for the whole building, at the main entrance"],a:0}
  ],
  5:[
-  {q:"A room only “works” if you draw the furniture smaller than it really is. What do you do?",opts:["Keep the furniture at true size; reducing its size is not allowed","Scale the furniture down so the plan reads clearly","Leave that room unfurnished","Remove the furniture and add a note saying it fits"],a:0},
-  {q:"How are ADA clearances at plumbing fixtures drawn?",opts:["With dashed lines, around fixtures at true size","With solid heavy lines, like walls","They are written in notes only, never drawn","With a color fill from the Stage 2 CTB"],a:0},
-  {q:"What clear floor space is required in front of a sink?",opts:["30″ × 48″","30″ × 60″","56″ × 60″","18″ × 36″"],a:0},
-  {q:"Which of these is noted rather than drawn at 1/8″ scale?",opts:["Grab bar and mounting heights","Turning circles","Corridor widths","Clear floor spaces"],a:0},
-  {q:"What does a room tag carry, and how is a Third Floor room numbered?",opts:["Space Name, Space Number, and Area in SF; numbered 301, 302…","Space Name only; numbered 1, 2, 3…","Space Name and occupant load; numbered 103, 203, 303…","Space Number and fire rating; numbered A, B, C…"],a:0}
+  {q:"Where do the furniture and fixed furniture systems come from?",opts:["The Revit template where the Block Plans were developed; do not create a separate file","A new Revit file created for furniture only","Hand-drawn symbols added after printing","Any file, as long as it is linked to the project"],a:0},
+  {q:"A piece of furniture you need is not in the template. What do you do?",opts:["Download it from the Autodesk Cloud Library or bimobject.com","Leave that space unfurnished","Draw a rectangle and label it","Reduce a similar piece until it fits"],a:0},
+  {q:"How are ADA clearances at plumbing fixtures drawn?",opts:["With dashed lines, around fixtures at true size","With solid heavy lines, like walls","They are written in notes only, never drawn","With a solid color fill"],a:0},
+  {q:"What does a room tag carry, and how is a Third Floor room numbered?",opts:["Space Name, Space Number, and Area in SF; numbered 301, 302, 303","Space Name only; numbered 1, 2, 3","Space Name and occupant load; numbered 103, 203, 303","Space Number and fire rating; numbered A, B, C"],a:0},
+  {q:"Which code compliance notes do you conserve and add?",opts:["ADA, Building Code (IBC), and Fire / Life Safety, including egress parameters","ADA only","Fire / Life Safety only, without egress parameters","None; notes are replaced by dimensions"],a:0}
  ],
  6:[
-  {q:"What does Stage 2 add to the Stage 1 plans?",opts:["Fire and life-safety information, drawn in color over the Stage 1 plans","Construction dimensions for every wall","Furniture, casework, and plumbing fixtures","A second design option for each floor"],a:0},
-  {q:"What is the underlay on Sheet 2?",opts:["Your Stage 1 floor plans, screened to halftone (grey scale)","A blank sheet with only the building outline","The Assignment 03 Block Plan in full color","The Stage 1 plans at full weight and color"],a:0},
-  {q:"How is the egress and exit-access travel path shown?",opts:["To the most remote point, dimensioned","From the main entrance to the lobby only","As a note in the Design Statement","To the nearest room door, without dimensions"],a:0},
-  {q:"Where does the color code on Sheet 2 come from?",opts:["The provided CTB (AutoCAD) or View Template (Revit)","Colors you choose to match your concept","The colors of the Mood Environments","A different palette for each floor"],a:0},
-  {q:"Which symbols do you use for life-safety devices?",opts:["The conventional symbology provided in the template files","Symbols you design for this project","Any symbols found online","Text labels only, with no symbols"],a:0}
+  {q:"How is occupancy shown?",opts:["With a reduced-scale diagram on the same sheet that color-codes occupancy by area","With a written list on a separate sheet","With a hatch pattern over the furniture","It is not shown in this assignment"],a:0},
+  {q:"How are rated walls identified?",opts:["Color-coded by rating: 1-hour and 2-hour","By wall thickness only","With one color for all rated walls","With a note in the Design Statement"],a:0},
+  {q:"How is the egress and exit-access travel path drawn?",opts:["To the most remote point, and dimensioned","From the main entrance to the lobby only","To the nearest room door, without dimensions","As a note, with no line drawn"],a:0},
+  {q:"What do you mark for dead-end corridors?",opts:["The corridors and their lengths","Nothing; dead ends are not marked","Only the number of doors along them","Their wall finish"],a:0},
+  {q:"Which devices belong to Detection & alarm?",opts:["Smoke detectors and manual pull stations","Fire extinguishers","Exit signs and directional exit signs","Drinking fountains and handrails"],a:0}
  ],
  7:[
-  {q:"What are the three deliverables?",opts:["Sheet 1 (Interior Design Floor Plans), Sheet 2 (Fire & Life-Safety Overlay Plans), and the Design Statement","Sheet 1, a furniture schedule, and a material board","The Block Plan, the Compliance Check, and the Design Statement","Sheet 1, Sheet 2, and a rendered perspective"],a:0},
-  {q:"Which floors appear on each sheet, and at what scale?",opts:["First, Second, and Third Floors at 1/8″ = 1′-0″","First Floor only at 1/4″ = 1′-0″","First and Second Floors at 1/16″ = 1′-0″","Each floor at a different scale"],a:0},
-  {q:"What does Sheet 2 consist of?",opts:["A halftone Stage 1 underlay with a color-coded life-safety overlay, legends, and notes","A full-color copy of Sheet 1 with dimensions added","A written code report with no drawings","Enlarged plans of the toilet rooms"],a:0},
-  {q:"What is the Design Statement?",opts:["An explanation of why you made your design decisions, connected to the Concept Statement and the research","A summary of everything you drew","A list of the layers and plot styles you used","A schedule of rooms with their areas"],a:0},
-  {q:"Where are the deadlines and review dates?",opts:["On the course syllabus","On the title block of the template","In the CTB files","On Sheet 2’s legend"],a:0}
+  {q:"How are the four sheets organized?",opts:["Sheets 1 and 2: Interior Design Floor Plans. Sheets 3 and 4: Fire & Life-Safety Block Plans","Sheets 1 to 3: one floor each. Sheet 4: the Design Statement","Sheet 1: all floor plans. Sheets 2 to 4: details","Sheets 1 and 2: Fire & Life-Safety Block Plans. Sheets 3 and 4: furniture schedules"],a:0},
+  {q:"Where do the Zoning Legend and the Design Statement go?",opts:["On Sheet 1 (First Floor)","On Sheet 4","In a separate document","On every sheet"],a:0},
+  {q:"How far must walls and partitions extend?",opts:["From their base at the structural level up to the underside of the structural slab or roof above","From the Floor Finish level up to the ceiling only","From the Floor Finish level up to 8′-0″","Through the slab above, to the next floor"],a:0},
+  {q:"How are the Fire & Life-Safety Block Plans set up?",opts:["With the Fire / Life Safety view template, with furniture, casework, and specialty equipment turned off","With the same view as the Interior Design Floor Plans, fully furnished","With a new file that contains only the walls","With the Assignment 03 sheets, unchanged"],a:0},
+  {q:"What do you submit, and where?",opts:["On Blackboard: all 4 sheets in PDF and the Revit model (.rvt)","By email: the Revit model only","On Blackboard: Sheet 1 in PDF only","In person: printed sheets, with no digital file"],a:0}
  ],
  8:[
   {q:"Which three criteria carry the greatest weight?",multi:true,opts:["Spatial Translation & Code-Compliant Construction","Functional Resolution & Accessibility","Fire & Life-Safety Overlay Documentation","Technical Standards & Drawing Discipline","Concept Continuity & Design Statement"],a:[0,1,2]},
   {q:"How many points is Technical Standards & Drawing Discipline worth?",opts:["75","125","50","100"],a:0},
   {q:"How many points is Concept Continuity & Design Statement worth?",opts:["50","75","125","25"],a:0},
   {q:"What overall score falls in the Excellent band?",opts:["452–500 pts","352–447 pts","400–500 pts","475–500 pts"],a:0},
-  {q:"A file with foreign layers that ignores the plot styles falls into which band for Technical Standards & Drawing Discipline?",opts:["Developing","Proficient","Excellent","It is not graded"],a:0}
+  {q:"A model that ignores the project template and the view templates falls into which band for Technical Standards & Drawing Discipline?",opts:["Developing","Proficient","Excellent","It is not graded"],a:0}
  ]
 };
 
