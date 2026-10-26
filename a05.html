@@ -193,6 +193,92 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  table.rubric td{padding:12px 12px}
  .deliverable-card{padding:24px}
 }
+
+/* ===== TRIVIA GAME (platformer, per section) ===== */
+.tg-rules{margin:22px 0 0;max-width:820px}
+.tg-btn{font-family:inherit;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:14px 22px;background:var(--crimson);color:#fff;cursor:pointer;transition:background .15s}
+.tg-btn:hover{background:var(--crimson-dark)}
+.lvbar{position:relative;background:var(--white);border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);padding:12px 56px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;scroll-margin-top:0}
+.lvbar-lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-right:8px}
+.lv-btn{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);background:var(--white);border:1px solid var(--rule-soft);padding:7px 11px;cursor:pointer;white-space:nowrap}
+.lv-btn:hover:not(:disabled){border-color:var(--graphite)}
+.lv-btn.done{border-color:var(--graphite)}
+.lv-btn.done::after{content:" \2713"}
+.lv-btn.current{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.lv-btn:disabled{color:var(--graphite-lt);background:var(--paper);cursor:not-allowed}
+.lvbar-right{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite)}
+.lv-reset{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);background:none;border:1px solid var(--crimson);padding:7px 11px;margin-left:12px;cursor:pointer}
+.lv-reset:hover{background:var(--crimson);color:#fff}
+.lvbar-msg{flex-basis:100%;font-size:14px;font-weight:600;color:var(--crimson)}
+.lvbar-msg:empty{display:none}
+.level{display:none}
+.level.on{display:block}
+.tg-arena{background:var(--rule-strong);padding:64px 56px;color:#fff}
+.tg-arena .eyebrow{color:var(--grey-on-dark)}
+.tg-arena .sec-title{color:#fff}
+.tg-arena .sec-rule{border-color:rgba(255,255,255,.14)}
+.tg-start,.tg-cleared{max-width:640px;background:var(--white);border-top:3px solid var(--crimson);padding:26px 28px;color:var(--black)}
+.tg-start[hidden],.tg-cleared[hidden],.tg-play[hidden],.tg-results[hidden],.tg-overlay[hidden],.tg-bio[hidden],.tg-unlock-row[hidden]{display:none}
+.tg-start p,.tg-cleared p{margin-bottom:14px}
+.tg-start label,.tg-unlock label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+.tg-start input,.tg-unlock input{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--rule-soft);background:var(--paper);color:var(--black);margin-bottom:14px}
+.tg-cleared h3{color:var(--crimson);margin-bottom:10px}
+.tg-err{font-size:14px;font-weight:600;color:var(--crimson);min-height:20px;margin-top:10px}
+.tg-play{max-width:1000px}
+.tg-play canvas{display:block;width:100%;aspect-ratio:16/9;background:#8fc3ff;border:1px solid rgba(255,255,255,.35);image-rendering:pixelated;touch-action:none}
+.tg-play canvas:focus-visible{outline:3px solid var(--crimson-mid);outline-offset:3px}
+.tg-controls{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+.tg-controls div{display:flex;gap:10px}
+.tg-controls button{font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.4);padding:14px 20px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.tg-controls button.jump{background:var(--crimson);border-color:var(--crimson)}
+.tg-hint{font-size:14px;color:var(--grey-on-dark);margin-top:10px}
+.tg-overlay{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(17,17,17,.6)}
+.tg-box{width:100%;max-width:760px;max-height:94vh;overflow:auto;background:var(--white);border-top:4px solid var(--crimson);box-shadow:0 30px 80px rgba(0,0,0,.35);padding:26px 28px}
+.tg-qhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.tg-qhead b{color:var(--crimson)}
+.tg-topic{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px}
+.tg-q{font-family:'Source Serif 4',serif;font-size:21px!important;font-weight:600;line-height:1.35;color:var(--graphite)!important;margin-bottom:16px}
+.tg-opt{display:grid;grid-template-columns:28px 1fr;gap:8px;width:100%;text-align:left;font-family:inherit;font-size:15px;line-height:1.5;color:var(--black);background:var(--paper);border:1px solid var(--rule-soft);padding:11px 14px;margin-bottom:8px;cursor:pointer}
+.tg-opt .k{font-size:12px;font-weight:700;color:var(--crimson);padding-top:2px}
+.tg-opt:hover:not(:disabled){border-color:var(--crimson);background:var(--crimson-pale)}
+.tg-opt.wrong{background:#f8d7da;border-color:#e08080;color:#842029;cursor:not-allowed}
+.tg-opt.right{background:#d4edda;border-color:#a8d8a0;color:#2d6a3f}
+.tg-opt:disabled{cursor:not-allowed}
+.tg-fb{font-size:15px;font-weight:700;min-height:22px;margin-top:8px}
+.tg-fb.bad{color:#842029}
+.tg-fb.good{color:#2d6a3f}
+.tg-box .tg-btn{margin-top:14px}
+.tg-results{max-width:1000px;background:var(--white);border:1px solid var(--rule-soft);border-top:3px solid var(--crimson);padding:30px 32px}
+.tg-score{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 24px}
+.tg-score div{background:var(--paper);border:1px solid var(--rule-soft);padding:12px 18px;min-width:150px}
+.tg-score .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.tg-score .v{font-family:'Source Serif 4',serif;font-size:24px;font-weight:700;color:var(--black)}
+.tg-score .v.big{color:var(--crimson);font-size:30px}
+.tg-table{width:100%;border-collapse:collapse}
+.tg-table th{padding:10px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);text-align:left;border-bottom:1px solid var(--rule-strong)}
+.tg-table td{padding:8px 12px;font-size:15px;border-bottom:1px solid var(--rule-soft)}
+.tg-table td.n{text-align:right;font-weight:700}
+.tg-table tr.zero td{background:#f8d7da}
+.tg-table tr.sec td{background:var(--paper);font-weight:700;color:var(--graphite);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.tg-shot{margin-top:20px}
+.tg-guide{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule-strong)}
+.tg-guide h4{font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;color:var(--graphite);margin:22px 0 4px}
+.tg-guide ol{list-style:none;counter-reset:g}
+.tg-guide li{counter-increment:g;display:grid;grid-template-columns:40px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--rule-soft)}
+.tg-guide li:last-child{border-bottom:none}
+.tg-guide li::before{content:counter(g,decimal-leading-zero);font-size:13px;font-weight:700;color:var(--crimson);padding-top:3px}
+.tg-guide .g-q{font-size:16px;font-weight:700;margin:0 0 8px;line-height:1.45}
+.tg-guide .g-a{font-size:15px;line-height:1.6;background:#eef7f0;border-left:4px solid #2d6a3f;padding:8px 12px}
+.tg-unlock{margin-top:36px;padding:24px 26px;background:var(--paper);border:1px solid var(--rule-soft);border-left:4px solid var(--graphite)}
+.tg-unlock-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.tg-unlock-row input{flex:1;min-width:200px;margin-bottom:0}
+.tg-bio{margin-top:28px}
+.tg-bio h3{font-family:'Source Serif 4',serif;font-size:28px;font-weight:700;color:var(--crimson);margin-bottom:14px}
+.tg-bio h3 span{color:var(--grey);font-weight:600;font-size:20px}
+.tg-bio h4{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--graphite);margin:26px 0 10px}
+.tg-bio .sub-list li{font-size:16px}
+#tg-summary[hidden]{display:none}
+@media(max-width:960px){.lvbar{padding:10px 16px}.lv-name{display:none}.tg-arena{padding:48px 24px}.tg-results,.tg-start,.tg-cleared{padding:22px 18px}.tg-box{padding:20px 18px}.tg-controls button{padding:14px 14px}}
 </style>
 </head>
 <body>
@@ -203,11 +289,13 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <ul>
   <li><a href="#intro">Overview</a></li>
   <li><a href="#tools">Tools</a></li>
-  <li><a href="#stage1">Stage 1</a></li>
-  <li><a href="#stage2">Stage 2</a></li>
-  <li><a href="#stage3">Stage 3</a></li>
+  <li><a href="#stage1">RCP</a></li>
+  <li><a href="#stage2">Floor Finish</a></li>
+  <li><a href="#stage3">Renderings</a></li>
+  <li><a href="#matboard">Material Board</a></li>
   <li><a href="#deliverables">Deliverables</a></li>
   <li><a href="#rubric">Rubric</a></li>
+  <li><a href="#tg-arena">Trivia Game</a></li>
  </ul>
 </nav>
 
@@ -217,7 +305,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <hr class="hero-rule">
  <h1>Additional Design <em>Documentation</em></h1>
  <hr class="hero-rule">
- <p class="hero-sub">Assignment 04 drew the building in plan. Assignment 05 designs its <strong>ceiling</strong> and its <strong>floor</strong> &mdash; real products from real manufacturers&rsquo; catalogs, demonstrated in three rendered spaces.</p>
+ <p class="hero-sub">In Assignment 04, students completed the project&rsquo;s floor plans by reflecting on &ldquo;life happening&rdquo; as they introduced furniture, plumbing fixtures, and equipment into the previously defined block plan. Now, all elements in the project respond to the imagined future activities that would take place in the building, and the experiences derived from the design concept and its evolving nuances. Assignment 05 builds on this, as students must now include <strong>ceiling</strong> and <strong>floor</strong> designs in the mix, ensuring they adhere to the guiding design principles applied to this point. Additionally, students must specify real FF&amp;E products from real manufacturers&rsquo; catalogs, demonstrating their specification skills in a selection of conceptually representative spaces.</p>
  <div class="hero-meta">
   <div class="hero-meta-item">
    <span class="hero-meta-k">Project</span>
@@ -238,7 +326,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
    <div class="stat-lbl">Stages</div>
   </div>
   <div class="stat">
-   <div class="stat-num">3</div>
+   <div class="stat-num">4</div>
    <div class="stat-lbl">Rendered Spaces</div>
   </div>
   <div class="stat">
@@ -252,58 +340,78 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  </div>
 </header>
 
+<!-- HOW THE GUIDE WORKS -->
+<section class="section warm" id="howto">
+ <p class="eyebrow">How This Guide Works</p>
+ <h2 class="sec-title">Read a Section, Then Play It</h2>
+ <hr class="sec-rule">
+ <p class="lead">The guide is divided into 6 sections. Read each section first. Then play its game level to check what you learned. Clearing a level unlocks the next section.</p>
+ <ul class="sub-list tg-rules">
+  <li><span>Each level has <strong>5 coins</strong>. Jump into a floating <strong>?</strong> box from below to release a coin and get a question about that section.</span></li>
+  <li><span>Run with <strong>&larr; &rarr;</strong> and jump with <strong>Space</strong> or <strong>&uarr;</strong>. On a phone or tablet, use the buttons under the game.</span></li>
+  <li><span>Each coin is worth <strong>10 points</strong>. Each wrong answer takes <strong>2 points</strong> off that coin.</span></li>
+  <li><span>You have <strong>5 attempts</strong> per question. After 5 wrong answers the coin is worth <strong>0</strong>.</span></li>
+  <li><span>Clear all <strong>6 levels</strong> (30 coins, 300 points). Then take a screenshot of your summary and submit it to your teacher.</span></li>
+  <li><span>Your teacher will then give you a password that unlocks a bonus at the end of the summary.</span></li>
+ </ul>
+</section>
+
+<!-- LEVEL BAR -->
+<div class="lvbar" id="lvbar">
+ <span class="lvbar-lbl">Sections</span>
+ <span id="lv-steps" style="display:contents"></span>
+ <span class="lvbar-right" id="lv-count"></span>
+ <button type="button" class="lv-reset" id="lv-reset">Reset game</button>
+ <p class="lvbar-msg" id="lv-msg" role="status" aria-live="polite"></p>
+</div>
+
+<div id="levels">
+<div class="level" data-level="1">
 <!-- SECTION 01: INTRODUCTION -->
 <section class="section alt" id="intro">
  <div class="reveal">
   <p class="eyebrow">Section 01</p>
   <h2 class="sec-title">Introduction</h2>
   <hr class="sec-rule">
-  <p class="lead">Assignment 04 drew the building in plan. Assignment 05 designs its ceiling and its floor.</p>
-  <p class="lead">The ceiling is where light fixtures, HVAC diffusers, sprinklers, and exit signs land. They compete for the same plane, and fitting them together is the design challenge. You also decide what the ceiling is made of and how high it sits.</p>
-  <p class="lead">The floor is where you specify materials and where they change. Every one of those lines is a decision.</p>
-  <p class="lead">Both surfaces do more work for this population than they would elsewhere. Older eyes need more light and are more sensitive to glare, so fixture type and ceiling height determine how well a resident sees. A high-contrast floor pattern can read as a hole or a step to someone with low vision. A threshold between two materials is where a walker wheel catches.</p>
-  <p class="lead">You will select real products from commercial manufacturers' catalogs, document where each goes, and demonstrate the result in three rendered spaces with the specified furniture.</p>
+  <p class="lead">In Assignment 05, students must design the ceilings and floors for <strong>ALL</strong> spaces in the building. This includes placing on the ceiling surface:</p>
+  <ol class="instruction-list" style="margin:18px 0 36px">
+   <li><span>Light fixtures</span></li>
+   <li><span>HVAC diffusers</span></li>
+   <li><span>Exit signs (as text symbols. Do not insert exit sign families)</span></li>
+   <li><span>Smoke detectors (as text symbols. Do not insert smoke detector families)</span></li>
+   <li><span>Sprinklers (annotation family provided to include in the Reflected Ceiling Plans (RCP))</span></li>
+  </ol>
+  <p class="lead">Floor design calls for students to reflect on the different materials that each space must have. Reflect on the activities taking place inside each space. Some spaces are for gathering or relaxing; others are private areas; some are for work, teaching, or learning; some are purely functional and require low maintenance; and some are unique spaces that promote wellness and introspection. What kind of floors match these activities and experiences?</p>
+  <p class="lead">Floors and ceilings are more than material choices. They carry significant weight in promoting sensations and attitudes in interiors. They are fundamental in conveying spatial intentions and concepts.</p>
+  <p class="lead">Students will select real products from commercial manufacturers&rsquo; catalogs, document where each goes, and demonstrate the result in selected rendered spaces with the specified furniture or equipment.</p>
 
-  <p class="instructions-label" style="margin-top:40px">You Bring</p>
-  <ul class="sub-list" style="margin-bottom:32px">
-   <li><strong>Assignment 04:</strong> Sheets 1 and 2</li>
-   <li><strong>Assignment 03:</strong> Area Program and code requirements</li>
-   <li><strong>Assignment 02:</strong> Concept Statement</li>
-   <li><strong>Assignment 01:</strong> Primary and Secondary Source research and collective library</li>
-  </ul>
-
-  <div class="callout"><strong>The objective.</strong> Design and document the <strong>ceiling and floor</strong> for the whole project, selecting real materials from real manufacturers&rsquo; catalogs, and demonstrate the results in three rendered spaces with the specified FF&amp;E.</div>
- </div>
-</section>
-
-<!-- SECTION 02: WHY MANUFACTURERS & OBJECTIVES -->
-<section class="section warm">
- <div class="reveal">
-  <p class="eyebrow">Section 02</p>
-  <h2 class="sec-title">Why Real Manufacturers &amp; Objectives</h2>
-  <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:14px">The point of using manufacturers is twofold:</p>
+  <p class="instructions-label" style="margin-top:40px">The Revit Model</p>
+  <p class="lead" style="margin-bottom:14px">Students will continue to work on the <strong>same Revit model</strong>. They must <strong>NOT</strong> create a new model. Creating a new model would render the project and its updates useless.</p>
   <ul class="sub-list" style="margin-bottom:40px">
-   <li>Choose finishes that serve your concept.</li>
-   <li>Understand how ceiling and flooring systems actually deploy &mdash; their module, their direction, their seams &mdash; and what that means for the rooms you drew.</li>
+   <li><span>Create all floors in the <strong>FF Level 1 DD</strong>, <strong>FF Level 2 DD</strong>, and <strong>FF Level 3 DD</strong> views.</span></li>
+   <li><span>Once all floors are created, duplicate the FF Level 1 DD, FF Level 2 DD, and FF Level 3 DD views and apply the <strong>Floor Finish View Template</strong>. Students must follow the same protocol they learned when doing the Tutorials in Assignment 00: Revit Bootcamp.</span></li>
+   <li><span>All Reflected Ceiling Plans (RCPs) must be created using the <strong>Ceiling Plan Views</strong> already available in the existing Revit model. Students must follow the same protocol they learned when doing the Tutorials in Assignment 00: Revit Bootcamp.</span></li>
   </ul>
 
-  <p class="instructions-label">Objectives</p>
+  <p class="instructions-label">The Objectives</p>
   <ol class="instruction-list">
-   <li><span>Select commercial ceiling and flooring materials that serve the design concept.</span></li>
-   <li><span>Documenting material distribution through hatch conventions represents how each material is deployed.</span></li>
-   <li><span>Coordinate ceiling heights, luminaires, HVAC, sprinklers, and exit signs on a single plane.</span></li>
-   <li><span>Lay out a sprinkler grid to NFPA spacing limits.</span></li>
-   <li><span>Communicate the design through legends and symbol keys.</span></li>
-   <li><span>Prove the design in three rendered spaces with specified FF&amp;E.</span></li>
+   <li><div><strong>Design and document:</strong>
+    <ul class="sub-list">
+     <li><span>Ceilings and floors for the whole project</span></li>
+     <li><span>Select real materials from real manufacturers&rsquo; catalogs</span></li>
+    </ul>
+   </div></li>
+   <li><span><strong>Demonstrate</strong> the results in selected rendered spaces with the specified FF&amp;E.</span></li>
   </ol>
  </div>
 </section>
+</div>
 
-<!-- SECTION 03: STUDENT LEARNING OUTCOMES -->
+<div class="level" data-level="2">
+<!-- SECTION 02: STUDENT LEARNING OUTCOMES -->
 <section class="section alt">
  <div class="reveal">
-  <p class="eyebrow">Section 03</p>
+  <p class="eyebrow">Section 02</p>
   <h2 class="sec-title">Student Learning Outcomes</h2>
   <hr class="sec-rule">
 
@@ -368,52 +476,56 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   </div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 04: THE TOOLS -->
+<div class="level" data-level="3">
+<!-- SECTION 03: THE TOOLS -->
 <section class="section dark" id="tools">
  <div class="reveal">
-  <p class="eyebrow">Section 04</p>
+  <p class="eyebrow">Section 03</p>
   <h2 class="sec-title">The Tools</h2>
   <hr class="sec-rule">
   <ol class="instruction-list">
-   <li><span><strong>Drawing.</strong> Continue in AutoCAD or Revit &mdash; whichever was used for A04.</span></li>
-   <li><span><strong>Printing Format.</strong> The same 48&Prime; &times; 36&Prime; course template, at 1/8&Prime; = 1&prime;-0&Prime;, with sheet numbering continuing sequentially from A04.</span></li>
+   <li><span><strong>Revit Tutorials</strong> from Assignment 00: Revit Bootcamp.</span></li>
+   <li><span><strong>The Revit model</strong> students have developed until now.</span></li>
+   <li><span><strong>Prompt creation protocol for AI Material Board generation:</strong> <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 MatBoard</a></span></li>
+   <li><span><strong>Prompt creation protocol for AI rendering:</strong> <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 Mood Environments</a></span></li>
    <li><div><strong>Materials References.</strong>
     <ul class="sub-list">
-     <li>Ceilings &mdash; <a href="https://www.usg.com/en-US/p/products/ceilings-1000" target="_blank" rel="noopener">USG</a></li>
-     <li>Flooring &mdash; <a href="https://www.mohawkgroup.com/" target="_blank" rel="noopener">Mohawk Group</a></li>
+     <li><span>Ceilings &mdash; <a href="https://www.usg.com/en-US/p/products/ceilings-1000" target="_blank" rel="noopener">USG</a></span></li>
+     <li><span>Flooring &mdash; <a href="https://www.mohawkgroup.com/" target="_blank" rel="noopener">Mohawk Group</a></span></li>
     </ul>
    </div></li>
    <li><div><strong>Rendering</strong> &mdash; check system requirements before installing anything.
     <ul class="sub-list">
-     <li>Enscape (educational license required outside the labs)</li>
-     <li><a href="https://www.twinmotion.com/download" target="_blank" rel="noopener">Twinmotion</a>- free for students</li>
-     <li><a href="https://www.d5render.com/educational-license?utm_campaign=googlebrandsearchFUSd5edu&utm_source=google&utm_medium=cpc&utm_term=d5%20render%20students&gad_source=1&gad_campaignid=22472650533&gbraid=0AAAAAoKkUTHB8d6HaxbD0Cco1SoF4wvD1&gclid=CjwKCAjwpefSBhBvEiwAzyEtZ_HWJt5ULN8nGenAqCHhXV1ULeVcIafkR1MV8K7sxSPHqE3Z2nrJUxoC8msQAvD_BwE" target="_blank" rel="noopener">D5 Render</a>- free educational license</li>
-     <li>Image-to-image AI generators</li>
+     <li><span>Enscape (educational license required outside the labs)</span></li>
+     <li><span><a href="https://www.twinmotion.com/download" target="_blank" rel="noopener">Twinmotion</a> &mdash; free for students</span></li>
+     <li><span><strong>Image-to-image AI generators</strong></span></li>
     </ul>
     <ul class="sub-list nested">
-     <li><strong>If you use AI,</strong> all AI rendering must use image-to-image protocols that preserve the geometry and composition of your design.</li>
-     <li><strong>With each AI-assisted rendering, submit a blank frame:</strong> a screenshot of that exact view, straight from your 3D modeling software, before any AI processing. The frame is proof that the geometry is yours.</li>
+     <li><span><strong>If you use AI,</strong> all AI rendering must use image-to-image protocols that preserve the geometry and composition of your design.</span></li>
+     <li><span>When producing an AI-generated rendering, students must follow the <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 Mood Environments</a> protocols.</span></li>
+     <li><span><strong>With each AI-assisted rendering, submit a blank frame:</strong> a screenshot of that exact view, straight from your 3D modeling software, before any AI processing. The frame proves the geometry is yours.</span></li>
     </ul>
    </div></li>
    <li><div><strong>FF&amp;E Specification.</strong>
     <ul class="sub-list">
-     <li>Excel or similar</li>
-     <li><a href="https://web.specsources.com/signup" target="_blank" rel="noopener">Specsources</a>- free educational license &mdash; a platform built to manage FF&amp;E project information</li>
+     <li><span>Excel or similar</span></li>
+     <li><span><a href="https://web.specsources.com/signup" target="_blank" rel="noopener">Specsources</a> &mdash; free educational license. The platform is built to manage FF&amp;E project information.</span></li>
     </ul>
    </div></li>
   </ol>
-  <div class="callout on-dark" style="margin-top:32px">Your instructor will indicate which FF&amp;E tool will be used for your section.</div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 04: STAGE 1 -->
+<div class="level" data-level="4">
+<!-- SECTION 04: REFLECTED CEILING PLAN -->
 <section class="section alt" id="stage1">
  <div class="reveal">
-  <p class="eyebrow">Section 05</p>
-  <h2 class="sec-title">Stage 1 &middot; Reflected Ceiling Plan (RCP)</h2>
+  <p class="eyebrow">Section 04</p>
+  <h2 class="sec-title">Reflected Ceiling Plan (RCP)</h2>
   <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:32px">Sheet 3, a continuation of sheet numbering from Assignment 04&rsquo;s Sheets 1 and 2 &middot; First and Second Floors &middot; Scale <strong>1/8&Prime; = 1&prime;-0&Prime;</strong></p>
 
   <div class="stage-layout">
    <div>
@@ -422,31 +534,36 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     <table class="zone-table">
      <thead><tr><th>Zone</th><th style="text-align:right">Minimum</th></tr></thead>
      <tbody>
-      <tr><td>Common areas</td><td class="num">11&prime;-0&Prime;</td></tr>
+      <tr><td>Common areas</td><td class="num">10&prime;-0&Prime;</td></tr>
       <tr><td>Private areas</td><td class="num">9&prime;-0&Prime;</td></tr>
-      <tr><td>Service areas</td><td class="num">10&prime;-0&Prime;</td></tr>
+      <tr><td>Service areas</td><td class="num">10&prime;-0&Prime; or no ceiling</td></tr>
      </tbody>
     </table>
 
-    <h3 class="sub-head">Material &amp; Hatch Conventions</h3>
-    <p class="lead"><strong>Material definition.</strong> Select ceiling materials from the USG catalog. Choose finishes that serve your concept, then draw where each one goes.</p>
-    <p class="lead" style="margin-top:14px"><strong>Hatch conventions must represent the real material</strong> &mdash; not an abstract pattern. If a tile deploys at 24&Prime; &times; 24&Prime;, the hatch reads 24&Prime; &times; 24&Prime; at a 1/8&Prime; scale. If the system is linear, the hatch appears as parallel lines at the real width and in the intended direction.</p>
+    <h3 class="sub-head">Material Conventions</h3>
+    <p class="lead"><strong>Material definition.</strong> Select ceiling materials from the <a href="https://www.usg.com/en-US/p/products/ceilings-1000" target="_blank" rel="noopener">USG catalog</a>. Choose finishes that serve your concept, then draw where each one goes.</p>
 
     <h3 class="sub-head">What Must Appear</h3>
     <ul class="checkitems">
      <li><b>Ceiling heights</b>, specified for every space.</li>
-     <li><b>Light fixtures / luminaires.</b> Each type of fixture must be represented by a particular symbol that matches a legend key. Select luminaire types from <a href="https://deltalight.com/en-us/product-browser?filters[type]=7b64f720-2f76-11ed-b1a2-00505693b57f&amp;filters[location]=7a9117b6-2f76-11ed-8f17-00505693b57f" target="_blank" rel="noopener">Delta Light&rsquo;s product browser</a>.</li>
-     <li><b>Ceiling-mounted exit signs</b>, coordinated with your A04 Sheet 2.</li>
+     <li><b>Light fixtures / luminaires.</b> Each type of fixture must be represented by a particular symbol that matches a legend key in the same sheet as your RCP.
+      <ul class="sub-list">
+       <li><span>Select luminaire types from <a href="https://deltalight.com/en-us/product-browser?filters[type]=7b64f720-2f76-11ed-b1a2-00505693b57f&amp;filters[location]=7a9117b6-2f76-11ed-8f17-00505693b57f" target="_blank" rel="noopener">Delta Light&rsquo;s product browser</a>.</span></li>
+      </ul>
+     </li>
+     <li><b>Ceiling-mounted exit signs as text symbols. Do not insert exit sign families.</b> These must coordinate with your Fire/Life Safety Plans.</li>
      <li><b>HVAC grilles &amp; diffusers.</b> Select types from <a href="https://inviair.com/visual-applications/" target="_blank" rel="noopener">Inviair&rsquo;s visual applications</a>.</li>
      <li><b>Sprinklers</b>, with a dashed coverage radius at each head.
       <ul class="sub-list">
-       <li><strong>The sprinkler grid.</strong> Lay out heads to NFPA 13 spacing for standard spray sprinklers in a maximum-spaced grid of 15&prime;-0&Prime; x 15&prime;-0&Prime;. If a room is smaller than 15&prime;-0&Prime; x 15&prime;-0&Prime;, it must have at least one sprinkler.</li>
-       <li>Minimum distance from a wall is 4&Prime;.</li>
-       <li>Show each head&rsquo;s coverage radius dashed, which describes circles 15&prime;-0&Prime; in diameter.</li>
+       <li><span><strong>The sprinkler grid (annotation family provided via Blackboard).</strong> As required by NFPA 13, space standard spray sprinklers in a maximum grid of 15&prime;-0&Prime; x 15&prime;-0&Prime;. If a room is smaller than 15&prime;-0&Prime; x 15&prime;-0&Prime;, it must have at least one sprinkler.</span></li>
+       <li><span>Minimum distance from a wall is 4&Prime;.</span></li>
+       <li><span>Show each head&rsquo;s coverage radius dashed, which describes circles 15&prime;-0&Prime; in diameter.</span></li>
       </ul>
      </li>
-     <li><b>Legend &amp; symbol key.</b> A complete key covering every type of luminaire and every object embedded in or hanging from the ceiling &mdash; diffusers, grilles, sprinklers, exit signs. Use the conventions in the template. <strong>Do not invent symbols.</strong></li>
+     <li><b>Legend &amp; symbol key.</b> A complete key covering every type of luminaire and every object embedded in or hanging from the ceiling &mdash; diffusers, grilles, sprinklers, exit signs.</li>
     </ul>
+
+    <div class="callout" style="margin-top:28px"><strong>WARNING:</strong> Windows on exterior walls must not intersect with the ceiling plane. Students must double-check window height by setting the base and top constraints accurately. This will be evident on the model&rsquo;s 3D view.</div>
    </div>
 
    <div class="stage-figure">
@@ -800,24 +917,17 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   </div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 05: STAGE 2 -->
+<div class="level" data-level="5">
+<!-- SECTION 05: FLOOR FINISH PLAN -->
 <section class="section warm" id="stage2">
  <div class="reveal">
-  <p class="eyebrow">Section 06</p>
-  <h2 class="sec-title">Stage 2 &middot; Floor Finish Plan</h2>
+  <p class="eyebrow">Section 05</p>
+  <h2 class="sec-title">Floor Finish Plan</h2>
   <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:32px">Sheet 4 &middot; First and Second Floors &middot; Scale <strong>1/8&Prime; = 1&prime;-0&Prime;</strong></p>
-
   <ul class="checkitems">
-   <li><b>Material definition.</b> Select flooring from the Mohawk Group catalog to serve your concept and draw where each material goes.</li>
-   <li><b>The same hatch rule applies, and it matters more here.</b> Flooring deployment is visible to the occupant in a way that ceiling deployment is not. If a carpet tile deploys at 24&Prime; &times; 24&Prime;, the hatch reads 24&Prime; &times; 24&Prime;. If a plank deploys in parallel boards, the hatch reads as parallel boards, running in the intended direction.</li>
-   <li><b>Transitions.</b> Every place two materials meet is a decision. Show the transitions with elements that mediate between the two surface types &mdash; these could be:
-    <ul class="sub-list">
-     <li>Thresholds</li>
-     <li>An overlapping linear element in a continuous space</li>
-    </ul>
-   </li>
+   <li><b>Material definition.</b> Select flooring from the <a href="https://www.mohawkgroup.com/" target="_blank" rel="noopener">Mohawk Group</a> catalog that serves the design concept. Model where each material goes in the building.</li>
    <li><b>Legend &amp; symbol key.</b> Every material must be included in the legend key, referencing its type and name.</li>
   </ul>
  </div>
@@ -826,56 +936,143 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 <!-- SECTION 06: STAGE 3 -->
 <section class="section alt" id="stage3">
  <div class="reveal">
-  <p class="eyebrow">Section 07</p>
+  <p class="eyebrow">Section 06</p>
   <h2 class="sec-title">Stage 3 &middot; Renderings &amp; FF&amp;E Specification</h2>
   <hr class="sec-rule">
-
-  <p class="lead" style="margin-bottom:12px"><strong>Produce three renderings of representative spaces:</strong></p>
+  <p class="lead" style="margin-bottom:12px"><strong>Produce five renderings of selected representative spaces:</strong></p>
   <ul class="sub-list" style="margin-bottom:36px">
-   <li>Resident space</li>
-   <li>Learning space</li>
-   <li>Shared / common space</li>
+   <li><span>Resident private apartment</span></li>
+   <li><span>Learning space</span></li>
+   <li><span>Shared / common space</span></li>
+   <li><span>Bathroom space</span></li>
   </ul>
-
-  <p class="lead"><strong>FF&amp;E and luminaire spec sheet.</strong> One per rendered space: for each of the three spaces, an FF&amp;E spec sheet with, at a minimum, these fields:</p>
-  <div class="callout" style="margin-top:18px">
-   <strong>Item tag</strong> &middot; Room name and <strong>room number</strong> (keyed to your A04 tags) &middot; Description &middot; Manufacturer &middot; Product number &middot; Finish &middot; Dimensions &middot; Quantity
-  </div>
+  <p class="lead" style="margin-bottom:12px"><strong>FF&amp;E and luminaire spec sheets.</strong> Include per space:</p>
+  <ul class="sub-list" style="margin-bottom:24px">
+   <li><span>Ceilings</span></li>
+   <li><span>Floors</span></li>
+   <li><span>Lighting fixtures</span></li>
+   <li><span>Furniture (loose furniture, millwork, cabinets, etc.)</span></li>
+   <li><span>Plumbing fixtures</span></li>
+   <li><span>Equipment (refrigerators, washing machine, other special items, TVs, etc.)</span></li>
+  </ul>
+  <div class="callout"><strong>One spec sheet per item.</strong> <a href="https://web.specsources.com/signup" target="_blank" rel="noopener">Specsources</a> software is recommended for spec sheet generation.</div>
  </div>
 </section>
 
-<!-- SECTION 07: DELIVERABLES -->
+<!-- SECTION 07: MATERIAL BOARD CREATION -->
+<section class="section warm" id="matboard">
+ <div class="reveal">
+  <p class="eyebrow">Section 07</p>
+  <h2 class="sec-title">Material Board Creation</h2>
+  <hr class="sec-rule">
+  <p class="lead">Use the <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 MatBoard</a> as instructed in class to create material boards for the selected spaces subject to be rendered. <strong>Create the material boards prior to rendering the spaces.</strong></p>
+ </div>
+</section>
+</div>
+
+<div class="level" data-level="6">
+<!-- SECTION 08: DELIVERABLES -->
 <section class="section warm" id="deliverables">
  <div class="reveal">
   <p class="eyebrow">Section 08</p>
   <h2 class="sec-title">Deliverables</h2>
   <hr class="sec-rule">
-
   <div class="deliverables-stack">
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 01 &middot; First &amp; Second Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
-    <div class="deliverable-title">Sheet 3 &mdash; Reflected Ceiling Plan</div>
+    <div class="deliverable-num">Sheet 0</div>
+    <div class="deliverable-title">Cover Sheet</div>
     <div class="deliverable-body">
-     <p>Both floors at 1/8&Prime;, printed in the 48&Prime; &times; 36&Prime; course template.</p>
+     <ul class="sub-list">
+      <li><span>Include a representative image of the project.</span></li>
+      <li><span>Include the <strong>Design Statement</strong>:</span></li>
+     </ul>
+     <ul class="sub-list nested">
+      <li><span>Value Proposition and Core Design Solution (modified if necessary) from Assignment 02.</span></li>
+      <li><span>Write a text that explains how the design concept remains evident in the detailed plans.</span></li>
+      <li><span>Explain how your interior design decisions appear in the plans.</span></li>
+      <li><span>Connect the Design Documents plans to the Concept Statement and to the research from Assignments 01 and 02.</span></li>
+     </ul>
     </div>
    </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 02 &middot; First &amp; Second Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
-    <div class="deliverable-title">Sheet 4 &mdash; Floor Finish Plan</div>
+    <div class="deliverable-num">Sheets 1 and 2 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Interior Design Floor Plans</div>
     <div class="deliverable-body">
-     <p>Both floors at 1/8&Prime;, printed in the 48&Prime; &times; 36&Prime; course template.</p>
+     <p>The floor plans must include:</p>
+     <ul class="sub-list">
+      <li><span><strong>Accurate wall and partition types</strong> (fire-rated and non-fire-rated). These walls must be anchored (base level) to the corresponding structural level, reaching up to the inferior face of the above structural slab or roof, either by applying a negative offset equal to the structural slab or roof thickness, or by connecting the wall to the above slab or roof. (Updated from Assignment 04)</span></li>
+      <li><span><strong>Windows</strong> (attached to the corresponding Floor Finish level) on the fa&ccedil;ade that support natural light and ventilation of interior spaces considering the activities that take place in these spaces. (Updated from Assignment 04)</span></li>
+      <li><span><strong>FF&amp;E</strong> attached to the corresponding Floor Finish level. (Updated from Assignment 04)</span></li>
+      <li><span><strong>Doors with swings</strong> attached to the corresponding Floor Finish level. (Updated from Assignment 04)</span></li>
+      <li><span><strong>NEW: Floor Finishes material.</strong></span></li>
+     </ul>
+     <p style="margin-top:12px">Use the same sheet size (36&Prime; &times; 48&Prime;) as Assignment 4. Include the <strong>Zoning Legend</strong> on Sheet 1 (First Floor).</p>
     </div>
    </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Deliverable 03 &middot; Same Course Template</div>
-    <div class="deliverable-title">Sheet 5 &mdash; Renderings, FF&amp;E Specs &amp; Design Statement</div>
+    <div class="deliverable-num">Sheets 3 and 4 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Fire &amp; Life-Safety Block Plans</div>
     <div class="deliverable-body">
-     <p><strong>Three renderings:</strong> one resident, one learning, one shared/common. With blank frames if AI-assisted, printed in the 48&Prime; &times; 36&Prime; course template.</p>
-     <p><strong>Three FF&amp;E spec sheets,</strong> one per rendered space.</p>
-     <p><strong>Design Statement.</strong> Carried over from A04, plus a written explanation of how your material choices align with your concept.</p>
+     <p>Use the Fire/Life Safety view template with the furniture, casework, and specialty equipment turned off. These are an evolution of the Block Plans created for Assignments 03 and 04. They must maintain coherency with the updated project and include the same information as the Block Plans submitted in Assignment 04.</p>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Sheets 5 and 6 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Reflected Ceiling Plan</div>
+    <div class="deliverable-body">
+     <p>Use the RCP view template, <strong>created by each student by following the directions of the tutorials from Assignment 00: Revit Bootcamp.</strong></p>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Sheets 7 and 8 &middot; First, Second &amp; Third Floors &middot; 1/8&Prime; = 1&prime;-0&Prime;</div>
+    <div class="deliverable-title">Floor Finish Plan</div>
+    <div class="deliverable-body">
+     <p>Use the Finish Floor view template, <strong>created by each student by following the directions of the tutorials from Assignment 00: Revit Bootcamp.</strong></p>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Sheet 9</div>
+    <div class="deliverable-title">Material Boards</div>
+    <div class="deliverable-body">
+     <ul class="sub-list">
+      <li><span>Create the material boards of each rendered space using the <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 MatBoard</a>.</span></li>
+      <li><span>Insert the boards in the model and place them on Sheet 9, using the same 36&Prime; &times; 48&Prime; format as all other sheets.</span></li>
+     </ul>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Sheet 10</div>
+    <div class="deliverable-title">Interior Renderings + FF&amp;E Specs</div>
+    <div class="deliverable-body">
+     <ul class="sub-list">
+      <li><span>Resident private apartment</span></li>
+      <li><span>Learning space</span></li>
+      <li><span>Shared / common space</span></li>
+      <li><span>Bathroom space</span></li>
+     </ul>
+     <ul class="sub-list nested">
+      <li><span><strong>If you use AI,</strong> all AI renderings must use image-to-image protocols that preserve the geometry and composition of your design.</span></li>
+      <li><span>When producing an AI-generated rendering, students must follow the <a href="https://sites.ua.edu/dronderos/d-r-e-a-m-s/" target="_blank" rel="noopener">DREAMS 4 Mood Environments</a> protocols.</span></li>
+      <li><span><strong>With each AI-assisted rendering, submit a blank frame:</strong> a screenshot of that exact view, straight from your 3D modeling software, before any AI processing. The frame proves the geometry is yours.</span></li>
+     </ul>
+    </div>
+   </div>
+
+   <div class="deliverable-card">
+    <div class="deliverable-num">Sheet 11</div>
+    <div class="deliverable-title">FF&amp;E Specs</div>
+    <div class="deliverable-body">
+     <ul class="sub-list">
+      <li><span>Use <a href="https://web.specsources.com/signup" target="_blank" rel="noopener">Specsources</a> software or Excel, or similar, to create the spec sheets as images.</span></li>
+      <li><span>Insert the images in the model and place them on Sheet 11, using the same 36&Prime; &times; 48&Prime; format as all other sheets.</span></li>
+     </ul>
     </div>
    </div>
 
@@ -883,7 +1080,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  </div>
 </section>
 
-<!-- SECTION 08: RUBRIC -->
+<!-- SECTION 09: RUBRIC -->
 <section class="section alt" id="rubric">
  <div class="reveal">
   <p class="eyebrow">Section 09</p>
@@ -991,6 +1188,123 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   </div>
  </div>
 </section>
+</div>
+</div>
+
+<!-- GAME ARENA (one level per section) -->
+<section class="tg-arena" id="tg-arena">
+ <p class="eyebrow" id="tg-arena-eyebrow">Checkpoint</p>
+ <h2 class="sec-title" id="tg-arena-title">Trivia Game</h2>
+ <hr class="sec-rule">
+
+ <div class="tg-start" id="tg-start" hidden>
+  <p>Enter your name once to start playing. It appears on your summary at the end.</p>
+  <label for="tg-name">Your full name</label>
+  <input id="tg-name" type="text" autocomplete="name" maxlength="60" placeholder="First and last name">
+  <button class="tg-btn" id="tg-start-btn" type="button">Start the game</button>
+  <p class="tg-err" id="tg-name-err"></p>
+ </div>
+
+ <div class="tg-cleared" id="tg-cleared" hidden>
+  <h3 id="tg-cleared-title">Level cleared</h3>
+  <p id="tg-cleared-text"></p>
+  <button class="tg-btn" id="tg-next-btn" type="button">Continue</button>
+ </div>
+
+ <div class="tg-play" id="tg-play" hidden>
+  <canvas id="tg-canvas" width="960" height="540" tabindex="0" aria-label="Game. Move with the left and right arrow keys, jump with the space bar or up arrow. Hit a question box from below to get a coin and a question."></canvas>
+  <div class="tg-controls" id="tg-controls">
+   <div>
+    <button type="button" data-k="left" aria-label="Move left">&#9664;</button>
+    <button type="button" data-k="right" aria-label="Move right">&#9654;</button>
+   </div>
+   <button type="button" class="jump" data-k="jump">Jump</button>
+  </div>
+  <p class="tg-hint">Click the game once, then use the arrow keys and the space bar.</p>
+ </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="section warm" id="tg-summary" hidden>
+ <p class="eyebrow">Summary</p>
+ <h2 class="sec-title">Trivia Game Result</h2>
+ <hr class="sec-rule">
+ <div class="tg-results" id="tg-results" aria-live="polite">
+  <div class="tg-score">
+   <div><p class="k">Student</p><p class="v" id="tg-r-name"></p></div>
+   <div><p class="k">Score</p><p class="v big" id="tg-r-score"></p></div>
+   <div><p class="k">Coins</p><p class="v" id="tg-r-coins"></p></div>
+   <div><p class="k">Completed</p><p class="v" id="tg-r-date" style="font-size:17px"></p></div>
+  </div>
+  <table class="tg-table">
+   <thead><tr><th>Coin</th><th>Topic</th><th style="text-align:right">Wrong answers</th><th style="text-align:right">Points</th></tr></thead>
+   <tbody id="tg-r-rows"></tbody>
+  </table>
+  <p class="callout tg-shot"><strong>Take a screenshot of this summary,</strong> including your name, score, and date, and submit it to your teacher.</p>
+
+  <div class="tg-guide">
+   <p class="instructions-label">Study Guide &middot; Questions &amp; Correct Answers</p>
+   <div id="tg-r-guide"></div>
+  </div>
+
+  <div class="tg-unlock" id="tg-unlock">
+   <p class="instructions-label" style="border-bottom:none;padding-bottom:0">Bonus</p>
+   <p style="margin-bottom:14px">Your teacher gives you this password after you submit your summary.</p>
+   <div class="tg-unlock-row" id="tg-unlock-row">
+    <input id="tg-pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Password">
+    <button class="tg-btn" id="tg-pw-btn" type="button">Unlock</button>
+   </div>
+   <p class="tg-err" id="tg-pw-err"></p>
+   <div class="tg-bio" id="tg-bio" hidden>
+    <h3>Lina Bo Bardi <span>(1914&ndash;1992)</span></h3>
+    <p class="lead">Lina Bo Bardi (born Achillina Bo; December 4, 1914 &ndash; March 20, 1992) was a trailblazing Italian-born Brazilian modernist architect, industrial designer, journalist, and activist. She is widely celebrated for charting a radical alternative path to international Modernism&mdash;one that rejected sterile functionalism in favor of social responsibility, human experience, and deep anthropological roots.</p>
+
+    <h4>Early Life and Career in Italy</h4>
+    <ul class="sub-list">
+     <li><span><strong>Education:</strong> Graduated from the Rome College of Architecture in 1939.</span></li>
+     <li><span><strong>Early work:</strong> Moved to Milan, worked with architect Gio Ponti, and served as deputy director of the magazine <em>Domus</em> (1944&ndash;1945).</span></li>
+     <li><span><strong>Partnership:</strong> Co-founded a studio with Carlo Pagani and co-founded the publication <em>A &ndash; Attualit&agrave;, Architettura, Abitazione, Arte</em>.</span></li>
+    </ul>
+
+    <h4>Move to Brazil and Philosophy</h4>
+    <ul class="sub-list">
+     <li><span><strong>Relocation:</strong> Emigrated to Brazil with her husband, art critic Pietro Maria Bardi, in 1946, and became a naturalized Brazilian citizen in 1951.</span></li>
+     <li><span><strong>Design ethos:</strong> Combined international Modernism with Brazilian popular culture, vernacular traditions, and raw materials (often termed <em>Arquitetura Povera</em> or social brutalism).</span></li>
+     <li><span><strong>Publishing:</strong> Co-founded and edited <em>Habitat</em> magazine.</span></li>
+    </ul>
+
+    <h4>Principal Architectural Projects</h4>
+    <p style="margin-bottom:10px">Bo Bardi&rsquo;s architectural portfolio contains some of Latin America&rsquo;s most recognizable and structurally daring masterpieces.</p>
+    <ul class="sub-list">
+     <li><span><strong>Casa de Vidro (The Glass House, 1951):</strong> Her first built project and private residence. Nestled in the Morumbi neighborhood of S&atilde;o Paulo, the home features a transparent glass-and-concrete volume floating on slender pilotis, harmoniously blending tropical nature with minimalist structure.</span></li>
+     <li><span><strong>S&atilde;o Paulo Museum of Art (MASP, 1968):</strong> A brutalist engineering marvel featuring a massive, 74-meter glass-and-concrete volume entirely suspended by four monumental red pillars. By elevating the building, Bo Bardi created a vast, open public plaza underneath, fulfilling her vision of architecture as a democratic civic gathering space.</span></li>
+     <li><span><strong>SESC Pomp&eacute;ia (1977&ndash;1986):</strong> A masterclass in adaptive reuse. Bo Bardi transformed an abandoned steel drum factory into a massive culture and sports center. She preserved the rough brick structure, added bold concrete towers connected by irregular skywalks, and explicitly designed it to emphasize community interaction and raw materials.</span></li>
+     <li><span><strong>Solar do Unh&atilde;o (1959&ndash;1963):</strong> A radical historic preservation project in Salvador, Bahia, where she converted an old 17th-century sugar mill into a modern art museum and cultural center featuring a spectacular wooden staircase built entirely without nails.</span></li>
+     <li><span><strong>Teatro Oficina (1991):</strong> A radical, open-space theater redesign in S&atilde;o Paulo.</span></li>
+    </ul>
+
+    <h4>Furniture Design and Curation</h4>
+    <ul class="sub-list">
+     <li><span><strong>Bowl Chair (1951):</strong> Her most famous design, featuring a smooth, hemispherical shell cradled inside a minimalist metallic ring. The seat can be tilted in any direction, upending standard industrial rigidness.</span></li>
+     <li><span><strong>Trip&eacute; de Ferro (1948):</strong> Inspired directly by the construction of traditional hammocks used on riverboats in northern Brazil, which she lauded as a flawless design for rest.</span></li>
+     <li><span><strong>MASP exhibition easels:</strong> She designed modular crystal-clear glass easels anchored in raw concrete blocks to display art floating freely in space, democratizing the traditional museum experience.</span></li>
+    </ul>
+
+    <h4>Influence on Architecture and Design</h4>
+    <p style="margin-bottom:10px">Lina Bo Bardi&rsquo;s legacy rests on her championing of <em>Arquitetura Povera</em> (poor/raw architecture)&mdash;a concept that prioritizes social justice, reuse, and the daily rituals of the people over corporate sleekness.</p>
+    <ul class="sub-list">
+     <li><span><strong>Social brutalism:</strong> Her work demonstrated that concrete structures could feel vibrant, accessible, and deeply tied to the community rather than imposing or clinical.</span></li>
+     <li><span><strong>Pioneering adaptive reuse:</strong> Decades before sustainability and preservation became industry standards, her work at SESC Pomp&eacute;ia and Solar do Unh&atilde;o proved the cultural value of reimagining old industrial infrastructure.</span></li>
+     <li><span><strong>Global recognition:</strong> Though her contributions were overlooked globally for years, today she is revered as a giant of modern design. In 2021, she was posthumously awarded the prestigious Special Golden Lion for Lifetime Achievement at the Venice Architecture Biennale.</span></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="tg-overlay" id="tg-quiz" hidden>
+ <div class="tg-box" id="tg-box" role="dialog" aria-modal="true" aria-labelledby="tg-q"></div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1001,6 +1315,569 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 <script>
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+/* ===== TRIVIA GAME (platformer, per section) =====
+   6 levels, one per guide section, 5 coins each (30 coins x 10 points = 300).
+   Each wrong answer takes 2 points off that coin; after 5 wrong answers the coin is worth 0.
+   a = index of the correct option. */
+(function(){
+var LEVELS=[
+ {short:"Introduction",name:"Introduction"},
+ {short:"Outcomes",name:"Student Learning Outcomes"},
+ {short:"Tools",name:"The Tools"},
+ {short:"RCP",name:"Reflected Ceiling Plan (RCP)"},
+ {short:"Floors & Renders",name:"Floor Finish Plan, Renderings & Material Boards"},
+ {short:"Deliverables",name:"Deliverables & Rubric"}
+];
+var NAVMAP={"#intro":1,"#tools":3,"#stage1":4,"#stage2":5,"#stage3":5,"#matboard":5,"#deliverables":6,"#rubric":6};
+var QUIZ=[
+ [
+  {topic:"The ceiling surface",q:"Which elements must you place on the ceiling surface?",opts:[
+   "Only the light fixtures",
+   "Light fixtures, HVAC diffusers, exit sign families, smoke detector families, and sprinklers drawn as 3D families from the Revit library",
+   "Light fixtures and the furniture of each room",
+   "Light fixtures, HVAC diffusers, exit signs and smoke detectors as text symbols, and sprinklers using the provided annotation family",
+   "Sprinklers only",
+   "Floor finishes and thresholds"],a:3},
+  {topic:"Exit signs & smoke detectors",q:"How must exit signs and smoke detectors be shown?",opts:[
+   "As text symbols; do not insert exit sign or smoke detector families",
+   "As 3D families from the Revit library, placed at their real mounting height so they show in the renderings",
+   "They are not shown in Assignment 05",
+   "As hatch patterns",
+   "As dimension strings",
+   "As furniture tags"],a:0},
+  {topic:"Choosing floors",q:"How should you choose the floor materials?",opts:[
+   "Choose the cheapest product for every room",
+   "Use one durable floor material for the whole building, so maintenance is simple and every space looks the same from end to end",
+   "Choose by color only",
+   "Copy the flooring shown in your A04 renderings",
+   "Reflect on the activities in each space (gathering, private, learning, low-maintenance, wellness) and choose floors that match those activities and experiences",
+   "Let the manufacturer decide"],a:4},
+  {topic:"The Revit model",q:"What do you do with the Revit model?",opts:[
+   "Export it to AutoCAD and continue there",
+   "Use any software you like",
+   "Continue working in the same Revit model; do NOT create a new model",
+   "Start a new Revit model from the course template, link the A04 model into it, and draw the ceilings and floors in the new file",
+   "Create a separate model for each floor",
+   "Rebuild it in SketchUp"],a:2},
+  {topic:"Views for floors & ceilings",q:"Where do you create the floors, and how do you make the Floor Finish and RCP views?",opts:[
+   "Create all floors in new Level 1–3 views; apply the RCP View Template to the floor plans; draw the ceilings in the FF Level DD views instead of the Ceiling Plan Views",
+   "Create all floors in the FF Level 1–3 DD views; duplicate those views and apply the Floor Finish View Template; build the RCPs from the existing Ceiling Plan Views",
+   "Draw the floors in a drafting view",
+   "Create the floors in the 3D view only",
+   "Ask a classmate for their views",
+   "Floors and ceilings do not need views"],a:1}
+ ],
+ [
+  {topic:"Remember",q:"Under “Remember”, what are you expected to know?",opts:[
+   "The prices of ceiling and flooring products",
+   "The purpose and scope of the block plan and the egress plan, and the occupancy classification that each one documents",
+   "The purpose and scope of the reflected ceiling plan and the floor finish plan, and the systems each one documents",
+   "The history of the NEXA client",
+   "How to install ceiling tiles on site",
+   "The names of every USG product line"],a:2},
+  {topic:"Analyze",q:"Under “Analyze”, what do you analyze?",opts:[
+   "The furniture layouts of the renderings, and how to resolve the conflicts between their colors",
+   "The systems integrating on the ceiling plane, and how to resolve the conflicts between them",
+   "The prices of competing manufacturers",
+   "The structural grid of the building",
+   "The exterior elevations",
+   "The site landscaping"],a:1},
+  {topic:"Evaluate",q:"Under “Evaluate”, what do you judge?",opts:[
+   "Which ceiling and flooring materials are the cheapest and the fastest for the contractor to install",
+   "Which renderings look the most realistic",
+   "Which manufacturer has the largest catalog",
+   "Which ceiling and flooring materials serve the concept and the people who will occupy the building",
+   "Which sheet size fits the plotter",
+   "Which rendering software is the fastest"],a:3},
+  {topic:"Light as a design element",q:"The CIDA / NASAD outcome “Apply” asks you to use light how?",opts:[
+   "As decoration only: choosing luminaires by catalog photo and using one ceiling height everywhere",
+   "Only through daylight from windows",
+   "As a design element: selecting and locating luminaires, and specifying ceiling heights appropriate to each zone",
+   "Only in the renderings, not on the drawings",
+   "As an engineering task left to consultants",
+   "By placing one luminaire in the center of every room, whatever its use, and keeping one height"],a:2},
+  {topic:"Communicate",q:"The CIDA / NASAD outcome “Communicate” asks you to communicate what, and how?",opts:[
+   "Material distribution and system location, through hatch conventions, legends, and symbol keys",
+   "Material distribution and system location, through written descriptions only, with no hatches or legends",
+   "Your concept, through a verbal presentation",
+   "Prices, through a budget table",
+   "Only the furniture, through renderings",
+   "The schedule, through a Gantt chart"],a:0}
+ ],
+ [
+  {topic:"Revit tutorials",q:"Which tutorials guide your Revit work in this assignment?",opts:[
+   "The AutoCAD tutorials from CTD 330, adapted to Revit with your own view templates and annotation families",
+   "The Revit tutorials from Assignment 00: Revit Bootcamp",
+   "Any YouTube tutorial",
+   "No tutorials; work it out on your own",
+   "The SketchUp tutorials from CTD 121",
+   "The manufacturer installation guides"],a:1},
+  {topic:"AI prompt protocols",q:"Which prompt protocols do you use with AI?",opts:[
+   "DREAMS 4 Mood Environments for material boards, and DREAMS 4 MatBoard for renderings",
+   "Any prompt you like, as long as the result looks realistic",
+   "No protocol; AI is not allowed",
+   "DREAMS 4 MatBoard for material boards, and DREAMS 4 Mood Environments for renderings",
+   "The Specsources prompt library",
+   "The USG prompt generator"],a:3},
+  {topic:"Material references",q:"Which manufacturers are the material references for ceilings and flooring?",opts:[
+   "Mohawk Group for ceilings and USG for flooring",
+   "USG for ceilings and Mohawk Group for flooring",
+   "Fireglass for ceilings and Delta Light for flooring",
+   "Any local home-improvement store",
+   "Specsources for both",
+   "The default Revit libraries"],a:1},
+  {topic:"AI-assisted renderings",q:"If you use AI for a rendering, what must you do?",opts:[
+   "Nothing extra; AI renderings are treated the same as any other rendering",
+   "Use text-to-image prompts only, describe your concept in detail, and submit the prompt you used instead of a frame from your 3D software",
+   "Submit the AI image only, without any reference to your model",
+   "Use AI only for the bathroom space and render the other spaces by hand",
+   "Use image-to-image protocols that preserve your geometry, follow the DREAMS 4 Mood Environments protocols, and submit a blank frame of each exact view from your 3D software",
+   "Disclose the AI tool’s name in the title block"],a:4},
+  {topic:"Rendering tools",q:"Which rendering options are listed?",opts:[
+   "Enscape (educational license outside the labs), Twinmotion (free for students), and image-to-image AI generators",
+   "D5 Render (paid license), Lumion (free for students), and text-to-image AI generators that create the space from a prompt",
+   "Photoshop only",
+   "Hand rendering with markers only",
+   "Revit’s default shaded view only",
+   "Any phone app"],a:0}
+ ],
+ [
+  {topic:"Ceiling heights",q:"The floor-to-floor height is 13′-0″. What are the minimum ceiling heights by zone?",opts:[
+   "Common areas 11′-0″, private areas 9′-0″, service areas 10′-0″",
+   "Every space 8′-0″, regardless of zone",
+   "Common areas 9′-0″, private areas 10′-0″, service areas 10′-0″ or no ceiling",
+   "Common areas 13′-0″, private areas 13′-0″, service areas 13′-0″",
+   "Common areas 10′-0″, private areas 9′-0″, service areas 10′-0″ or no ceiling",
+   "Common areas 12′-0″, private areas 10′-0″, service areas 8′-0″"],a:4},
+  {topic:"Light fixtures",q:"How do you show the light fixtures on the RCP?",opts:[
+   "All fixtures share one generic symbol, listed in a separate legend sheet at the end of the set; types are chosen from the Inviair catalog",
+   "As photos of each product",
+   "Each fixture type has its own symbol that matches a legend key on the same sheet as the RCP; types are selected from Delta Light’s product browser",
+   "As text notes only",
+   "They are not shown on the RCP",
+   "As hatch patterns on the ceiling"],a:2},
+  {topic:"The sprinkler grid",q:"How do you lay out the sprinklers?",opts:[
+   "With the annotation family from Blackboard; NFPA 13 maximum grid of 15′-0″ × 15′-0″; at least one head in smaller rooms; at least 4″ from walls; dashed 15′-0″ diameter coverage circles",
+   "With 3D families from the Revit library; maximum grid of 20′-0″ × 20′-0″; no heads in smaller rooms; at least 12″ from walls; solid 30′-0″ diameter coverage circles",
+   "One sprinkler per room, centered, whatever the room size",
+   "Sprinklers only in corridors and assembly spaces",
+   "Sprinklers belong on the Floor Finish Plan, not the RCP",
+   "Sprinklers are not part of Assignment 05"],a:0},
+  {topic:"Exit signs & HVAC",q:"How do you show the exit signs and HVAC elements on the RCP?",opts:[
+   "Exit signs as Revit families placed wherever the ceiling grid allows; HVAC grilles and diffusers selected from Delta Light’s product browser",
+   "Neither is shown on the RCP",
+   "Exit signs only; HVAC is left to the engineers",
+   "Exit signs as text symbols coordinated with your Fire/Life Safety Plans; HVAC grilles and diffusers selected from Inviair’s visual applications",
+   "As notes in the title block",
+   "HVAC only; exit signs go on the floor plans"],a:3},
+  {topic:"The window warning",q:"What does the warning about windows ask you to check?",opts:[
+   "That windows on interior walls reach the ceiling plane, by setting their top constraint to the level above and hiding them in the 3D view",
+   "That every room has at least two windows",
+   "That windows on exterior walls do not intersect the ceiling plane, by setting their base and top constraints accurately and checking the 3D view",
+   "That windows are the same size as the doors",
+   "That windows are removed from the RCP",
+   "That windows are drawn with a dashed line"],a:2}
+ ],
+ [
+  {topic:"Floor materials",q:"How do you define the floor materials?",opts:[
+   "Select flooring from the USG catalog that serves the budget, and draw each material as a 2D hatch on a separate drafting view",
+   "Select flooring from the Mohawk Group catalog that serves the design concept, and model where each material goes in the building",
+   "Use one carpet for the whole building",
+   "Pick materials from any online store",
+   "Let the renderings decide the floors",
+   "Use the default Revit floor for every room"],a:1},
+  {topic:"Floor legend",q:"What must the Floor Finish Plan legend include?",opts:[
+   "Only the two most used materials, referencing their price and supplier",
+   "Nothing; the floor patterns are enough",
+   "The ceiling heights",
+   "A photo of each material",
+   "Every material, referencing its type and name",
+   "Only the transition elements"],a:4},
+  {topic:"Rendered spaces",q:"Which spaces must be rendered?",opts:[
+   "Lobby, main corridor, exterior entrance, and the parking area of the building",
+   "Only one space, of your choice",
+   "Three views of the same apartment",
+   "Every room in the building",
+   "Resident private apartment, learning space, shared / common space, and bathroom space",
+   "The Reflected Ceiling Plan in 3D"],a:4},
+  {topic:"FF&E spec sheets",q:"What do the FF&E and luminaire spec sheets cover?",opts:[
+   "For the whole building: furniture only, with one combined spec sheet listing every item, its price, and its supplier",
+   "Photos of the furniture only",
+   "Only the luminaires",
+   "For each rendered space: ceilings, floors, lighting fixtures, furniture, plumbing fixtures, and equipment, with one spec sheet per item",
+   "Only the manufacturer names",
+   "A list of colors"],a:3},
+  {topic:"Material boards",q:"When and how do you create the material boards?",opts:[
+   "With the DREAMS 4 Mood Environments protocol, for the whole building at once, after the renderings are finished",
+   "By hand, with physical samples glued to foam board",
+   "With the DREAMS 4 MatBoard, as instructed in class, for each space to be rendered, before rendering the spaces",
+   "They are optional",
+   "With Specsources, after submitting the assignment",
+   "By copying the manufacturers’ catalog pages"],a:2}
+ ],
+ [
+  {topic:"The Cover Sheet",q:"What goes on the Cover Sheet (Sheet 0)?",opts:[
+   "The zoning legend, the material boards, and the FF&E spec sheets of every rendered space",
+   "Only the project title",
+   "A representative image of the project and the Design Statement",
+   "The rubric",
+   "The sprinkler grid",
+   "Nothing; there is no cover sheet"],a:2},
+  {topic:"Sheet numbering",q:"Which sheets hold the Reflected Ceiling Plans and the Floor Finish Plans?",opts:[
+   "Sheets 5 and 6 for the RCPs, and Sheets 7 and 8 for the Floor Finish Plans, all floors at 1/8″ = 1′-0″",
+   "Sheet 9 for both",
+   "Sheets 3 and 4 for the RCPs, and Sheets 1 and 2 for the Floor Finish Plans, all floors at 1/4″ = 1′-0″",
+   "Sheet 10 for both",
+   "Sheet 0 for both",
+   "They are not part of the set"],a:0},
+  {topic:"What is new on Sheets 1–2",q:"What is NEW on the Interior Design Floor Plans (Sheets 1 and 2)?",opts:[
+   "The sprinkler grid",
+   "The ceiling heights",
+   "The exit signs",
+   "The material boards",
+   "Nothing changes",
+   "Floor finishes material"],a:5},
+  {topic:"The sheet set",q:"How many sheets are required, and what does each one contain?",opts:[
+   "Five sheets: one per floor, plus a cover and a rendering sheet",
+   "10 sheets: Sheet 1 cover; Sheets 2–3 floor plans; Sheets 4–5 RCPs; Sheets 6–7 floor finish plans; Sheet 8 material boards; Sheet 9 renderings; Sheet 10 FF&E specs; no fire & life-safety plans",
+   "Three sheets: the RCP, the floor finish plan, and the renderings",
+   "Any number of sheets, as long as every drawing is included",
+   "12 sheets: Sheet 0 cover; Sheets 1–2 floor plans; Sheets 3–4 fire & life-safety plans; Sheets 5–6 RCPs; Sheets 7–8 floor finish plans; Sheet 9 material boards; Sheet 10 renderings; Sheet 11 FF&E specs",
+   "One sheet per rendered space"],a:4},
+  {topic:"Boards & spec sheets",q:"How do the material boards and the FF&E spec sheets get onto Sheets 9 and 11?",opts:[
+   "Print them separately on letter-size paper and submit them as loose attachments, outside the Revit model and the sheet set",
+   "Email them to the teacher as separate files",
+   "Create them (DREAMS 4 MatBoard; Specsources, Excel, or similar, as images), insert them in the Revit model, and place them on Sheets 9 and 11 in the same 36″ × 48″ format",
+   "Draw them by hand on Sheet 0",
+   "They are optional and not placed on any sheet",
+   "Paste them into the Design Statement"],a:2}
+ ]
+];
+var N=LEVELS.length,PERLEVEL=5,MAXTRY=5,PER=10,PENALTY=2,KEY="ctd325_a05_trivia_v3",PASS="bGluYSBibyBiYXJkaQ==",LETTERS="ABCDEF";
+var S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false};
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&s.lv)S=s;}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function lv(n){return S.lv[n]||(S.lv[n]={results:[],used:[]});}
+function done(n){return lv(n).results.length>=PERLEVEL;}
+function cleared(){var c=0;while(c<N&&done(c+1))c++;return c;}
+function unlocked(n){return n>=1&&n<=N&&n<=cleared()+1;}
+function total(){var t=0;for(var n=1;n<=N;n++)lv(n).results.forEach(function(r){t+=r.points;});return t;}
+function coins(){var t=0;for(var n=1;n<=N;n++)t+=lv(n).results.length;return t;}
+function pad2(n){return n<10?"0"+n:""+n;}
+
+/* ---------- world (three alternating layouts, 5 boxes each) ---------- */
+var VW=960,VH=540,WORLD=2500,GROUND=460,GRAV=1800,JUMPV=720,SPEED=270;
+var LAYOUTS=[
+ {cols:[[600,90],[1500,110]],plats:[[820,330,192],[1880,340,192]],boxes:[[340,330],[900,200],[1200,330],[1960,206],[2200,330]]},
+ {cols:[[500,110],[1300,90],[2000,110]],plats:[[700,330,224],[1600,330,192]],boxes:[[300,330],[780,200],[1100,330],[1680,200],[2250,330]]},
+ {cols:[[800,90],[1700,110]],plats:[[400,340,192],[1100,330,224],[2000,330,192]],boxes:[[460,206],[650,330],[1180,200],[1500,330],[2080,200]]}
+];
+var solids=[],boxes=[],curLevel=1;
+var P={x:90,y:GROUND-44,w:28,h:44,vx:0,vy:0,on:false,face:1,run:0};
+var keys={left:false,right:false,jump:false},jumpBuf=0,cam=0,coinsFx=[],paused=true,padUntil=0;
+var cv=$("tg-canvas"),ctx=cv.getContext("2d");
+function buildWorld(n){
+ var L=LAYOUTS[(n-1)%LAYOUTS.length];curLevel=n;
+ solids=[{x:0,y:GROUND,w:WORLD,h:VH-GROUND,kind:"ground"}];
+ L.cols.forEach(function(c){solids.push({x:c[0],y:GROUND-c[1],w:64,h:c[1],kind:"column"});});
+ L.plats.forEach(function(p){solids.push({x:p[0],y:p[1],w:p[2],h:24,kind:"brick"});});
+ boxes=L.boxes.map(function(b,i){var o={x:b[0],y:b[1],w:32,h:32,kind:"box",i:i,used:lv(n).used.indexOf(i)>=0,bump:0};solids.push(o);return o;});
+ P.x=90;P.y=GROUND-P.h;P.vx=0;P.vy=0;P.on=true;P.face=1;cam=0;coinsFx=[];
+ keys.left=keys.right=keys.jump=false;
+}
+function hitTest(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
+function update(dt){
+ var mv=(keys.left?-1:0)+(keys.right?1:0);
+ P.vx=mv*SPEED;if(mv)P.face=mv;
+ if(keys.jump)jumpBuf=0.12;else jumpBuf=Math.max(0,jumpBuf-dt);
+ if(jumpBuf>0&&P.on){P.vy=-JUMPV;P.on=false;jumpBuf=0;keys.jump=false;}
+ P.vy=Math.min(P.vy+GRAV*dt,1100);
+ P.x+=P.vx*dt;
+ solids.forEach(function(s){if(hitTest(P,s)){if(P.vx>0)P.x=s.x-P.w;else if(P.vx<0)P.x=s.x+s.w;}});
+ P.x=Math.max(0,Math.min(WORLD-P.w,P.x));
+ P.y+=P.vy*dt;P.on=false;
+ var bumped=null;
+ solids.forEach(function(s){
+  if(!hitTest(P,s))return;
+  if(P.vy>0){P.y=s.y-P.h;P.vy=0;P.on=true;}
+  else if(P.vy<0){P.y=s.y+s.h;P.vy=0;if(s.kind==="box"&&!bumped)bumped=s;}
+ });
+ if(bumped)bump(bumped);
+ P.run=mv&&P.on?P.run+dt:0;
+ cam=Math.max(0,Math.min(WORLD-VW,P.x-VW*0.38));
+}
+function bump(b){
+ b.bump=0.18;
+ var L=lv(curLevel);
+ if(b.used||S.current||done(curLevel))return;
+ b.used=true;L.used.push(b.i);
+ S.current={level:curLevel,q:L.results.length,wrong:0,picks:[]};save();
+ coinsFx.push({x:b.x+8,y:b.y-8,t:0});
+ keys.left=keys.right=keys.jump=false;paused=true;
+ setTimeout(openQuestion,450);
+}
+
+/* ---------- drawing ---------- */
+function rect(c,x,y,w,h){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),w,h);}
+function drawBackground(){
+ var g=ctx.createLinearGradient(0,0,0,VH);g.addColorStop(0,"#6aa8ff");g.addColorStop(1,"#cfe4ff");
+ ctx.fillStyle=g;ctx.fillRect(0,0,VW,VH);
+ ctx.fillStyle="#ffffff";
+ for(var i=0;i<12;i++){var cx=(i*330+80)-cam*0.3,cy=60+(i%3)*42;cx=((cx%(VW+400))+VW+400)%(VW+400)-200;
+  ctx.beginPath();ctx.arc(cx,cy,22,0,7);ctx.arc(cx+26,cy-10,28,0,7);ctx.arc(cx+56,cy,22,0,7);ctx.fill();}
+ for(var j=0;j<9;j++){var hx=j*420-cam*0.55;
+  ctx.fillStyle=j%2?"#2f9e44":"#40b354";ctx.beginPath();ctx.moveTo(hx,GROUND);ctx.quadraticCurveTo(hx+120,GROUND-(j%2?120:80),hx+240,GROUND);ctx.fill();}
+}
+function drawSolid(s,t){
+ var x=s.x-cam;if(x>VW||x+s.w<0)return;
+ if(s.kind==="ground"){
+  for(var gx=Math.floor(cam/32)*32;gx<cam+VW+32;gx+=32){var X=gx-cam;
+   rect("#c84c0c",X,s.y,32,s.h);rect("#58a828",X,s.y,32,8);rect("#3c8418",X,s.y+8,32,3);
+   ctx.strokeStyle="rgba(0,0,0,.25)";ctx.lineWidth=2;ctx.strokeRect(X+1,s.y+14,30,24);ctx.strokeRect(X+1,s.y+40,30,24);}
+ }else if(s.kind==="column"){
+  rect("#b9b4aa",x,s.y+14,s.w,s.h-14);rect("#d9d4ca",x-6,s.y,s.w+12,14);rect("#8f8a80",x-6,s.y+12,s.w+12,3);
+  for(var f=10;f<s.w;f+=14)rect("rgba(0,0,0,.12)",x+f,s.y+16,3,s.h-16);
+ }else if(s.kind==="brick"){
+  rect("#c84c0c",x,s.y,s.w,s.h);
+  ctx.save();ctx.beginPath();ctx.rect(x,s.y,s.w,s.h);ctx.clip();
+  for(var bx=0;bx<=s.w;bx+=32){ctx.strokeStyle="#000";ctx.lineWidth=2;ctx.strokeRect(x+bx+1,s.y+1,30,10);ctx.strokeRect(x+bx-15,s.y+13,30,10);}
+  ctx.restore();ctx.strokeStyle="#000";ctx.lineWidth=2;ctx.strokeRect(x+1,s.y+1,s.w-2,s.h-2);
+ }else if(s.kind==="box"){
+  var off=s.bump>0?-Math.sin((0.18-s.bump)/0.18*Math.PI)*10:0,y=s.y+off;
+  rect("#000",x,y,32,32);
+  if(s.used){rect("#9a5a22",x+2,y+2,28,28);}
+  else{rect(["#f8b800","#ffcf3a","#e89c00"][Math.floor(t/220)%3],x+2,y+2,28,28);
+   ctx.fillStyle="#fff";ctx.font="bold 20px 'Source Sans 3', sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("?",x+16,y+17);}
+  rect("#000",x+5,y+5,3,3);rect("#000",x+24,y+5,3,3);rect("#000",x+5,y+24,3,3);rect("#000",x+24,y+24,3,3);
+ }
+}
+/* the player: a designer with round glasses, a ponytail, a crimson cardigan, and a sketchbook */
+function drawPlayer(){
+ var x=Math.round(P.x-cam),y=Math.round(P.y),f=P.face,leg=P.on?(P.run>0?Math.floor(P.run*12)%2:0):2;
+ rect("#3b2416",x+(f>0?-5:25),y+5,8,13);rect("#9e1b32",x+(f>0?0:24),y+7,4,4);
+ rect("#3b2416",x+3,y,22,8);rect("#3b2416",x+3,y+6,4,8);rect("#3b2416",x+21,y+6,4,8);
+ rect("#f1c6a0",x+7,y+7,14,12);
+ rect("#111",x+6,y+10,7,6);rect("#111",x+15,y+10,7,6);rect("#111",x+13,y+12,2,2);
+ rect("#dff1ff",x+7,y+11,5,4);rect("#dff1ff",x+16,y+11,5,4);
+ rect("#111",x+(f>0?10:8),y+12,2,2);rect("#111",x+(f>0?19:17),y+12,2,2);
+ rect("#9e1b32",x+3,y+19,22,13);rect("#ffffff",x+12,y+19,4,7);
+ rect("#f1c6a0",x+(f>0?23:-1),y+25,6,5);
+ rect("#1f3d8c",x+(f>0?22:-2),y+20,8,10);rect("#ffffff",x+(f>0?22:5),y+21,1,8);
+ rect("#3c4757",x+4,y+31,20,6);
+ if(leg===0){rect("#2b2b2b",x+7,y+37,5,6);rect("#2b2b2b",x+16,y+35,5,6);}
+ else if(leg===1){rect("#2b2b2b",x+7,y+35,5,6);rect("#2b2b2b",x+16,y+37,5,6);}
+ else{rect("#2b2b2b",x+6,y+36,5,7);rect("#2b2b2b",x+17,y+34,5,7);}
+ rect("#7a1424",x+5,y+42,8,2);rect("#7a1424",x+15,y+42,8,2);
+}
+function drawHud(){
+ ctx.fillStyle="rgba(17,17,17,.45)";ctx.fillRect(0,0,VW,40);
+ ctx.font="bold 17px 'Source Sans 3', sans-serif";ctx.textBaseline="middle";ctx.fillStyle="#fff";
+ ctx.textAlign="left";ctx.fillText((S.name||"PLAYER").toUpperCase().slice(0,22)+"  ·  SECTION "+pad2(curLevel),16,21);
+ ctx.textAlign="center";ctx.fillStyle="#f8b800";ctx.beginPath();ctx.ellipse(VW/2+70,20,6,9,0,0,7);ctx.fill();
+ ctx.fillStyle="#fff";ctx.fillText("× "+lv(curLevel).results.length+" / "+PERLEVEL,VW/2+124,21);
+ ctx.textAlign="right";ctx.fillText("SCORE "+String(total()).padStart(3,"0"),VW-16,21);
+}
+function draw(t){
+ drawBackground();
+ solids.forEach(function(s){drawSolid(s,t);});
+ coinsFx.forEach(function(c){
+  var x=c.x-cam,y=c.y-Math.sin(Math.min(1,c.t/0.45)*Math.PI)*70,w=Math.abs(Math.cos(c.t*14))*8+2;
+  ctx.fillStyle="#000";ctx.beginPath();ctx.ellipse(x+8,y,w+2,13,0,0,7);ctx.fill();
+  ctx.fillStyle="#f8b800";ctx.beginPath();ctx.ellipse(x+8,y,w,11,0,0,7);ctx.fill();
+ });
+ drawPlayer();drawHud();
+ if(!paused&&document.activeElement!==cv&&performance.now()>padUntil){
+  ctx.fillStyle="rgba(17,17,17,.6)";ctx.fillRect(0,VH/2-42,VW,84);
+  ctx.fillStyle="#fff";ctx.textAlign="center";ctx.textBaseline="middle";
+  ctx.font="bold 22px 'Source Sans 3', sans-serif";ctx.fillText("CLICK THE GAME TO PLAY",VW/2,VH/2-12);
+  ctx.font="16px 'Source Sans 3', sans-serif";ctx.fillText("Arrow keys to run  ·  Space to jump",VW/2,VH/2+16);
+ }
+}
+var last=0;
+function frame(t){
+ var dt=Math.min(0.033,(t-last)/1000||0);last=t;
+ boxes.forEach(function(b){if(b.bump>0)b.bump=Math.max(0,b.bump-dt);});
+ coinsFx.forEach(function(c){c.t+=dt;});coinsFx=coinsFx.filter(function(c){return c.t<0.5;});
+ if(!$("tg-play").hidden){
+  if(!paused&&(document.activeElement===cv||performance.now()<padUntil))update(dt);
+  draw(t);
+ }
+ requestAnimationFrame(frame);
+}
+
+/* ---------- questions ---------- */
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function openQuestion(){if(!S.current)return;$("tg-quiz").hidden=false;renderQuestion(S.current,"",false,null);}
+function renderQuestion(c,msg,good,fin){
+ var q=QUIZ[c.level-1][c.q],box=$("tg-box"),value=Math.max(0,PER-PENALTY*c.wrong);
+ box.innerHTML="";
+ box.appendChild(el("div","tg-qhead","<span>Section <b>"+pad2(c.level)+"</b> · Coin <b>"+(c.q+1)+"</b> of "+PERLEVEL+"</span><span>Worth <b>"+(fin?fin.points:value)+"</b> pts</span><span>Attempts left <b>"+(fin?0:MAXTRY-c.wrong)+"</b></span>"));
+ box.appendChild(el("p","tg-topic",esc(q.topic)));
+ var qt=el("p","tg-q",esc(q.q));qt.id="tg-q";box.appendChild(qt);
+ q.opts.forEach(function(o,i){
+  var b=el("button","tg-opt",'<span class="k">'+LETTERS[i]+'</span><span>'+esc(o)+'</span>');b.type="button";
+  if(c.picks.indexOf(i)>=0){b.classList.add("wrong");b.disabled=true;}
+  if(fin){b.disabled=true;if(i===q.a)b.classList.add("right");}
+  else b.addEventListener("click",function(){pick(i);});
+  box.appendChild(b);
+ });
+ box.appendChild(el("p","tg-fb "+(good?"good":"bad"),msg||""));
+ if(fin){var nb=el("button","tg-btn",done(c.level)?"Finish this section":"Continue");nb.type="button";nb.addEventListener("click",closeQuestion);box.appendChild(nb);nb.focus();}
+}
+function pick(i){
+ var c=S.current;if(!c)return;
+ var q=QUIZ[c.level-1][c.q],L=lv(c.level);
+ if(i===q.a){
+  var pts=Math.max(0,PER-PENALTY*c.wrong);
+  L.results.push({q:c.q,wrong:c.wrong,points:pts});S.current=null;save();
+  renderQuestion(c,"Correct! You earned "+pts+" point"+(pts===1?"":"s")+" with this coin.",true,{points:pts});
+ }else{
+  c.wrong++;c.picks.push(i);
+  if(c.wrong>=MAXTRY){
+   L.results.push({q:c.q,wrong:c.wrong,points:0});S.current=null;save();
+   renderQuestion(c,"5 wrong answers. This coin is now worth 0 points. The correct answer is highlighted in green.",false,{points:0});
+  }else{
+   save();
+   renderQuestion(c,"Incorrect. This coin is now worth "+(PER-PENALTY*c.wrong)+" points. "+(MAXTRY-c.wrong)+" attempt"+(MAXTRY-c.wrong===1?"":"s")+" left.",false,null);
+  }
+ }
+}
+function closeQuestion(){
+ $("tg-quiz").hidden=true;
+ if(done(curLevel)){
+  if(cleared()===N&&!S.finishedAt){S.finishedAt=new Date().toISOString();save();}
+  showLevel(curLevel,false);
+  return;
+ }
+ paused=false;try{cv.focus({preventScroll:true});}catch(e){cv.focus();}
+}
+
+/* ---------- page ---------- */
+function renderBar(){
+ var box=$("lv-steps");box.innerHTML="";
+ LEVELS.forEach(function(l,i){
+  var n=i+1,b=el("button","lv-btn");b.type="button";
+  b.appendChild(el("span",null,pad2(n)));b.appendChild(el("span","lv-name"," "+esc(l.short)));
+  if(done(n))b.classList.add("done");
+  if(n===S.view){b.classList.add("current");b.setAttribute("aria-current","step");}
+  b.disabled=!unlocked(n);
+  b.title="Section "+pad2(n)+": "+l.name+(unlocked(n)?"":" (locked)");
+  b.addEventListener("click",function(){showLevel(n,true);});
+  box.appendChild(b);
+ });
+ $("lv-count").textContent=cleared()+" of "+N+" cleared · "+total()+" pts";
+}
+function showLevel(n,scroll){
+ if(!unlocked(n))n=Math.min(cleared()+1,N);
+ S.view=n;save();
+ document.querySelectorAll(".level").forEach(function(s){s.classList.toggle("on",Number(s.dataset.level)===n);});
+ $("tg-arena-eyebrow").textContent="Section "+pad2(n)+" of "+pad2(N)+" · Checkpoint";
+ $("tg-arena-title").textContent=LEVELS[n-1].name+" · Collect 5 coins";
+ $("lv-msg").textContent="";
+ $("tg-start").hidden=true;$("tg-cleared").hidden=true;$("tg-play").hidden=true;paused=true;
+ if(!S.name){$("tg-start").hidden=false;}
+ else if(done(n)){
+  var pts=lv(n).results.reduce(function(t,r){return t+r.points;},0);
+  $("tg-cleared-title").textContent="Section "+pad2(n)+" cleared ✓";
+  $("tg-cleared-text").textContent="You collected all 5 coins in this section for "+pts+" of 50 points. You can reread this section at any time from the bar above.";
+  var nb=$("tg-next-btn");
+  if(n<N){nb.textContent="Continue to Section "+pad2(n+1)+": "+LEVELS[n].short+" →";nb.onclick=function(){showLevel(n+1,true);};}
+  else{nb.textContent="See my summary ↓";nb.onclick=function(){$("tg-summary").scrollIntoView();};}
+  $("tg-cleared").hidden=false;
+ }else{
+  buildWorld(n);$("tg-play").hidden=false;
+  if(S.current&&S.current.level===n)openQuestion();else paused=false;
+ }
+ renderBar();renderSummary();
+ if(scroll)$("lvbar").scrollIntoView();
+}
+function showBio(){$("tg-bio").hidden=!S.bio;$("tg-unlock-row").hidden=!!S.bio;if(S.bio)$("tg-pw-err").textContent="";}
+function renderSummary(){
+ var sec=$("tg-summary");sec.hidden=!S.finishedAt;
+ if(!S.finishedAt)return;
+ $("tg-r-name").textContent=S.name;
+ $("tg-r-score").textContent=total()+" / "+(N*PERLEVEL*PER);
+ $("tg-r-coins").textContent=coins()+" / "+(N*PERLEVEL);
+ $("tg-r-date").textContent=new Date(S.finishedAt).toLocaleString();
+ var tb=$("tg-r-rows");tb.innerHTML="";var k=0;
+ for(var n=1;n<=N;n++){
+  var h=document.createElement("tr");h.className="sec";var hc=document.createElement("td");hc.colSpan=4;hc.textContent="Section "+pad2(n)+" · "+LEVELS[n-1].name;h.appendChild(hc);tb.appendChild(h);
+  lv(n).results.forEach(function(res){
+   k++;var tr=document.createElement("tr");if(res.points===0)tr.className="zero";
+   [String(k),QUIZ[n-1][res.q].topic,String(res.wrong),String(res.points)].forEach(function(v,j){var td=document.createElement("td");td.textContent=v;if(j>=2)td.className="n";tr.appendChild(td);});
+   tb.appendChild(tr);
+  });
+ }
+ var g=$("tg-r-guide");g.innerHTML="";
+ QUIZ.forEach(function(qs,i){
+  g.appendChild(el("h4",null,"Section "+pad2(i+1)+" · "+esc(LEVELS[i].name)));
+  var ol=document.createElement("ol");
+  qs.forEach(function(q){
+   var li=document.createElement("li"),d=document.createElement("div");
+   d.appendChild(el("p","g-q",esc(q.q)));
+   d.appendChild(el("p","g-a","<strong>Correct answer:</strong> "+esc(q.opts[q.a])));
+   li.appendChild(d);ol.appendChild(li);
+  });
+  g.appendChild(ol);
+ });
+ showBio();
+}
+
+/* ---------- input ---------- */
+var KM={ArrowLeft:"left",ArrowRight:"right",a:"left",d:"right",A:"left",D:"right",ArrowUp:"jump"," ":"jump",w:"jump",W:"jump",Spacebar:"jump"};
+window.addEventListener("keydown",function(e){
+ if(document.activeElement!==cv||paused)return;
+ var k=KM[e.key];if(!k)return;
+ e.preventDefault();keys[k]=true;
+});
+window.addEventListener("keyup",function(e){var k=KM[e.key];if(k&&k!=="jump")keys[k]=false;});
+cv.addEventListener("blur",function(){keys.left=keys.right=false;});
+cv.addEventListener("pointerdown",function(){try{cv.focus({preventScroll:true});}catch(e){cv.focus();}});
+document.querySelectorAll("#tg-controls button").forEach(function(b){
+ var k=b.dataset.k;
+ function on(e){e.preventDefault();if(paused)return;padUntil=performance.now()+4000;keys[k]=true;}
+ function off(){if(k!=="jump")keys[k]=false;padUntil=performance.now()+4000;}
+ b.addEventListener("pointerdown",on);["pointerup","pointerleave","pointercancel"].forEach(function(t){b.addEventListener(t,off);});
+});
+$("tg-start-btn").addEventListener("click",function(){
+ var n=$("tg-name").value.trim().replace(/\s+/g," ");
+ if(n.length<3||n.indexOf(" ")<0){$("tg-name-err").textContent="Enter your first and last name.";return;}
+ S.name=n;S.startedAt=new Date().toISOString();save();
+ showLevel(S.view,false);
+ try{cv.focus({preventScroll:true});}catch(e){cv.focus();}
+});
+$("tg-name").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-start-btn").click();});
+$("tg-pw-btn").addEventListener("click",function(){
+ var k="";try{k=btoa($("tg-pw").value.trim().toLowerCase().replace(/\s+/g," "));}catch(e){}
+ if(k!==PASS){$("tg-pw-err").textContent="Incorrect password. Check it with your teacher.";return;}
+ S.bio=true;save();$("tg-pw").value="";showBio();
+});
+$("tg-pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-pw-btn").click();});
+$("lv-reset").addEventListener("click",function(){
+ if(!confirm("Reset the game? Your coins, score, and summary will be erased, and you will start again from Section 01."))return;
+ S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false};
+ try{localStorage.removeItem(KEY);}catch(e){}
+ $("tg-quiz").hidden=true;$("tg-name").value="";$("tg-name-err").textContent="";$("tg-pw-err").textContent="";
+ showLevel(1,true);
+});
+document.querySelectorAll("nav ul a").forEach(function(a){
+ a.addEventListener("click",function(e){
+  var n=NAVMAP[a.getAttribute("href")];if(!n)return;
+  e.preventDefault();
+  if(!unlocked(n)){$("lvbar").scrollIntoView();$("lv-msg").textContent="Locked. Clear Section "+pad2(cleared()+1)+" ("+LEVELS[cleared()].short+") first.";return;}
+  showLevel(n,true);
+ });
+});
+
+load();
+showLevel(S.view||1,false);
+requestAnimationFrame(frame);
+/*TEST_HOOK*/
+})();
 </script>
 </body>
 </html>
