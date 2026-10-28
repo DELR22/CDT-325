@@ -196,6 +196,21 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 
 /* ===== TRIVIA GAME (platformer, per section) ===== */
 .tg-rules{margin:22px 0 0;max-width:820px}
+.tg-gate{max-width:820px;margin-top:36px;background:var(--white);border:1px solid var(--rule-soft);border-left:4px solid var(--graphite);padding:24px 26px}
+.tg-gate-title{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--graphite);margin-bottom:8px}
+.tg-gate-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.tg-gate-row[hidden],#tg-gate-reset[hidden]{display:none}
+.tg-gate-row label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.tg-gate-row input{flex:1;min-width:200px;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--rule-soft);background:var(--paper);color:var(--black)}
+.tg-gate-msg{font-size:15px;font-weight:600;margin-top:12px}
+.tg-gate-msg:empty{display:none}
+.tg-gate-msg.bad{color:var(--crimson)}
+.tg-gate-msg.good{color:#2d6a3f}
+.tg-btn-line{background:transparent;color:var(--crimson);border:1px solid var(--crimson);margin-top:14px}
+.tg-btn-line:hover{background:var(--crimson-pale);color:var(--crimson)}
+body.review .level{display:block}
+body.review .lvbar,body.review .tg-arena{display:none}
+.tg-results.bio-only .tg-score,.tg-results.bio-only .tg-table,.tg-results.bio-only .tg-shot,.tg-results.bio-only .tg-guide,.tg-results.bio-only .tg-unlock>.instructions-label,.tg-results.bio-only .tg-unlock>p{display:none}
 .tg-btn{font-family:inherit;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:14px 22px;background:var(--crimson);color:#fff;cursor:pointer;transition:background .15s}
 .tg-btn:hover{background:var(--crimson-dark)}
 .lvbar{position:relative;background:var(--white);border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);padding:12px 56px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;scroll-margin-top:0}
@@ -352,8 +367,23 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   <li><span>Each coin is worth <strong>10 points</strong>. Each wrong answer takes <strong>2 points</strong> off that coin.</span></li>
   <li><span>You have <strong>5 attempts</strong> per question. After 5 wrong answers the coin is worth <strong>0</strong>.</span></li>
   <li><span>Clear all <strong>6 levels</strong> (30 coins, 300 points). Then take a screenshot of your summary and submit it to your teacher.</span></li>
-  <li><span>Your teacher will then give you a password that unlocks a bonus at the end of the summary.</span></li>
+  <li><span>Your teacher will then give you a password. It opens the whole guide without playing again, and it unlocks a bonus at the end of the summary.</span></li>
  </ul>
+
+ <form class="tg-gate" id="tg-gate" autocomplete="off">
+  <p class="tg-gate-title">Already played the game and submitted your score?</p>
+  <ul class="sub-list">
+   <li><span>Your teacher gives you a password after you submit the screenshot of your summary.</span></li>
+   <li><span>Enter it here to open all six sections of the guide without playing the game again.</span></li>
+  </ul>
+  <div class="tg-gate-row" id="tg-gate-row">
+   <label for="tg-gate-pw">Password</label>
+   <input id="tg-gate-pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+   <button class="tg-btn" type="submit">Open the guide</button>
+  </div>
+  <p class="tg-gate-msg" id="tg-gate-msg" role="status" aria-live="polite"></p>
+  <button class="tg-btn tg-btn-line" type="button" id="tg-gate-reset" hidden>Reset the game</button>
+ </form>
 </section>
 
 <!-- LEVEL BAR -->
@@ -1555,7 +1585,7 @@ var QUIZ=[
    "Paste them into the Design Statement"],a:2}
  ]
 ];
-var N=LEVELS.length,PERLEVEL=5,MAXTRY=5,PER=10,PENALTY=2,KEY="ctd325_a05_trivia_v3",PASS="bGluYSBibyBiYXJkaQ==",LETTERS="ABCDEF";
+var N=LEVELS.length,PERLEVEL=5,MAXTRY=5,PER=10,PENALTY=2,KEY="ctd325_a05_trivia_v3",PASS="bGluYWJvYmFyZGk=",LETTERS="ABCDEF";
 var S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false};
 function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&s.lv)S=s;}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
@@ -1775,6 +1805,9 @@ function showLevel(n,scroll){
  if(!unlocked(n))n=Math.min(cleared()+1,N);
  S.view=n;save();
  document.querySelectorAll(".level").forEach(function(s){s.classList.toggle("on",Number(s.dataset.level)===n);});
+ document.body.classList.toggle("review",!!S.review);
+ renderGate();
+ if(S.review){paused=true;$("tg-quiz").hidden=true;renderBar();renderSummary();return;}
  $("tg-arena-eyebrow").textContent="Section "+pad2(n)+" of "+pad2(N)+" · Checkpoint";
  $("tg-arena-title").textContent=LEVELS[n-1].name+" · Collect 5 coins";
  $("lv-msg").textContent="";
@@ -1795,9 +1828,22 @@ function showLevel(n,scroll){
  renderBar();renderSummary();
  if(scroll)$("lvbar").scrollIntoView();
 }
-function showBio(){$("tg-bio").hidden=!S.bio;$("tg-unlock-row").hidden=!!S.bio;if(S.bio)$("tg-pw-err").textContent="";}
+function norm(v){return String(v).trim().toLowerCase().replace(/\s+/g,"");}
+function passOk(v){var k="";try{k=btoa(norm(v));}catch(e){}return k===PASS;}
+function showBio(){var on=!!(S.bio||S.review);$("tg-bio").hidden=!on;$("tg-unlock-row").hidden=on;if(on)$("tg-pw-err").textContent="";}
+function renderGate(){
+ var msg=$("tg-gate-msg");
+ $("tg-gate-row").hidden=!!S.review;$("tg-gate-reset").hidden=!S.review;
+ if(S.review){msg.className="tg-gate-msg good";msg.textContent="Password accepted. All six sections of the guide are open below, and the bonus is unlocked at the end.";}
+ else if(msg.classList.contains("good")){msg.className="tg-gate-msg";msg.textContent="";}
+}
 function renderSummary(){
- var sec=$("tg-summary");sec.hidden=!S.finishedAt;
+ var sec=$("tg-summary"),bioOnly=!!S.review&&!S.finishedAt;
+ sec.hidden=!(S.finishedAt||S.review);
+ $("tg-results").classList.toggle("bio-only",bioOnly);
+ sec.querySelector(".eyebrow").textContent=bioOnly?"Bonus":"Summary";
+ sec.querySelector(".sec-title").textContent=bioOnly?"Lina Bo Bardi":"Trivia Game Result";
+ if(bioOnly){showBio();return;}
  if(!S.finishedAt)return;
  $("tg-r-name").textContent=S.name;
  $("tg-r-score").textContent=total()+" / "+(N*PERLEVEL*PER);
@@ -1852,21 +1898,28 @@ $("tg-start-btn").addEventListener("click",function(){
 });
 $("tg-name").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-start-btn").click();});
 $("tg-pw-btn").addEventListener("click",function(){
- var k="";try{k=btoa($("tg-pw").value.trim().toLowerCase().replace(/\s+/g," "));}catch(e){}
- if(k!==PASS){$("tg-pw-err").textContent="Incorrect password. Check it with your teacher.";return;}
+ if(!passOk($("tg-pw").value)){$("tg-pw-err").textContent="Incorrect password. Check it with your teacher.";return;}
  S.bio=true;save();$("tg-pw").value="";showBio();
 });
 $("tg-pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-pw-btn").click();});
 $("lv-reset").addEventListener("click",function(){
  if(!confirm("Reset the game? Your coins, score, and summary will be erased, and you will start again from Section 01."))return;
- S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false};
+ S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false,review:false};
  try{localStorage.removeItem(KEY);}catch(e){}
  $("tg-quiz").hidden=true;$("tg-name").value="";$("tg-name-err").textContent="";$("tg-pw-err").textContent="";
  showLevel(1,true);
 });
+$("tg-gate").addEventListener("submit",function(e){
+ e.preventDefault();
+ var m=$("tg-gate-msg");
+ if(!passOk($("tg-gate-pw").value)){m.className="tg-gate-msg bad";m.textContent="Incorrect password. Check it with your teacher.";return;}
+ S.review=true;S.bio=true;save();$("tg-gate-pw").value="";
+ showLevel(S.view||1,false);
+});
+$("tg-gate-reset").addEventListener("click",function(){$("lv-reset").click();});
 document.querySelectorAll("nav ul a").forEach(function(a){
  a.addEventListener("click",function(e){
-  var n=NAVMAP[a.getAttribute("href")];if(!n)return;
+  var n=NAVMAP[a.getAttribute("href")];if(!n||S.review)return;
   e.preventDefault();
   if(!unlocked(n)){$("lvbar").scrollIntoView();$("lv-msg").textContent="Locked. Clear Section "+pad2(cleared()+1)+" ("+LEVELS[cleared()].short+") first.";return;}
   showLevel(n,true);
