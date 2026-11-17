@@ -162,6 +162,112 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  table.rubric td{padding:12px 12px}
  .deliverable-card{padding:24px}
 }
+
+/* ===== TRIVIA GAME (Pitch Invaders, per section) ===== */
+.tg-rules{margin:22px 0 0;max-width:820px}
+.sub-list{list-style:none;margin:10px 0 4px;display:flex;flex-direction:column;gap:8px}
+.sub-list li{display:flex;align-items:baseline;gap:10px;font-size:16px;color:var(--black);line-height:1.6}
+.sub-list li::before{content:'\2014';color:var(--crimson);font-size:11px;flex-shrink:0;opacity:.6}
+.sub-list li strong{color:var(--black)}
+.tg-gate{max-width:820px;margin-top:36px;background:var(--white);border:1px solid var(--rule-soft);border-left:4px solid var(--graphite);padding:24px 26px}
+.tg-gate-title{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--graphite);margin-bottom:8px}
+.tg-gate-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.tg-gate-row[hidden],#tg-gate-reset[hidden]{display:none}
+.tg-gate-row label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.tg-gate-row input{flex:1;min-width:200px;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--rule-soft);background:var(--paper);color:var(--black)}
+.tg-gate-msg{font-size:15px;font-weight:600;margin-top:12px}
+.tg-gate-msg:empty{display:none}
+.tg-gate-msg.bad{color:var(--crimson)}
+.tg-gate-msg.good{color:#2d6a3f}
+.tg-btn-line{background:transparent;color:var(--crimson);border:1px solid var(--crimson);margin-top:14px}
+.tg-btn-line:hover{background:var(--crimson-pale);color:var(--crimson)}
+body.review .level{display:block}
+body.review .lvbar,body.review .tg-arena{display:none}
+.tg-results.bio-only .tg-score,.tg-results.bio-only .tg-table,.tg-results.bio-only .tg-shot,.tg-results.bio-only .tg-guide,.tg-results.bio-only .tg-unlock>.instructions-label,.tg-results.bio-only .tg-unlock>p{display:none}
+.tg-btn{font-family:inherit;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;padding:14px 22px;background:var(--crimson);color:#fff;cursor:pointer;transition:background .15s}
+.tg-btn:hover{background:var(--crimson-dark)}
+.lvbar{position:relative;background:var(--white);border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);padding:12px 56px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;scroll-margin-top:0}
+.lvbar-lbl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-right:8px}
+.lv-btn{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);background:var(--white);border:1px solid var(--rule-soft);padding:7px 11px;cursor:pointer;white-space:nowrap}
+.lv-btn:hover:not(:disabled){border-color:var(--graphite)}
+.lv-btn.done{border-color:var(--graphite)}
+.lv-btn.done::after{content:" \2713"}
+.lv-btn.current{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.lv-btn:disabled{color:var(--graphite-lt);background:var(--paper);cursor:not-allowed}
+.lvbar-right{margin-left:auto;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--graphite)}
+.lv-reset{font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);background:none;border:1px solid var(--crimson);padding:7px 11px;margin-left:12px;cursor:pointer}
+.lv-reset:hover{background:var(--crimson);color:#fff}
+.lvbar-msg{flex-basis:100%;font-size:14px;font-weight:600;color:var(--crimson)}
+.lvbar-msg:empty{display:none}
+.level{display:none}
+.level.on{display:block}
+.tg-arena{background:var(--rule-strong);padding:64px 56px;color:#fff}
+.tg-arena .eyebrow{color:var(--grey-on-dark)}
+.tg-arena .sec-title{color:#fff}
+.tg-arena .sec-rule{border-color:rgba(255,255,255,.14)}
+.tg-start,.tg-cleared{max-width:640px;background:var(--white);border-top:3px solid var(--crimson);padding:26px 28px;color:var(--black)}
+.tg-start[hidden],.tg-cleared[hidden],.tg-play[hidden],.tg-results[hidden],.tg-overlay[hidden],.tg-bio[hidden],.tg-unlock-row[hidden]{display:none}
+.tg-start p,.tg-cleared p{margin-bottom:14px}
+.tg-start label,.tg-unlock label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
+.tg-start input,.tg-unlock input{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--rule-soft);background:var(--paper);color:var(--black);margin-bottom:14px}
+.tg-cleared h3{color:var(--crimson);margin-bottom:10px}
+.tg-err{font-size:14px;font-weight:600;color:var(--crimson);min-height:20px;margin-top:10px}
+.tg-play{max-width:1000px}
+.tg-play canvas{display:block;width:100%;aspect-ratio:16/9;background:#0d1322;border:1px solid rgba(255,255,255,.35);touch-action:none}
+.tg-play canvas:focus-visible{outline:3px solid var(--crimson-mid);outline-offset:3px}
+.tg-controls{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+.tg-controls div{display:flex;gap:10px}
+.tg-controls button{font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.4);padding:14px 20px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.tg-controls button.fire{background:var(--crimson);border-color:var(--crimson);min-width:140px}
+.tg-hint{font-size:14px;color:var(--grey-on-dark);margin-top:10px}
+.tg-calm{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--grey-on-dark);margin-top:8px;cursor:pointer}
+.tg-overlay{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(17,17,17,.6)}
+.tg-box{width:100%;max-width:760px;max-height:94vh;overflow:auto;background:var(--white);border-top:4px solid var(--crimson);box-shadow:0 30px 80px rgba(0,0,0,.35);padding:26px 28px}
+.tg-qhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.tg-qhead b{color:var(--crimson)}
+.tg-topic{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);margin-bottom:6px}
+.tg-q{font-family:'Source Serif 4',serif;font-size:21px!important;font-weight:600;line-height:1.35;color:var(--graphite)!important;margin-bottom:16px}
+.tg-opt{display:grid;grid-template-columns:28px 1fr;gap:8px;width:100%;text-align:left;font-family:inherit;font-size:15px;line-height:1.5;color:var(--black);background:var(--paper);border:1px solid var(--rule-soft);padding:11px 14px;margin-bottom:8px;cursor:pointer}
+.tg-opt .k{font-size:12px;font-weight:700;color:var(--crimson);padding-top:2px}
+.tg-opt:hover:not(:disabled){border-color:var(--crimson);background:var(--crimson-pale)}
+.tg-opt.wrong{background:#f8d7da;border-color:#e08080;color:#842029;cursor:not-allowed}
+.tg-opt.right{background:#d4edda;border-color:#a8d8a0;color:#2d6a3f}
+.tg-opt:disabled{cursor:not-allowed}
+.tg-fb{font-size:15px;font-weight:700;min-height:22px;margin-top:8px}
+.tg-fb.bad{color:#842029}
+.tg-fb.good{color:#2d6a3f}
+.tg-box .tg-btn{margin-top:14px}
+.tg-results{max-width:1000px;background:var(--white);border:1px solid var(--rule-soft);border-top:3px solid var(--crimson);padding:30px 32px}
+.tg-score{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 24px}
+.tg-score div{background:var(--paper);border:1px solid var(--rule-soft);padding:12px 18px;min-width:150px}
+.tg-score .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.tg-score .v{font-family:'Source Serif 4',serif;font-size:24px;font-weight:700;color:var(--black)}
+.tg-score .v.big{color:var(--crimson);font-size:30px}
+.tg-table{width:100%;border-collapse:collapse}
+.tg-table th{padding:10px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);text-align:left;border-bottom:1px solid var(--rule-strong)}
+.tg-table td{padding:8px 12px;font-size:15px;border-bottom:1px solid var(--rule-soft)}
+.tg-table td.n{text-align:right;font-weight:700}
+.tg-table tr.zero td{background:#f8d7da}
+.tg-table tr.sec td{background:var(--paper);font-weight:700;color:var(--graphite);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.tg-shot{margin-top:20px}
+.tg-guide{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule-strong)}
+.tg-guide h4{font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;color:var(--graphite);margin:22px 0 4px}
+.tg-guide ol{list-style:none;counter-reset:g}
+.tg-guide li{counter-increment:g;display:grid;grid-template-columns:40px 1fr;gap:10px;padding:12px 0;border-bottom:1px solid var(--rule-soft)}
+.tg-guide li:last-child{border-bottom:none}
+.tg-guide li::before{content:counter(g,decimal-leading-zero);font-size:13px;font-weight:700;color:var(--crimson);padding-top:3px}
+.tg-guide .g-q{font-size:16px;font-weight:700;margin:0 0 8px;line-height:1.45}
+.tg-guide .g-a{font-size:15px;line-height:1.6;background:#eef7f0;border-left:4px solid #2d6a3f;padding:8px 12px}
+.tg-unlock{margin-top:36px;padding:24px 26px;background:var(--paper);border:1px solid var(--rule-soft);border-left:4px solid var(--graphite)}
+.tg-unlock-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.tg-unlock-row input{flex:1;min-width:200px;margin-bottom:0}
+.tg-bio{margin-top:28px}
+.tg-bio h3{font-family:'Source Serif 4',serif;font-size:28px;font-weight:700;color:var(--crimson);margin-bottom:14px}
+.tg-bio h3 span{color:var(--grey);font-weight:600;font-size:20px}
+.tg-bio h4{font-family:'Source Serif 4',serif;font-size:20px;font-weight:600;color:var(--graphite);margin:26px 0 10px}
+.tg-bio .sub-list li{font-size:16px}
+#tg-summary[hidden]{display:none}
+@media(max-width:960px){.lvbar{padding:10px 16px}.lv-name{display:none}.tg-arena{padding:48px 24px}.tg-results,.tg-start,.tg-cleared{padding:22px 18px}.tg-box{padding:20px 18px}.tg-controls button{padding:14px 14px}.tg-controls button.fire{min-width:0}}
 </style>
 </head>
 <body>
@@ -173,8 +279,9 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   <li><a href="#overview">Overview</a></li>
   <li><a href="#posters">Posters</a></li>
   <li><a href="#pitch">Pitch</a></li>
-  <li><a href="#submission">Submission</a></li>
+  <li><a href="#resources">Resources</a></li>
   <li><a href="#rubric">Rubric</a></li>
+  <li><a href="#tg-arena">Trivia Game</a></li>
  </ul>
 </nav>
 
@@ -184,7 +291,7 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  <hr class="hero-rule">
  <h1>Project <em>Presentation</em></h1>
  <hr class="hero-rule">
- <p class="hero-sub">Assignment 06 produces no new design. It packages the work you have already done into a form a client can act on. <strong>Two posters and a recorded pitch</strong>, asking NEXA&rsquo;s board to build it.</p>
+ <p class="hero-sub">Assignment 06 is the final stage of the process. It packages the work you have already done into a client presentation: <strong>two posters and a recorded video pitch</strong> that convince NEXA&rsquo;s board your proposal is the best alternative.</p>
  <div class="hero-meta">
   <div class="hero-meta-item">
    <span class="hero-meta-k">Project</span>
@@ -205,12 +312,12 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
    <div class="stat-lbl">Project Posters</div>
   </div>
   <div class="stat">
-   <div class="stat-num">24&Prime;&times;36&Prime;</div>
-   <div class="stat-lbl">Board Size</div>
+   <div class="stat-num">36&Prime;&times;48&Prime;</div>
+   <div class="stat-lbl">Poster Size</div>
   </div>
   <div class="stat">
    <div class="stat-num">5&ndash;7</div>
-   <div class="stat-lbl">Minute Pitch</div>
+   <div class="stat-lbl">Minute Video Pitch</div>
   </div>
   <div class="stat">
    <div class="stat-num">200</div>
@@ -219,19 +326,58 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
  </div>
 </header>
 
-<!-- SECTION 01: INTRODUCTION -->
+<!-- HOW THE GUIDE WORKS -->
+<section class="section warm" id="howto">
+ <p class="eyebrow">How This Guide Works</p>
+ <h2 class="sec-title">Read a Section, Then Play It</h2>
+ <hr class="sec-rule">
+ <p class="lead">The guide is divided into 5 sections. Read each section first. Then play its game level to check what you learned. Clearing a level unlocks the next section.</p>
+ <ul class="sub-list tg-rules">
+  <li><span>Each level has <strong>5 poster saucers</strong> flying in formation. Shoot one to get a question about that section.</span></li>
+  <li><span>Move with <strong>&larr; &rarr;</strong> and fire with <strong>Space</strong> or <strong>&uarr;</strong>. On a phone or tablet, use the buttons under the game.</span></li>
+  <li><span>Each saucer is worth <strong>10 points</strong>. Each wrong answer takes <strong>2 points</strong> off that saucer.</span></li>
+  <li><span>You have <strong>5 attempts</strong> per question. After 5 wrong answers the saucer is worth <strong>0</strong>.</span></li>
+  <li><span>The saucers drop critique notes. If one hits you, your projector freezes for a moment, but you lose <strong>no points</strong>.</span></li>
+  <li><span>Clear all <strong>5 levels</strong> (25 saucers, 250 points). Then take a screenshot of your summary and submit it to your teacher.</span></li>
+  <li><span>Your teacher will then give you a password. It opens the whole guide without playing again, and it unlocks a bonus at the end of the summary.</span></li>
+ </ul>
+
+ <form class="tg-gate" id="tg-gate" autocomplete="off">
+  <p class="tg-gate-title">Already played the game and submitted your score?</p>
+  <ul class="sub-list">
+   <li><span>Your teacher gives you a password after you submit the screenshot of your summary.</span></li>
+   <li><span>Enter it here to open all five sections of the guide without playing the game again.</span></li>
+  </ul>
+  <div class="tg-gate-row" id="tg-gate-row">
+   <label for="tg-gate-pw">Password</label>
+   <input id="tg-gate-pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+   <button class="tg-btn" type="submit">Open the guide</button>
+  </div>
+  <p class="tg-gate-msg" id="tg-gate-msg" role="status" aria-live="polite"></p>
+  <button class="tg-btn tg-btn-line" type="button" id="tg-gate-reset" hidden>Reset the game</button>
+ </form>
+</section>
+
+<!-- LEVEL BAR -->
+<div class="lvbar" id="lvbar">
+ <span class="lvbar-lbl">Sections</span>
+ <span id="lv-steps" style="display:contents"></span>
+ <span class="lvbar-right" id="lv-count"></span>
+ <button type="button" class="lv-reset" id="lv-reset">Reset game</button>
+ <p class="lvbar-msg" id="lv-msg" role="status" aria-live="polite"></p>
+</div>
+
+<div id="levels">
+<div class="level" data-level="1">
+<!-- SECTION 01: INTRODUCTION & OBJECTIVES -->
 <section class="section alt" id="overview">
  <div class="reveal">
   <p class="eyebrow">Section 01</p>
-  <h2 class="sec-title">Introduction</h2>
+  <h2 class="sec-title">Introduction &amp; Objectives</h2>
   <hr class="sec-rule">
-  <p class="lead">Assignment 06 produces no new design. It packages the work you have already done into a form a client can act on.</p>
-  <p class="lead">Everything from Assignments 01 through 05 is currently coursework. This assignment consists of three deliverables: <strong>two 24&Prime; &times; 36&Prime; posters</strong>, and a <strong>recorded 5- to 7-minute pitch</strong> asking NEXA&rsquo;s board to build it.</p>
-  <p class="lead">Both are proposals, not summaries. A poster is not a portfolio page and a pitch is not a narration of your process. Each makes the same case in a different medium.</p>
-
-  <h3 class="sub-head">What Is Yours, and What Is Your Design Team&rsquo;s</h3>
-  <p class="lead">You worked as part of a design team through Assignment 02 and alone from Assignment 03 forward. The deliverables carry your design team&rsquo;s identity (name, logo, and slogan) and both present your individual design.</p>
-  <p class="lead" style="margin-top:14px">The research, the Concept Statement, and the brand are your team&rsquo;s. Every design decision from the block plan forward is yours. You may use the group&rsquo;s work, but you may not present a classmate&rsquo;s interior design proposal.</p>
+  <p class="lead">Assignment 06 is the final stage of the process: communicating the project and its features through static and dynamic visual documents. It packages the work already done into a client presentation.</p>
+  <p class="lead">Everything you produced in Assignments 01 through 05 is the project&rsquo;s design process, from its conceptual approach to detailed material specifications. The challenge now is to build a coherent narrative for your client and the project&rsquo;s stakeholders.</p>
+  <p class="lead">To do this, reflect on your work so far and create compelling deliverables that explain the project conceptually and technically, using evocative static and dynamic visual and audiovisual elements.</p>
 
   <div class="reveal" style="margin-top:40px">
    <p class="instructions-label">Objectives</p>
@@ -244,56 +390,84 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   </div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 02: THE PROJECT POSTERS -->
+<div class="level" data-level="2">
+<!-- SECTION 02: DELIVERABLES · THE POSTERS -->
 <section class="section warm" id="posters">
  <div class="reveal">
   <p class="eyebrow">Section 02</p>
-  <h2 class="sec-title">Deliverables 1 &amp; 2 &middot; The Project Posters</h2>
+  <h2 class="sec-title">Deliverables &middot; The Posters</h2>
   <hr class="sec-rule">
-  <p class="lead" style="margin-bottom:24px">Two boards &middot; 24&Prime; &times; 36&Prime; each &middot; Built in Adobe Photoshop</p>
+  <p class="lead">This assignment consists of three deliverables: <strong>two posters</strong> and <strong>one recorded video pitch</strong>. This section covers the posters.</p>
+  <p class="lead" style="margin-bottom:24px">Produce <strong>two 36&Prime; &times; 48&Prime; posters</strong> that explain the design process and the project&rsquo;s features, and show compliance with <strong>Building Code, ADA Standards, and Fire/Life Safety</strong> design measures.</p>
 
-  <div class="callout" style="margin-bottom:40px">To build these posters, follow the video tutorials available on Panopto for instructions on using Photoshop to create posters. <strong>Requirement:</strong> download Photoshop on your computer.</div>
+  <p class="instructions-label">What You Can Include</p>
+  <p class="lead" style="margin-bottom:24px">Include relevant information from the documents you produced during the design process, including, but not limited to:</p>
 
   <div class="deliverables-stack">
+   <div class="deliverable-card">
+    <div class="deliverable-num">i</div>
+    <div class="deliverable-title">User Interviews &amp; Research</div>
+   </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Board 1 &middot; The Argument for the Design</div>
-    <div class="deliverable-title">Research &amp; Concept</div>
+    <div class="deliverable-num">ii</div>
+    <div class="deliverable-title">Design Concept Development</div>
     <div class="deliverable-body">
-     <p>Open with your <strong>primary source research</strong> &mdash; what the people you interviewed told you about the spaces in their lives &mdash; told through the quotes and discoveries that actually drove your concept, the sentence someone said that changed how you saw the problem, rather than as a methodology summary; explain the findings, conclusions, and insights that worked, and anchor the project to the final users.</p>
-     <p>Carry that into your <strong>secondary source research</strong>, the theories, standards, and precedents you drew from the collective knowledge video library, and then into your <strong>Concept Development</strong>, showing how that research became a concept and presenting the concept itself: your Value Proposition and Core Design Solution.</p>
-     <p>Close the board with your <strong>Mood Environments</strong>, the three conceptual image sets that ground the concept visually.</p>
+     <ul class="sub-list">
+      <li><span><strong>Concept Statement:</strong> Value Proposition + Core Design Solutions, and how these evolved through the different stages of development.</span></li>
+      <li><span><strong>Conceptual mood environment development.</strong></span></li>
+     </ul>
     </div>
    </div>
 
    <div class="deliverable-card">
-    <div class="deliverable-num">Board 2 &middot; The Design Itself</div>
-    <div class="deliverable-title">The Proposal</div>
+    <div class="deliverable-num">iii</div>
+    <div class="deliverable-title">Area Planning</div>
     <div class="deliverable-body">
-     <p>Present the design itself, beginning with <strong>rendered floor plans</strong>, reduced in size but legible and carrying a graphic scale, including textured representations of floor finishes and furniture, followed by <strong>material mood boards</strong> for your ceiling and flooring selections and your FF&amp;E.</p>
-     <p>Close with as many <strong>renderings of the proposed spaces</strong> as you can produce, since this is where the building becomes real to someone who does not read plans.</p>
+     <ul class="sub-list">
+      <li><span>Bubble Diagrams</span></li>
+      <li><span>Block Plans</span></li>
+     </ul>
     </div>
    </div>
 
+   <div class="deliverable-card">
+    <div class="deliverable-num">iv</div>
+    <div class="deliverable-title">Design Documentation</div>
+    <div class="deliverable-body">
+     <ul class="sub-list">
+      <li><span>Interior Design Floor Plans</span></li>
+      <li><span>Finish Plans</span></li>
+      <li><span>Renderings, including Material Board development</span></li>
+      <li><span>Specifications</span></li>
+     </ul>
+    </div>
+   </div>
   </div>
+
+  <div class="callout" style="margin-top:40px"><strong>Important note:</strong> What to include in the posters is your decision as the designer. Decide what is relevant to show to fully explain the project, its design process, and its code-compliant features.</div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 03: THE EXECUTIVE PITCH -->
+<div class="level" data-level="3">
+<!-- SECTION 03: DELIVERABLES · THE VIDEO PITCH -->
 <section class="part-sec warm" id="pitch">
  <div class="ghost-label">3</div>
  <div class="part-inner">
   <div class="part-head reveal">
    <span class="part-pill">Deliverable 3</span>
-   <span class="part-title">The Executive Pitch</span>
+   <span class="part-title">The Video Pitch</span>
   </div>
   <div class="part-layout">
 
    <div class="reveal">
     <div class="part-desc">
-     <p>You are presenting to the <strong>NEXA Consulting and Development board.</strong> They are not designers, they have not read your assignments, and they are deciding whether to build your project &mdash; so use the research as <em>evidence for</em> your design, show the building, and tell them what it does for the people who will live and learn in it.</p>
-     <p class="note"><strong>This is not a recount of your design process.</strong> It is a proposal. Be professional, direct, concise, and convincing.</p>
+     <p>Record a <strong>5- to 7-minute video pitch</strong> presenting the project to <strong>NEXA&rsquo;s board.</strong> The goal is not only to explain the project, but mainly to <em>convince</em> the board members that your design proposal is the best alternative.</p>
+     <p>What to include in the video is your decision as the designer. However, it should <strong>not repeat information already shown on the posters.</strong> Turning the video into an audiovisual retelling of the design process and its technical solutions may be counterproductive.</p>
+     <p class="note"><strong>This is a professional sales pitch, not an academic exercise.</strong></p>
     </div>
    </div>
 
@@ -301,34 +475,51 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
     <div class="specs-panel">
      <p class="specs-group-label">Requirements</p>
      <div class="spec-row"><span class="spec-k">Length</span><span class="spec-v">5&ndash;7 minutes</span></div>
-     <div class="spec-row"><span class="spec-k">Identity</span><span class="spec-v">Firm name, logo, slogan</span></div>
-     <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Recorded, hosted on Panopto</span></div>
-     <div class="spec-row"><span class="spec-k">Submission</span><span class="spec-v">Share link via Blackboard</span></div>
-     <div class="spec-row"><span class="spec-k">On-Screen Support</span><span class="spec-v">Legible at viewing distance</span></div>
+     <div class="spec-row"><span class="spec-k">Format</span><span class="spec-v">Recorded video</span></div>
+     <div class="spec-row"><span class="spec-k">Audience</span><span class="spec-v">NEXA&rsquo;s board</span></div>
+     <div class="spec-row"><span class="spec-k">Goal</span><span class="spec-v">Convince the board</span></div>
+     <div class="spec-row"><span class="spec-k">Content</span><span class="spec-v">Do not repeat the posters</span></div>
     </div>
    </div>
 
   </div>
  </div>
 </section>
+</div>
 
-<!-- SECTION 04: SUBMISSION -->
-<section class="section alt" id="submission">
+<div class="level" data-level="4">
+<!-- SECTION 04: RESOURCES -->
+<section class="section alt" id="resources">
  <div class="reveal">
   <p class="eyebrow">Section 04</p>
-  <h2 class="sec-title">Submission</h2>
+  <h2 class="sec-title">Resources</h2>
   <hr class="sec-rule">
-  <p class="lead">Submit three items through two channels: <strong>PDFs</strong> of both boards to Blackboard, <strong>PSDs</strong> of both working files to the shared BOX folder, and your recorded <strong>Executive Pitch</strong> to Blackboard as a Panopto share link.</p>
+  <p class="lead" style="margin-bottom:28px">Use the Study Guide to build your deliverables, and the ADA guides from the U.S. Access Board to show that your design complies with ADA Standards.</p>
+
+  <p class="instructions-label">Study Guide</p>
+  <ol class="instruction-list" style="margin-bottom:36px">
+   <li><span><strong>Study Guide (UA Box):</strong> <a href="https://alabama.box.com/s/vwjjgbpdbk2fgnvcvzgdi68yhqkixly9" target="_blank" rel="noopener">alabama.box.com/s/vwjjgbpdbk2fgnvcvzgdi68yhqkixly9</a></span></li>
+  </ol>
+
+  <p class="instructions-label">ADA Guidelines &middot; Chapter 6</p>
+  <ol class="instruction-list">
+   <li><span><strong>Toilet Rooms:</strong> <a href="https://www.access-board.gov/ada/guides/chapter-6-toilet-rooms/" target="_blank" rel="noopener">access-board.gov/ada/guides/chapter-6-toilet-rooms</a></span></li>
+   <li><span><strong>Bathing Rooms:</strong> <a href="https://www.access-board.gov/ada/guides/chapter-6-bathing-rooms/" target="_blank" rel="noopener">access-board.gov/ada/guides/chapter-6-bathing-rooms</a></span></li>
+   <li><span><strong>Drinking Fountains:</strong> <a href="https://www.access-board.gov/ada/guides/chapter-6-drinking-fountains/" target="_blank" rel="noopener">access-board.gov/ada/guides/chapter-6-drinking-fountains</a></span></li>
+   <li><span><strong>Lavatories and Sinks:</strong> <a href="https://www.access-board.gov/ada/guides/chapter-6-lavs-sinks/" target="_blank" rel="noopener">access-board.gov/ada/guides/chapter-6-lavs-sinks</a></span></li>
+  </ol>
  </div>
 </section>
+</div>
 
+<div class="level" data-level="5">
 <!-- SECTION 05: RUBRIC -->
 <section class="section warm" id="rubric">
  <div class="reveal">
   <p class="eyebrow">Section 05</p>
   <h2 class="sec-title">Evaluation Rubric</h2>
   <hr class="sec-rule">
-  <p class="rubric-intro">The assignment is evaluated across four criteria totaling <strong>200 points</strong>. Board 1 and Board 2 carry the greatest combined weight, as the posters are the core of the proposal.</p>
+  <p class="rubric-intro">The assignment is evaluated across four criteria totaling <strong>200 points</strong>. The two poster criteria carry the greatest combined weight, as the posters are the core of the proposal.</p>
 
   <div style="overflow-x:auto">
    <table class="rubric">
@@ -344,77 +535,77 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 
      <tr>
       <td class="item-col">
-       <span class="item-name">1. Board 1 &mdash; Research &amp; Concept</span>
+       <span class="item-name">1. Posters &mdash; Design Process</span>
        <span class="item-pts">60 pts total</span>
       </td>
       <td>
        <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
-       Presents primary findings and user quotes, secondary sources from the collective library, and a concept that follows from both. The connection to the users is clear throughout.
+       Selects the relevant parts of the process (user research, the Concept Statement and how it evolved, mood environments, and area planning) and presents them as one coherent narrative that a non-designer can follow.
       </td>
       <td>
        <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
-       Presents the research and the concept, but states the link between them rather than showing it, or ties the design loosely to the users.
+       Presents the process clearly, but the selection is uneven, or the evolution of the concept is stated rather than shown.
       </td>
       <td>
        <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
-       Summarizes the process, or presents findings that are disconnected from the concept and not tied to any user.
+       Reproduces documents without a narrative, leaves out key stages, or is hard for a non-designer to follow.
       </td>
      </tr>
 
      <tr>
       <td class="item-col">
-       <span class="item-name">2. Board 2 &mdash; The Proposal</span>
+       <span class="item-name">2. Posters &mdash; Project Features &amp; Code Compliance</span>
        <span class="item-pts">60 pts total</span>
       </td>
       <td>
        <div><span class="range-badge range-excellent">54 &ndash; 60 pts</span></div>
-       Presents rendered floor plans that remain legible at reduced size with a graphic scale, textured finishes and furniture, material mood boards for ceiling, floor, and FF&amp;E, and enough renderings to convey the spaces to a non-designer.
+       Presents the design through legible floor plans, finish plans, renderings, material boards, and specifications, and clearly shows compliance with Building Code, ADA Standards, and Fire/Life Safety measures.
       </td>
       <td>
        <div><span class="range-badge range-proficient">42 &ndash; 53 pts</span></div>
-       Presents legible plans, the material selections, and renderings that convey the design, with occasional lapses in legibility, scale, or completeness.
+       Presents the design features clearly, but shows compliance only in part, or has occasional lapses in legibility.
       </td>
       <td>
        <div><span class="range-badge range-developing">0 &ndash; 41 pts</span></div>
-       Presents plans that lose legibility or omit the scale, limited material information, or too few renderings to convey the design.
+       Presents features that are unclear or illegible, or leaves out compliance with Building Code, ADA Standards, or Fire/Life Safety.
       </td>
      </tr>
 
      <tr>
       <td class="item-col">
-       <span class="item-name">3. Graphic System &amp; Firm Identity</span>
+       <span class="item-name">3. Graphic System &amp; Corporate Identity</span>
        <span class="item-pts">30 pts total</span>
       </td>
       <td>
        <div><span class="range-badge range-excellent">27 &ndash; 30 pts</span></div>
-       Composes both boards as one consistent style and graphic system with a clear reading order, and legible.
+       Composes both posters as one consistent style and graphic system under the corporate identity, with a clear reading order, and legible.
       </td>
       <td>
        <div><span class="range-badge range-proficient">21 &ndash; 26 pts</span></div>
-       Composes two coordinated boards with the firm identity, but with an uneven reading order or occasional legibility lapses.
+       Composes two coordinated posters under the corporate identity, but with an uneven reading order or occasional legibility lapses.
       </td>
       <td>
        <div><span class="range-badge range-developing">0 &ndash; 20 pts</span></div>
-       Composes boards that read as two separate projects, lack a clear reading order, or fall below legibility standards.
+       Composes posters that read as two separate projects, lack a clear reading order, or fall below legibility standards.
       </td>
      </tr>
 
      <tr>
       <td class="item-col">
-       <span class="item-name">4. The Executive Pitch</span>
+       <span class="item-name">4. The Video Pitch</span>
        <span class="item-pts">50 pts total</span>
       </td>
       <td>
        <div><span class="range-badge range-excellent">45 &ndash; 50 pts</span></div>
-       Pitches the design in the required time. Leads with the proposal, uses research as evidence, explains what the design does for its users, and presents professionally under the firm&rsquo;s identity with legible on-screen support.
+       Convinces the board, within 5&ndash;7 minutes, that the proposal is the best alternative. Adds to the posters instead of repeating them, and presents as a professional sales pitch under the corporate identity.
       </td>
       <td>
        <div><span class="range-badge range-proficient">35 &ndash; 44 pts</span></div>
-       Pitches the project within time under the firm&rsquo;s identity and conveys the design clearly, but narrates process at points or argues less than convincingly.
+       Explains the project clearly within the time, but repeats poster content at points or argues less than convincingly.
       </td>
       <td>
        <div><span class="range-badge range-developing">0 &ndash; 34 pts</span></div>
-       Recounts the process instead of pitching, misses the time limit, or presents without firm identity or legible support.
+       Retells the design process like an academic exercise, misses the time limit, or presents without a professional identity.
       </td>
      </tr>
 
@@ -430,6 +621,108 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
   </div>
  </div>
 </section>
+</div>
+</div>
+
+<!-- GAME ARENA (one level per section) -->
+<section class="tg-arena" id="tg-arena">
+ <p class="eyebrow" id="tg-arena-eyebrow">Checkpoint</p>
+ <h2 class="sec-title" id="tg-arena-title">Trivia Game</h2>
+ <hr class="sec-rule">
+
+ <div class="tg-start" id="tg-start" hidden>
+  <p>Enter your name once to start playing. It appears on your summary at the end.</p>
+  <label for="tg-name">Your full name</label>
+  <input id="tg-name" type="text" autocomplete="name" maxlength="60" placeholder="First and last name">
+  <button class="tg-btn" id="tg-start-btn" type="button">Start the game</button>
+  <p class="tg-err" id="tg-name-err"></p>
+ </div>
+
+ <div class="tg-cleared" id="tg-cleared" hidden>
+  <h3 id="tg-cleared-title">Level cleared</h3>
+  <p id="tg-cleared-text"></p>
+  <button class="tg-btn" id="tg-next-btn" type="button">Continue</button>
+ </div>
+
+ <div class="tg-play" id="tg-play" hidden>
+  <canvas id="tg-canvas" width="960" height="540" tabindex="0" aria-label="Game. Move with the left and right arrow keys and fire with the space bar or up arrow. Hit a poster saucer to get a question."></canvas>
+  <div class="tg-controls" id="tg-controls">
+   <div>
+    <button type="button" data-k="left" aria-label="Move left">&#9664;</button>
+    <button type="button" data-k="right" aria-label="Move right">&#9654;</button>
+   </div>
+   <button type="button" class="fire" id="tg-fire">Fire</button>
+  </div>
+  <p class="tg-hint">Click the game once, then use the arrow keys and the space bar.</p>
+  <label class="tg-calm"><input type="checkbox" id="tg-calm"> Play without critique notes (the saucers do not fire back)</label>
+ </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="section warm" id="tg-summary" hidden>
+ <p class="eyebrow">Summary</p>
+ <h2 class="sec-title">Trivia Game Result</h2>
+ <hr class="sec-rule">
+ <div class="tg-results" id="tg-results" aria-live="polite">
+  <div class="tg-score">
+   <div><p class="k">Student</p><p class="v" id="tg-r-name"></p></div>
+   <div><p class="k">Score</p><p class="v big" id="tg-r-score"></p></div>
+   <div><p class="k">Saucers</p><p class="v" id="tg-r-coins"></p></div>
+   <div><p class="k">Completed</p><p class="v" id="tg-r-date" style="font-size:17px"></p></div>
+  </div>
+  <table class="tg-table">
+   <thead><tr><th>Saucer</th><th>Topic</th><th style="text-align:right">Wrong answers</th><th style="text-align:right">Points</th></tr></thead>
+   <tbody id="tg-r-rows"></tbody>
+  </table>
+  <p class="callout tg-shot"><strong>Take a screenshot of this summary,</strong> including your name, score, and date, and submit it to your teacher.</p>
+
+  <div class="tg-guide">
+   <p class="instructions-label">Study Guide &middot; Questions &amp; Correct Answers</p>
+   <div id="tg-r-guide"></div>
+  </div>
+
+  <div class="tg-unlock" id="tg-unlock">
+   <p class="instructions-label" style="border-bottom:none;padding-bottom:0">Bonus</p>
+   <p style="margin-bottom:14px">Your teacher gives you this password after you submit your summary.</p>
+   <div class="tg-unlock-row" id="tg-unlock-row">
+    <input id="tg-pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Password">
+    <button class="tg-btn" id="tg-pw-btn" type="button">Unlock</button>
+   </div>
+   <p class="tg-err" id="tg-pw-err"></p>
+   <div class="tg-bio" id="tg-bio" hidden>
+    <h3>Eileen Gray <span>(1878&ndash;1976)</span></h3>
+    <p class="lead">Eileen Gray was an Irish-born furniture designer and architect who worked mostly in France. She moved from lacquer work to furniture, interiors, and finally architecture, and she is now recognized as one of the pioneers of modern design, after decades in which her work was overlooked or credited to others.</p>
+
+    <h4>Training and Early Career</h4>
+    <ul class="sub-list">
+     <li><span><strong>Education:</strong> Studied painting at the Slade School of Fine Art in London, where she first became interested in lacquer.</span></li>
+     <li><span><strong>Paris:</strong> Settled in Paris in the early 1900s and learned traditional Japanese lacquer techniques with the craftsman Seizo Sugawara.</span></li>
+     <li><span><strong>Jean D&eacute;sert:</strong> In 1922 she opened her own gallery, Jean D&eacute;sert, to sell her furniture, rugs, and lamps.</span></li>
+    </ul>
+
+    <h4>Furniture</h4>
+    <ul class="sub-list">
+     <li><span><strong>Dragon armchair (c.&nbsp;1917&ndash;1919):</strong> A lacquered chair whose arms curl like dragons. In 2009 it sold at auction for about &euro;21.9 million, a record for a 20th-century design object.</span></li>
+     <li><span><strong>Bibendum chair (c.&nbsp;1926):</strong> A playful armchair built from stacked padded tubes.</span></li>
+     <li><span><strong>E-1027 side table (1927):</strong> An adjustable tubular steel table designed so a guest could have breakfast in bed. It is still in production.</span></li>
+    </ul>
+
+    <h4>Architecture</h4>
+    <ul class="sub-list">
+     <li><span><strong>E-1027 (1926&ndash;1929):</strong> A seaside villa at Roquebrune-Cap-Martin, France, designed with Jean Badovici. She designed the house and its furniture together, around how people would actually live in it.</span></li>
+     <li><span><strong>Tempe &agrave; Pailla (1930s):</strong> Her own house in Castellar, France, with furniture that folds, slides, and adapts to small spaces.</span></li>
+    </ul>
+
+    <h4>Why She Matters for Your Pitch</h4>
+    <p style="margin-bottom:10px">Gray believed that a building is a container for human life, not an object to be admired. Her designs start with the person who will use them: where they sit, sleep, eat, and move. That is the same argument your pitch must make to the NEXA board: what the design does for the people who will live and learn in it.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="tg-overlay" id="tg-quiz" hidden>
+ <div class="tg-box" id="tg-box" role="dialog" aria-modal="true" aria-labelledby="tg-q"></div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -440,6 +733,414 @@ footer p{font-size:12px;color:var(--grey);letter-spacing:.04em;text-transform:up
 <script>
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+/* ===== TRIVIA GAME (Pitch Invaders, per section) =====
+   5 levels, one per guide section, 5 saucers each (25 saucers x 10 points = 250).
+   Each wrong answer takes 2 points off that saucer; after 5 wrong answers the saucer is worth 0.
+   a = index of the correct option. */
+(function(){
+var LEVELS=[
+ {short:"Introduction",name:"Introduction & Objectives"},
+ {short:"Posters",name:"The Posters"},
+ {short:"Pitch",name:"The Video Pitch"},
+ {short:"Resources",name:"Resources"},
+ {short:"Rubric",name:"Evaluation Rubric"}
+];
+var NAVMAP={"#overview":1,"#posters":2,"#pitch":3,"#resources":4,"#rubric":5};
+var QUIZ=[
+ [
+  {topic:"What A06 is",q:"What is Assignment 06?",opts:["A new design for a second building on the NEXA site","A research report on the users interviewed in Assignment 01","The final stage: communicating the project and its features through static and dynamic visual documents","A redesign of the block plans and finish plans from the earlier assignments, using new research from new user interviews","A material board","A physical model"],a:2},
+  {topic:"Assignments 01–05",q:"According to the introduction, what do Assignments 01 through 05 make up?",opts:["Practice exercises that are not part of the final presentation and should be left out of the posters and the pitch","The project’s design process, from its conceptual approach to detailed material specifications","Only the research phase","Only the floor plans","A set of unrelated projects","The client’s brief"],a:1},
+  {topic:"The narrative",q:"Who is the coherent narrative of this assignment built for?",opts:["Your classmates","A jury of architects and interior design faculty who know your process","Your client and the project’s stakeholders","The teaching team only","The building inspector","Future design students"],a:2},
+  {topic:"Objectives",q:"Which of these is one of the four objectives?",opts:["Learn to model new Revit families","Write a formal research paper","Argue for a design proposal to a client audience, concisely and convincingly","Develop a new block plan and egress plan for the project, using new research from the team","Build a physical model","Design a new logo from scratch"],a:2},
+  {topic:"Objectives",q:"According to the objectives, under what do you present professionally?",opts:["A corporate identity","Your own name only, with no logo, no slogan, and no firm brand on any of the deliverables","The university’s logo","NEXA’s brand","No identity at all","A classmate’s brand"],a:0}
+ ],
+ [
+  {topic:"Size & count",q:"How many posters do you produce, and at what size?",opts:["One poster, 24″ × 36″","Two posters, 24″ × 36″ each","Two posters, 36″ × 48″ each","Three posters, 18″ × 24″ each, printed and pinned up in class","Four posters, 11″ × 17″ each","Any number, any size"],a:2},
+  {topic:"What the posters explain",q:"What must the posters explain?",opts:["Only the renderings of the final spaces","The design process, the project’s features, and compliance with codes and standards","Only the user interviews","The budget and the construction schedule for every phase of the project, room by room","The history of NEXA","Only the material specifications"],a:1},
+  {topic:"Compliance",q:"Compliance with which measures must the posters show?",opts:["Building Code, ADA Standards, and Fire/Life Safety design measures","Only the ADA Standards","Zoning, energy codes, and LEED certification credits for the building envelope and site","Only Fire/Life Safety","Only the Building Code","None; compliance is not required"],a:0},
+  {topic:"Concept Statement",q:"What two parts make up the Concept Statement listed under Design Concept Development?",opts:["Mood Environments + Bubble Diagrams","Value Proposition + Core Design Solutions","Floor Plans + Finish Plans","A slogan + a logo","User quotes + a methodology summary of every interview and every source you used","Renderings + Specifications"],a:1},
+  {topic:"Who decides",q:"Who decides what goes on the posters?",opts:["The teacher, using a fixed template","NEXA’s board","You, the designer: decide what is relevant to fully explain the project","Your design team, by vote, using a list of required documents that every poster must show","The rubric lists every required item","The study guide decides"],a:2}
+ ],
+ [
+  {topic:"The audience",q:"Who is the video pitch presented to?",opts:["A jury of architects","NEXA’s board","Your classmates and the teaching team, who know your assignments and your design process","The future users of the building","Your design team","A Photoshop expert"],a:1},
+  {topic:"Length",q:"How long must the video pitch be?",opts:["1–2 minutes","3–4 minutes","5–7 minutes","10–12 minutes","15–20 minutes","No time limit"],a:2},
+  {topic:"The main goal",q:"What is the main objective of the video pitch?",opts:["To retell the design process step by step, from the first interview to the last rendering","To convince the board that your proposal is the best alternative","To read the posters aloud","To demonstrate your software skills","To list your sources","To introduce your classmates"],a:1},
+  {topic:"Posters and pitch",q:"Should the video repeat the information already shown on the posters?",opts:["Yes, it should repeat everything on the posters","Yes, but only the technical solutions","No: it is recommended that it not repeat what is on the posters","Only if the video runs short of 5 minutes and you need to fill the remaining time","Only the floor plans","Only the specifications"],a:2},
+  {topic:"What the pitch is",q:"Which statement describes the video pitch?",opts:["An academic exercise","An audiovisual retelling of the design process and its technical solutions, told in order","A professional sales pitch, not an academic exercise","A casual conversation","A reading of your assignments","A software demonstration"],a:2}
+ ],
+ [
+  {topic:"Study Guide",q:"Where is the Study Guide for this assignment?",opts:["On Panopto","On UA Box (alabama.box.com)","On the NEXA website","In the printed course packet handed out in the first week of class","On YouTube","There is no study guide"],a:1},
+  {topic:"ADA source",q:"Who publishes the ADA guides listed in the resources?",opts:["NEXA Consulting and Development","The U.S. Access Board","The International Code Council and the National Fire Protection Association","The University of Alabama","The American Institute of Architects","Your design team"],a:1},
+  {topic:"How many guides",q:"How many ADA guides are listed in the resources?",opts:["One","Two","Three","Four","Five","Six"],a:3},
+  {topic:"Which guides",q:"Which of these topics has one of the listed ADA guides?",opts:["Parking spaces","Elevators and platform lifts","Bathing rooms","Ramps, curb ramps, and stairs along the accessible route to the building entrance","Signage","Seating in assembly areas"],a:2},
+  {topic:"Chapter",q:"All four listed ADA guides come from which chapter of the ADA guidelines?",opts:["Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5","Chapter 6"],a:5}
+ ],
+ [
+  {topic:"Total points",q:"How many points is the assignment worth in total?",opts:["100 points","150 points","200 points","250 points","300 points","500 points"],a:2},
+  {topic:"Greatest weight",q:"Which criteria carry the greatest combined weight?",opts:["The two poster criteria, at 60 points each","The video pitch and the graphic system, at 50 points each, plus a bonus for the logo","The graphic system only","The video pitch only","All four criteria weigh the same","Attendance and participation"],a:0},
+  {topic:"The video pitch",q:"How many points is the video pitch worth?",opts:["30 points","40 points","50 points","60 points","70 points","100 points"],a:2},
+  {topic:"Code compliance",q:"Under Posters — Project Features & Code Compliance, what earns an Excellent score?",opts:["Showing only the renderings","Leaving compliance out, since the posters are meant to be visual","Legible plans, renderings, and specifications that clearly show Building Code, ADA, and Fire/Life Safety compliance","Showing only ADA compliance, in a small note in the corner of the second poster, below the specifications and the finish plans","Using as many fonts as possible","Repeating the pitch"],a:2},
+  {topic:"A developing pitch",q:"Under The Video Pitch, what places a pitch in Developing?",opts:["Retelling the design process like an academic exercise, missing the time limit, or no professional identity","Convincing the board that the proposal is the best alternative, within 5–7 minutes, under the corporate identity","Finishing in 6 minutes","Using the corporate identity","Not repeating the posters","Speaking clearly"],a:0}
+ ]
+];
+var N=LEVELS.length,PERLEVEL=5,MAXTRY=5,PER=10,PENALTY=2,KEY="ctd325_a06_invaders_v2",PASS="ZWlsZWVuZ3JheQ==",LETTERS="ABCDEF";
+var S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false,calm:false};
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&s.lv)S=s;}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(id){return document.getElementById(id);}
+function lv(n){return S.lv[n]||(S.lv[n]={results:[]});}
+function done(n){return lv(n).results.length>=PERLEVEL;}
+function cleared(){var c=0;while(c<N&&done(c+1))c++;return c;}
+function unlocked(n){return n>=1&&n<=N&&n<=cleared()+1;}
+function total(){var t=0;for(var n=1;n<=N;n++)lv(n).results.forEach(function(r){t+=r.points;});return t;}
+function coins(){var t=0;for(var n=1;n<=N;n++)t+=lv(n).results.length;return t;}
+function pad2(n){return n<10?"0"+n:""+n;}
+
+/* ---------- the invaders field ---------- */
+var VW=960,VH=540,PY=488,SW=84,SH=56,PSPEED=380,BSPEED=900,DROP=22;
+var ships=[],FX=0,FY=0,DIR=1,shot=null,notes=[],noteT=1.8,stunUntil=0,target=null,parts=[],flashMsg="",flashUntil=0,curLevel=1;
+var P={x:VW/2},keys={left:false,right:false},paused=true,padUntil=0,stars=[];
+var cv=$("tg-canvas"),ctx=cv.getContext("2d");
+for(var si=0;si<90;si++)stars.push({x:Math.random()*VW,y:Math.random()*(PY-40),r:Math.random()*1.6+0.4,p:Math.random()*6});
+function buildField(n){
+ curLevel=n;
+ var alive=PERLEVEL-lv(n).results.length;
+ ships=[];for(var i=0;i<alive;i++)ships.push({x:i*150,y:(i%2)*54,alive:true});
+ FX=Math.max(40,(VW-((alive-1)*150+SW))/2);FY=70;DIR=1;
+ P.x=VW/2;shot=null;notes=[];noteT=1.8;stunUntil=0;target=null;parts=[];flashMsg="";
+ keys.left=keys.right=false;
+}
+function alive(){return ships.filter(function(s){return s.alive;});}
+function sb(s){return {x:FX+s.x,y:FY+s.y,w:SW,h:SH};}
+function flash(t){flashMsg=t;flashUntil=performance.now()+2600;}
+function active(){return document.activeElement===cv||performance.now()<padUntil;}
+function update(dt,now){
+ var al=alive(),i,b;
+ if(now>=stunUntil){var mv=(keys.left?-1:0)+(keys.right?1:0);P.x=Math.max(34,Math.min(VW-34,P.x+mv*PSPEED*dt));}
+ if(al.length){
+  var sp=46+(PERLEVEL-al.length)*14,minX=1e9,maxX=-1e9,maxY=0;
+  FX+=DIR*sp*dt;
+  al.forEach(function(s){var q=sb(s);minX=Math.min(minX,q.x);maxX=Math.max(maxX,q.x+q.w);maxY=Math.max(maxY,q.y+q.h);});
+  if(maxX>VW-16&&DIR>0){DIR=-1;FY+=DROP;}else if(minX<16&&DIR<0){DIR=1;FY+=DROP;}
+  if(maxY>PY-70){FY=70;flash("The saucers reached your line and flew back to the top.");}
+ }
+ if(shot){
+  shot.y-=BSPEED*dt;
+  if(shot.y<46)shot=null;
+  else for(i=0;i<al.length;i++){b=sb(al[i]);
+   if(shot.x>=b.x-3&&shot.x<=b.x+b.w+3&&shot.y>=b.y-12&&shot.y<=b.y+b.h){shot=null;hitShip(al[i]);return;}}
+ }
+ if(!S.calm&&al.length){
+  noteT-=dt;
+  if(noteT<=0){noteT=1.3+Math.random()*1.3;b=sb(al[Math.floor(Math.random()*al.length)]);notes.push({x:b.x+b.w/2,y:b.y+b.h});}
+ }else notes=[];
+ notes=notes.filter(function(m){
+  m.y+=230*dt;
+  if(m.y>PY-26&&m.y<PY+14&&Math.abs(m.x-P.x)<28&&now>=stunUntil){
+   stunUntil=now+1200;burst(P.x,PY-6,"#ff6b7f",14);
+   flash("A critique note hit you! Frozen for a moment. No points lost.");return false;}
+  return m.y<VH;
+ });
+}
+function fire(){
+ if(paused||!S.name||shot||performance.now()<stunUntil)return;
+ shot={x:P.x,y:PY-34};
+}
+function burst(x,y,c,n){for(var i=0;i<n;i++){var a=Math.random()*Math.PI*2,v=60+Math.random()*180;parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,t:0,c:c});}}
+function hitShip(s){
+ target=s;paused=true;notes=[];keys.left=keys.right=false;
+ S.current={level:curLevel,q:lv(curLevel).results.length,wrong:0,picks:[]};save();
+ var b=sb(s);burst(b.x+b.w/2,b.y+b.h/2,"#f8b800",10);
+ setTimeout(openQuestion,380);
+}
+
+/* ---------- drawing ---------- */
+function drawBg(t){
+ var g=ctx.createLinearGradient(0,0,0,VH);g.addColorStop(0,"#070b16");g.addColorStop(1,"#18233b");
+ ctx.fillStyle=g;ctx.fillRect(0,0,VW,VH);
+ stars.forEach(function(s){ctx.globalAlpha=0.35+0.45*Math.abs(Math.sin(t/900+s.p));ctx.fillStyle="#cfe0ff";ctx.fillRect(s.x,s.y,s.r,s.r);});
+ ctx.globalAlpha=1;
+ /* distant skyline: the Lifelong School */
+ ctx.fillStyle="#141d31";
+ [[40,70],[150,110],[260,60],[360,140],[520,90],[640,120],[760,70],[860,100]].forEach(function(b){ctx.fillRect(b[0],PY+18-b[1]*0.5,96,b[1]*0.5);});
+ ctx.fillStyle="#9e1b32";ctx.fillRect(0,PY+18,VW,3);
+ ctx.fillStyle="#111827";ctx.fillRect(0,PY+21,VW,VH-PY-21);
+}
+/* a poster saucer: a flying saucer that carries a small 24x36 poster */
+function drawShip(b,targ,t){
+ var x=b.x,y=b.y,w=b.w,cx=x+w/2,hi=targ?(Math.floor(t/180)%2?"#f8b800":"#ff6b7f"):"#aeb9c4";
+ ctx.save();
+ ctx.fillStyle="rgba(207,224,255,.85)";ctx.beginPath();ctx.ellipse(cx,y+14,16,12,0,Math.PI,0);ctx.fill();
+ ctx.fillStyle="#3c4757";ctx.beginPath();ctx.ellipse(cx,y+18,w/2,9,0,0,Math.PI*2);ctx.fill();
+ ctx.strokeStyle=hi;ctx.lineWidth=2;ctx.stroke();
+ for(var i=0;i<5;i++){ctx.fillStyle=(Math.floor(t/240)+i)%2?"#f8b800":"#9e1b32";ctx.fillRect(cx-28+i*13,y+16,5,4);}
+ ctx.strokeStyle=hi;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(cx-6,y+26);ctx.lineTo(cx-6,y+32);ctx.moveTo(cx+6,y+26);ctx.lineTo(cx+6,y+32);ctx.stroke();
+ ctx.fillStyle="#fafafa";ctx.fillRect(cx-12,y+32,24,24);
+ ctx.fillStyle="#9e1b32";ctx.fillRect(cx-9,y+35,18,4);
+ ctx.fillStyle="#8a8a8a";ctx.fillRect(cx-9,y+42,18,2);ctx.fillRect(cx-9,y+46,12,2);ctx.fillRect(cx-9,y+50,15,2);
+ ctx.restore();
+}
+/* the player: a presentation projector on wheels */
+function drawPlayer(t,stunned){
+ var x=Math.round(P.x),y=PY;
+ if(stunned&&Math.floor(t/110)%2)ctx.globalAlpha=0.35;
+ ctx.fillStyle="#fafafa";ctx.fillRect(x-28,y-16,56,22);
+ ctx.fillStyle="#9e1b32";ctx.fillRect(x-28,y-2,56,5);
+ ctx.fillStyle="#3c4757";ctx.fillRect(x-8,y-30,16,15);
+ ctx.fillStyle="#cfe0ff";ctx.beginPath();ctx.arc(x,y-30,7,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle="#f8b800";ctx.beginPath();ctx.arc(x,y-30,3,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle="#111";ctx.beginPath();ctx.arc(x-18,y+10,6,0,Math.PI*2);ctx.arc(x+18,y+10,6,0,Math.PI*2);ctx.fill();
+ ctx.fillStyle="#8a8a8a";ctx.fillRect(x-20,y-11,8,3);ctx.fillRect(x+12,y-11,8,3);
+ ctx.globalAlpha=1;
+}
+function drawHud(){
+ ctx.fillStyle="rgba(17,17,17,.6)";ctx.fillRect(0,0,VW,40);
+ ctx.font="bold 17px 'Source Sans 3', sans-serif";ctx.textBaseline="middle";ctx.fillStyle="#fff";
+ ctx.textAlign="left";ctx.fillText((S.name||"PLAYER").toUpperCase().slice(0,22)+"  ·  SECTION "+pad2(curLevel),16,21);
+ ctx.textAlign="center";ctx.fillText("SAUCERS  "+lv(curLevel).results.length+" / "+PERLEVEL,VW/2+70,21);
+ ctx.textAlign="right";ctx.fillText("SCORE "+String(total()).padStart(3,"0"),VW-16,21);
+}
+function banner(a,b){
+ ctx.fillStyle="rgba(17,17,17,.7)";ctx.fillRect(0,VH/2-44,VW,88);
+ ctx.fillStyle="#fff";ctx.textAlign="center";ctx.textBaseline="middle";
+ ctx.font="bold 22px 'Source Sans 3', sans-serif";ctx.fillText(a,VW/2,VH/2-12);
+ ctx.font="16px 'Source Sans 3', sans-serif";ctx.fillText(b,VW/2,VH/2+16);
+}
+function draw(t){
+ var s=cv.width/VW;ctx.setTransform(s,0,0,s,0,0);
+ drawBg(t);
+ ships.forEach(function(sh){if(sh.alive)drawShip(sb(sh),paused&&target===sh,t);});
+ if(shot){ctx.fillStyle="#f8b800";ctx.fillRect(shot.x-2,shot.y-14,4,16);ctx.fillStyle="rgba(248,184,0,.35)";ctx.fillRect(shot.x-5,shot.y-6,10,10);}
+ notes.forEach(function(m){ctx.fillStyle="#ff6b7f";ctx.fillRect(m.x-7,m.y-9,14,18);ctx.fillStyle="#7a1424";ctx.fillRect(m.x-4,m.y-5,8,2);ctx.fillRect(m.x-4,m.y-1,8,2);ctx.fillRect(m.x-4,m.y+3,5,2);});
+ drawPlayer(t,t<stunUntil);
+ parts.forEach(function(p){ctx.globalAlpha=Math.max(0,1-p.t/0.8);ctx.fillStyle=p.c;ctx.fillRect(p.x-2,p.y-2,4,4);});ctx.globalAlpha=1;
+ drawHud();
+ if(flashMsg&&t<flashUntil){ctx.fillStyle="rgba(17,17,17,.6)";ctx.fillRect(0,VH-34,VW,34);ctx.fillStyle="#ffd36b";ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 15px 'Source Sans 3', sans-serif";ctx.fillText(flashMsg,VW/2,VH-17);}
+ if(paused&&target){ctx.fillStyle="rgba(17,17,17,.6)";ctx.fillRect(0,VH-34,VW,34);ctx.fillStyle="#f8b800";ctx.textAlign="center";ctx.textBaseline="middle";ctx.font="bold 15px 'Source Sans 3', sans-serif";ctx.fillText("Saucer hit! Answer the question.",VW/2,VH-17);}
+ else if(!paused&&!active())banner("CLICK THE GAME TO PLAY","Arrow keys to move  ·  Space to fire");
+}
+function fit(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;if(r.width<10)return;var w=Math.round(r.width*d);if(cv.width!==w){cv.width=w;cv.height=Math.round(w*VH/VW);}}
+var last=0;
+function frame(t){
+ var dt=Math.min(0.033,(t-last)/1000||0);last=t;
+ parts.forEach(function(p){p.t+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;});parts=parts.filter(function(p){return p.t<0.8;});
+ if(!$("tg-play").hidden){
+  fit();
+  if(!paused&&active())update(dt,t);
+  draw(t);
+ }
+ requestAnimationFrame(frame);
+}
+
+/* ---------- questions ---------- */
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function openQuestion(){if(!S.current)return;$("tg-quiz").hidden=false;renderQuestion(S.current,"",false,null);}
+function renderQuestion(c,msg,good,fin){
+ var q=QUIZ[c.level-1][c.q],box=$("tg-box"),value=Math.max(0,PER-PENALTY*c.wrong);
+ box.innerHTML="";
+ box.appendChild(el("div","tg-qhead","<span>Section <b>"+pad2(c.level)+"</b> · Saucer <b>"+(c.q+1)+"</b> of "+PERLEVEL+"</span><span>Worth <b>"+(fin?fin.points:value)+"</b> pts</span><span>Attempts left <b>"+(fin?0:MAXTRY-c.wrong)+"</b></span>"));
+ box.appendChild(el("p","tg-topic",esc(q.topic)));
+ var qt=el("p","tg-q",esc(q.q));qt.id="tg-q";box.appendChild(qt);
+ q.opts.forEach(function(o,i){
+  var b=el("button","tg-opt",'<span class="k">'+LETTERS[i]+'</span><span>'+esc(o)+'</span>');b.type="button";
+  if(c.picks.indexOf(i)>=0){b.classList.add("wrong");b.disabled=true;}
+  if(fin){b.disabled=true;if(i===q.a)b.classList.add("right");}
+  else b.addEventListener("click",function(){pick(i);});
+  box.appendChild(b);
+ });
+ box.appendChild(el("p","tg-fb "+(good?"good":"bad"),msg||""));
+ if(fin){var nb=el("button","tg-btn",done(c.level)?"Finish this section":"Continue");nb.type="button";nb.addEventListener("click",closeQuestion);box.appendChild(nb);nb.focus();}
+}
+function pick(i){
+ var c=S.current;if(!c)return;
+ var q=QUIZ[c.level-1][c.q],L=lv(c.level);
+ if(i===q.a){
+  var pts=Math.max(0,PER-PENALTY*c.wrong);
+  L.results.push({q:c.q,wrong:c.wrong,points:pts});S.current=null;save();
+  renderQuestion(c,"Correct! Saucer down: you earned "+pts+" point"+(pts===1?"":"s")+".",true,{points:pts});
+ }else{
+  c.wrong++;c.picks.push(i);
+  if(c.wrong>=MAXTRY){
+   L.results.push({q:c.q,wrong:c.wrong,points:0});S.current=null;save();
+   renderQuestion(c,"5 wrong answers. This saucer is now worth 0 points. The correct answer is highlighted in green.",false,{points:0});
+  }else{
+   save();
+   renderQuestion(c,"Incorrect. This saucer is now worth "+(PER-PENALTY*c.wrong)+" points. "+(MAXTRY-c.wrong)+" attempt"+(MAXTRY-c.wrong===1?"":"s")+" left.",false,null);
+  }
+ }
+}
+function closeQuestion(){
+ $("tg-quiz").hidden=true;
+ var t=target||alive()[0];
+ if(t){t.alive=false;var b=sb(t);burst(b.x+b.w/2,b.y+b.h/2,"#cfe0ff",20);burst(b.x+b.w/2,b.y+b.h/2,"#f8b800",14);}
+ target=null;
+ if(done(curLevel)){
+  if(cleared()===N&&!S.finishedAt){S.finishedAt=new Date().toISOString();save();}
+  setTimeout(function(){showLevel(curLevel,false);},600);
+  return;
+ }
+ paused=false;try{cv.focus({preventScroll:true});}catch(e){cv.focus();}
+}
+
+/* ---------- page ---------- */
+function renderBar(){
+ var box=$("lv-steps");box.innerHTML="";
+ LEVELS.forEach(function(l,i){
+  var n=i+1,b=el("button","lv-btn");b.type="button";
+  b.appendChild(el("span",null,pad2(n)));b.appendChild(el("span","lv-name"," "+esc(l.short)));
+  if(done(n))b.classList.add("done");
+  if(n===S.view){b.classList.add("current");b.setAttribute("aria-current","step");}
+  b.disabled=!unlocked(n);
+  b.title="Section "+pad2(n)+": "+l.name+(unlocked(n)?"":" (locked)");
+  b.addEventListener("click",function(){showLevel(n,true);});
+  box.appendChild(b);
+ });
+ $("lv-count").textContent=cleared()+" of "+N+" cleared · "+total()+" pts";
+}
+function showLevel(n,scroll){
+ if(!unlocked(n))n=Math.min(cleared()+1,N);
+ S.view=n;save();
+ document.querySelectorAll(".level").forEach(function(s){s.classList.toggle("on",Number(s.dataset.level)===n);});
+ document.body.classList.toggle("review",!!S.review);
+ renderGate();
+ if(S.review){paused=true;$("tg-quiz").hidden=true;renderBar();renderSummary();return;}
+ $("tg-arena-eyebrow").textContent="Section "+pad2(n)+" of "+pad2(N)+" · Pitch Invaders";
+ $("tg-arena-title").textContent=LEVELS[n-1].name+" · Shoot 5 saucers";
+ $("lv-msg").textContent="";
+ $("tg-start").hidden=true;$("tg-cleared").hidden=true;$("tg-play").hidden=true;paused=true;
+ if(!S.name){$("tg-start").hidden=false;}
+ else if(done(n)){
+  var pts=lv(n).results.reduce(function(t,r){return t+r.points;},0);
+  $("tg-cleared-title").textContent="Section "+pad2(n)+" cleared ✓";
+  $("tg-cleared-text").textContent="You shot down all 5 saucers in this section for "+pts+" of 50 points. You can reread this section at any time from the bar above.";
+  var nb=$("tg-next-btn");
+  if(n<N){nb.textContent="Continue to Section "+pad2(n+1)+": "+LEVELS[n].short+" →";nb.onclick=function(){showLevel(n+1,true);};}
+  else{nb.textContent="See my summary ↓";nb.onclick=function(){$("tg-summary").scrollIntoView();};}
+  $("tg-cleared").hidden=false;
+ }else{
+  buildField(n);$("tg-play").hidden=false;
+  if(S.current&&S.current.level===n){target=alive()[0]||null;paused=true;openQuestion();}else paused=false;
+ }
+ renderBar();renderSummary();
+ if(scroll)$("lvbar").scrollIntoView();
+}
+function norm(v){return String(v).trim().toLowerCase().replace(/\s+/g,"");}
+function passOk(v){var k="";try{k=btoa(norm(v));}catch(e){}return k===PASS;}
+function showBio(){var on=!!(S.bio||S.review);$("tg-bio").hidden=!on;$("tg-unlock-row").hidden=on;if(on)$("tg-pw-err").textContent="";}
+function renderGate(){
+ var msg=$("tg-gate-msg");
+ $("tg-gate-row").hidden=!!S.review;$("tg-gate-reset").hidden=!S.review;
+ if(S.review){msg.className="tg-gate-msg good";msg.textContent="Password accepted. All five sections of the guide are open below, and the bonus is unlocked at the end.";}
+ else if(msg.classList.contains("good")){msg.className="tg-gate-msg";msg.textContent="";}
+}
+function renderSummary(){
+ var sec=$("tg-summary"),bioOnly=!!S.review&&!S.finishedAt;
+ sec.hidden=!(S.finishedAt||S.review);
+ $("tg-results").classList.toggle("bio-only",bioOnly);
+ sec.querySelector(".eyebrow").textContent=bioOnly?"Bonus":"Summary";
+ sec.querySelector(".sec-title").textContent=bioOnly?"Eileen Gray":"Trivia Game Result";
+ if(bioOnly){showBio();return;}
+ if(!S.finishedAt)return;
+ $("tg-r-name").textContent=S.name;
+ $("tg-r-score").textContent=total()+" / "+(N*PERLEVEL*PER);
+ $("tg-r-coins").textContent=coins()+" / "+(N*PERLEVEL);
+ $("tg-r-date").textContent=new Date(S.finishedAt).toLocaleString();
+ var tb=$("tg-r-rows");tb.innerHTML="";var k=0;
+ for(var n=1;n<=N;n++){
+  var h=document.createElement("tr");h.className="sec";var hc=document.createElement("td");hc.colSpan=4;hc.textContent="Section "+pad2(n)+" · "+LEVELS[n-1].name;h.appendChild(hc);tb.appendChild(h);
+  lv(n).results.forEach(function(res){
+   k++;var tr=document.createElement("tr");if(res.points===0)tr.className="zero";
+   [String(k),QUIZ[n-1][res.q].topic,String(res.wrong),String(res.points)].forEach(function(v,j){var td=document.createElement("td");td.textContent=v;if(j>=2)td.className="n";tr.appendChild(td);});
+   tb.appendChild(tr);
+  });
+ }
+ var g=$("tg-r-guide");g.innerHTML="";
+ QUIZ.forEach(function(qs,i){
+  g.appendChild(el("h4",null,"Section "+pad2(i+1)+" · "+esc(LEVELS[i].name)));
+  var ol=document.createElement("ol");
+  qs.forEach(function(q){
+   var li=document.createElement("li"),d=document.createElement("div");
+   d.appendChild(el("p","g-q",esc(q.q)));
+   d.appendChild(el("p","g-a","<strong>Correct answer:</strong> "+esc(q.opts[q.a])));
+   li.appendChild(d);ol.appendChild(li);
+  });
+  g.appendChild(ol);
+ });
+ showBio();
+}
+
+/* ---------- input ---------- */
+var KM={ArrowLeft:"left",ArrowRight:"right",a:"left",d:"right",A:"left",D:"right"};
+function isFire(k){return k===" "||k==="Spacebar"||k==="ArrowUp"||k==="w"||k==="W";}
+window.addEventListener("keydown",function(e){
+ if(document.activeElement!==cv)return;
+ if(KM[e.key]){e.preventDefault();if(!paused)keys[KM[e.key]]=true;return;}
+ if(isFire(e.key)){e.preventDefault();if(!e.repeat)fire();}
+ if(e.key==="ArrowDown")e.preventDefault();
+});
+window.addEventListener("keyup",function(e){var k=KM[e.key];if(k)keys[k]=false;});
+cv.addEventListener("blur",function(){keys.left=keys.right=false;});
+cv.addEventListener("pointerdown",function(){try{cv.focus({preventScroll:true});}catch(e){cv.focus();}});
+document.querySelectorAll("#tg-controls button[data-k]").forEach(function(b){
+ var k=b.dataset.k;
+ function on(e){e.preventDefault();if(paused)return;padUntil=performance.now()+4000;keys[k]=true;}
+ function off(){keys[k]=false;padUntil=performance.now()+4000;}
+ b.addEventListener("pointerdown",on);["pointerup","pointerleave","pointercancel"].forEach(function(t){b.addEventListener(t,off);});
+});
+$("tg-fire").addEventListener("pointerdown",function(e){e.preventDefault();padUntil=performance.now()+4000;fire();});
+$("tg-calm").addEventListener("change",function(){S.calm=this.checked;save();notes=[];});
+document.addEventListener("keydown",function(e){
+ if($("tg-quiz").hidden||/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
+ var i=LETTERS.indexOf(String(e.key).toUpperCase());
+ if(i>=0&&e.key.length===1){var b=$("tg-box").querySelectorAll(".tg-opt")[i];if(b&&!b.disabled)b.click();}
+});
+$("tg-start-btn").addEventListener("click",function(){
+ var n=$("tg-name").value.trim().replace(/\s+/g," ");
+ if(n.length<3||n.indexOf(" ")<0){$("tg-name-err").textContent="Enter your first and last name.";return;}
+ S.name=n;S.startedAt=new Date().toISOString();save();
+ showLevel(S.view,false);
+ try{cv.focus({preventScroll:true});}catch(e){cv.focus();}
+});
+$("tg-name").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-start-btn").click();});
+$("tg-pw-btn").addEventListener("click",function(){
+ if(!passOk($("tg-pw").value)){$("tg-pw-err").textContent="Incorrect password. Check it with your teacher.";return;}
+ S.bio=true;save();$("tg-pw").value="";showBio();
+});
+$("tg-pw").addEventListener("keydown",function(e){if(e.key==="Enter")$("tg-pw-btn").click();});
+$("lv-reset").addEventListener("click",function(){
+ if(!confirm("Reset the game? Your saucers, score, and summary will be erased, and you will start again from Section 01."))return;
+ S={name:"",startedAt:null,finishedAt:null,lv:{},current:null,view:1,bio:false,review:false,calm:S.calm};
+ try{localStorage.removeItem(KEY);}catch(e){}
+ $("tg-quiz").hidden=true;$("tg-name").value="";$("tg-name-err").textContent="";$("tg-pw-err").textContent="";
+ showLevel(1,true);
+});
+$("tg-gate").addEventListener("submit",function(e){
+ e.preventDefault();
+ var m=$("tg-gate-msg");
+ if(!passOk($("tg-gate-pw").value)){m.className="tg-gate-msg bad";m.textContent="Incorrect password. Check it with your teacher.";return;}
+ S.review=true;S.bio=true;save();$("tg-gate-pw").value="";
+ showLevel(S.view||1,false);
+});
+$("tg-gate-reset").addEventListener("click",function(){$("lv-reset").click();});
+document.querySelectorAll("nav ul a").forEach(function(a){
+ a.addEventListener("click",function(e){
+  var n=NAVMAP[a.getAttribute("href")];if(!n||S.review)return;
+  e.preventDefault();
+  if(!unlocked(n)){$("lvbar").scrollIntoView();$("lv-msg").textContent="Locked. Clear Section "+pad2(cleared()+1)+" ("+LEVELS[cleared()].short+") first.";return;}
+  showLevel(n,true);
+ });
+});
+window.addEventListener("resize",fit);
+
+load();
+$("tg-calm").checked=!!S.calm;
+showLevel(S.view||1,false);
+requestAnimationFrame(frame);
+/*TEST_HOOK*/
+})();
 </script>
 </body>
 </html>
